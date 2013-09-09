@@ -19,16 +19,15 @@ Bundle 'gmarik/vundle'
 
 Bundle 'Bogdanp/rbrepl.vim.git'
 Bundle 'digitaltoad/vim-jade.git'
-Bundle 'epeli/slimux.git'
 Bundle 'godlygeek/tabular'
 Bundle 'guns/vim-clojure-static.git'
 Bundle 'hallison/vim-markdown'
+Bundle 'juvenn/mustache.vim.git'
 Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim.git'
-Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'majutsushi/tagbar.git'
-Bundle 'mattn/zencoding-vim.git'
+Bundle 'mattn/emmet-vim.git'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'ndhoule/vim-ragtag.git'
 Bundle 'scrooloose/nerdcommenter'
@@ -40,7 +39,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround'
-Bundle 'Valloric/YouCompleteMe.git'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/bufexplorer.zip.git'
 Bundle 'vim-scripts/bufkill.vim.git'
@@ -51,14 +49,14 @@ Bundle 'vim-scripts/Rename.git'
 Bundle 'vim-scripts/scratch.vim.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 
-" SnipMate plugins
+" SnipMate
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'tomtom/tlib_vim.git'
-Bundle 'honza/snipmate-snippets.git'
+Bundle 'honza/vim-snippets.git'
 
 "
-" ## Post-Setup Cleanup ## {{
+" Post-setup Cleanup
 "
 
 " Turn plugins and indentation back on

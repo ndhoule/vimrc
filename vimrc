@@ -31,9 +31,6 @@ endif
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
-" Change snippets directory
-let g:snips_trigger_key = '<C-\>'
-
 " Enable YankRing and move its storage file
 let g:yankring_enabled = 1
 let g:yankring_history_file = '.vim-yankring_history'
@@ -163,6 +160,10 @@ nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
+
+" Change SnipMate expansion shortcut
+imap <C-\> <Plug>snipMateNextOrTrigger
+smap <C-\> <Plug>snipMateNextOrTrigger
 
 " Map leader to pane switching for great victory
 nnoremap <leader>w <C-w>w
