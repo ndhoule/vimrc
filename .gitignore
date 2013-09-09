@@ -1,0 +1,43 @@
+#
+# Project-specific files
+#
+
+# Let Vundle manage bundles
+vim/bundle
+vim/.netrwhist
+
+#
+# Temporary files
+#
+
+*~
+*.lock
+*.out
+*.swp
+
+#
+# Compiled source
+#
+
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.pyc
+*.pyo
+*.so
+
+
+#
+# OS-specific files
+#
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Icon?
+Thumbs.db
