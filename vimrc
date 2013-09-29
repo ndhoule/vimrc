@@ -19,12 +19,12 @@ vnoremap <F1> <ESC>
 "autocmd VimEnter,VimLeave * silent !tmux set status
 
 "
-" Bundles and Plugin Setup 
+" Bundles and Plugin Setup
 "
 
 " Use local bundles if available
-if filereadable(expand('~/.vimrc.bundles'))
-    source ~/.vimrc.bundles
+if filereadable(expand('~/.vim/vimrc.bundles'))
+    source ~/.vim/vimrc.bundles
 endif
 
 " Set VimClojure settings

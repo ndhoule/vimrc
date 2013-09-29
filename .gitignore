@@ -3,8 +3,8 @@
 #
 
 # Let Vundle manage bundles
-vim/bundle
-vim/.netrwhist
+bundle
+.netrwhist
 
 #
 # Temporary files
