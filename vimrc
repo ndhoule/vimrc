@@ -7,6 +7,28 @@ if v:progname =~? "evim"
   finish
 endif
 
+"
+" Bundles and Plugin Setup
+"
+
+" Use local bundles if available
+if filereadable(expand('<sfile>:p:h') . '/vimrc.bundles')
+  execute('source ' . expand('<sfile>:p:h') . '/vimrc.bundles')
+endif
+
+"Change leader key from \ to ,
+let mapleader=","
+
+" TODO: MOVE THIS; we need to map mapleader before we can load these files, though
+" Load all files in the `config` folder
+for filename in split(glob(expand('<sfile>:p:h') . '/config/**/*.vim'), '\n')
+  execute('source ' . filename)
+endfor
+
+"
+" Editor Configuration
+"
+
 " Disable ex mode
 nnoremap Q <ESC>
 
@@ -15,75 +37,60 @@ nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Disable tmux status line when entering vim
-"autocmd VimEnter,VimLeave * silent !tmux set status
+" Tell vim to remember certain things when we exit
+"   '10  :  marks will be remembered for up to 10 previously edited files
+"   "100 :  will save up to 100 lines for each register
+"   :20  :  up to 20 lines of command-line history will be remembered
+"   %    :  saves and restores the buffer list
+"   n... :  where to save the viminfo files
+set viminfo='1000,\"100,:100,%,n~/.vim/.viminfo
 
-"
-" Bundles and Plugin Setup
-"
+" Restore the cursor to the location it was in last time a given file was edited
+function! RestoreCursor()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
 
-" Use local bundles if available
-if filereadable(expand('~/.vim/vimrc.bundles'))
-    source ~/.vim/vimrc.bundles
-endif
-
-" Set VimClojure settings
-let g:vimclojure#HighlightBuiltins = 1
-let g:vimclojure#ParenRainbow = 1
-
-" Enable YankRing and move its storage file
-let g:yankring_enabled = 1
-let g:yankring_history_file = '.vim-yankring_history'
-
-" Show Powerline by default
-set laststatus=2
-let g:Powerline_symbols = 'fancy'
-
-" Let Syntastic lint files on save and show location markers, pane
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-
-" Map ragtag
-inoremap <M-o>       <Esc>o
-inoremap <C-j>       <Down>
-let g:ragtag_global_maps = 1
-
-" Set tagbar to use jsctags on JavaScript files
-let g:tagbar_type_javascript = {
-  \ 'ctagsbin' : '/usr/local/share/npm/bin/jsctags'
-\ }
+augroup restoreCursor
+  autocmd!
+  autocmd BufWinEnter * call RestoreCursor()
+augroup END
 
 "
 " General Settings
 "
 
-set encoding=utf-8       " Use UTF-8 encoding by default
-set scrolloff=5          " Start scrolling five lines from the bottom
-set history=100          " Give vim a long memory
-set undolevels=1000      " Keep all the undos
-set title                " Change the terminal window's title
-set showcmd              " Show inc commands in status line as they're being typed
-set nobackup             " Backups go down the hole
-set noswapfile           " Swap files go down the hole
-set autowrite            " Autosave on make or shell commands
-set wildmenu             " Better buffer switching menu
+set encoding=utf-8        " Use UTF-8 encoding by default
+set scrolloff=5           " Start scrolling five lines from the bottom
+set history=100           " Give vim a long memory
+set undolevels=1000       " Keep all the undos
+set title                 " Change the terminal window's title
+set showcmd               " Show inc commands in status line as they're being typed
+set nobackup              " Backups go down the hole
+set noswapfile            " Swap files go down the hole
+set autowrite             " Autosave on make or shell commands
+set wildmenu              " Better buffer switching menu
+set wildmode=list:longest " Taller :e menu
+set autochdir             " Always change to the current file's directory
 
 "
 " Text Display and Formatting
 "
 
+syntax on                " Turn syntax highlighting on
 set cursorline           " Highlight the current line
 set cursorcolumn         " Highlight the current column
-syntax on                " Turn syntax highlighting on
 set relativenumber       " Set line numbering relative to current line
-set colorcolumn=80       " Show a column at 85 to show max width
-set textwidth=84         " Keep text files from getting too wide
-set tabstop=4            " Set tab width to four spaces
-set softtabstop=4        " Make tabs easier to delete
-set shiftwidth=4         " Auto-indent this many spaces
+set colorcolumn=80       " Show a max width warning column
+set textwidth=100        " Keep text files from getting too wide
+set tabstop=2            " Set tab width to four spaces
+set softtabstop=2        " Make tabs easier to delete
+set shiftwidth=2         " Auto-indent this many spaces
 set expandtab            " Turn <Tab> into spaces indicated in tabstop
 set relativenumber       " Set line numbering relative to current line
-set list listchars=tab:→\ ,trail:·
+set list listchars=tab:→\ ,trail:· " Highlight trailing spaces, tab chars
 
 "
 " Plaintext Editing
@@ -93,77 +100,20 @@ set list listchars=tab:→\ ,trail:·
 set spelllang=en
 
 "
-" Filetype-Specific Settings
-"
-
-au FileType xhtml,html,htm,slim,eruby,php,xml,javascript,css,scss,jade,sass,ruby setlocal ts=2 sts=2 sw=2
-
-" Enable syntax highlighting for jquery files
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-"
-" Trailing Whitespace Highlighter
-"
-
-" Highlight trailing whitespace after leaving insert mode
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=DarkRed guibg=DarkRed
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-"
 " ## Searching
 "
 
 set ignorecase           " Ignore case when searching...
 set smartcase            " ...Except when search contains an uppercase char
 set hlsearch             " Highlight search items
-
-"
-" Autocompletion
-"
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
-"
-" ## Color Scheme ## {{
-"
-
-set background=dark
-
-if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
-  \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
-  " Use the guicolorscheme plugin to makes 256-color or 88-color
-  " terminal use GUI colors rather than cterm colors.
-  runtime! plugin/guicolorscheme.vim
-  GuiColorScheme molokai
-else
-  " For 8-color 16-color terminals or for gvim, just use the
-  " regular :colorscheme command.
-  colorscheme molokai
-endif
+set incsearch            " Highlight search items while typing
 
 "
 " Keybindings
 "
 
-"Change leader key from \ to ,
-let mapleader=","
-
 " Activate : using ;
 nnoremap ; :
-
-" Git mappings
-nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gst :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
-
-" Change SnipMate expansion shortcut
-imap <C-\> <Plug>snipMateNextOrTrigger
-smap <C-\> <Plug>snipMateNextOrTrigger
 
 " Map leader to pane switching for great victory
 nnoremap <leader>w <C-w>w
@@ -194,15 +144,6 @@ cmap w!! w !sudo tee % >/dev/null
 " Launch nerdtree plugin
 noremap <silent> <leader>n :NERDTreeToggle<CR>
 
-" Launch CtrlP plugin
-map <leader>t :CtrlP<CR>
-
-" Clear any highlighting on search terms
-nmap <silent> <leader>ch :set hlsearch!<CR>
-
-" Toggle tagbar
-nmap <silent> <leader><Tab> :TagbarToggle<CR>
-
 " Toggle rainbow parens (defaults to parens only)
 function Rainbows()
   :RainbowParenthesesToggle
@@ -215,19 +156,13 @@ nnoremap <silent> <leader>r :exec Rainbows()<CR>
 nnoremap <silent> <leader>s :Scratch<CR>
 
 " Toggle between regular numbering, relative numbering, no numbering
-nmap <silent> <F2> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+nmap <silent> <F2> :exec &nu==&rnu ? "se nu!" : "se rnu!"<CR>
 
-" Enable paste mode--helps quash indent, etc. when pasting large blocks of code
+" Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
 nnoremap <F3> :set invpaste paste?<CR>
 
 " Toggle spell check
 nnoremap <F4> :set spell!<CR>
-
-" Strip trailing whitespace from all lines
-nmap <silent> <F11> :%s/\s\+$<CR>
-
-" Open the yank ring
-nnoremap <silent> <F12> :YRShow<CR>
 
 " Slimux commands - Send stuff to a REPL for great virtousness
 map \sl :SlimuxREPLSendLine<CR>

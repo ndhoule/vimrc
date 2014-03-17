@@ -10,50 +10,66 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 
-" Let Vundle manage Vundle
+" Let Vundle manage itself
 Bundle 'gmarik/vundle'
 
 "
 " User Bundles
 "
 
-Bundle 'Bogdanp/rbrepl.vim.git'
-Bundle 'digitaltoad/vim-jade.git'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'Bogdanp/rbrepl.vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Raimondi/delimitMate'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'bling/vim-airline'
+Bundle 'briancollins/vim-jst'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'einars/js-beautify'
+Bundle 'elzr/vim-json'
 Bundle 'godlygeek/tabular'
-Bundle 'guns/vim-clojure-static.git'
 Bundle 'hallison/vim-markdown'
-Bundle 'juvenn/mustache.vim.git'
-Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
-Bundle 'kien/rainbow_parentheses.vim.git'
-Bundle 'majutsushi/tagbar.git'
-Bundle 'mattn/emmet-vim.git'
-Bundle 'mileszs/ack.vim.git'
-Bundle 'ndhoule/vim-ragtag.git'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'mattn/emmet-vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'ndhoule/vim-ragtag'
+Bundle 'pangloss/vim-javascript'
+Bundle 'paradigm/SkyBison'
+Bundle 'rizzatti/dash.vim'
+Bundle 'rizzatti/funcoo.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'slim-template/vim-slim.git'
-Bundle 'Townk/vim-autoclose.git'
+Bundle 'scrooloose/syntastic'
+Bundle 'slim-template/vim-slim'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml.git'
-Bundle 'tpope/vim-repeat.git'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/bufexplorer.zip.git'
-Bundle 'vim-scripts/bufkill.vim.git'
-Bundle 'vim-scripts/fakeclip.git'
+Bundle 'vim-scripts/Rename'
+Bundle 'vim-scripts/YankRing.vim'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'vim-scripts/bufkill.vim'
+Bundle 'vim-scripts/fakeclip'
 Bundle 'vim-scripts/guicolorscheme.vim'
-Bundle 'vim-scripts/jQuery.git'
-Bundle 'vim-scripts/Rename.git'
-Bundle 'vim-scripts/scratch.vim.git'
-Bundle 'vim-scripts/YankRing.vim.git'
+Bundle 'vim-scripts/scratch.vim'
 
 " SnipMate
-Bundle 'garbas/vim-snipmate.git'
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'tomtom/tlib_vim.git'
-Bundle 'honza/vim-snippets.git'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+
+" Themes
+Bundle 'chriskempson/base16-vim'
 
 "
 " Post-setup Cleanup

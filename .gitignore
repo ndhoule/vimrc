@@ -2,6 +2,8 @@
 # Project-specific files
 #
 
+.viminfo
+
 # Let Vundle manage bundles
 bundle
 .netrwhist
