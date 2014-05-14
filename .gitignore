@@ -16,6 +16,7 @@ bundle
 *.lock
 *.out
 *.swp
+*.tmp
 
 #
 # Compiled source
