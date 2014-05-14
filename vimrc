@@ -88,6 +88,8 @@ set textwidth=100        " Keep text files from getting too wide
 set tabstop=2            " Set tab width to four spaces
 set softtabstop=2        " Make tabs easier to delete
 set shiftwidth=2         " Auto-indent this many spaces
+" Instead of tab inserting `shiftwidth` spaces, insert to the nearest multiple of `shiftwidth`
+set shiftround
 set expandtab            " Turn <Tab> into spaces indicated in tabstop
 set relativenumber       " Set line numbering relative to current line
 set list listchars=tab:→\ ,trail:· " Highlight trailing spaces, tab chars
