@@ -1,4 +1,4 @@
-au FileType python setlocal ts=4 sts=4 sw=4
+au FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
 "
 " Autocompletion

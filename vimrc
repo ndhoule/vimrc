@@ -2,40 +2,16 @@
 " Initial Setup
 "
 
+" Path to this file's directory
+let dotvim_path = expand('<sfile>:p:h')
+
 " Don't load this file when using evim
 if v:progname =~? "evim"
   finish
 endif
 
-"
-" Bundles and Plugin Setup
-"
-
-" Use local bundles if available
-if filereadable(expand('<sfile>:p:h') . '/vimrc.bundles')
-  execute('source ' . expand('<sfile>:p:h') . '/vimrc.bundles')
-endif
-
 "Change leader key from \ to ,
 let mapleader=","
-
-" TODO: MOVE THIS; we need to map mapleader before we can load these files, though
-" Load all files in the `config` folder
-for filename in split(glob(expand('<sfile>:p:h') . '/config/**/*.vim'), '\n')
-  execute('source ' . filename)
-endfor
-
-"
-" Editor Configuration
-"
-
-" Disable ex mode
-nnoremap Q <ESC>
-
-" Prevent F1 from toggling Vim's help menu
-nnoremap <F1> <ESC>
-inoremap <F1> <ESC>
-vnoremap <F1> <ESC>
 
 " Tell vim to remember certain things when we exit
 "   '10  :  marks will be remembered for up to 10 previously edited files
@@ -45,73 +21,53 @@ vnoremap <F1> <ESC>
 "   n... :  where to save the viminfo files
 set viminfo='1000,\"100,:100,%,n~/.vim/.viminfo
 
-" Restore the cursor to the location it was in last time a given file was edited
-function! RestoreCursor()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
+"
+" gvim Settings
+"
+
+if has("gui_running")
+  let gvimrc_path = dotvim_path . '/gvimrc'
+  if filereadable(gvimrc_path)
+    execute('source ' . gvimrc_path)
   endif
-endfunction
 
-augroup restoreCursor
-  autocmd!
-  autocmd BufWinEnter * call RestoreCursor()
-augroup END
-
-"
-" General Settings
-"
-
-set encoding=utf-8        " Use UTF-8 encoding by default
-set scrolloff=5           " Start scrolling five lines from the bottom
-set history=100           " Give vim a long memory
-set undolevels=1000       " Keep all the undos
-set title                 " Change the terminal window's title
-set showcmd               " Show inc commands in status line as they're being typed
-set nobackup              " Backups go down the hole
-set noswapfile            " Swap files go down the hole
-set autowrite             " Autosave on make or shell commands
-set wildmenu              " Better buffer switching menu
-set wildmode=list:longest " Taller :e menu
-set autochdir             " Always change to the current file's directory
+  " Load OS-specific gvimrcs
+  if has("gui_macvim")
+    let mvimrc_path = dotvim_path . '/mvimrc'
+    if filereadable(mvimrc_path)
+      execute('source ' . mvimrc_path)
+    endif
+  endif
+endif
 
 "
-" Text Display and Formatting
+" Bundles/Plugin Setup
 "
 
-syntax on                " Turn syntax highlighting on
-set cursorline           " Highlight the current line
-set cursorcolumn         " Highlight the current column
-set relativenumber       " Set line numbering relative to current line
-set colorcolumn=80       " Show a max width warning column
-set textwidth=100        " Keep text files from getting too wide
-set tabstop=2            " Set tab width to four spaces
-set softtabstop=2        " Make tabs easier to delete
-set shiftwidth=2         " Auto-indent this many spaces
-" Instead of tab inserting `shiftwidth` spaces, insert to the nearest multiple of `shiftwidth`
-set shiftround
-set expandtab            " Turn <Tab> into spaces indicated in tabstop
-set relativenumber       " Set line numbering relative to current line
-set list listchars=tab:→\ ,trail:· " Highlight trailing spaces, tab chars
+if filereadable(dotvim_path . '/bundles')
+  execute('source ' . dotvim_path . '/bundles')
+endif
 
 "
-" Plaintext Editing
+" Editor Configuration
 "
 
-" Set spelling to English
-set spelllang=en
+for filename in split(glob(dotvim_path . '/config/core/**/*.vim'), '\n')
+  execute('source ' . filename)
+endfor
 
-"
-" ## Searching
-"
+for filename in split(glob(dotvim_path . '/config/language/**/*.vim'), '\n')
+  execute('source ' . filename)
+endfor
 
-set ignorecase           " Ignore case when searching...
-set smartcase            " ...Except when search contains an uppercase char
-set hlsearch             " Highlight search items
-set incsearch            " Highlight search items while typing
+for filename in split(glob(dotvim_path . '/config/bundle/**/*.vim'), '\n')
+  execute('source ' . filename)
+endfor
 
 "
 " Keybindings
+"
+" TODO: Move into external configuration files
 "
 
 " Activate : using ;
@@ -146,16 +102,8 @@ cmap w!! w !sudo tee % >/dev/null
 " Launch nerdtree plugin
 noremap <silent> <leader>n :NERDTreeToggle<CR>
 
-" Toggle rainbow parens (defaults to parens only)
-function Rainbows()
-  :RainbowParenthesesToggle
-  :RainbowParenthesesLoadRound
-endfunction
-
-nnoremap <silent> <leader>r :exec Rainbows()<CR>
-
 " Open a scratch file
-nnoremap <silent> <leader>s :Scratch<CR>
+nnoremap <silent> <leader>S :Scratch<CR>
 
 " Toggle between regular numbering, relative numbering, no numbering
 nmap <silent> <F2> :exec &nu==&rnu ? "se nu!" : "se rnu!"<CR>
@@ -165,11 +113,3 @@ nnoremap <F3> :set invpaste paste?<CR>
 
 " Toggle spell check
 nnoremap <F4> :set spell!<CR>
-
-" Slimux commands - Send stuff to a REPL for great virtousness
-map \sl :SlimuxREPLSendLine<CR>
-map \sp :SlimuxShellPrompt<CR>
-map \sl :SlimuxShellLast<CR>
-map \ss :SlimuxREPLSendSelection<CR>
-map \ssc :SlimuxShellConfigure<CR>
-map \src :SlimuxShellConfigure<CR>
