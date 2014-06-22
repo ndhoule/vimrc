@@ -70,6 +70,14 @@ endfor
 " TODO: Move into external configuration files
 "
 
+" Fugitive bindings
+map <leader>gst :Gstatus<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gL :Glog<CR>
+map <leader>ga :Gwrite<CR>
+map <leader>gd :Gsdiff<CR>
+map <leader>gb :Gblame<CR>
+
 " Activate : using ;
 nnoremap ; :
 
