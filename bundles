@@ -47,13 +47,15 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'typedclojure/vim-typedclojure'
 Bundle 'vim-scripts/Rename'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/bufkill.vim'
-Bundle 'vim-scripts/fakeclip'
 " TODO: Does this need to be installed?
+Bundle 'vim-scripts/fakeclip'
 Bundle 'vim-scripts/guicolorscheme.vim'
+Bundle 'vim-scripts/paredit.vim'
 Bundle 'vim-scripts/scratch.vim'
 
 "
