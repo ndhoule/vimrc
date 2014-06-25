@@ -5,7 +5,7 @@
 .viminfo
 
 # Let Vundle manage bundles
-bundle
+/bundle
 .netrwhist
 
 #
