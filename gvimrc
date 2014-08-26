@@ -7,8 +7,8 @@
 "
 
 " Disable right and left scrollbars
-set guioptions-=r
-set guioptions-=L
+"set guioptions-=r
+"set guioptions-=L
 
 " Disable toolbar
-set guioptions-=T
+"set guioptions-=T

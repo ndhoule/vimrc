@@ -1,6 +1,8 @@
 "
 " General Settings
 "
+set timeoutlen=2000
+set ttimeoutlen=0
 
 set encoding=utf-8        " Use UTF-8 encoding by default
 set scrolloff=5           " Start scrolling five lines from the bottom
