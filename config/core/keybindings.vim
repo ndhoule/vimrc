@@ -1,3 +1,7 @@
+"
+" Key bindings.
+"
+
 " Disable ex mode
 nnoremap Q <ESC>
 
@@ -5,3 +9,5 @@ nnoremap Q <ESC>
 nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+
+"map <leader>s :sort<CR>

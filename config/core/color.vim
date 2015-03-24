@@ -1,8 +1,12 @@
+"
+" Config.
+"
+
 set background=dark
 colorscheme base16-default
 
 "
-" Trailing Whitespace
+" Highlight trailing whitespace.
 "
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=DarkRed guibg=DarkRed
