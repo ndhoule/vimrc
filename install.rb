@@ -6,6 +6,7 @@ require 'FileUtils'
 HOME = Etc.getpwuid.dir
 VIM_PATH = File.join(HOME, '.vim')
 VIMRC_PATH = File.join(HOME, '.vimrc')
+NVIMRC_PATH = File.join(HOME, '.nvimrc')
 SCRIPT_PATH = File.expand_path(File.join(File.dirname(__FILE__)))
 BUNDLES_PATH = File.join(SCRIPT_PATH, 'bundle')
 VUNDLE_PATH = File.join(BUNDLES_PATH, 'vundle')
@@ -22,6 +23,11 @@ end
 # Write a shim ~.vimrc file to load the file located at ~/.vim/vimrc
 # TODO: Back up existing vimrc file
 File.open(VIMRC_PATH, 'w') { |file| file.write(<<-EOF) }
+if filereadable(expand('~/.vim/vimrc'))
+  source ~/.vim/vimrc
+endif
+EOF
+File.open(NVIMRC_PATH, 'w') { |file| file.write(<<-EOF) }
 if filereadable(expand('~/.vim/vimrc'))
   source ~/.vim/vimrc
 endif
