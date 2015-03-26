@@ -1,3 +1,7 @@
+augroup ndhoule_general
+  autocmd!
+augroup END
+
 "
 " Config.
 "
@@ -42,4 +46,4 @@ set wildmenu
 set wildmode=list:longest
 
 " Automatically rebalance splits when window is resized
-autocmd VimResized * :wincmd =
+autocmd ndhoule_general VimResized * :wincmd =

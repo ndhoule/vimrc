@@ -1,3 +1,7 @@
+augroup ndhoule_color
+  autocmd!
+augroup END
+
 "
 " Config.
 "

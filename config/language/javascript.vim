@@ -1,13 +1,21 @@
-au FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup ndhoule_javascript
+  autocmd!
+augroup END
 
 "
-" Autocompletion
+" Whitespace.
 "
 
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd ndhoule_javascript FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 "
-" Syntastic
+" Autocompletion.
 "
 
-let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+autocmd ndhoule_javascript FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+"
+" Plugins.
+"
+
+let g:syntastic_javascript_checkers = ['eslint']
