@@ -18,6 +18,10 @@ set nobackup
 " Don't keep swap files
 set noswapfile
 
+" Use persistent undo files
+set undofile
+set undodir=~/.vim/.vimundo
+
 " Start scrolling five lines from the bottom
 set scrolloff=5
 

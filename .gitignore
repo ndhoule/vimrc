@@ -3,6 +3,7 @@
 #
 
 .viminfo
+.vimundo
 
 # Let Vundle manage bundles
 /bundle
