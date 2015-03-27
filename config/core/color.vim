@@ -1,10 +1,11 @@
-augroup ndhoule_color
-  autocmd!
-augroup END
-
 "
 " Config.
 "
 
 set background=dark
-colorscheme base16-default
+
+try
+  colorscheme base16-default
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+endtry
