@@ -3,7 +3,7 @@
 "
 
 " Path to this file's directory
-let s:DOTVIM_PATH = expand('<sfile>:p:h')
+let g:DOTVIM_PATH = expand('<sfile>:p:h')
 
 " Don't load this file when using evim
 if v:progname =~? 'evim'
@@ -29,14 +29,14 @@ set viminfo='1000,\"100,:100,%,n~/.vim/.viminfo
 "
 
 if has('gui_running')
-  let s:gvimrc_path = s:DOTVIM_PATH . '/gvimrc'
+  let s:gvimrc_path = g:DOTVIM_PATH . '/gvimrc'
   if filereadable(gvimrc_path)
     execute('source ' . gvimrc_path)
   endif
 
   " Load OS-specific gvimrcs
   if has('gui_macvim')
-    let s:mvimrc_path = s:DOTVIM_PATH . '/mvimrc'
+    let s:mvimrc_path = g:DOTVIM_PATH . '/mvimrc'
     if filereadable(mvimrc_path)
       execute('source ' . mvimrc_path)
     endif
@@ -47,23 +47,23 @@ endif
 " Bundles/Plugin Setup
 "
 
-if filereadable(s:DOTVIM_PATH . '/bundles')
-  execute('source ' . s:DOTVIM_PATH . '/bundles')
+if filereadable(g:DOTVIM_PATH . '/plugins.vim')
+  execute('source ' . g:DOTVIM_PATH . '/plugins.vim')
 endif
 
 "
 " Editor Configuration
 "
 
-for filename in split(glob(s:DOTVIM_PATH . '/config/core/**/*.vim'), '\n')
+for filename in split(glob(g:DOTVIM_PATH . '/config/core/**/*.vim'), '\n')
   execute('source ' . filename)
 endfor
 
-for filename in split(glob(s:DOTVIM_PATH . '/config/language/**/*.vim'), '\n')
+for filename in split(glob(g:DOTVIM_PATH . '/config/language/**/*.vim'), '\n')
   execute('source ' . filename)
 endfor
 
-for filename in split(glob(s:DOTVIM_PATH . '/config/bundle/**/*.vim'), '\n')
+for filename in split(glob(g:DOTVIM_PATH . '/config/bundle/**/*.vim'), '\n')
   execute('source ' . filename)
 endfor
 

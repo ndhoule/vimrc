@@ -1,13 +1,10 @@
-#
-# Project-specific files
-#
-
+.netrwhist
 .viminfo
 .vimundo
-
-# Let Vundle manage bundles
-/bundle
-.netrwhist
+autoload
+bundle
+plugins
+spell
 
 #
 # Temporary files
