@@ -11,7 +11,7 @@ if v:progname =~? 'evim'
 endif
 
 "Change leader key from \ to ,
-let mapleader=','
+let g:mapleader=','
 
 " Activate : using ;
 nnoremap ; :
@@ -29,14 +29,14 @@ set viminfo='1000,\"100,:100,%,n~/.vim/.viminfo
 "
 
 if has('gui_running')
-  let gvimrc_path = s:DOTVIM_PATH . '/gvimrc'
+  let s:gvimrc_path = s:DOTVIM_PATH . '/gvimrc'
   if filereadable(gvimrc_path)
     execute('source ' . gvimrc_path)
   endif
 
   " Load OS-specific gvimrcs
   if has('gui_macvim')
-    let mvimrc_path = s:DOTVIM_PATH . '/mvimrc'
+    let s:mvimrc_path = s:DOTVIM_PATH . '/mvimrc'
     if filereadable(mvimrc_path)
       execute('source ' . mvimrc_path)
     endif
