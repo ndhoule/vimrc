@@ -13,9 +13,3 @@ autocmd ndhoule_javascript FileType javascript setlocal tabstop=2 softtabstop=2 
 "
 
 autocmd ndhoule_javascript FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-"
-" Plugins.
-"
-
-let g:syntastic_javascript_checkers = ['eslint']

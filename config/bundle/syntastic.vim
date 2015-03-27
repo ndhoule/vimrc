@@ -9,4 +9,4 @@ let g:syntastic_auto_loc_list = 1
 " Language checkers.
 "
 
-let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+let g:syntastic_javascript_checkers = ['eslint']
