@@ -63,7 +63,7 @@ for filename in split(glob(g:DOTVIM_PATH . '/config/language/**/*.vim'), '\n')
   execute('source ' . filename)
 endfor
 
-for filename in split(glob(g:DOTVIM_PATH . '/config/bundle/**/*.vim'), '\n')
+for filename in split(glob(g:DOTVIM_PATH . '/config/plugins/**/*.vim'), '\n')
   execute('source ' . filename)
 endfor
 
