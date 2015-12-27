@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#
+# Syntastic uses only a global installation of ESLint, which may be
+# (dramatically) different than a project's local version. This script picks up
+# either a local (preferred) or global version of ESLint. To use it, set the
+# `g:syntastic_javascript_eslint_exec` variable in your vimrc to point to this
+# file.
+#
+# Author:
+#   Nathan Houle <nathan@nathanhoule.com>
+#
+
+ESLINT_PATH=$(git rev-parse --show-toplevel)/node_modules/.bin/eslint
+
+if [[ -x "${ESLINT_PATH}" ]]; then
+  exec "${ESLINT_PATH}" "$@"
+else
+  exec eslint "$@"
+fi

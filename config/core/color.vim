@@ -5,7 +5,7 @@
 set background=dark
 
 try
-  colorscheme base16-default
+  colorscheme base16-flat
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
 endtry

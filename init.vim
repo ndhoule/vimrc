@@ -1,28 +1,23 @@
-"
-" Initial Setup
-"
-
-" Path to this file's directory
-let g:DOTVIM_PATH = expand('<sfile>:p:h')
-
-" Don't load this file when using evim
 if v:progname =~? 'evim'
   finish
 endif
 
-"Change leader key from \ to ,
+"
+" Paths
+"
+
+" Path to this file's directory
+let g:DOTVIM_PATH = expand('<sfile>:p:h')
+let g:PLUGINS_PATH = g:DOTVIM_PATH . '/plugins'
+
+"
+" Initial Setup
+"
+
 let g:mapleader=','
 
 " Activate : using ;
 nnoremap ; :
-
-" Tell vim to remember certain things when we exit
-"   '10  :  marks will be remembered for up to 10 previously edited files
-"   "100 :  will save up to 100 lines for each register
-"   :20  :  up to 20 lines of command-line history will be remembered
-"   %    :  saves and restores the buffer list
-"   n... :  where to save the viminfo files
-set viminfo='1000,\"100,:100,%,n~/.vim/.viminfo
 
 "
 " gvim Settings
@@ -34,7 +29,6 @@ if has('gui_running')
     execute('source ' . gvimrc_path)
   endif
 
-  " Load OS-specific gvimrcs
   if has('gui_macvim')
     let s:mvimrc_path = g:DOTVIM_PATH . '/mvimrc'
     if filereadable(mvimrc_path)

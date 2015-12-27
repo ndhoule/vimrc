@@ -26,6 +26,9 @@ else
   unlet g:ctrlp_user_command
 endif
 
+" Show dotfiles
+let g:ctrlp_show_hidden = 1
+
 "
 " Keybindings
 "

@@ -1,9 +1,9 @@
 .netrwhist
-.viminfo
-.vimundo
+.viminfo*
+.vimundo*
+/plugins
 autoload
 bundle
-plugins
 spell
 
 #
