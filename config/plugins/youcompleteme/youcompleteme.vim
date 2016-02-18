@@ -1,31 +1,41 @@
-"
-" Config.
-"
-" TODO: Document this a bit better.
-"
+""
+" Config
+""
 
 let s:PWD = resolve(expand('<sfile>:p:h'))
-
-let g:ycm_add_preview_to_completeopt=0
-
-let g:ycm_confirm_extra_conf=0
-
-set completeopt-=preview
+let s:YCM_EXTRA_CONF_PATH = s:PWD . '/ycm_extra_conf.py'
 
 " Set a path to a fallback YCM configuration file. When a project doesn't have
 " a local .ycm_extra_conf.py, YCM will use this file.
-let g:ycm_global_ycm_extra_conf = s:PWD . '/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = s:YCM_EXTRA_CONF_PATH
 
-"
-" Key bindings.
-"
+" A whitelist list of YCM config files
+" let g:ycm_extra_conf_globlist = [s:YCM_EXTRA_CONF_PATH]
+
+" Disable completion preview buffer, it conflicts with completion+popover
+let g:ycm_add_preview_to_completeopt=0
+set completeopt-=preview
+
+""
+" Key bindings
+""
 
 let g:UltiSnipsExpandTrigger = '<c-l>'
 let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
-" Jump to definition/declarations. For a list of filetypes supported, check out:
-" https://github.com/Valloric/YouCompleteMe#ycmcompleter-subcommands
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <leader>jDef :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jDec :YcmCompleter GoToDeclaration<CR>
+""
+" Language config
+""
+
+"
+" Rust
+"
+
+let g:ycm_rust_src_path = $HOME . '/dev/src/github.com/rust-lang/rust/src'
+
+"
+" Javascript
+"
+
+autocmd FileType javascript nnoremap <silent> gd :YcmCompleter GoToDefinition<cr>
