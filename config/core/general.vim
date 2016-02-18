@@ -6,6 +6,9 @@ augroup END
 " Config.
 "
 
+" Enable spellcheck
+set spell
+
 " Eliminate <Esc> delays
 set timeoutlen=2000 ttimeoutlen=0
 
