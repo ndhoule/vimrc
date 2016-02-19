@@ -9,7 +9,7 @@ if v:progname =~? 'nvim'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
-if has('win32')
+if has('win32') || has('win64')
   let g:OS = 'Windows'
 elseif has('unix')
   " Strip trailing newline
