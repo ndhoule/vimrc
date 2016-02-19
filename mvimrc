@@ -1,8 +1,0 @@
-"
-" MacVim settings
-"
-
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
-
-" Increase line height for legibility
-set linespace=1

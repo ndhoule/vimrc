@@ -20,24 +20,6 @@ let g:mapleader=','
 nnoremap ; :
 
 "
-" gvim Settings
-"
-
-if has('gui_running')
-  let s:gvimrc_path = g:DOTVIM_PATH . '/gvimrc'
-  if filereadable(gvimrc_path)
-    execute('source ' . gvimrc_path)
-  endif
-
-  if has('gui_macvim')
-    let s:mvimrc_path = g:DOTVIM_PATH . '/mvimrc'
-    if filereadable(mvimrc_path)
-      execute('source ' . mvimrc_path)
-    endif
-  endif
-endif
-
-"
 " Bundles/Plugin Setup
 "
 
