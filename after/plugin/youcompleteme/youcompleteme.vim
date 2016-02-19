@@ -16,6 +16,8 @@ let g:ycm_global_ycm_extra_conf = s:YCM_EXTRA_CONF_PATH
 let g:ycm_add_preview_to_completeopt=0
 set completeopt-=preview
 
+let g:ycm_seed_identifiers_with_syntax = 1
+
 ""
 " Key bindings
 ""
