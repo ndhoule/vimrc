@@ -25,7 +25,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'burnettk/vim-angular'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dgrnbrg/vim-redl'
 Plug 'dietsche/vim-lastplace'
 Plug 'editorconfig/editorconfig-vim'
