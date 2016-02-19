@@ -9,6 +9,14 @@ if v:progname =~? 'nvim'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
+if has('win32')
+  let g:OS = 'Windows'
+elseif has('unix')
+  " Strip trailing newline
+  let g:host_os = substitute(system('uname'), '\(.*\)\n$', '\1', '')
+else
+  let g:host_os = 'Unknown'
+endif
 
 ""
 " Initial Setup
