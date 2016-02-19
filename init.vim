@@ -51,6 +51,9 @@ set spelllang=en
 " Eliminate <Esc> delays
 set timeoutlen=2000 ttimeoutlen=0
 
+" Limit syntax highlighting to 300 columns wide
+set synmaxcol=300
+
 " Use UTF-8 encoding by default
 set encoding=utf-8
 
