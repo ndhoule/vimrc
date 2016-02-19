@@ -1,5 +1,5 @@
-"
-" Key bindings.
-"
+""
+" Keybindings
+""
 
 nnoremap <silent> <Leader>S :Scratch<CR>

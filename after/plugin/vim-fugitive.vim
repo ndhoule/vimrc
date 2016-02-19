@@ -1,6 +1,6 @@
-"
-" Keymappings
-"
+""
+" Keybindings
+""
 
 map <Leader>gst :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>

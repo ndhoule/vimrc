@@ -1,6 +1,6 @@
-"
+""
 " Config
-"
+""
 
 " Use goimports instead of default formatter (gofmt)
 let g:go_fmt_command = "goimports"
@@ -13,5 +13,5 @@ let g:go_highlight_methods = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_structs = 0
 
-" Duplicate functionality--we highlight trailing whitespace globally
+" Already highlight trailing whitespace globally
 let g:go_highlight_trailing_whitespace_error = 0
