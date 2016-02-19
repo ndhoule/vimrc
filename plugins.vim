@@ -20,7 +20,6 @@ call plug#begin(g:PLUGINS_PATH)
 Plug 'AndrewRadev/sideways.vim'
 Plug 'EinfachToll/DidYouMean'
 Plug 'Raimondi/delimitMate'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --racer-completer --tern-completer' }
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'

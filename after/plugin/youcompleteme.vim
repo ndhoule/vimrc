@@ -10,14 +10,6 @@ set completeopt-=preview
 let g:ycm_seed_identifiers_with_syntax = 1
 
 ""
-" Key bindings
-""
-
-let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
-
-""
 " Language config
 ""
 
