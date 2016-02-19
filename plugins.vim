@@ -2,16 +2,17 @@
 " vim-plug
 "
 
-" Install vim-plug if necessary
-if empty(glob(g:DOTVIM_PATH . '/autoload/plug.vim'))
-  " TODO: Remove this hardcoded `.nvim` path
-  silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let s:plug_vim_path = g:DOTVIM_PATH . '/autoload/plug.vim'
+let s:plugins_path = g:DOTVIM_PATH . '/vendor'
+
+" Install vim-plug if nonexistent
+if empty(glob(s:plug_vim_path))
+  execute "silent !curl -fLo " . s:plug_vim_path . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall
 endif
 
 " Load vim-plug
-call plug#begin(g:PLUGINS_PATH)
+call plug#begin(s:plugins_path)
 
 "
 " Bundles

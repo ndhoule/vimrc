@@ -1,3 +1,5 @@
+let g:DOTVIM_PATH = expand('<sfile>:p:h')
+
 if v:progname =~? 'evim'
   finish
 endif
@@ -7,13 +9,6 @@ if v:progname =~? 'nvim'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
-""
-" Paths
-""
-
-" Path to this file's directory
-let g:DOTVIM_PATH = expand('<sfile>:p:h')
-let g:PLUGINS_PATH = g:DOTVIM_PATH . '/vendor'
 
 ""
 " Initial Setup
