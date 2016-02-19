@@ -71,6 +71,7 @@ Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/guicolorscheme.vim'
 Plug 'vim-scripts/paredit.vim'
 Plug 'vim-scripts/scratch.vim'
+Plug 'yoppi/fluentd.vim'
 
 "
 " Themes
