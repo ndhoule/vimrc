@@ -1,4 +1,4 @@
 vimrc
 =====
 
-Sometimes you just caint Emacs.
+[ndhoule](https://github.com/ndhoule)'s vim config.
