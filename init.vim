@@ -62,7 +62,7 @@ set noswapfile
 
 " Use persistent undo files
 set undofile
-set undodir=~/.vim/.vimundo
+execute "set undodir=" . g:DOTVIM_PATH . '/.vimundo'
 
 " Start scrolling five lines from the bottom
 set scrolloff=5
