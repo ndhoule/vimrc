@@ -4,7 +4,6 @@
 
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 1
 
 ""
 " Language config
@@ -27,7 +26,15 @@ let g:syntastic_javascript_eslint_exec = resolve(expand('<sfile>:p:h') . '/scrip
 let g:syntastic_go_checkers = ['gometalinter']
 
 " TODO: interfacer, structcheck, and varcheck nice, but fairly slow
-let g:syntastic_go_gometalinter_args = "--sort line --disable-all -E deadcode -E golint -E gotype -E govet -E ineffassign"
+let g:syntastic_go_gometalinter_args = join([
+      \"--sort line",
+      \"--disable-all",
+      \"-E deadcode",
+      \"-E golint",
+      \"-E gotype",
+      \"-E govet",
+      \"-E ineffassign",
+      \], " ")
 
 " metalinter lints the entire project tree; only show errors for the current
 " file. This setting must be run when a file is opened and must be buffer-local,
