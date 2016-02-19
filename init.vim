@@ -8,7 +8,7 @@ endif
 
 " Path to this file's directory
 let g:DOTVIM_PATH = expand('<sfile>:p:h')
-let g:PLUGINS_PATH = g:DOTVIM_PATH . '/plugins'
+let g:PLUGINS_PATH = g:DOTVIM_PATH . '/vendor'
 
 "
 " Initial Setup

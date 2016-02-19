@@ -1,7 +1,7 @@
 .netrwhist
 .viminfo*
 .vimundo*
-/plugins
+/vendor
 autoload
 bundle
 spell
