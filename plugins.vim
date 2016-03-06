@@ -15,63 +15,71 @@ endif
 call plug#begin(s:plugins_path)
 
 "
-" Bundles
+" Plugins
 "
 
-Plug 'AndrewRadev/sideways.vim'
+" General
+Plug 'AndrewRadev/sideways.vim' " TODO: Keep this or vim-swap
 Plug 'EinfachToll/DidYouMean'
-Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --racer-completer --tern-completer' }
+Plug 'Raimondi/delimitMate' " TODO: Investigate replacing this with paredit
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
-Plug 'burnettk/vim-angular'
+Plug 'benekastah/neomake' " TODO: Keep an eye on this as a possible Syntastic replacement
 Plug 'dgrnbrg/vim-redl'
 Plug 'dietsche/vim-lastplace'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fatih/vim-go'
 Plug 'gcmt/wildfire.vim'
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform'
 Plug 'haya14busa/incsearch.vim'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kana/vim-fakeclip'
 Plug 'keith/investigate.vim'
-Plug 'kurkale6ka/vim-swap'
+Plug 'kurkale6ka/vim-swap' " TODO: Keep this or sideways.vim
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/gist-vim'
 Plug 'myusuf3/numbers.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ndhoule/vim-ragtag'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot'
-Plug 'sjl/vitality.vim'
-Plug 'stephpy/vim-yaml'
 Plug 'tmhedberg/matchit'
 Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-leiningen'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'typedclojure/vim-typedclojure'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Rename'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/bufkill.vim'
-Plug 'vim-scripts/guicolorscheme.vim'
 Plug 'vim-scripts/paredit.vim'
 Plug 'vim-scripts/scratch.vim'
+
+" Completion
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --racer-completer --tern-completer' }
+
+" Language
+Plug 'burnettk/vim-angular'
+Plug 'fatih/vim-go'
+Plug 'hashivim/vim-terraform'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'mattn/emmet-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'stephpy/vim-yaml'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-leiningen'
+Plug 'typedclojure/vim-typedclojure'
 Plug 'yoppi/fluentd.vim'
+
+" OS X
+if g:host_os == 'Darwin'
+  Plug 'sjl/vitality.vim'
+endif
 
 "
 " Themes
