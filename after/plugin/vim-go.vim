@@ -3,7 +3,7 @@
 ""
 
 " Use goimports instead of default formatter (gofmt)
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
 
 " Enable syntax highlighting
 let g:go_highlight_build_constraints = 0
