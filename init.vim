@@ -63,6 +63,10 @@ set encoding=utf-8
 " Don't keep backup files
 set nobackup
 
+" Write changes to original file
+" http://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
+set backupcopy=yes
+
 " Don't keep swap files
 set noswapfile
 
