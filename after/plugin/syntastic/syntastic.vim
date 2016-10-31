@@ -25,15 +25,23 @@ let g:syntastic_javascript_eslint_exec = resolve(expand('<sfile>:p:h') . '/scrip
 
 let g:syntastic_go_checkers = ['gometalinter']
 
-" TODO: interfacer, structcheck, and varcheck nice, but fairly slow
+" interfacer, structcheck, and varcheck are moderately slow; if save times are
+" too slow, try disabling them first
+" \"--enable=interfacer",
+" \"--enable=aligncheck",
 let g:syntastic_go_gometalinter_args = join([
       \"--sort line",
       \"--disable-all",
-      \"-E deadcode",
-      \"-E golint",
-      \"-E gotype",
-      \"-E govet",
-      \"-E ineffassign",
+      \"--enable=deadcode",
+      \"--enable=golint",
+      \"--enable=gosimple",
+      \"--enable=gotype",
+      \"--enable=govet",
+      \"--enable=ineffassign",
+      \"--enable=staticcheck",
+      \"--enable=structcheck",
+      \"--enable=unconvert",
+      \"--enable=varcheck",
       \], " ")
 
 " metalinter lints the entire project tree; only show errors for the current
