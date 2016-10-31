@@ -63,7 +63,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
 
 " Language
 Plug 'burnettk/vim-angular'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do:': 'gometalinter --install' }
 Plug 'hashivim/vim-terraform'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'mattn/emmet-vim'
