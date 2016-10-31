@@ -2,7 +2,7 @@
 " Config
 ""
 
-" Use goimports instead of default formatter (gofmt)
+" Use gofmt as default formatter (alternative: goimports, which is very slow)
 let g:go_fmt_command = "gofmt"
 
 " Enable syntax highlighting
