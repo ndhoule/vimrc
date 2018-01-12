@@ -1,6 +1,6 @@
-""
-" Config
-""
+"
+" https://github.com/keith/investigate.vim
+"
 
 if g:host_os == 'Darwin'
   let g:investigate_use_dash=1

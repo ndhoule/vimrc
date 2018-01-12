@@ -1,6 +1,6 @@
-""
-" Keybindings
-""
+"
+" https://github.com/tpope/vim-fugitive
+"
 
 map <Leader>gst :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>

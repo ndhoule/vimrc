@@ -36,14 +36,6 @@ if filereadable(g:DOTVIM_PATH . '/plugins.vim')
 endif
 
 ""
-" Editor Configuration
-""
-
-for filename in split(glob(g:DOTVIM_PATH . '/config/core/**/*.vim'), '\n')
-  execute('source ' . filename)
-endfor
-
-""
 " General config
 ""
 

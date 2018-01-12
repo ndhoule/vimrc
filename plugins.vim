@@ -1,6 +1,8 @@
-"
+""
 " vim-plug
 "
+" https://github.com/junegunn/vim-plug
+""
 
 let s:plug_vim_path = g:DOTVIM_PATH . '/autoload/plug.vim'
 let s:plugins_path = g:DOTVIM_PATH . '/vendor'
@@ -14,37 +16,39 @@ endif
 " Load vim-plug
 call plug#begin(s:plugins_path)
 
-"
+""
 " Plugins
-"
+""
 
-" General
-Plug 'AndrewRadev/sideways.vim' " TODO: Keep this or vim-swap
+" TODOs:
+" - rainbow not working very well
+" - neosnippet + deoplete not working well together;
+"     - unclear how to trigger snippets
+"     - completion of function args not working (flow)
+" - add more completion plugins
+" - add jump to def keyboard shortcuts
+" - investigate html plugins (vim-ragtag, emmet, etc.)
+" - look into paredit
+" - look into numbers.vim
+" - add sideways.vim or vim-swap
+
+" Utilities
 Plug 'EinfachToll/DidYouMean'
-Plug 'Raimondi/delimitMate' " TODO: Investigate replacing this with paredit
+Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake' " TODO: Keep an eye on this as a possible Syntastic replacement
-Plug 'dgrnbrg/vim-redl'
 Plug 'dietsche/vim-lastplace'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gcmt/wildfire.vim'
-Plug 'godlygeek/tabular'
+Plug 'guns/xterm-color-table.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'kana/vim-fakeclip'
 Plug 'keith/investigate.vim'
-Plug 'kurkale6ka/vim-swap' " TODO: Keep this or sideways.vim
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/gist-vim'
-Plug 'myusuf3/numbers.vim'
+Plug 'mtth/scratch.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'ndhoule/vim-ragtag'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/syntastic'
-Plug 'tmhedberg/matchit'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -54,40 +58,31 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Rename'
 Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/bufkill.vim'
-Plug 'vim-scripts/paredit.vim'
-Plug 'vim-scripts/scratch.vim'
-
-" Completion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --racer-completer --tern-completer' }
+Plug 'w0rp/ale'
+Plug 'godlygeek/tabular'
 
 " Language
-Plug 'burnettk/vim-angular'
-Plug 'fatih/vim-go', { 'do:': 'gometalinter --install' }
-Plug 'hashivim/vim-terraform'
+"Plug 'flowtype/vim-flow'
 Plug 'heavenshell/vim-jsdoc'
-Plug 'mattn/emmet-vim'
-Plug 'rust-lang/rust.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'stephpy/vim-yaml'
-Plug 'tpope/vim-classpath'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-leiningen'
-Plug 'typedclojure/vim-typedclojure'
-Plug 'yoppi/fluentd.vim'
+Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
-" OS X
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet.vim'
+Plug 'wokalski/autocomplete-flow'
+" Plug 'Shougo/neco-vim'
+" Plug 'carlitux/deoplete-ternjs'
+" Plug 'zchee/deoplete-go', { 'do': 'make' }
+
+" OS-Specific
 if g:host_os == 'Darwin'
   Plug 'sjl/vitality.vim'
 endif
 
-"
 " Themes
 "
-
-" Note that you must install your terminal client's base16 color scripts for
-" base16 themes to look correct
-" https://github.com/search?q=user%3Achriskempson+base16
+" NOTE: You must install your terminal client's base16 color scripts for base16
+" themes to look right. See http://chriskempson.com/projects/base16/ for details
 Plug 'chriskempson/base16-vim'
 
 call plug#end()
