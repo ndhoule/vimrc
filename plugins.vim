@@ -69,10 +69,8 @@ Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
+Plug 'carlitux/deoplete-ternjs'
 Plug 'wokalski/autocomplete-flow'
-" Plug 'Shougo/neco-vim'
-" Plug 'carlitux/deoplete-ternjs'
-" Plug 'zchee/deoplete-go', { 'do': 'make' }
 
 " OS-Specific
 if g:host_os == 'Darwin'
