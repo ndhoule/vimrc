@@ -10,7 +10,7 @@ let s:plugins_path = g:DOTVIM_PATH . '/vendor'
 " Install vim-plug if nonexistent
 if empty(glob(s:plug_vim_path))
   execute "silent !curl -fLo " . s:plug_vim_path . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall
+  autocmd VimEnter * PlugInstall --sync
 endif
 
 " Load vim-plug
