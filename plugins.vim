@@ -29,6 +29,7 @@ call plug#begin(s:plugins_path)
 " - look into numbers.vim
 " - add sideways.vim or vim-swap
 " - markdown previewer plugin
+" - Look into deoplete plugins
 " - deoplete plugin sorting/ranking
 
 " Utilities
@@ -65,14 +66,12 @@ Plug 'vim-scripts/YankRing.vim'
 Plug 'w0rp/ale'
 
 " Language
-"Plug 'flowtype/vim-flow'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
-Plug 'carlitux/deoplete-ternjs'
 Plug 'wokalski/autocomplete-flow'
 
 " OS-Specific
