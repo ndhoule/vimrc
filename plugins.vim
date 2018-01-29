@@ -31,8 +31,11 @@ call plug#begin(s:plugins_path)
 " - markdown previewer plugin
 " - Look into deoplete plugins
 " - deoplete plugin sorting/ranking
+" - If fzf is not installed globally, install it or log a warning
+" - Locate fzf dynamically for use on e.g. Linux?
 
 " Utilities
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'EinfachToll/DidYouMean'
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
@@ -43,9 +46,6 @@ Plug 'gcmt/wildfire.vim'
 Plug 'godlygeek/tabular'
 Plug 'guns/xterm-color-table.vim'
 Plug 'haya14busa/incsearch.vim'
-" TODO(ndhoule): If not already installed, install fzf or log a warning
-" TODO(ndhoule): Locate dynamically for use on e.g. Linux?
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-fakeclip'
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
