@@ -36,6 +36,7 @@ call plug#begin(s:plugins_path)
 Plug 'EinfachToll/DidYouMean'
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-rooter'
 Plug 'dietsche/vim-lastplace'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gcmt/wildfire.vim'
