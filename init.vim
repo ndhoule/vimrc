@@ -163,11 +163,14 @@ map <Leader>p "+p
 " Make writing files via sudo easier
 cmap w!! w !sudo tee % >/dev/null
 
-" Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
-nnoremap <F3> :set invpaste paste?<CR>
+" Yank the current filename to the OS clipboard
+noremap <silent> <F1> :let @+=expand("%:p")<CR>
 
 " Toggle between regular numbering, relative numbering, no numbering
 nmap <silent> <F2> :exec &nu==&rnu ? 'se nu!' : 'se rnu!'<CR>
+
+" Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
+nnoremap <F3> :set invpaste paste?<CR>
 
 " Toggle spell check
 nnoremap <F4> :set spell!<CR>
