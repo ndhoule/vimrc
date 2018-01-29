@@ -43,7 +43,9 @@ Plug 'gcmt/wildfire.vim'
 Plug 'godlygeek/tabular'
 Plug 'guns/xterm-color-table.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+" TODO(ndhoule): If not already installed, install fzf or log a warning
+" TODO(ndhoule): Locate dynamically for use on e.g. Linux?
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-fakeclip'
 Plug 'ndhoule/investigate.vim'
 Plug 'luochen1990/rainbow'
