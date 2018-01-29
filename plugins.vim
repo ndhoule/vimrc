@@ -22,15 +22,14 @@ call plug#begin(s:plugins_path)
 
 " TODOs:
 " - rainbow not working very well
-" - neosnippet + deoplete not working well together;
-"     - unclear how to trigger snippets
-"     - completion of function args not working (flow)
 " - add more completion plugins
 " - add jump to def keyboard shortcuts
 " - investigate html plugins (vim-ragtag, emmet, etc.)
 " - look into paredit
 " - look into numbers.vim
 " - add sideways.vim or vim-swap
+" - markdown previewer plugin
+" - deoplete plugin sorting/ranking
 
 " Utilities
 Plug 'EinfachToll/DidYouMean'
