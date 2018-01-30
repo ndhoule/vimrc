@@ -102,9 +102,6 @@ autocmd VimResized * :wincmd =
 
 syntax on
 
-set cursorline            " Highlight the current line
-set cursorcolumn          " Highlight the current column
-
 set relativenumber        " Set line numbering relative to current line
 set number                " Show the current line number in relative linenum mode
 
