@@ -104,6 +104,7 @@ autocmd VimResized * :wincmd =
 ""
 
 syntax on
+set termguicolors
 
 set relativenumber        " Set line numbering relative to current line
 set number                " Show the current line number in relative linenum mode
