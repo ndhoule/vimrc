@@ -35,6 +35,7 @@ call plug#begin(s:plugins_path)
 " - Locate fzf dynamically for use on e.g. Linux?
 
 " Utilities
+
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'EinfachToll/DidYouMean'
 Plug 'Raimondi/delimitMate'
@@ -65,14 +66,39 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Rename'
 Plug 'w0rp/ale'
 
-" Language
-Plug 'heavenshell/vim-jsdoc'
+" Language Server Protocol
+" https://microsoft.github.io/language-server-protocol/
+" http://langserver.org/
+
+" TODO(ndhoule): Should run :UpdateRemotePlugins
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+
+" TODO(ndhoule): Install language clients locally?
+"
+" - https://github.com/sourcegraph/javascript-typescript-langserver
+" - https://github.com/flowtype/flow-language-server
+" - https://github.com/rcjsuen/dockerfile-language-server-nodejs
+" - https://github.com/vscode-langservers/vscode-css-languageserver-bin
+" - https://github.com/vscode-langservers/vscode-json-languageserver-bin
+"
+" - yarn global add \
+"   javascript-typescript-langserver \
+"   flow-language-server \
+"   dockerfile-language-server-nodejs \
+"   vscode-json-languageserver-bin
+"
+" TODO(ndhoule)): Try out:
+" - https://github.com/vscode-langservers/vscode-html-languageserver-bin
+"
+
+" Filetypes
+
 Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
 " Completion
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
-Plug 'wokalski/autocomplete-flow'
 
 " OS-Specific
 if g:host_os == 'Darwin'

@@ -165,13 +165,13 @@ map <Leader>p "+p
 cmap w!! w !sudo tee % >/dev/null
 
 " Yank the current filename to the OS clipboard
-noremap <silent> <F1> :let @+=expand("%:p")<CR>
+noremap <silent> <F2> :let @+=expand("%:p")<CR>
 
 " Toggle between regular numbering, relative numbering, no numbering
-nmap <silent> <F2> :exec &nu==&rnu ? 'se nu!' : 'se rnu!'<CR>
-
-" Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
-nnoremap <F3> :set invpaste paste?<CR>
+nmap <silent> <F3> :exec &nu==&rnu ? 'se nu!' : 'se rnu!'<CR>
 
 " Toggle spell check
 nnoremap <F4> :set spell!<CR>
+
+" Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
+nnoremap <F5> :set invpaste paste?<CR>
