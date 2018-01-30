@@ -75,6 +75,9 @@ set history=100
 " Keep all the undos
 set undolevels=1000
 
+" Enable mouse mode
+set mouse=a
+
 " Change the terminal window's title
 set title
 
