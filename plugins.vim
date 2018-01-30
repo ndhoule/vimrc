@@ -21,6 +21,7 @@ call plug#begin(s:plugins_path)
 ""
 
 " TODOs:
+" - Re-enable 'heavenshell/vim-jsdoc'?
 " - rainbow not working very well
 " - add more completion plugins
 " - add jump to def keyboard shortcuts
