@@ -58,6 +58,7 @@ Plug 'mtth/scratch.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ndhoule/investigate.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'sbdchd/neoformat', { 'do': 'yarn global add prettier' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
