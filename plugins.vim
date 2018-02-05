@@ -23,14 +23,11 @@ call plug#begin(s:plugins_path)
 " TODOs:
 " - Re-enable 'heavenshell/vim-jsdoc'?
 " - rainbow not working very well
-" - add more completion plugins
-" - add jump to def keyboard shortcuts
 " - investigate html plugins (vim-ragtag, emmet, etc.)
 " - look into paredit
 " - look into numbers.vim
 " - add sideways.vim or vim-swap
 " - markdown previewer plugin
-" - Look into deoplete plugins
 " - deoplete plugin sorting/ranking
 " - If fzf is not installed globally, install it or log a warning
 " - Locate fzf dynamically for use on e.g. Linux?
@@ -71,29 +68,22 @@ Plug 'vim-scripts/Rename'
 Plug 'w0rp/ale'
 
 " Language Server Protocol
+"
 " https://microsoft.github.io/language-server-protocol/
 " http://langserver.org/
 
-" TODO(ndhoule): Should run :UpdateRemotePlugins
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+function! InstallLanguageClientDeps(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.sh
+    UpdateRemotePlugins
+  endif
 
-" TODO(ndhoule): Install language clients locally?
-"
-" - https://github.com/sourcegraph/javascript-typescript-langserver
-" - https://github.com/flowtype/flow-language-server
-" - https://github.com/rcjsuen/dockerfile-language-server-nodejs
-" - https://github.com/vscode-langservers/vscode-css-languageserver-bin
-" - https://github.com/vscode-langservers/vscode-json-languageserver-bin
-"
-" - yarn global add \
-"   javascript-typescript-langserver \
-"   flow-language-server \
-"   dockerfile-language-server-nodejs \
-"   vscode-json-languageserver-bin
-"
-" TODO(ndhoule)): Try out:
-" - https://github.com/vscode-langservers/vscode-html-languageserver-bin
-"
+  if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
+    !yarn global add javascript-typescript-langserver flow-language-server dockerfile-language-server-nodejs vscode-json-languageserver-bin
+  endif
+endfunction
+
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': function('InstallLanguageClientDeps') }
 
 " Filetypes
 
@@ -104,7 +94,8 @@ Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 
-" OS-Specific
+" OS
+
 if g:host_os == 'Darwin'
   Plug 'sjl/vitality.vim'
 endif
@@ -113,6 +104,7 @@ endif
 "
 " NOTE: You must install your terminal client's base16 color scripts for base16
 " themes to look right. See http://chriskempson.com/projects/base16/ for details
+
 Plug 'chriskempson/base16-vim'
 
 call plug#end()
