@@ -20,18 +20,6 @@ call plug#begin(s:plugins_path)
 " Plugins
 ""
 
-" TODOs:
-" - Re-enable 'heavenshell/vim-jsdoc'?
-" - rainbow not working very well
-" - investigate html plugins (vim-ragtag, emmet, etc.)
-" - look into paredit
-" - look into numbers.vim
-" - add sideways.vim or vim-swap
-" - markdown previewer plugin
-" - deoplete plugin sorting/ranking
-" - If fzf is not installed globally, install it or log a warning
-" - Locate fzf dynamically for use on e.g. Linux?
-
 " Utilities
 
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -107,4 +95,5 @@ endif
 
 Plug 'chriskempson/base16-vim'
 
+" Finalize loading vim-plug
 call plug#end()
