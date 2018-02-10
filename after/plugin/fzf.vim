@@ -13,14 +13,13 @@ let g:fzf_layout = { 'down': '~20%' }
 " Commands
 ""
 
-" TODO(ndhoule): If FindRootDirectory is unavailable, use `git rev-parse
-" --show-toplevel` to root this command
 command! ProjectFiles execute 'Files' FindRootDirectory()
+command! RelFiles execute 'Files' expand('%:p:h')
 
 ""
 " Keybindings
 ""
 
 map <silent> <leader>t :ProjectFiles<CR>
-" TODO(ndhoule): Use FindRootDirectory to root this command
-map <leader>T :Ag<CR>
+map <silent> <leader>T :RelFiles<CR>
+map <leader>f :Ag<CR>
