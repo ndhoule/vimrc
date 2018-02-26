@@ -1,27 +1,42 @@
-" Required for operations modifying multiple buffers like rename.
+" Required for operations modifying multiple buffers like rename
 set hidden
 
 " Start language servers automatically
 let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
-    \ 'css': ['css-languageserver', '--stdio'],
-    \ 'dockerfile': ['docker-langserver', '--stdio'],
-    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'css':            ['css-languageserver', '--stdio'],
+    \ 'dockerfile':     ['docker-langserver', '--stdio'],
+    \ 'javascript':     ['flow-language-server', '--stdio', '--try-flow-bin'],
     \ 'javascript.jsx': ['flow-language-server', '--stdio', '--try-flow-bin'],
-    \ 'json': ['json-languageserver', '--stdio'],
-    \ 'less': ['css-languageserver', '--stdio'],
-    \ 'sass': ['css-languageserver', '--stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'json':           ['json-languageserver', '--stdio'],
+    \ 'less':           ['css-languageserver', '--stdio'],
+    \ 'sass':           ['css-languageserver', '--stdio'],
+    \ 'typescript':     ['javascript-typescript-stdio'],
     \ }
 
+"
+" Generic placeholder keybindings for LanguageClient functionality. Override these with supported,
+" completion-server specific commands in `after/ftplugin/<filetype>.vim`. For example, a server that
+" supports the full LanguageServer spec could map the following functions:
+"
+" ```
+" nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <buffer> <silent> gr :call LanguageClient_textDocument_references()<CR>
+" nnoremap <buffer> <silent> <F10> :call LanguageClient_textDocument_documentSymbol()<CR>
+" nnoremap <buffer> <silent> <F11> :call LanguageClient_workspace_symbol()<CR>
+" nnoremap <buffer> <silent> <F12> :call LanguageClient_textDocument_rename()<CR>
+" ```
+"
+" For a full list of LanguageClient functions, see:
+"
 " https://github.com/autozimu/LanguageClient-neovim/blob/next/doc/LanguageClient.txt
-" TODO(ndhoule): Revisit these shortcuts
-" TODO(ndhoule): Add mode-specific mappings, or at least warn when a language
-"                server doesn't implement a call
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <F10> :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <F11> :call LanguageClient_workspace_symbol()<CR>
-nnoremap <silent> <F12> :call LanguageClient_textDocument_rename()<CR>
+"
+
+nnoremap <silent> K     :echoerr 'textDocument_hover is not implemented for this filetype'<CR>
+nnoremap <silent> gd    :echoerr 'textDocument_definition is not implemented for this filetype'<CR>
+nnoremap <silent> gr    :echoerr 'textDocument_references is not implemented for this filetype'<CR>
+nnoremap <silent> <F10> :echoerr 'textDocument_documentSymbol is not implemented for this filetype'<CR>
+nnoremap <silent> <F11> :echoerr 'workspace_symbol is not implemented for this filetype'<CR>
+nnoremap <silent> <F12> :echoerr 'textDocument_rename is not implemented for this filetype'<CR>

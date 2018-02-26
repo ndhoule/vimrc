@@ -1,2 +1,11 @@
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
+
+" flow-language-server supports:
+"
+" - textDocument_hover
+" - textDocument_definition
+
+nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <buffer> <silent> gS :call LanguageClient_workspace_symbol()<CR>

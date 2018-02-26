@@ -67,7 +67,12 @@ function! InstallLanguageClientDeps(info)
   endif
 
   if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-    !yarn global add javascript-typescript-langserver flow-language-server dockerfile-language-server-nodejs vscode-json-languageserver-bin
+    !yarn global add
+          \ dockerfile-language-server-nodejs
+          \ flow-language-server
+          \ javascript-typescript-langserver
+          \ vscode-css-languageserver-bin
+          \ vscode-json-languageserver-bin
   endif
 endfunction
 
