@@ -173,3 +173,8 @@ nnoremap <F4> :set spell!<CR>
 
 " Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
 nnoremap <F5> :set invpaste paste?<CR>
+
+" TODO(ndhoule): Move to config file
+
+let g:rooter_manual_only = 1
+let g:ale_sign_column_always = 1
