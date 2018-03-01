@@ -67,9 +67,10 @@ function! InstallLanguageClientDeps(info)
   endif
 
   if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
+    " flow-language-server@0.4.0 introduced some breaking changes and won't work with LanguageClient
     !yarn global add
           \ dockerfile-language-server-nodejs
-          \ flow-language-server
+          \ flow-language-server@0.3.0
           \ javascript-typescript-langserver
           \ vscode-css-languageserver-bin
           \ vscode-json-languageserver-bin
