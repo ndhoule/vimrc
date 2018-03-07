@@ -85,7 +85,8 @@ Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
 " Completion
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-completion-manager'
+" TODO: Get this working with nvim-completion-manager
 Plug 'Shougo/neosnippet.vim'
 
 " OS
