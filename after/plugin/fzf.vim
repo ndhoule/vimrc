@@ -22,4 +22,4 @@ command! RelFiles execute 'Files' expand('%:p:h')
 
 map <silent> <leader>t :ProjectFiles<CR>
 map <silent> <leader>T :RelFiles<CR>
-map <leader>f :Ag<CR>
+map <leader>/ :Ag<CR>
