@@ -154,6 +154,14 @@ nnoremap k gk
 vmap Q gq
 nmap Q gqap
 
+" Move lines
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+nnoremap <A-j> :m .+1<CR>==
+vnoremap <A-j> :m '>+1<CR>gv=gv
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 " Copy to system clipboard
 map <Leader>y "+yy
 " Paste from system clipboard
