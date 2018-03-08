@@ -142,8 +142,9 @@ nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Cycle through open panes using <Leader>w
-nnoremap <Leader>w <C-w>w
+" Close windows
+noremap <leader>w :close<CR>
+noremap <leader>W :only<CR>
 
 " Split panes
 nnoremap <Leader>vs :vsplit<CR>
