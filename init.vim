@@ -91,6 +91,9 @@ set wildmenu
 " Taller :e menu
 set wildmode=list:longest
 
+set foldmethod=indent  " Use filetype syntax to figure out where to fold
+set foldlevelstart=100 " Don't show any folds on open file
+
 " Automatically rebalance splits when window is resized
 autocmd VimResized * :wincmd =
 
