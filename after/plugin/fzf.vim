@@ -4,7 +4,7 @@
 
 if executable('ag')
   " Use `ag` as fzf's search backend
-  let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
 endif
 
 let g:fzf_layout = { 'down': '~20%' }
