@@ -45,7 +45,7 @@ Plug 'mtth/scratch.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ndhoule/investigate.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'sbdchd/neoformat', { 'do': 'yarn global add prettier' }
+Plug 'sbdchd/neoformat', { 'do': 'npm -g install prettier' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -69,7 +69,7 @@ function! InstallLanguageClientDeps(info)
 
   if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
     " flow-language-server@0.4.0 introduced some breaking changes and won't work with LanguageClient
-    !yarn global add
+    !npm -g install
           \ dockerfile-language-server-nodejs
           \ flow-language-server@0.3.0
           \ javascript-typescript-langserver
