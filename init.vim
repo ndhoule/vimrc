@@ -175,7 +175,7 @@ map <Leader>p "+p
 cmap w!! w !sudo tee % >/dev/null
 
 " Yank the current filename to the OS clipboard
-noremap <silent> <F2> :let @+=expand("%:p")<CR>
+noremap <silent> <Leader>f :let @+=expand("%:p")<CR>
 
 " Toggle between regular numbering, relative numbering, no numbering
 nmap <silent> <F3> :exec &nu==&rnu ? 'se nu!' : 'se rnu!'<CR>
