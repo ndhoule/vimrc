@@ -188,5 +188,6 @@ nnoremap <F5> :set invpaste paste?<CR>
 
 " TODO(ndhoule): Move to config file
 
-let g:rooter_manual_only = 1
 let g:ale_sign_column_always = 1
+let g:rooter_manual_only = 1
+let g:scratch_no_mappings = 1
