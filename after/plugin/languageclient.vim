@@ -1,9 +1,6 @@
 " Required for operations modifying multiple buffers like rename
 set hidden
 
-" Start language servers automatically
-let g:LanguageClient_autoStart = 1
-
 let g:LanguageClient_serverCommands = {
     \ 'css':            ['css-languageserver', '--stdio'],
     \ 'dockerfile':     ['docker-langserver', '--stdio'],
