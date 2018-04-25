@@ -72,7 +72,7 @@ function! InstallLanguageClientDeps(info)
     " flow-language-server@0.4.0 introduced some breaking changes and won't work with LanguageClient
     !npm -g install
           \ dockerfile-language-server-nodejs
-          \ flow-language-server@0.3.0
+          \ flow-language-server@0.4.3
           \ javascript-typescript-langserver
           \ vscode-css-languageserver-bin
           \ vscode-json-languageserver-bin
