@@ -34,8 +34,6 @@ endif
 " General config
 ""
 
-" Enable spellcheck
-set spell
 set spelllang=en
 
 " Eliminate <Esc> delays
