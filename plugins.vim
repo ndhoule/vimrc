@@ -86,6 +86,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.82', 'do': function('Instal
 
 " Filetypes
 
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
 " Completion

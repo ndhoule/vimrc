@@ -1,3 +1,5 @@
+autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.jsx
+
 nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <buffer> <silent> gr :call LanguageClient_textDocument_references()<CR>

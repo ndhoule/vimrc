@@ -10,6 +10,7 @@ let g:LanguageClient_serverCommands = {
     \ 'less':           ['css-languageserver', '--stdio'],
     \ 'sass':           ['css-languageserver', '--stdio'],
     \ 'typescript':     ['javascript-typescript-stdio'],
+    \ 'typescript.jsx': ['javascript-typescript-stdio'],
     \ }
 
 "

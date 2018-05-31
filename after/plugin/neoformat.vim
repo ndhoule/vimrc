@@ -17,4 +17,5 @@ endfunction
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.jsx try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry
+  autocmd BufWritePre *.ts,*.tsx try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry
 augroup END
