@@ -69,17 +69,20 @@ function! InstallLanguageClientDeps(info)
   endif
 
   if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-    " flow-language-server@0.4.0 introduced some breaking changes and won't work with LanguageClient
-    !npm -g install
-          \ dockerfile-language-server-nodejs
-          \ flow-language-server@0.4.3
-          \ javascript-typescript-langserver
-          \ vscode-css-languageserver-bin
-          \ vscode-json-languageserver-bin
+    " https://www.npmjs.com/package/dockerfile-language-server-nodejs
+    !npm -g install dockerfile-language-server-nodejs@0.0.17
+    " https://www.npmjs.com/package/flow-language-server
+    !npm -g install flow-language-server@0.5.0
+    " https://www.npmjs.com/package/javascript-typescript-langserver
+    !npm -g install javascript-typescript-langserver@2.9.1
+    " https://www.npmjs.com/package/vscode-css-languageserver-bin
+    !npm -g install vscode-css-languageserver-bin@1.4.0
+    " https://www.npmjs.com/package/vscode-json-languageserver-bin
+    !npm -g install vscode-json-languageserver-bin@1.0.1
   endif
 endfunction
 
-Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.69', 'do': function('InstallLanguageClientDeps') }
+Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.82', 'do': function('InstallLanguageClientDeps') }
 
 " Filetypes
 
