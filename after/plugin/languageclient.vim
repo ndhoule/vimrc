@@ -1,6 +1,9 @@
 " Required for operations modifying multiple buffers like rename
 set hidden
 
+let g:LanguageClient_changeThrottle = 0.25
+let g:LanguageClient_hoverPreview = "never"
+
 let g:LanguageClient_serverCommands = {
     \ 'css':            ['css-languageserver', '--stdio'],
     \ 'dockerfile':     ['docker-langserver', '--stdio'],
