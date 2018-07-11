@@ -46,7 +46,7 @@ Plug 'mtth/scratch.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ndhoule/investigate.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'sbdchd/neoformat', { 'do': 'npm -g install prettier' }
+Plug 'sbdchd/neoformat'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -72,9 +72,9 @@ function! InstallLanguageClientDeps(info)
     " https://www.npmjs.com/package/dockerfile-language-server-nodejs
     !npm -g install dockerfile-language-server-nodejs@0.0.17
     " https://www.npmjs.com/package/flow-language-server
-    !npm -g install flow-language-server@0.5.0
+    !npm -g install flow-language-server@0.6.0
     " https://www.npmjs.com/package/javascript-typescript-langserver
-    !npm -g install javascript-typescript-langserver@2.9.1
+    !npm -g install javascript-typescript-langserver@2.10.0
     " https://www.npmjs.com/package/vscode-css-languageserver-bin
     !npm -g install vscode-css-languageserver-bin@1.4.0
     " https://www.npmjs.com/package/vscode-json-languageserver-bin
@@ -82,7 +82,7 @@ function! InstallLanguageClientDeps(info)
   endif
 endfunction
 
-Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.82', 'do': function('InstallLanguageClientDeps') }
+Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.95', 'do': function('InstallLanguageClientDeps') }
 
 " Filetypes
 
