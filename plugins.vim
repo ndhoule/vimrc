@@ -82,7 +82,7 @@ function! InstallLanguageClientDeps(info)
   endif
 endfunction
 
-Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.95', 'do': function('InstallLanguageClientDeps') }
+Plug 'autozimu/LanguageClient-neovim', { 'tag': '0.1.97', 'do': function('InstallLanguageClientDeps') }
 
 " Filetypes
 
