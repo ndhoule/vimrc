@@ -91,9 +91,12 @@ Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
 " Completion
 
-Plug 'roxma/nvim-completion-manager'
-" TODO: Get this working with nvim-completion-manager
-Plug 'Shougo/neosnippet.vim'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-tmux'
 
 " OS
 
