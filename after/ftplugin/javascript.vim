@@ -1,6 +1,8 @@
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
 
+let b:ale_linters = ['eslint']
+
 " flow-language-server supports:
 "
 " - textDocument_hover
