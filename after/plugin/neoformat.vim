@@ -4,22 +4,6 @@
 
 let g:neoformat_only_msg_on_error = 1
 
-function! neoformat#formatters#javascript#prettier() abort
-    return {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin', '--stdin-filepath', '%:p'],
-        \ 'stdin': 1,
-        \ }
-endfunction
-
-function! neoformat#formatters#typescript#prettier() abort
-    return {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin', '--stdin-filepath', '%:p'],
-        \ 'stdin': 1,
-        \ }
-endfunction
-
 " FIXME(ndhoule): Running this on BufWritePre is extremely slow, even on files that contain no
 " @format pragma. prettier_d is an option for speeding things up but in testing was still slow
 augroup fmt
