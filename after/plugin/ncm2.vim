@@ -8,4 +8,4 @@ autocmd TextChangedI * call ncm2#auto_trigger()
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 
-let g:ncm2#complete_length = [[1,2],[7,2]]
+let g:ncm2#complete_length = [[1,3],[7,2]]
