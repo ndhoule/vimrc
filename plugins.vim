@@ -73,8 +73,8 @@ function! InstallLanguageClientDeps(info)
     !npm -g install dockerfile-language-server-nodejs@0.0.18
     " https://www.npmjs.com/package/flow-language-server
     !npm -g install flow-language-server@0.6.0
-    " https://www.npmjs.com/package/javascript-typescript-langserver
-    !npm -g install javascript-typescript-langserver@2.10.0
+    " https://www.npmjs.com/package/typescript-language-server
+    !npm -g install typescript-language-server@0.2.0
     " https://www.npmjs.com/package/vscode-css-languageserver-bin
     !npm -g install vscode-css-languageserver-bin@1.4.0
     " https://www.npmjs.com/package/vscode-json-languageserver-bin

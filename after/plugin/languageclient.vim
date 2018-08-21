@@ -12,9 +12,10 @@ let g:LanguageClient_serverCommands = {
     \ 'json':           ['json-languageserver', '--stdio'],
     \ 'less':           ['css-languageserver', '--stdio'],
     \ 'sass':           ['css-languageserver', '--stdio'],
-    \ 'typescript':     ['javascript-typescript-stdio'],
-    \ 'typescript.jsx': ['javascript-typescript-stdio'],
+    \ 'typescript':     ['typescript-language-server', '--stdio'],
+    \ 'typescript.jsx': ['typescript-language-server', '--stdio'],
     \ }
+
 
 "
 " Generic placeholder keybindings for LanguageClient functionality. Override these with supported,
