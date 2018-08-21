@@ -70,7 +70,7 @@ function! InstallLanguageClientDeps(info)
 
   if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
     " https://www.npmjs.com/package/dockerfile-language-server-nodejs
-    !npm -g install dockerfile-language-server-nodejs@0.0.17
+    !npm -g install dockerfile-language-server-nodejs@0.0.18
     " https://www.npmjs.com/package/flow-language-server
     !npm -g install flow-language-server@0.6.0
     " https://www.npmjs.com/package/javascript-typescript-langserver
