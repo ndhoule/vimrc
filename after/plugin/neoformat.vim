@@ -4,8 +4,8 @@
 
 let g:neoformat_only_msg_on_error = 1
 
-" FIXME(ndhoule): Running this on BufWritePre is extremely slow, even on files that contain no
-" @format pragma. prettier_d is an option for speeding things up but in testing was still slow
+" TODO(ndhoule): Investigate prettier_d, eslint_d for TypeScript/JavaScript formatting
+" TODO(ndhoule): Investigate setting formatter via projectionist
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js,*.jsx try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry
