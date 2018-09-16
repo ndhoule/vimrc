@@ -4,6 +4,9 @@ set hidden
 let g:LanguageClient_changeThrottle = 0.25
 let g:LanguageClient_hoverPreview = "never"
 
+" Let ALE handle all diagnostics
+let g:LanguageClient_diagnosticsEnable = 0
+
 let g:LanguageClient_serverCommands = {
     \ 'css':            ['css-languageserver', '--stdio'],
     \ 'dockerfile':     ['docker-langserver', '--stdio'],
