@@ -72,7 +72,6 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'tag': '0.1.120', 'do
 
 " Filetypes
 
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
 
 " Completion
