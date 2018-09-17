@@ -17,7 +17,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " Commands
 ""
 
-command! ProjectFiles execute 'Files' FindRootDirectory()
+command! ProjectFiles execute 'Files' ProjectRootGuess()
 command! RelFiles execute 'Files' expand('%:p:h')
 
 ""

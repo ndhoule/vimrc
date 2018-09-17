@@ -115,9 +115,7 @@ endif
 Plug 'chriskempson/base16-vim'
 
 " utility libraries
-" TODO(ndhoule): Only used for FindRootDirectory(); investigate replacing with
-" https://github.com/dbakker/vim-projectroot
-Plug 'airblade/vim-rooter'
+Plug 'dbakker/vim-projectroot'
 
 " Finalize loading vim-plug
 call plug#end()

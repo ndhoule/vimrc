@@ -170,10 +170,9 @@ nnoremap <F4> :set spell!<CR>
 " Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
 nnoremap <F5> :set invpaste paste?<CR>
 
+"
 " TODO(ndhoule): Move to config file
-
-" TODO(ndhoule): Wouldn't need this if I ditched rooter, this just prevents rooter from taking over
-let g:rooter_manual_only = 1
+"
 
 " TODO(ndhoule): No idea why this is here
 let g:scratch_no_mappings = 1
