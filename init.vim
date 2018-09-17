@@ -14,15 +14,6 @@ else
 endif
 
 ""
-" Initial Setup
-""
-
-let g:mapleader=','
-
-" Activate : using ;
-nnoremap ; :
-
-""
 " Bundles/Plugin Setup
 ""
 
@@ -34,16 +25,15 @@ endif
 " General config
 ""
 
-set spelllang=en
-
-" Limit syntax highlighting to 300 columns wide
+" Limit syntax highlighting to 300 columns wide (perf)
 set synmaxcol=300
 
 " Don't keep backup files
+" TODO(ndhoule): Does this make sense in conjunction with backupcopy=yes?
 set nobackup
 
-" Write changes to original file
-" http://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
+" Write changes to original file. Fixes watch mode in some applications.
+" https://webpack.js.org/guides/development/#adjusting-your-text-editor
 set backupcopy=yes
 
 " Don't keep swap files
@@ -56,11 +46,8 @@ execute "set undodir=" . g:DOTVIM_PATH . '/.vimundo'
 " Start scrolling five lines from the bottom
 set scrolloff=5
 
-" Scroll five lines at a time (helps performance)
+" Scroll five lines at a time (perf)
 set scrolljump=5
-
-" Keep all the undos
-set undolevels=1000
 
 " Enable mouse mode
 set mouse=a
@@ -71,27 +58,26 @@ set title
 " Use the current file's directory as root for :e
 set autochdir
 
-" Show inc commands in status line as they're being typed
-set showcmd
-
 " Autosave on make or shell commands
 set autowrite
 
 " Taller :e menu
 set wildmode=list:longest
 
-set foldmethod=indent  " Use filetype syntax to figure out where to fold
+" TODO(ndhoule): Revisit these settings
+set foldmethod=indent
 set foldlevelstart=100 " Don't show any folds on open file
 
 " Automatically rebalance splits when window is resized
 autocmd VimResized * :wincmd =
 
 ""
-" Text Display and Formatting
+" Text Display/Formatting
 ""
 
 set termguicolors
 
+" TODO(ndhoule): Remove this again, still not convinced it helps
 set lazyredraw            " Significantly improves redraw speed in terminal Vim
 
 set number                " Show the current line number
@@ -104,7 +90,9 @@ set shiftwidth=2          " Auto-indent this many spaces
 set shiftround            " <Tab> inserts to the nearest multiple of `shiftwidth`
 set expandtab             " <Tab> inserts `tabstop` number of characters
 
+" TODO(ndhoule): Revisit, can this be set by editorconfig?
 let &colorcolumn=100      " Show max width warning columns
+" TODO(ndhoule): Revisit; isn't this always annoying?
 set textwidth=100         " Wrap long lines automatically
 
 " Highlight whitespace
@@ -123,6 +111,12 @@ set incsearch            " Highlight search items while typing
 ""
 " Keybindings
 ""
+
+
+let g:mapleader=','
+
+" Activate : using ;
+nnoremap ; :
 
 " Disable ex mode
 nnoremap Q <ESC>
@@ -178,6 +172,8 @@ nnoremap <F5> :set invpaste paste?<CR>
 
 " TODO(ndhoule): Move to config file
 
-let g:ale_sign_column_always = 1
+" TODO(ndhoule): Wouldn't need this if I ditched rooter, this just prevents rooter from taking over
 let g:rooter_manual_only = 1
+
+" TODO(ndhoule): No idea why this is here
 let g:scratch_no_mappings = 1
