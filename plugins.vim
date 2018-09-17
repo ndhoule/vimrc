@@ -66,19 +66,6 @@ function! InstallLanguageClientDeps(info)
     !./install.sh
     UpdateRemotePlugins
   endif
-
-  if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-    " https://www.npmjs.com/package/dockerfile-language-server-nodejs
-    !npm -g install dockerfile-language-server-nodejs@0.0.18
-    " https://www.npmjs.com/package/flow-language-server
-    !npm -g install flow-language-server@0.6.0
-    " https://www.npmjs.com/package/typescript-language-server
-    !npm -g install typescript-language-server@0.2.0
-    " https://www.npmjs.com/package/vscode-css-languageserver-bin
-    !npm -g install vscode-css-languageserver-bin@1.4.0
-    " https://www.npmjs.com/package/vscode-json-languageserver-bin
-    !npm -g install vscode-json-languageserver-bin@1.0.1
-  endif
 endfunction
 
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'tag': '0.1.120', 'do': function('InstallLanguageClientDeps') }
