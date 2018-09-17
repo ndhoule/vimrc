@@ -1,7 +1,7 @@
 " Required for operations modifying multiple buffers like rename
 set hidden
 
-let g:LanguageClient_changeThrottle = 0.25
+let g:LanguageClient_changeThrottle = 0.50
 let g:LanguageClient_hoverPreview = "never"
 
 " Let ALE handle all diagnostics
