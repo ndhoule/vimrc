@@ -36,14 +36,8 @@ endif
 
 set spelllang=en
 
-" Eliminate <Esc> delays
-set timeoutlen=2000 ttimeoutlen=0
-
 " Limit syntax highlighting to 300 columns wide
 set synmaxcol=300
-
-" Use UTF-8 encoding by default
-set encoding=utf-8
 
 " Don't keep backup files
 set nobackup
@@ -65,9 +59,6 @@ set scrolloff=5
 " Scroll five lines at a time (helps performance)
 set scrolljump=5
 
-" Give vim a long memory
-set history=100
-
 " Keep all the undos
 set undolevels=1000
 
@@ -86,9 +77,6 @@ set showcmd
 " Autosave on make or shell commands
 set autowrite
 
-" Better buffer switching menu
-set wildmenu
-
 " Taller :e menu
 set wildmode=list:longest
 
@@ -101,8 +89,6 @@ autocmd VimResized * :wincmd =
 ""
 " Text Display and Formatting
 ""
-
-syntax on
 
 set termguicolors
 
@@ -121,7 +107,9 @@ set expandtab             " <Tab> inserts `tabstop` number of characters
 let &colorcolumn=100      " Show max width warning columns
 set textwidth=100         " Wrap long lines automatically
 
-set list listchars=tab:→\ ,trail:· " Highlight trailing spaces, tab chars
+" Highlight whitespace
+set list
+set listchars=tab:→\ ,trail:·
 
 ""
 " Search

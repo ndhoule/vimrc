@@ -20,20 +20,24 @@ call plug#begin(s:plugins_path)
 " Plugins
 ""
 
-" navigation
-Plug 'majutsushi/tagbar'
-
-" ui
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'
 
 " core behavior
+Plug 'tpope/vim-sensible'
+
 Plug 'bfredl/nvim-miniyank'
 Plug 'dietsche/vim-lastplace'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ntpeters/vim-better-whitespace' " TODO(ndhoule): still necessary?
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
+
+
+" navigation
+Plug 'majutsushi/tagbar'
+
+" ui
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
 
 " new core commands
 Plug 'EinfachToll/DidYouMean'
