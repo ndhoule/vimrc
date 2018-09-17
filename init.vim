@@ -62,6 +62,9 @@ execute "set undodir=" . g:DOTVIM_PATH . '/.vimundo'
 " Start scrolling five lines from the bottom
 set scrolloff=5
 
+" Scroll five lines at a time (helps performance)
+set scrolljump=5
+
 " Give vim a long memory
 set history=100
 
@@ -105,8 +108,9 @@ set termguicolors
 
 set lazyredraw            " Significantly improves redraw speed in terminal Vim
 
-set relativenumber        " Set line numbering relative to current line
-set number                " Show the current line number in relative linenum mode
+set number                " Show the current line number
+" TODO(ndhoule): Disabled 9/16/18 to test (performance, supposedly very taxing performance-wise)
+" set relativenumber        " Set line numbering relative to current line
 
 set tabstop=2             " Set tab width to two spaces
 set softtabstop=2         " Make tabs easier to delete
