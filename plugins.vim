@@ -20,41 +20,57 @@ call plug#begin(s:plugins_path)
 " Plugins
 ""
 
-" Utilities
-
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'EinfachToll/DidYouMean'
-Plug 'Raimondi/delimitMate'
-Plug 'airblade/vim-gitgutter'
-Plug 'airblade/vim-rooter'
-Plug 'benmills/vimux'
-Plug 'bfredl/nvim-miniyank'
-Plug 'christoomey/vim-sort-motion'
-Plug 'dietsche/vim-lastplace'
-Plug 'direnv/direnv.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'gcmt/wildfire.vim'
-Plug 'godlygeek/tabular'
-Plug 'guns/xterm-color-table.vim'
-Plug 'haya14busa/incsearch.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'janko-m/vim-test'
-Plug 'kana/vim-fakeclip'
-Plug 'luochen1990/rainbow'
+" navigation
 Plug 'majutsushi/tagbar'
-Plug 'mtth/scratch.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'ndhoule/investigate.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tomtom/tcomment_vim'
+
+" ui
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+
+" core behavior
+Plug 'bfredl/nvim-miniyank'
+Plug 'dietsche/vim-lastplace'
+Plug 'haya14busa/incsearch.vim'
+Plug 'ntpeters/vim-better-whitespace' " TODO(ndhoule): still necessary?
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
+
+" new core commands
+Plug 'EinfachToll/DidYouMean'
+Plug 'mtth/scratch.vim'
 Plug 'vim-scripts/Rename'
+
+" motions
+Plug 'christoomey/vim-sort-motion'
+Plug 'gcmt/wildfire.vim'
+Plug 'godlygeek/tabular' " TODO(ndhoule): start using or remove (alt: https://github.com/junegunn/vim-easy-align)
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-surround'
+
+" shell/jobs
+Plug 'benmills/vimux'
+Plug 'janko-m/vim-test'
+
+" linting / fixing
 Plug 'w0rp/ale'
+
+" documentation
+Plug 'ndhoule/investigate.vim' " TODO(ndhoule): start or remove
+
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" environment
+Plug 'direnv/direnv.vim'
+
+" project settings
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-projectionist'
+
+" unsorted
+Plug 'Raimondi/delimitMate'
 
 " Language Server Protocol
 "
@@ -70,30 +86,34 @@ endfunction
 
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'tag': '0.1.120', 'do': function('InstallLanguageClientDeps') }
 
-" Filetypes
+" syntax highlighting
+Plug 'luochen1990/rainbow'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
 
-Plug 'sheerun/vim-polyglot', { 'do:': 'gometalinter --install --update' }
-
-" Completion
-
+" completion
 Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
-
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tmux'
 
-" OS
+" cross-platform support
+Plug 'kana/vim-fakeclip'
 
 if g:host_os == 'Darwin'
   Plug 'sjl/vitality.vim'
 endif
 
-" Themes
+" theming
 "
 " NOTE: You must install your terminal client's base16 color scripts for base16
 " themes to look right. See http://chriskempson.com/projects/base16/ for details
-
 Plug 'chriskempson/base16-vim'
+
+" utility libraries
+" TODO(ndhoule): Only used for FindRootDirectory(); investigate replacing with
+" https://github.com/dbakker/vim-projectroot
+Plug 'airblade/vim-rooter'
 
 " Finalize loading vim-plug
 call plug#end()
