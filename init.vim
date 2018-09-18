@@ -77,9 +77,6 @@ autocmd VimResized * :wincmd =
 
 set termguicolors
 
-" TODO(ndhoule): Remove this again, still not convinced it helps
-set lazyredraw            " Significantly improves redraw speed in terminal Vim
-
 set number                " Show the current line number
 " TODO(ndhoule): Disabled 9/16/18 to test (performance, supposedly very taxing performance-wise)
 " set relativenumber        " Set line numbering relative to current line
