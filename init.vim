@@ -1,11 +1,15 @@
+" Absolute path to .vim directory.
 let g:DOTVIM_PATH = expand('<sfile>:p:h')
 
+" Bail if running evim. (They don't deserve a nice config.)
 if v:progname =~? 'evim'
   finish
 endif
 
+" Export OS nicename as `g:host_os`. Includes (but not limited to):
+" Darwin | FreeBSD | Linux | Windows
 if has('win32') || has('win64')
-  let g:OS = 'Windows'
+  let g:host_os = 'Windows'
 elseif has('unix')
   " Strip trailing newline
   let g:host_os = substitute(system('uname'), '\(.*\)\n$', '\1', '')
@@ -14,101 +18,82 @@ else
 endif
 
 ""
-" Bundles/Plugin Setup
+" Plugin Setup
 ""
+
+" XXX(ndhoule): Fix and remove
+let g:scratch_no_mappings = 1
 
 if filereadable(g:DOTVIM_PATH . '/plugins.vim')
   execute('source ' . g:DOTVIM_PATH . '/plugins.vim')
 endif
 
 ""
-" General config
+" General Config
 ""
 
-" Limit syntax highlighting to 300 columns wide (perf)
-set synmaxcol=300
-
-" Don't keep backup files
-" TODO(ndhoule): Does this make sense in conjunction with backupcopy=yes?
-set nobackup
-
-" Write changes to original file. Fixes watch mode in some applications.
+" Enable backup files
+set backup
+" Write changes to original file. Fixes watch mode for some file watchers (e.g. Webpack's).
 " https://webpack.js.org/guides/development/#adjusting-your-text-editor
 set backupcopy=yes
+let &backupdir = g:DOTVIM_PATH . '/.backup//'
+call mkdir(&backupdir, 'p')
 
-" Don't keep swap files
-set noswapfile
+" Enable swapfiles
+set swapfile
+let &directory = g:DOTVIM_PATH . '/.swp//'
+call mkdir(&directory, 'p')
 
-" Use persistent undo files
+" Enable persistent undofiles
 set undofile
-execute "set undodir=" . g:DOTVIM_PATH . '/.vimundo'
+let &undodir = g:DOTVIM_PATH . '/.undo//'
+call mkdir(&undodir, 'p')
 
-" Start scrolling five lines from the bottom
-set scrolloff=5
+autocmd VimResized * :wincmd = " Automatically rebalance splits when window is resized
 
-" Scroll five lines at a time (perf)
-set scrolljump=5
+set autochdir           " Set cwd to the current buffer's containing directory
+set autowrite           " Save before executing shell commands to prevent working on a stale file
+set foldlevelstart=100  " Don't fold on fileopen
+set foldmethod=indent   " Use indentation levels to fold
+set mouse=a             " Enable mouse in all modes
+set scrolljump=5        " Scroll five lines at a time (perf)
+set scrolloff=5         " Start scrolling five lines from the bottom (perf)
+set synmaxcol=300       " Limit syntax highlighting to 300 columns wide (perf)
 
-" Enable mouse mode
-set mouse=a
+""
+" UI
+""
 
-" Change the terminal window's title
-set title
-
-" Use the current file's directory as root for :e
-set autochdir
-
-" Autosave on make or shell commands
-set autowrite
-
-" Taller :e menu
-set wildmode=list:longest
-
-" TODO(ndhoule): Revisit these settings
-set foldmethod=indent
-set foldlevelstart=100 " Don't show any folds on open file
-
-" Automatically rebalance splits when window is resized
-autocmd VimResized * :wincmd =
+let &colorcolumn=100                " Show warning column at 100 characters
+set list listchars=tab:→\ ,trail:·  " Show glyphs for whitespace
+set number                          " Show line number in gutter
+set termguicolors                   " Use 24-bit color
+set title                           " Set terminal title
+set wildmode=list:longest           " Show wildmenu in tall list
 
 ""
 " Text Display/Formatting
 ""
 
-set termguicolors
-
-set number                " Show the current line number
-" TODO(ndhoule): Disabled 9/16/18 to test (performance, supposedly very taxing performance-wise)
-" set relativenumber        " Set line numbering relative to current line
-
-set tabstop=2             " Set tab width to two spaces
-set softtabstop=2         " Make tabs easier to delete
-set shiftwidth=2          " Auto-indent this many spaces
-set shiftround            " <Tab> inserts to the nearest multiple of `shiftwidth`
-set expandtab             " <Tab> inserts `tabstop` number of characters
-
-" TODO(ndhoule): Revisit, can this be set by editorconfig?
-let &colorcolumn=100      " Show max width warning columns
-" TODO(ndhoule): Revisit; isn't this always annoying?
-set textwidth=100         " Wrap long lines automatically
-
-" Highlight whitespace
-set list
-set listchars=tab:→\ ,trail:·
+set expandtab      " <Tab> inserts spaces
+set shiftround     " Round indentation to nearest multiple of `shiftwidth`
+set shiftwidth=2   " Spaces to use for autoindent
+set softtabstop=2  " <Tab> inserts n spaces
+set tabstop=2      " <Tab> inserts n spaces
 
 ""
 " Search
 ""
 
-set ignorecase           " Ignore case when searching...
-set smartcase            " ...Except when search contains an uppercase char
-set hlsearch             " Highlight search items
-set incsearch            " Highlight search items while typing
+set hlsearch    " Highlight all search matches
+set ignorecase  " Ignore case when searching
+set incsearch   " Highlight search items while typing
+set smartcase   " Don't ignore case in search when term contains an uppercase char
 
 ""
 " Keybindings
 ""
-
 
 let g:mapleader=','
 
@@ -152,6 +137,7 @@ map <Leader>y "+yy
 " Paste from system clipboard
 map <Leader>p "+p
 
+" FIXME(ndhoule): Doesn't work lately on OS X
 " Make writing files via sudo easier
 cmap w!! w !sudo tee % >/dev/null
 
@@ -166,10 +152,3 @@ nnoremap <F4> :set spell!<CR>
 
 " Enable paste mode--helps quash indent, etc. problems when pasting blocks of code
 nnoremap <F5> :set invpaste paste?<CR>
-
-"
-" TODO(ndhoule): Move to config file
-"
-
-" TODO(ndhoule): No idea why this is here
-let g:scratch_no_mappings = 1

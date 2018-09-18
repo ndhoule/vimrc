@@ -1,23 +1,6 @@
 .netrwhist
 .viminfo*
-.vimundo*
-/autoload
-/vendor
-/spell
-
-#
-# Temporary and garbage files
-#
-
-*.lock
-*.out
-*.swp
-*.tmp
-*~
-.DS_Store
-.DS_Store?
-.Spotlight-V100
-.Trashes
-Icon?
-Thumbs.db
-ehthumbs.db
+.undo/
+autoload/
+spell/
+vendor/
