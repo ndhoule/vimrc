@@ -26,4 +26,5 @@ command! RelFiles execute 'Files' expand('%:p:h')
 
 map <silent> <leader>t :ProjectFiles<CR>
 map <silent> <leader>T :RelFiles<CR>
+" FIXME(ndhoule): Fuzzy matching on this command is terrible
 map <leader>/ :Ag<CR>
