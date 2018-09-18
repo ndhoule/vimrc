@@ -99,8 +99,6 @@ Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tmux'
 
 " Cross-platform support
-Plug 'kana/vim-fakeclip' " TODO(ndhoule): Still necessary?
-
 if g:host_os == 'Darwin'
   Plug 'sjl/vitality.vim'
 endif
