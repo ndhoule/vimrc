@@ -51,12 +51,6 @@ Plug 'godlygeek/tabular'            " Align text
 Plug 'tomtom/tcomment_vim'          " Add motions for commenting out blocks of code
 Plug 'tpope/vim-surround'           " Add mappings for working on text within pairs of characters (e.g. quotes)
 
-" Task runners/integrations
-" TODO(ndhoule): start using or remove
-Plug 'benmills/vimux'    " Interact with tmux from vim
-" TODO(ndhoule): start using or remove
-Plug 'janko-m/vim-test'  " Run tests (at cursor, file, etc.) from within vim
-
 " Linting/autofixing
 Plug 'w0rp/ale'  " Integrate with linters, fixers, formatters, etc.
 
