@@ -1,6 +1,7 @@
+.miniyank.mpack
 .netrwhist
-.viminfo*
 .undo/
+.viminfo*
 autoload/
 spell/
 vendor/
