@@ -1,6 +1,11 @@
-" TODO(ndhoule): Use a dispatch plugin like vimux or neomake
-" TODO(ndhoule): Set this via autocmd using FindRootDirectory()
-" let test#project_root = "/path/to/your/project"
+"
+" https://github.com/janko-m/vim-test
+"
+
+" vim-test assumes it's being run from the project root. autochdir breaks this
+" assumption and it's sometimes frequently inconvenient to start vim from the
+" project root anyway, so explicitly set the root.
+autocmd VimEnter,BufEnter * let test#project_root = ProjectRootGuess()
 
 " Default test#javascript#has_package scans package.json, which doesn't work if
 " your Mocha installation is a dependency of another package. Testing for the
@@ -21,7 +26,7 @@ let g:test#javascript#mocha#file_pattern = '\v(test|tests?\/.*)\.(js|jsx|coffee)
 let test#javascript#mocha#options = '--growl --compilers js:babel-register'
 
 augroup setProjectRootOnBufEnter
-  autocmd BufEnter * let g:test#project_root = FindRootDirectory()
+  autocmd BufEnter * let g:test#project_root = ProjectRootGuess()
 augroup END
 
 nmap <silent> Tn :TestNearest<CR>
