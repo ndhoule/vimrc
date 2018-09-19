@@ -2,12 +2,6 @@
 " https://github.com/w0rp/ale
 ""
 
-let g:ale_lint_delay = 100
-let g:ale_lint_on_insert_leave = 1
-
-" TODO(ndhoule): Consider enabling this and explicitly enumerating linters
-" g:ale_linters_explicit
-
 "
 " Keybindings
 "
@@ -15,7 +9,6 @@ let g:ale_lint_on_insert_leave = 1
 nmap <silent> <Leader>ef <Plug>(ale_fix)
 nmap <silent> <Leader>en <Plug>(ale_next_wrap)
 nmap <silent> <Leader>ep <Plug>(ale_previous_wrap)
-
 
 "
 " Styling
@@ -29,11 +22,14 @@ let g:ale_echo_msg_warning_str = 'W'
 
 " Gutter (signs)
 
+" Don't hide sign column when there are no lint errors (prevents text from jumping visually)
 let g:ale_sign_column_always = 1
+
 let g:ale_sign_info = '➤'
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_error = '✖'
 
+" ALE signs default to different, ugly colors. Make them less bright and more uniform
 highlight link ALEInfoSign todo
 highlight link ALEWarningSign todo
 highlight link ALEErrorSign todo
@@ -41,6 +37,14 @@ highlight link ALEErrorSign todo
 "
 " Linter configuration
 "
+
+" TODO(ndhoule): Consider disabling all linters by default and enabling them explicitly
+
+" Decrease delay before running linter after text change
+let g:ale_lint_delay = 100
+
+" Run linter when exiting insert mode (you just finished typing!)
+let g:ale_lint_on_insert_leave = 1
 
 " Use eslint_d for faster linting and fixing; it delegates to project-local eslint installations.
 let g:ale_javascript_eslint_executable = 'eslint_d'
@@ -50,12 +54,12 @@ let g:ale_javascript_eslint_use_global = 1
 " Fixers/formatters configuration
 "
 
+" Enable file fixers (default off)
 let g:ale_fix_on_save = 1
 
 "
 " Projectionist integration
 "
-
 
 " Set project-specific linters and fixers in your `.projections.json`:
 "
