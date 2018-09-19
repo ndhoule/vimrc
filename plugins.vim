@@ -30,14 +30,13 @@ Plug 'ntpeters/vim-better-whitespace'  " Strip whitespace on save and highlight 
 Plug 'tpope/vim-endwise'               " Automatically close word control structures (if/fi, do/end, etc.)
 Plug 'tpope/vim-repeat'                " Add support for `.` (repeat) for plugins
 
-" Navigation
-" TODO(ndhoule): Don't really use this anymore. Get rid of it if it can't be integrated with LSP?
-Plug 'majutsushi/tagbar'  " j
+" Project navigation
+" TODO(ndhoule): Document fzf installation
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'  " Fuzzy file finder and file contents searcher
+Plug 'majutsushi/tagbar'                             " Menu for navigating ctags
 
 " UI
-" TODO(ndhoule): Document, and document OS installation?
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'  " Use fzf for file finding, file grepping
-Plug 'itchyny/lightline.vim'                         " Customize statusline
+Plug 'itchyny/lightline.vim'  " Customize statusline
 
 " New core commands
 Plug 'EinfachToll/DidYouMean'  " Suggest alternatives when opening a misspelled file (e.g. `index.j`)
