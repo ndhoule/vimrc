@@ -29,6 +29,9 @@ Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace, with sup
 Plug 'tpope/vim-endwise'               " Automatically close word control structures (if/fi, do/end, etc.)
 Plug 'tpope/vim-repeat'                " Add support for `.` (repeat) for plugins
 
+" Search
+Plug 'bronson/vim-visual-star-search'  " Make * and # work on visual selections
+
 " Project navigation
 " TODO(ndhoule): Document fzf installation
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'  " Fuzzy file finder and file contents searcher
