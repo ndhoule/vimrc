@@ -57,9 +57,10 @@ Plug 'w0rp/ale'  " Integrate with linters, fixers, formatters, etc.
 Plug 'ndhoule/investigate.vim'  " Open documentation at point (using Dash, browser, shell command, etc.)
 
 " Git
-Plug 'airblade/vim-gitgutter'  " Show Git diff in sign column and add mappings for working with hunks
-Plug 'tpope/vim-fugitive'      " Add vim commands for Git operations
-Plug 'tpope/vim-rhubarb'       " Add GitHub integration to fugitive
+Plug 'airblade/vim-gitgutter'                    " Show Git diff in sign column
+Plug 'mattn/gist-vim' | Plug 'mattn/webapi-vim'  " Create Gists on GitHub from the current buffer
+Plug 'tpope/vim-fugitive'                        " Add vim commands for Git operations
+Plug 'tpope/vim-rhubarb'                         " Add GitHub integration to fugitive
 
 " Environment
 Plug 'direnv/direnv.vim'  " Source direnv files, keeping vim environment/subshells in sync with host shell env
