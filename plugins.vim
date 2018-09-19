@@ -106,13 +106,12 @@ if g:host_os == 'Darwin'
   Plug 'sjl/vitality.vim'  " Improve vim + iTerm2 + tmux interop
 endif
 
-" theming
-"
+" Theming
 " NOTE: You must install your terminal client's base16 color scripts for base16
 " themes to look right. See http://chriskempson.com/projects/base16/ for details
 Plug 'chriskempson/base16-vim'
 
-" utility libraries
+" Utility libraries
 Plug 'dbakker/vim-projectroot'  " Add functions for finding the current project's root directory path
 
 " Finalize loading vim-plug
