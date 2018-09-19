@@ -93,7 +93,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Syntax highlighting
 Plug 'luochen1990/rainbow'              " Hightlight pairs of characters with different colors
 Plug 'nathanaelkane/vim-indent-guides'  " Change background color to highlight indentation levels
-Plug 'sheerun/vim-polyglot'             " Install language packs for most languages
+Plug 'sheerun/vim-polyglot'             " Install syntax files (and language plugins) for most languages
 
 " Completion
 Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'  " Autocompletion engine
