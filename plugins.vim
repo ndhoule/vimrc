@@ -25,7 +25,6 @@ Plug 'tpope/vim-sensible'
 
 Plug 'bfredl/nvim-miniyank'
 Plug 'dietsche/vim-lastplace'
-Plug 'haya14busa/incsearch.vim'
 Plug 'ntpeters/vim-better-whitespace' " TODO(ndhoule): Still necessary?
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
