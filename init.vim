@@ -81,6 +81,7 @@ set shiftround     " Round indentation to nearest multiple of `shiftwidth`
 set shiftwidth=2   " Spaces to use for autoindent
 set softtabstop=2  " <Tab> inserts n spaces
 set tabstop=2      " <Tab> inserts n spaces
+set textwidth=100  " Automatically wrap long lines
 
 ""
 " Search
