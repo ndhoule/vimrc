@@ -57,6 +57,14 @@ let g:ale_javascript_eslint_use_global = 1
 " Enable file fixers (default off)
 let g:ale_fix_on_save = 1
 
+" Fix trailing whitespace on save.
+"
+" Omit Markdown buffers, where trailing whitespace is sometimes used to insert line breaks.
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'markdown': [],
+      \}
+
 "
 " Projectionist integration
 "
