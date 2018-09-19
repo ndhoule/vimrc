@@ -25,8 +25,7 @@ Plug 'tpope/vim-sensible'
 
 Plug 'bfredl/nvim-miniyank'            " Add a killring
 Plug 'dietsche/vim-lastplace'          " Reopen files in the same location
-" TODO(ndhoule): Still necessary?
-Plug 'ntpeters/vim-better-whitespace'  " Strip whitespace on save and highlight trailing whitespace
+Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace, with support for blacklisting filetypes
 Plug 'tpope/vim-endwise'               " Automatically close word control structures (if/fi, do/end, etc.)
 Plug 'tpope/vim-repeat'                " Add support for `.` (repeat) for plugins
 
@@ -55,7 +54,6 @@ Plug 'tpope/vim-surround'           " Add mappings for working on text within pa
 Plug 'w0rp/ale'  " Integrate with linters, fixers, formatters, etc.
 
 " Documentation
-" TODO(ndhoule): start using or remove
 Plug 'ndhoule/investigate.vim'  " Open documentation at point (using Dash, browser, shell command, etc.)
 
 " Git
@@ -86,7 +84,6 @@ function! InstallLanguageClientDeps(info)
   endif
 endfunction
 
-" TODO(ndhoule):j
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'tag': '0.1.120',
