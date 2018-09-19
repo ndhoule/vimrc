@@ -86,11 +86,13 @@ set tabstop=2      " <Tab> inserts n spaces
 " Search
 ""
 
-set hlsearch            " Highlight all search matches
-set ignorecase          " Ignore case when searching
-set inccommand=nosplit  " Show substitutions incrementally, as you type them
-set incsearch           " Highlight search items while typing
-set smartcase           " Don't ignore case in search when term contains an uppercase char
+set hlsearch              " Highlight all search matches
+set ignorecase            " Ignore case when searching
+set incsearch             " Highlight search items while typing
+set smartcase             " Don't ignore case in search when term contains an uppercase char
+if has("nvim")
+  set inccommand=nosplit  " Show substitutions incrementally, as you type them
+endif
 
 ""
 " Keybindings
