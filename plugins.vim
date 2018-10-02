@@ -54,6 +54,9 @@ Plug 'godlygeek/tabular'            " Align text
 Plug 'tomtom/tcomment_vim'          " Add motions for commenting out blocks of code
 Plug 'tpope/vim-surround'           " Add mappings for working on text within pairs of characters (e.g. quotes)
 
+" Text editing
+Plug 'mzlogin/vim-markdown-toc'  " Automatically generate a table of contents withifromn a Markdown file
+
 " Linting/autofixing
 Plug 'w0rp/ale'  " Integrate with linters, fixers, formatters, etc.
 
