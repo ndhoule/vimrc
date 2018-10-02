@@ -57,8 +57,9 @@ Plug 'tpope/vim-surround'           " Add mappings for working on text within pa
 " Text editing
 Plug 'mzlogin/vim-markdown-toc'  " Automatically generate a table of contents withifromn a Markdown file
 
-" Linting/autofixing
-Plug 'w0rp/ale'  " Integrate with linters, fixers, formatters, etc.
+" Job execution
+Plug 'tpope/vim-dispatch'  " Run jobs asynchronously in the background
+Plug 'w0rp/ale'            " Integrate with linters, fixers, formatters, etc.
 
 " Documentation
 Plug 'ndhoule/investigate.vim'  " Open documentation at point (using Dash, browser, shell command, etc.)
