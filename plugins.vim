@@ -95,7 +95,7 @@ endfunction
 
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
-      \ 'tag': '0.1.120',
+      \ 'tag': '0.1.146',
       \ 'do': function('InstallLanguageClientDeps'),
       \ }
 
