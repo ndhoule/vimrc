@@ -41,7 +41,7 @@ highlight link ALEErrorSign todo
 " TODO(ndhoule): Consider disabling all linters by default and enabling them explicitly
 
 " Decrease delay before running linter after text change
-let g:ale_lint_delay = 100
+let g:ale_lint_delay = 500
 
 " Run linter when exiting insert mode (you just finished typing!)
 let g:ale_lint_on_insert_leave = 1
