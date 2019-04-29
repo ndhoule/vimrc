@@ -4,7 +4,7 @@ set hidden
 let g:LanguageClient_changeThrottle = 0.50
 let g:LanguageClient_hoverPreview = "never"
 
-" Let ALE handle all diagnostics
+" Disable diagnostics (e.g. linter errors, compiler errors) support; handle this through ALE
 let g:LanguageClient_diagnosticsEnable = 0
 
 let g:LanguageClient_serverCommands = {
@@ -16,9 +16,8 @@ let g:LanguageClient_serverCommands = {
     \ 'less':           ['css-languageserver', '--stdio'],
     \ 'sass':           ['css-languageserver', '--stdio'],
     \ 'typescript':     ['typescript-language-server', '--stdio'],
-    \ 'typescript.jsx': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
     \ }
-
 
 "
 " Generic placeholder keybindings for LanguageClient functionality. Override these with supported,
