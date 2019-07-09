@@ -33,10 +33,10 @@ Plug 'tpope/vim-repeat'                " Add support for `.` (repeat) for plugin
 Plug 'bronson/vim-visual-star-search'  " Make * and # work on visual selections
 
 " Project navigation
-" TODO(ndhoule): Document fzf installation
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'  " Fuzzy file finder and file contents searcher
-Plug 'majutsushi/tagbar'                             " Menu for navigating ctags
-Plug 'scrooloose/nerdtree'                           " File navigation menu
+Plug 'junegunn/fzf', { 'tag': '0.18.0', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'                           " Fuzzy file finder and file contents searcher
+Plug 'majutsushi/tagbar'                          " Menu for navigating ctags
+Plug 'scrooloose/nerdtree'                        " File navigation menu
 
 " UI
 Plug 'itchyny/lightline.vim'  " Customize statusline
