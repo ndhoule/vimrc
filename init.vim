@@ -52,6 +52,7 @@ call mkdir(&undodir, 'p')
 
 autocmd VimResized * :wincmd = " Automatically rebalance splits when window is resized
 
+set clipboard=unnamed   " Use the system clipboard
 set autochdir           " Set cwd to the current buffer's containing directory
 set autowrite           " Save before executing shell commands to prevent working on a stale file
 set foldlevelstart=100  " Don't fold on fileopen
@@ -135,11 +136,6 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-k> :m '<-2<CR>gv=gv
-
-" Copy to system clipboard
-map <Leader>y "+yy
-" Paste from system clipboard
-map <Leader>p "+p
 
 " FIXME(ndhoule): Doesn't work lately on OS X
 " Make writing files via sudo easier
