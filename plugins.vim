@@ -21,8 +21,6 @@ call plug#begin(s:plugins_path)
 ""
 
 " Core behavior
-Plug 'tpope/vim-sensible'
-
 Plug 'bfredl/nvim-miniyank'            " Add a killring
 Plug 'dietsche/vim-lastplace'          " Reopen files in the same location
 Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace, with support for blacklisting filetypes

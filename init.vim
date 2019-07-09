@@ -65,8 +65,8 @@ set synmaxcol=300       " Limit syntax highlighting to 300 columns wide (perf)
 " UI
 ""
 
-let &colorcolumn=100                " Show warning column at 100 characters
-set list listchars=tab:→\ ,trail:·  " Show glyphs for whitespace
+set colorcolumn=100                 " Show warning column at 100 characters
+set list listchars=tab:→\ ,trail:·  " Show glyphs in place of special whitespace characters
 set number                          " Show line number in gutter
 set termguicolors                   " Use 24-bit color
 set title                           " Set terminal title
