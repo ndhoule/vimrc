@@ -23,7 +23,7 @@ call plug#begin(s:plugins_path)
 " Core behavior
 Plug 'bfredl/nvim-miniyank'            " Add a killring
 Plug 'dietsche/vim-lastplace'          " Reopen files in the same location
-Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace, with support for blacklisting filetypes
+Plug 'ntpeters/vim-better-whitespace', { 'commit': 'f5726c4bbe84a762d5ec62d57af439138a36af76' }    " Highlight trailing whitespace, with support for blacklisting filetypes
 Plug 'tpope/vim-endwise'               " Automatically close word control structures (if/fi, do/end, etc.)
 Plug 'tpope/vim-repeat'                " Add support for `.` (repeat) for plugins
 
