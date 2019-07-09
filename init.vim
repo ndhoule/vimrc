@@ -137,6 +137,9 @@ nnoremap <A-k> :m .-2<CR>==
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+" Clear any text highlighted by hlsearch
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
 " FIXME(ndhoule): Doesn't work lately on OS X
 " Make writing files via sudo easier
 cmap w!! w !sudo tee % >/dev/null
