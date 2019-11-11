@@ -55,7 +55,7 @@ Plug 'mzlogin/vim-markdown-toc', { 'commit': '4c9daef2eaaada5300f9799ab81804d7ed
 
 " Job execution
 Plug 'tpope/vim-dispatch', { 'commit': '5b58b6dc290ece1c37e806e46ee117f5722a535a' }                " Run jobs asynchronously in the background
-Plug 'w0rp/ale', { 'tag': 'v2.5.0' }                                                               " Integrate with linters, fixers, formatters, etc.
+Plug 'w0rp/ale', { 'tag': 'v2.6.0' }                                                               " Integrate with linters, fixers, formatters, etc.
 
 " Documentation
 Plug 'ndhoule/investigate.vim', { 'commit': '2773746099ed6d4adb0cfd252628993cf918c9b3' }           " Open documentation at point (using Dash, browser, shell command, etc.),
@@ -91,14 +91,14 @@ endfunction
 
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
-      \ 'tag': '0.1.146',
+      \ 'tag': '0.1.155',
       \ 'do': function('InstallLanguageClientDeps'),
       \ }
 
 " Syntax highlighting
 Plug 'luochen1990/rainbow', { 'commit': '04b7723b810f24152865af656c46e8513489b77a' }               " Hightlight pairs of characters with different colors
 Plug 'nathanaelkane/vim-indent-guides', { 'commit': '54d889a63716ee2f1818aa2ec5082db47147147b' }   " Change background color to highlight indentation levels
-Plug 'sheerun/vim-polyglot', { 'commit': '3ddca5da461ebfaa82104f82e3cbf19d1c326ade' }              " Install syntax files (and language plugins) for most languages
+Plug 'sheerun/vim-polyglot', { 'commit': '4e95df7c7e12cb76e781f2dacf1c07f8984cce58' }              " Install syntax files (and language plugins) for most languages
 
 " Completion
 Plug 'roxma/nvim-yarp'                                                                             " ncm2 dependency
