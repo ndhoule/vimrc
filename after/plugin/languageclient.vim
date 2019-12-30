@@ -8,15 +8,15 @@ let g:LanguageClient_hoverPreview = "never"
 let g:LanguageClient_diagnosticsEnable = 0
 
 let g:LanguageClient_serverCommands = {
-    \ 'css':            ['css-languageserver', '--stdio'],
-    \ 'dockerfile':     ['docker-langserver', '--stdio'],
-    \ 'javascript':     ['flow-language-server', '--stdio', '--try-flow-bin'],
-    \ 'javascript.jsx': ['flow-language-server', '--stdio', '--try-flow-bin'],
-    \ 'json':           ['json-languageserver', '--stdio'],
-    \ 'less':           ['css-languageserver', '--stdio'],
-    \ 'sass':           ['css-languageserver', '--stdio'],
-    \ 'typescript':     ['typescript-language-server', '--stdio'],
-    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+    \ 'css':             ['css-languageserver', '--stdio'],
+    \ 'dockerfile':      ['docker-langserver', '--stdio'],
+    \ 'javascript':      ['flow-language-server', '--stdio', '--try-flow-bin'],
+    \ 'javascriptreact': ['flow-language-server', '--stdio', '--try-flow-bin'],
+    \ 'json':            ['json-languageserver', '--stdio'],
+    \ 'less':            ['css-languageserver', '--stdio'],
+    \ 'sass':            ['css-languageserver', '--stdio'],
+    \ 'typescript':      ['typescript-language-server', '--stdio'],
+    \ 'typescriptreact': ['typescript-language-server', '--stdio'],
     \ }
 
 "
