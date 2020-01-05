@@ -7,11 +7,16 @@ let g:LanguageClient_hoverPreview = "never"
 " Disable diagnostics (e.g. linter errors, compiler errors) support; handle this through ALE
 let g:LanguageClient_diagnosticsEnable = 0
 
+let g:LanguageClient_rootMarkers = {
+    \ 'javascript': ['.flowconfig', 'package.json'],
+    \ 'javascriptreact': ['.flowconfig', 'package.json'],
+    \ }
+
 let g:LanguageClient_serverCommands = {
     \ 'css':             ['css-languageserver', '--stdio'],
     \ 'dockerfile':      ['docker-langserver', '--stdio'],
-    \ 'javascript':      ['flow-language-server', '--stdio', '--try-flow-bin'],
-    \ 'javascriptreact': ['flow-language-server', '--stdio', '--try-flow-bin'],
+    \ 'javascript':      ['flow', 'lsp'],
+    \ 'javascriptreact': ['flow', 'lsp'],
     \ 'json':            ['json-languageserver', '--stdio'],
     \ 'less':            ['css-languageserver', '--stdio'],
     \ 'sass':            ['css-languageserver', '--stdio'],
