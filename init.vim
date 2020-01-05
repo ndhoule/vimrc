@@ -52,15 +52,15 @@ call mkdir(&undodir, 'p')
 
 autocmd VimResized * :wincmd = " Automatically rebalance splits when window is resized
 
-set clipboard=unnamed   " Use the system clipboard
-set autochdir           " Set cwd to the current buffer's containing directory
-set autowrite           " Save before executing shell commands to prevent working on a stale file
-set foldlevelstart=100  " Don't fold on fileopen
-set foldmethod=indent   " Use indentation levels to fold
-set mouse=a             " Enable mouse in all modes
-set scrolljump=5        " Scroll five lines at a time (perf)
-set scrolloff=5         " Start scrolling five lines from the bottom (perf)
-set synmaxcol=300       " Limit syntax highlighting to 300 columns wide (perf)
+set clipboard=unnamedplus  " Use the system clipboard
+set autochdir              " Set cwd to the current buffer's containing directory
+set autowrite              " Save before executing shell commands to prevent working on a stale file
+set foldlevelstart=100     " Don't fold on fileopen
+set foldmethod=indent      " Use indentation levels to fold
+set mouse=a                " Enable mouse in all modes
+set scrolljump=5           " Scroll five lines at a time (perf)
+set scrolloff=5            " Start scrolling five lines from the bottom (perf)
+set synmaxcol=300          " Limit syntax highlighting to 300 columns wide (perf)
 
 ""
 " UI
