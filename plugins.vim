@@ -67,7 +67,9 @@ Plug 'tpope/vim-fugitive', { 'commit': '5f9602e12f27bd59e38a0814c524c7c385ef4137
 Plug 'tpope/vim-rhubarb', { 'commit': 'c509c7eedeea641f5b0bdae708581ff610fbff5b' }                 " Add vim-fugitive GitHub integration
 
 " Environment
-Plug 'direnv/direnv.vim', { 'commit': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1' }                 " Source direnv files, keeping vim environment/subshells in sync with host shell env
+if executable('direnv')
+  Plug 'direnv/direnv.vim', { 'commit': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1' }               " Source direnv files, keeping vim environment/subshells in sync with host shell env
+endif
 
 " Project settings
 Plug 'editorconfig/editorconfig-vim', { 'commit': '37bedf88cabb61d4580295b6e347058df7e7f1b4' }     " Add integration for .editorconfig files
