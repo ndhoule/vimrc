@@ -13,6 +13,11 @@ if empty(glob(s:plug_vim_path))
   autocmd VimEnter * PlugInstall --sync
 endif
 
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 " Load vim-plug
 call plug#begin(s:plugins_path)
 
@@ -80,8 +85,10 @@ Plug 'Raimondi/delimitMate', { 'commit': '728b57a6564c1d2bdfb9b9e0f2f8c5ba3d7e0c
 
 " Language Server Protocol
 "
-" https://microsoft.github.io/language-server-protocol/
-" http://langserver.org/
+" - http://langserver.org/
+" - https://microsoft.github.io/language-server-protocol/
+" - :help lsp
+
 function! InstallLanguageClientDeps(info)
   if a:info.status == 'installed' || a:info.force
     " Install compiled LanguageClient-neovim binary
@@ -91,11 +98,13 @@ function! InstallLanguageClientDeps(info)
   endif
 endfunction
 
-Plug 'autozimu/LanguageClient-neovim', {
+Plug 'autozimu/LanguageClient-neovim', Cond(!has('nvim-0.5'), {
       \ 'branch': 'next',
-      \ 'tag': '0.1.155',
+      \ 'tag': '0.1.156',
       \ 'do': function('InstallLanguageClientDeps'),
-      \ }
+      \ })
+
+Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
 
 " Syntax highlighting
 Plug 'luochen1990/rainbow', { 'commit': '04b7723b810f24152865af656c46e8513489b77a' }               " Hightlight pairs of characters with different colors
@@ -104,7 +113,7 @@ Plug 'sheerun/vim-polyglot', { 'commit': '4e95df7c7e12cb76e781f2dacf1c07f8984cce
 
 " Completion
 Plug 'roxma/nvim-yarp'                                                                             " ncm2 dependency
-Plug 'ncm2/ncm2', { 'commit': 'e5a7976ad175251a96c537488d2d9557fafdcc8b' }                         " Autocompletion engine
+Plug 'Anexen/ncm2', { 'branch': 'feature/built-in-lsp' }                                           " Autocompletion engine
 Plug 'ncm2/ncm2-bufword', { 'commit': '1d42750114e47a31286268880affcd66c6ae48d5' }                 " ncm2 plugin for completing words present in current buffer
 Plug 'ncm2/ncm2-path', { 'commit': '84b1e6b5f28ced2245ff08e6694101f029fdfca8' }                    " ncm2 plugin for completing file paths
 Plug 'ncm2/ncm2-tmux', { 'commit': '17fa16ac1211af3d8e671f1591939d6f37bdd3bd' }                    " ncm2 plugin for completing words present in tmux buffers
