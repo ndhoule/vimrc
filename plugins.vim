@@ -62,9 +62,6 @@ Plug 'mzlogin/vim-markdown-toc', { 'commit': '25c6e3d274da6286c9b5c2cc9406c8d113
 Plug 'tpope/vim-dispatch', { 'commit': '1206e1474fc613caeb1ba56d36b71d7f9f7760ac' }                " Run jobs asynchronously in the background
 Plug 'dense-analysis/ale', { 'commit': '4afbf2f25dc0ce86b118261b0cfb904c80ae6ba0' }                " Integrate with linters, fixers, formatters, etc.
 
-" Documentation
-Plug 'ndhoule/investigate.vim', { 'commit': '2773746099ed6d4adb0cfd252628993cf918c9b3' }           " Open documentation at point (using Dash, browser, shell command, etc.),
-
 " Git integration
 Plug 'airblade/vim-gitgutter', { 'commit': '2ef4f7e7b20dce7fd89adbeb6a943240b77a7a8e' }            " Show Git diff in sign column
 Plug 'tpope/vim-fugitive', { 'commit': '9d62c677378f5ac5abaa8229eb49aaf133fba3fa' }                " Add vim commands for Git operations
