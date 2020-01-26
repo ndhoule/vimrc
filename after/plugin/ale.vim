@@ -43,9 +43,6 @@ highlight link ALEErrorSign todo
 " Decrease delay before running linter after text change
 let g:ale_lint_delay = 500
 
-" Run linter when exiting insert mode (you just finished typing!)
-let g:ale_lint_on_insert_leave = 1
-
 " Use eslint_d for faster linting and fixing; it delegates to project-local eslint installations.
 let g:ale_javascript_eslint_executable = 'eslint_d'
 let g:ale_javascript_eslint_use_global = 1
