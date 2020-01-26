@@ -41,7 +41,7 @@ highlight link ALEErrorSign todo
 " TODO(ndhoule): Consider disabling all linters by default and enabling them explicitly
 
 " Decrease delay before running linter after text change
-let g:ale_lint_delay = 500
+let g:ale_lint_delay = 100
 
 " Use eslint_d for faster linting and fixing; it delegates to project-local eslint installations.
 let g:ale_javascript_eslint_executable = 'eslint_d'
