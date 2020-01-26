@@ -26,11 +26,11 @@ call plug#begin(s:plugins_path)
 ""
 
 " Core behavior
-Plug 'bfredl/nvim-miniyank', { 'commit': '16880b598a78020d90e56d143723590f0310d3d2' }              " Add a killring
-Plug 'dietsche/vim-lastplace', { 'tag': 'v3.1.1' }                                                 " Reopen files in the same location
-Plug 'ntpeters/vim-better-whitespace', { 'commit': 'f5726c4bbe84a762d5ec62d57af439138a36af76' }    " Highlight trailing whitespace, with support for blacklisting filetypes
-Plug 'tpope/vim-endwise', { 'commit': 'f67d022169bd04d3c000f47b1c03bfcbc4209470'}                  " Automatically close word control structures (if/fi, do/end, etc.)
-Plug 'tpope/vim-repeat', { 'tag': 'v1.2' }                                                         " Add support for `.` (repeat) for plugins
+Plug 'bfredl/nvim-miniyank', { 'commit': '2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b' }              " Add a killring
+Plug 'dietsche/vim-lastplace', { 'commit': '48ba343c8c1ca3039224727096aae214f51327d1' }            " Reopen files in the same location
+Plug 'ntpeters/vim-better-whitespace', { 'commit': '166a409f1ddade37d1cfd25ba7c6b60270831a95' }    " Highlight trailing whitespace, with support for blacklisting filetypes
+Plug 'tpope/vim-endwise', { 'commit': 'bf90d8be447de667f4532b934d1a70881be56dd8'}                  " Automatically close word control structures (if/fi, do/end, etc.)
+Plug 'tpope/vim-repeat', { 'commit': 'c947ad2b6a16983724a0153bdf7f66d7a80a32ca' }                  " Add support for `.` (repeat) for plugins
 
 " New core commands
 Plug 'EinfachToll/DidYouMean', { 'commit': 'a98fb17ba16aa2eb69b3f9cc7a70e8a736890e4e' }            " Suggest alternatives when opening a misspelled file (e.g. 'index.j' -> 'index.js')
@@ -41,44 +41,41 @@ Plug 'vim-scripts/Rename', { 'tag': '0.3' }                                     
 Plug 'bronson/vim-visual-star-search', { 'commit': 'fa55818903301d61cef67341d3524a63a14bc033' }    " Make * and # work on visual selections
 
 " Project navigation
-Plug 'junegunn/fzf', { 'tag': '0.18.0', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim', { 'commit': '359a80e3a34aacbd5257713b6a88aa085337166f' }                  " Fuzzy file finder and file contents searcher
-Plug 'majutsushi/tagbar', { 'commit': '387bbadda98e1376ff3871aa461b1f0abd4ece70' }                 " Menu for navigating ctags
-Plug 'scrooloose/nerdtree', { 'commit': '2f0d48d632dc303095084b382cb665ae57ad2e63' }               " File navigation menu
+Plug 'junegunn/fzf', { 'commit': '4ec403347c803beccffcf7e9f12bacafcb5d24a2', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim', { 'commit': 'dc4c4c22715c060a2babd5a5187004bdecbcdea7' }                  " Fuzzy file finder and file contents searcher
+Plug 'majutsushi/tagbar', { 'commit': '6dafb3dfe87dccc055dc6b77b34bd39627226591' }                 " Menu for navigating ctags
+Plug 'scrooloose/nerdtree', { 'commit': '26740d1157dc1befe2a088052e10cf00436a5003' }               " File navigation menu
 
 " UI
-Plug 'itchyny/lightline.vim', { 'commit': '80c242c3c5394fd5143b5d7e2741989ba04ae46a' }             " Customize statusline
+Plug 'itchyny/lightline.vim', { 'commit': 'f4fa096a67afbe593bd53cf618850c32512b5d47' }             " Customize statusline
 
 " Motions
 Plug 'christoomey/vim-sort-motion', { 'commit': '49dfcabeee2bf3a85a6cc0774b35f687b6c9d0e5' }       " Add motions for sorting within a line or range of lines
 Plug 'gcmt/wildfire.vim', { 'commit': 'e2baded7162260e05d2527f5bca9fca81f0bc8f2' }                 " Add motions for expanding a visual cursor within a group
-Plug 'tomtom/tcomment_vim', { 'commit': '622cc0551bef87a3dfb2846cb339412eeb8ef133' }               " Add motions for commenting out blocks of code
-Plug 'tpope/vim-surround', { 'commit': 'ca58a2d886cc18734c90c9665da4775d444b0c04' }                " Add mappings for working on text within pairs of characters (e.g. quotes)
+Plug 'tomtom/tcomment_vim', { 'commit': '239c0c08d3e691a2c447278b88de91b602fa50bd' }               " Add motions for commenting out blocks of code
+Plug 'tpope/vim-surround', { 'commit': 'f51a26d3710629d031806305b6c8727189cd1935' }                " Add mappings for working on text within pairs of characters (e.g. quotes)
 
 " Text editing
-Plug 'mzlogin/vim-markdown-toc', { 'commit': '4c9daef2eaaada5300f9799ab81804d7ed9958ba' }          " Generate a table of contents for a Markdown buffer
+Plug 'mzlogin/vim-markdown-toc', { 'commit': '25c6e3d274da6286c9b5c2cc9406c8d113a8426f' }          " Generate a table of contents for a Markdown buffer
 
 " Job execution
-Plug 'tpope/vim-dispatch', { 'commit': '5b58b6dc290ece1c37e806e46ee117f5722a535a' }                " Run jobs asynchronously in the background
-Plug 'w0rp/ale', { 'tag': 'v2.6.0' }                                                               " Integrate with linters, fixers, formatters, etc.
+Plug 'tpope/vim-dispatch', { 'commit': '1206e1474fc613caeb1ba56d36b71d7f9f7760ac' }                " Run jobs asynchronously in the background
+Plug 'dense-analysis/ale', { 'commit': '4afbf2f25dc0ce86b118261b0cfb904c80ae6ba0' }                " Integrate with linters, fixers, formatters, etc.
 
 " Documentation
 Plug 'ndhoule/investigate.vim', { 'commit': '2773746099ed6d4adb0cfd252628993cf918c9b3' }           " Open documentation at point (using Dash, browser, shell command, etc.),
 
 " Git integration
-Plug 'airblade/vim-gitgutter', { 'commit': '91471746fe687ee867877508dfd809460dab5698' }            " Show Git diff in sign column
-Plug 'mattn/gist-vim', { 'commit': 'e485c6c24a62b378a2a4c8687e36e7f54ceca18c' } | Plug 'mattn/webapi-vim' " Create a GitHub Gist from the current buffer
-Plug 'tpope/vim-fugitive', { 'commit': '5f9602e12f27bd59e38a0814c524c7c385ef4137' }                " Add vim commands for Git operations
+Plug 'airblade/vim-gitgutter', { 'commit': '2ef4f7e7b20dce7fd89adbeb6a943240b77a7a8e' }            " Show Git diff in sign column
+Plug 'tpope/vim-fugitive', { 'commit': '9d62c677378f5ac5abaa8229eb49aaf133fba3fa' }                " Add vim commands for Git operations
 Plug 'tpope/vim-rhubarb', { 'commit': 'c509c7eedeea641f5b0bdae708581ff610fbff5b' }                 " Add vim-fugitive GitHub integration
 
 " Environment
-if executable('direnv')
-  Plug 'direnv/direnv.vim', { 'commit': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1' }               " Source direnv files, keeping vim environment/subshells in sync with host shell env
-endif
+Plug 'direnv/direnv.vim', Cond(executable('direnv'), { 'commit': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1' }) " Source direnv files, keeping vim environment/subshells in sync with host shell env
 
 " Project settings
-Plug 'editorconfig/editorconfig-vim', { 'commit': '37bedf88cabb61d4580295b6e347058df7e7f1b4' }     " Add integration for .editorconfig files
-Plug 'tpope/vim-projectionist', { 'commit': '92ff29c0c0085ac922cad1a24cf0b0bf69751b4d' }           " Add support for project configuration files ('projections')
+Plug 'editorconfig/editorconfig-vim', { 'commit': '7e5b4a91ad55b992247edb87543ed7855db1a199' }     " Add integration for .editorconfig files
+Plug 'tpope/vim-projectionist', { 'commit': '17a8b2078a9ca1410d2080419e1cb9c9bb2e4492' }           " Add support for project configuration files ('projections')
 
 " Text editing
 Plug 'Raimondi/delimitMate', { 'commit': '728b57a6564c1d2bdfb9b9e0f2f8c5ba3d7e0c5c' }              " Insert matching pairs of characters in insert mode (e.g. (), [], '')
@@ -109,7 +106,7 @@ Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
 " Syntax highlighting
 Plug 'luochen1990/rainbow', { 'commit': '04b7723b810f24152865af656c46e8513489b77a' }               " Hightlight pairs of characters with different colors
 Plug 'nathanaelkane/vim-indent-guides', { 'commit': '54d889a63716ee2f1818aa2ec5082db47147147b' }   " Change background color to highlight indentation levels
-Plug 'sheerun/vim-polyglot', { 'commit': '4e95df7c7e12cb76e781f2dacf1c07f8984cce58' }              " Install syntax files (and language plugins) for most languages
+Plug 'sheerun/vim-polyglot', { 'commit': 'e8454d66ab8376cf9c7e42f09749d5bd17d98f89' }              " Install syntax files (and language plugins) for most languages
 
 " Completion
 Plug 'roxma/nvim-yarp'                                                                             " ncm2 dependency
@@ -119,9 +116,7 @@ Plug 'ncm2/ncm2-path', { 'commit': '84b1e6b5f28ced2245ff08e6694101f029fdfca8' } 
 Plug 'ncm2/ncm2-tmux', { 'commit': '17fa16ac1211af3d8e671f1591939d6f37bdd3bd' }                    " ncm2 plugin for completing words present in tmux buffers
 
 " Cross-platform support
-if g:host_os == 'Darwin'
-  Plug 'sjl/vitality.vim', { 'commit': '0f693bff572689ad52b781c012dad4926cd924f6' }                " Improve vim + iTerm2 + tmux interop
-endif
+Plug 'sjl/vitality.vim', Cond(g:host_os == 'Darwin', { 'commit': '0f693bff572689ad52b781c012dad4926cd924f6' }) " Improve vim + iTerm2 + tmux interop
 
 " Theming
 " NOTE: You must install your terminal client's base16 color scripts for base16
