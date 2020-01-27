@@ -2,22 +2,37 @@
 " Config
 ""
 
+" If installed, use `ag` as fzf's file search backend
 if executable('ag')
-  " Use `ag` as fzf's search backend
   let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
 endif
 
-let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_layout = {'down': '~20%'}
 
-" Default options for :Ag. Only used in this file when overriding commands, below.
-let b:fzf_default_options = {'options': '--delimiter : --nth 4..'}
+command! -bang -nargs=* Ag
+      \ call fzf#vim#ag(
+      \   <q-args>,
+      \   b:fzf_default_options,
+      \   <bang>0
+      \ )
 
-" Make :Ag match file contents only (matches filenames by default)
-" https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, b:fzf_default_options, <bang>0)
+" Search file contents relative to the project root
+command! -bang -nargs=* Agp
+      \ call fzf#vim#ag(
+      \   <q-args>,
+      \   '--hidden',
+      \   {'dir': ProjectRootGuess()},
+      \   <bang>0
+      \ )
 
-" Make :Ag match file contents only (see above) and search relative to the project root
-command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, extend({'dir': ProjectRootGuess(), 'options': '--delimiter : --nth 4..'}, b:fzf_default_options), <bang>0)
+" Search file contents relative to the current file
+command! -bang -nargs=* Agr
+      \ call fzf#vim#ag(
+      \   <q-args>,
+      \   '--hidden',
+      \   {'dir': fnamemodify(expand(<q-args>), ':p:h')},
+      \   <bang>0
+      \ )
 
 ""
 " Commands
@@ -32,6 +47,5 @@ command! RelFiles execute 'Files' expand('%:p:h')
 
 map <silent> <leader>t :ProjectFiles<CR>
 map <silent> <leader>T :RelFiles<CR>
-" FIXME(ndhoule): Fuzzy matching on this command is terrible
-map <leader>/ :Rag<CR>
-map <leader>? :Ag<CR>
+map <leader>/ :Agp<CR>
+map <leader>? :Agr<CR>
