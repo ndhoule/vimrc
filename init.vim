@@ -23,6 +23,7 @@ endif
 
 " XXX(ndhoule): Fix and remove
 let g:scratch_no_mappings = 1
+let g:rainbow_active = 1
 
 if filereadable(g:DOTVIM_PATH . '/plugins.vim')
   execute('source ' . g:DOTVIM_PATH . '/plugins.vim')
