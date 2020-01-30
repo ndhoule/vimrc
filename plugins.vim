@@ -56,7 +56,7 @@ Plug 'tomtom/tcomment_vim', { 'commit': '239c0c08d3e691a2c447278b88de91b602fa50b
 Plug 'tpope/vim-surround', { 'commit': 'f51a26d3710629d031806305b6c8727189cd1935' }                " Add mappings for working on text within pairs of characters (e.g. quotes)
 
 " Text editing
-Plug 'mzlogin/vim-markdown-toc', { 'commit': '25c6e3d274da6286c9b5c2cc9406c8d113a8426f' }          " Generate a table of contents for a Markdown buffer
+Plug 'SidOfc/mkdx', { 'commit': 'ba6f9748258d73ff9f68913f061cdba822343758' }                       " Extras for Markdown editing, including TOC generation
 
 " Job execution
 Plug 'tpope/vim-dispatch', { 'commit': '1206e1474fc613caeb1ba56d36b71d7f9f7760ac' }                " Run jobs asynchronously in the background
