@@ -16,7 +16,7 @@ nmap <silent> <Leader>ep <Plug>(ale_previous_wrap)
 
 " Info line
 
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s (%code%) [%severity%]'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 
