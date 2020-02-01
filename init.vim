@@ -1,13 +1,10 @@
 " vim:fdm=expr:fdl=0
 " vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
+"# Config variables
+
 " Absolute path to .vim directory.
 let g:DOTVIM_PATH = expand('<sfile>:p:h')
-
-" Bail if running evim. (They don't deserve a nice config.)
-if v:progname =~? 'evim'
-  finish
-endif
 
 " Export OS nicename as `g:host_os`. Includes (but not limited to):
 " Darwin | FreeBSD | Linux | Windows
@@ -22,16 +19,17 @@ endif
 
 "# Plugin setup
 
-" XXX(ndhoule): Fix and remove
-let g:scratch_no_mappings = 1
-let g:rainbow_active = 1
-
 if filereadable(g:DOTVIM_PATH . '/plugins.vim')
   execute('source ' . g:DOTVIM_PATH . '/plugins.vim')
 endif
 
+" XXX(ndhoule): Fix and remove
+let g:scratch_no_mappings = 1
+let g:rainbow_active = 1
+
 "# General config
 
+" Allow expressions in modelines
 set modelineexpr
 
 " Enable backup files
@@ -52,7 +50,8 @@ set undofile
 let &undodir = g:DOTVIM_PATH . '/.undo//'
 call mkdir(&undodir, 'p')
 
-autocmd VimResized * :wincmd = " Automatically rebalance splits when window is resized
+" Automatically rebalance splits when window is resized
+autocmd VimResized * :wincmd =
 
 set clipboard=unnamedplus  " Use the system clipboard
 set autochdir              " Set cwd to the current buffer's containing directory
@@ -134,11 +133,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Clear any text highlighted by hlsearch
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
-" FIXME(ndhoule): Doesn't work lately on OS X
-" Make writing files via sudo easier
-cmap w!! w !sudo tee % >/dev/null
-
-" Yank the current filename to the OS clipboard
+" Yank the current filename to the clipboard
 noremap <silent> <Leader>f :let @+=expand("%:p")<CR>
 
 " Toggle between regular numbering, relative numbering, no numbering
