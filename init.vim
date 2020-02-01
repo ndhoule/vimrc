@@ -1,3 +1,6 @@
+" vim:fdm=expr:fdl=0
+" vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
+
 " Absolute path to .vim directory.
 let g:DOTVIM_PATH = expand('<sfile>:p:h')
 
@@ -17,9 +20,7 @@ else
   let g:host_os = 'Unknown'
 endif
 
-""
-" Plugin Setup
-""
+"# Plugin setup
 
 " XXX(ndhoule): Fix and remove
 let g:scratch_no_mappings = 1
@@ -29,9 +30,9 @@ if filereadable(g:DOTVIM_PATH . '/plugins.vim')
   execute('source ' . g:DOTVIM_PATH . '/plugins.vim')
 endif
 
-""
-" General Config
-""
+"# General config
+
+set modelineexpr
 
 " Enable backup files
 set backup
@@ -63,9 +64,7 @@ set scrolljump=5           " Scroll five lines at a time (perf)
 set scrolloff=5            " Start scrolling five lines from the bottom (perf)
 set synmaxcol=300          " Limit syntax highlighting to 300 columns wide (perf)
 
-""
-" UI
-""
+"# UI
 
 set colorcolumn=100                 " Show warning column at 100 characters
 set list listchars=tab:→\ ,trail:·  " Show glyphs in place of special whitespace characters
@@ -74,9 +73,7 @@ set termguicolors                   " Use 24-bit color
 set title                           " Set terminal title
 set wildmode=list:longest           " Show wildmenu in tall list
 
-""
-" Text Display/Formatting
-""
+"# Text display/formatting
 
 set expandtab      " <Tab> inserts spaces
 set shiftround     " Round indentation to nearest multiple of `shiftwidth`
@@ -85,9 +82,7 @@ set softtabstop=2  " <Tab> inserts n spaces
 set tabstop=2      " <Tab> inserts n spaces
 set textwidth=100  " Automatically wrap long lines
 
-""
-" Search
-""
+"# Search
 
 set hlsearch              " Highlight all search matches
 set ignorecase            " Ignore case when searching
@@ -97,9 +92,7 @@ if has("nvim")
   set inccommand=nosplit  " Show substitutions incrementally, as you type them
 endif
 
-""
-" Keybindings
-""
+"# Keybindings
 
 let g:mapleader=','
 
