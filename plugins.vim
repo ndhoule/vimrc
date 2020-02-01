@@ -21,6 +21,9 @@ function! PackInit() abort
 
   "## Core behavior
 
+  " Use a common set of vim defaults
+  call minpac#add('tpope/vim-sensible')
+
   " Add a killring
   call minpac#add('bfredl/nvim-miniyank', {'rev': '2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b'})
 

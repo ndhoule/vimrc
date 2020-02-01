@@ -60,7 +60,6 @@ set foldlevelstart=100     " Don't fold on fileopen
 set foldmethod=indent      " Use indentation levels to fold
 set mouse=a                " Enable mouse in all modes
 set scrolljump=5           " Scroll five lines at a time (perf)
-set scrolloff=5            " Start scrolling five lines from the bottom (perf)
 set synmaxcol=300          " Limit syntax highlighting to 300 columns wide (perf)
 
 "# UI
@@ -85,7 +84,6 @@ set textwidth=100  " Automatically wrap long lines
 
 set hlsearch              " Highlight all search matches
 set ignorecase            " Ignore case when searching
-set incsearch             " Highlight search items while typing
 set smartcase             " Don't ignore case in search when term contains an uppercase char
 if has("nvim")
   set inccommand=nosplit  " Show substitutions incrementally, as you type them
