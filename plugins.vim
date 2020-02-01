@@ -125,6 +125,9 @@ function! PackInit() abort
   " Add support for project configuration files ('projections')
   call minpac#add('tpope/vim-projectionist', {'rev': '17a8b2078a9ca1410d2080419e1cb9c9bb2e4492'})
 
+  " Load project-specific vimrc (.lvimrc) files
+  call minpac#add('embear/vim-localvimrc', {'rev': '0b36a367f4d46b7f060836fcbfec029cce870ea9'})
+
   "## Text editing
 
   " Insert matching pairs of characters in insert mode (e.g. (), [], '')
