@@ -58,7 +58,10 @@ function! PackInit() abort
   "## Project navigation
 
   " Fuzzy file finder and file contents searcher
-  call minpac#add('junegunn/fzf', {'rev': '4ec403347c803beccffcf7e9f12bacafcb5d24a2', 'do': './install --bin'})
+  call minpac#add('junegunn/fzf', {
+        \   'rev': '4ec403347c803beccffcf7e9f12bacafcb5d24a2',
+        \   'do': {-> system('./install --bin')},
+        \ })
   call minpac#add('junegunn/fzf.vim', {'rev': 'dc4c4c22715c060a2babd5a5187004bdecbcdea7'})
 
   " Menu for navigating ctags, LSP symbols, etc.
@@ -157,7 +160,7 @@ function! PackInit() abort
     call minpac#add('autozimu/LanguageClient-neovim', {
           \   'rev': '0.1.156',
           \   'branch': 'next',
-          \   'do': function('s:InstallLanguageClientDeps')
+          \   'do': function('s:InstallLanguageClientDeps'),
           \ })
   endif
 
@@ -165,18 +168,20 @@ function! PackInit() abort
 
   " Hightlight pairs of characters with different colors
   call minpac#add('luochen1990/rainbow', {'rev': '04b7723b810f24152865af656c46e8513489b77a'})
-  call minpac#add('nathanaelkane/vim-indent-guides', {'rev': '54d889a63716ee2f1818aa2ec5082db47147147b'}) " Change background color to highlight indentation levels
+
+  " Change background color to highlight indentation levels
+  call minpac#add('nathanaelkane/vim-indent-guides', {'rev': '54d889a63716ee2f1818aa2ec5082db47147147b'})
+
   " Install syntax files (and language plugins) for most languages
   call minpac#add('sheerun/vim-polyglot', {'rev': 'e8454d66ab8376cf9c7e42f09749d5bd17d98f89'})
 
   "## Completion
 
   " Autocompletion engine
-  call minpac#add('roxma/nvim-yarp')
   " TODO(ndhoule): Revert to using ncm2/ncm2 once it supports native LSP completion:
   " - https://github.com/ncm2/ncm2/issues/93
   " - https://github.com/ncm2/ncm2/pull/178
-  call minpac#add('Anexen/ncm2', {'rev': 'feature/built-in-lsp'})
+  call minpac#add('roxma/nvim-yarp') | call minpac#add('Anexen/ncm2', {'rev': 'feature/built-in-lsp'})
 
   " ncm2 plugin for completing words present in current buffer
   call minpac#add('ncm2/ncm2-bufword', {'rev': '1d42750114e47a31286268880affcd66c6ae48d5'})
