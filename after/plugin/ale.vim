@@ -72,8 +72,11 @@ let g:ale_fixers = {
 "
 " {
 "   "*": {
-"     "fixers": ["prettier"],
-"     "linters": ["eslint", "tsserver"]
+"     "fixers": ["eslint"],
+"     "linters": ["eslint", "tsserver"],
+"     "linter_options": {
+"       "eslint": "--resolve-plugins-relative-to='node_modules/@ndhoule/eslint-config'"
+"     }
 "   }
 " }
 " ```
@@ -84,26 +87,26 @@ augroup ale_projectionist_integration
 augroup END
 
 function! s:set_linters() abort
-  let l:linters = projectionist#query('linters')
+  let l:q_linters = projectionist#query('linters')
   " TODO(ndhoule): Support unsetting linters via empty list `[]` or `null`
-  if len(l:linters) > 0 && &filetype != ''
-    " XXX(ndhoule): On dot-separated filetypes (e.g. javascript.jsx), ALE will apply all parent
-    " filetype linters to this buffer. So if you're editing a javascript.jsx buffer and override all
-    " linters via `b:ale_linters = {'javascript.jsx' = []}`, ALE will still leave all `javascript`
-    " linters enabled. This sucks! So set the linter on the parent filetype.
-    let l:filetypes = split(&filetype, "\\.")
-    let l:filetype = filetypes[0]
+  if len(l:q_linters) > 0 && &filetype != ''
+    let l:linters = l:q_linters[0][1]
+    let b:ale_linters = {&filetype: l:linters}
+  endif
 
-    let b:ale_linters = {filetype: l:linters[0][1]}
+  let l:q_linter_options = projectionist#query('linter_options')
+  if len(l:q_linter_options) > 0 && &filetype != ''
+    let l:linter_options = l:q_linter_options[0][1]
+    for [linter, options] in items(l:linter_options)
+      let b:ale_javascript_{linter}_options = options
+    endfor
   endif
 endfunction
 
 function! s:set_fixers() abort
-  let l:fixers = projectionist#query('fixers')
-  if len(l:fixers) > 0 && &filetype != ''
-    let l:filetypes = split(&filetype, "\\.")
-    let l:filetype = filetypes[0]
-
-    let b:ale_fixers = {filetype: l:fixers[0][1]}
+  let l:q_fixers = projectionist#query('fixers')
+  if len(l:q_fixers) > 0 && &filetype != ''
+    let l:fixers = l:q_fixers[0][1]
+    let b:ale_fixers = {&filetype: l:fixers}
   endif
 endfunction
