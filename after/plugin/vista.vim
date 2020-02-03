@@ -1,6 +1,11 @@
-"# Configuration for Vista.vim (https://github.com/liuchengxu/vista.vim)
+" vim:fdm=expr:fdl=0
+" vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
-"## Configuration
+"
+" https://github.com/liuchengxu/vista.vim
+"
+
+"# Configuration
 
 let g:vista_executive_for = {
       \   'Dockerfile': 'nvim_lsp',
@@ -12,6 +17,6 @@ let g:vista_executive_for = {
       \   'vim': 'nvim_lsp',
       \ }
 
-"## Keybindings
+"# Keybindings
 
 nmap <silent> <leader><Tab> :Vista<CR>
