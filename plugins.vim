@@ -204,6 +204,8 @@ function! PackInit() abort
     " Improve vim + iTerm2 + tmux interop
     call minpac#add('sjl/vitality.vim', {'rev': '0f693bff572689ad52b781c012dad4926cd924f6'})
   endif
+
+  call minpac#add('janko/vim-test', {'rev': '449334e887cf449be0f111bf98282e349ce137f4'})
 endfunction
 
 " Define user commands for interacting with plugins. Each of these loads minpac and reloads the

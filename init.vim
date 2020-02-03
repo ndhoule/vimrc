@@ -27,6 +27,12 @@ endif
 let g:scratch_no_mappings = 1
 let g:rainbow_active = 1
 
+let g:test#runner_commands = ['Mocha']
+let test#project_root = '/Users/ndhoule/dev/src/github.com/goodeggs/garbanzo'
+let test#javascript#runner = 'mocha'
+let test#enabled_runners = ['javascript#mocha']
+let test#javascript#mocha#file_pattern = '\v\.(j|t)sx?$'
+
 "# General config
 
 " Allow expressions in modelines
