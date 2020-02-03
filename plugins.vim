@@ -208,6 +208,6 @@ endfunction
 
 " Define user commands for interacting with plugins. Each of these loads minpac and reloads the
 " vimrc (running the guarded section below)
-command! PackClean  call PackInit() | call minpac#clean()
-command! PackStatus call PackInit() | call minpac#status()
-command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
+command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
+command! PackStatus source $MYVIMRC | call PackInit() | call minpac#status()
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
