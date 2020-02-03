@@ -61,8 +61,8 @@ function! PackInit() abort
   call minpac#add('junegunn/fzf', {'rev': '4ec403347c803beccffcf7e9f12bacafcb5d24a2', 'do': './install --bin'})
   call minpac#add('junegunn/fzf.vim', {'rev': 'dc4c4c22715c060a2babd5a5187004bdecbcdea7'})
 
-  " Menu for navigating ctags
-  call minpac#add('majutsushi/tagbar', {'rev': '6dafb3dfe87dccc055dc6b77b34bd39627226591'})
+  " Menu for navigating ctags, LSP symbols, etc.
+  call minpac#add('liuchengxu/vista.vim', {'rev': 'dd5769ec7a1e4c2c8927a6af4d26f88524faa60c'})
 
   " File navigation menu
   call minpac#add('scrooloose/nerdtree', {'rev': '26740d1157dc1befe2a088052e10cf00436a5003'})
