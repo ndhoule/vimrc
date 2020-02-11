@@ -178,10 +178,7 @@ function! PackInit() abort
   "## Completion
 
   " Autocompletion engine
-  " TODO(ndhoule): Revert to using ncm2/ncm2 once it supports native LSP completion:
-  " - https://github.com/ncm2/ncm2/issues/93
-  " - https://github.com/ncm2/ncm2/pull/178
-  call minpac#add('roxma/nvim-yarp') | call minpac#add('Anexen/ncm2', {'rev': 'feature/built-in-lsp'})
+  call minpac#add('roxma/nvim-yarp') | call minpac#add('ncm2/ncm2', {'rev': '605ea0ddcec45b33ec7db69119822a9a5d538823'})
 
   " ncm2 plugin for completing words present in current buffer
   call minpac#add('ncm2/ncm2-bufword', {'rev': '1d42750114e47a31286268880affcd66c6ae48d5'})
