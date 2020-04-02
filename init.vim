@@ -1,6 +1,8 @@
 " vim:fdm=expr:fdl=0
 " vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
+let $NODENV_VERSION="system"
+
 "# Config variables
 
 " Absolute path to .vim directory.
@@ -61,6 +63,7 @@ set foldmethod=indent      " Use indentation levels to fold
 set mouse=a                " Enable mouse in all modes
 set scrolljump=5           " Scroll five lines at a time (perf)
 set synmaxcol=300          " Limit syntax highlighting to 300 columns wide (perf)
+" set re=1                   " Disable old regexp engine
 
 "# UI
 
