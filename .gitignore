@@ -5,4 +5,5 @@
 .undo/
 .viminfo*
 pack/
+!pack/minpac/opt/minpac/
 spell/
