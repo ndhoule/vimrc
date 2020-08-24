@@ -31,10 +31,10 @@ function! PackInit() abort
   call minpac#add('dietsche/vim-lastplace', {'rev': '48ba343c8c1ca3039224727096aae214f51327d1'})
 
   " Highlight trailing whitespace, with support for blacklisting filetypes
-  call minpac#add('ntpeters/vim-better-whitespace', {'rev': '166a409f1ddade37d1cfd25ba7c6b60270831a95'})
+  call minpac#add('ntpeters/vim-better-whitespace', {'rev': '8cf4b2175dd61416c2fe7d3234324a6c59d678de'})
 
   " Automatically close word control structures (if/fi, do/end, etc.)
-  call minpac#add('tpope/vim-endwise', {'rev': 'bf90d8be447de667f4532b934d1a70881be56dd8'})
+  call minpac#add('tpope/vim-endwise', {'rev': '97180a73ad26e1dcc1eebe8de201f7189eb08344'})
 
   " Add support for `.` (repeat) for plugins
   call minpac#add('tpope/vim-repeat', {'rev': 'c947ad2b6a16983724a0153bdf7f66d7a80a32ca'})
@@ -53,27 +53,27 @@ function! PackInit() abort
   "## Search
 
   " Make * and # work on visual selections
-  call minpac#add('bronson/vim-visual-star-search', {'rev': 'fa55818903301d61cef67341d3524a63a14bc033'})
+  call minpac#add('bronson/vim-visual-star-search', {'rev': 'e48c3fe596230e38f5a0e5313455e835c14aeb6a'})
 
   "## Project navigation
 
   " Fuzzy file finder and file contents searcher
   call minpac#add('junegunn/fzf', {
-        \   'rev': '4ec403347c803beccffcf7e9f12bacafcb5d24a2',
+        \   'rev': 'f2d44ab5a793906457f3d3384f09af085096138d',
         \   'do': {-> system('./install --bin')},
         \ })
-  call minpac#add('junegunn/fzf.vim', {'rev': 'dc4c4c22715c060a2babd5a5187004bdecbcdea7'})
+  call minpac#add('junegunn/fzf.vim', {'rev': '4145f53f3d343c389ff974b1f1a68eeb39fba18b'})
 
   " Menu for navigating ctags, LSP symbols, etc.
-  call minpac#add('liuchengxu/vista.vim', {'rev': 'dd5769ec7a1e4c2c8927a6af4d26f88524faa60c'})
+  call minpac#add('liuchengxu/vista.vim', {'rev': '7f97d30914daea5b542a90eed747d5bd00afbb19'})
 
   " File navigation menu
-  call minpac#add('scrooloose/nerdtree', {'rev': '26740d1157dc1befe2a088052e10cf00436a5003'})
+  call minpac#add('preservim/nerdtree', {'rev': '577ddc73f0a1d2fd6166ed3268ab8536111037e0'})
 
   "## Statusline
 
   " Customize statusline
-  call minpac#add('itchyny/lightline.vim', {'rev': 'f4fa096a67afbe593bd53cf618850c32512b5d47'})
+  call minpac#add('itchyny/lightline.vim', {'rev': '1b412cf3af3dad79ee5807e6b151b8ac6aa4e2fc'})
 
   "## Motions
 
@@ -84,7 +84,7 @@ function! PackInit() abort
   call minpac#add('gcmt/wildfire.vim', {'rev': 'e2baded7162260e05d2527f5bca9fca81f0bc8f2'})
 
   " Add motions for commenting out blocks of code
-  call minpac#add('tomtom/tcomment_vim', {'rev': '239c0c08d3e691a2c447278b88de91b602fa50bd'})
+  call minpac#add('tomtom/tcomment_vim', {'rev': '25bdb50a6c5934d4ac9313cef0d7d2168d84803b'})
 
   " Add mappings for working on text within pairs of characters (e.g. quotes)
   call minpac#add('tpope/vim-surround', {'rev': 'f51a26d3710629d031806305b6c8727189cd1935'})
@@ -92,20 +92,20 @@ function! PackInit() abort
   "## Text editing
 
   " Extras for Markdown editing, including TOC generation
-  call minpac#add('SidOfc/mkdx', {'rev': 'ba6f9748258d73ff9f68913f061cdba822343758'})
+  call minpac#add('SidOfc/mkdx', {'rev': 'fdc00bbe21e7de0208e2ee1ea6254525aa324bb4'})
 
   "## Job execution
 
   " Run jobs asynchronously in the background
-  call minpac#add('tpope/vim-dispatch', {'rev': '1206e1474fc613caeb1ba56d36b71d7f9f7760ac'})
+  call minpac#add('tpope/vim-dispatch', {'rev': 'fe6a34322829e466a7e8ce710a6ac5eabddff9fd'})
 
   " Integrate with linters, fixers, formatters, etc.
-  call minpac#add('dense-analysis/ale', {'rev': '4afbf2f25dc0ce86b118261b0cfb904c80ae6ba0'})
+  call minpac#add('dense-analysis/ale', {'rev': '3e2abe3f25493af63af91a6013447e378e09f6ec'})
 
   "## Git integration
 
   " Show Git diff in sign column
-  call minpac#add('airblade/vim-gitgutter', {'rev': '2ef4f7e7b20dce7fd89adbeb6a943240b77a7a8e'})
+  call minpac#add('airblade/vim-gitgutter', {'rev': '8005f71aabef13f5872b3ef4802f36503a16c451'})
 
   " Add vim commands for Git operations
   call minpac#add('tpope/vim-fugitive', {'rev': '9d62c677378f5ac5abaa8229eb49aaf133fba3fa'})
@@ -123,18 +123,18 @@ function! PackInit() abort
   "## Project settings
 
   " Add integration for .editorconfig files
-  call minpac#add('editorconfig/editorconfig-vim', {'rev': '7e5b4a91ad55b992247edb87543ed7855db1a199'})
+  call minpac#add('editorconfig/editorconfig-vim', {'rev': '0a3c1d8082e38a5ebadcba7bb3a608d88a9ff044'})
 
   " Add support for project configuration files ('projections')
-  call minpac#add('tpope/vim-projectionist', {'rev': '17a8b2078a9ca1410d2080419e1cb9c9bb2e4492'})
+  call minpac#add('tpope/vim-projectionist', {'rev': '1d95458273a8ecdb678e65db918c045f9bb7e220'})
 
   " Load project-specific vimrc (.lvimrc) files
-  call minpac#add('embear/vim-localvimrc', {'rev': '0b36a367f4d46b7f060836fcbfec029cce870ea9'})
+  call minpac#add('embear/vim-localvimrc', {'rev': 'ac6444afb5fd11e3f7750f696a0c6b8b0b6ec116'})
 
   "## Text editing
 
   " Insert matching pairs of characters in insert mode (e.g. (), [], '')
-  call minpac#add('Raimondi/delimitMate', {'rev': '728b57a6564c1d2bdfb9b9e0f2f8c5ba3d7e0c5c'})
+  call minpac#add('Raimondi/delimitMate', {'rev': '16687aec24d803bc76cae2d7bfe2b73b1cdda4ef'})
 
   "## Language Server Protocol
 
@@ -142,23 +142,21 @@ function! PackInit() abort
   " - https://microsoft.github.io/language-server-protocol/
   " - :help lsp
 
+  " neovim 0.5+ comes with a built-in LSP client; use it when it's available
   if has('nvim-0.5')
-    " neovim 0.5+ comes with a built-in LSP client. Use it when it's available.
     call minpac#add('neovim/nvim-lsp')
   else
     function! s:InstallLanguageClientDeps(hooktype, name)
       if a:hooktype == 'post-update'
-  " Install compiled LanguageClient-neovim binary
-
+        " Install compiled LanguageClient-neovim binary
         !./install.sh
-  " Update remote plugin manifest
-
+        " Update remote plugin manifest
         UpdateRemotePlugins
       endif
     endfunction
 
     call minpac#add('autozimu/LanguageClient-neovim', {
-          \   'rev': '0.1.156',
+          \   'rev': '0.1.158',
           \   'branch': 'next',
           \   'do': function('s:InstallLanguageClientDeps'),
           \ })
@@ -167,18 +165,18 @@ function! PackInit() abort
   "## Syntax highlighting
 
   " Hightlight pairs of characters with different colors
-  call minpac#add('luochen1990/rainbow', {'rev': '04b7723b810f24152865af656c46e8513489b77a'})
+  call minpac#add('luochen1990/rainbow', {'rev': '4d15633cdaf61602e1d9fd216a77fc02e0881b2d'})
 
   " Change background color to highlight indentation levels
   call minpac#add('nathanaelkane/vim-indent-guides', {'rev': '54d889a63716ee2f1818aa2ec5082db47147147b'})
 
   " Install syntax files (and language plugins) for most languages
-  call minpac#add('sheerun/vim-polyglot', {'rev': 'e8454d66ab8376cf9c7e42f09749d5bd17d98f89'})
+  call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
 
   "## Completion
 
   " Autocompletion engine
-  call minpac#add('roxma/nvim-yarp') | call minpac#add('ncm2/ncm2', {'rev': '605ea0ddcec45b33ec7db69119822a9a5d538823'})
+  call minpac#add('roxma/nvim-yarp') | call minpac#add('ncm2/ncm2', {'rev': '7d49f7b473db732878091f2f8c68bc47b015559b'})
 
   " ncm2 plugin for completing words present in current buffer
   call minpac#add('ncm2/ncm2-bufword', {'rev': '1d42750114e47a31286268880affcd66c6ae48d5'})
