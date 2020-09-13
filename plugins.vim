@@ -189,9 +189,7 @@ function! PackInit() abort
 
   "## Theming
 
-  " NOTE: You must configure your terminal's color scheme for these themes to render correctly.
-  " See http://chriskempson.com/projects/base16/ for details.
-  call minpac#add('chriskempson/base16-vim')
+  call minpac#add('noahfrederick/vim-noctu')
 
   "## Cross-platform support
 

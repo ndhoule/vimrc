@@ -1,5 +1,3 @@
-try
-  colorscheme base16-eighties
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-endtry
+" Use terminal colors
+set notermguicolors
+colorscheme noctu
