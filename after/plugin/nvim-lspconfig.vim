@@ -14,7 +14,7 @@ local nvim_lsp = require('nvim_lsp')
 
 nvim_lsp.cssls.setup{}
 nvim_lsp.dockerls.setup{}
-nvim_lsp.flow.setup{}
+nvim_lsp.html.setup{}
 nvim_lsp.tsserver.setup{}
 nvim_lsp.vimls.setup{}
 EOF
@@ -25,6 +25,6 @@ if has('nvim-0.5')
 
   augroup LSP
     autocmd!
-    autocmd FileType css,dockerfile,javascript,javascriptreact,json,less,sass,typescript,typescriptreact,vim call SetNativeLSPShortcuts()
+    autocmd FileType css,dockerfile,html,javascript,javascriptreact,json,less,sass,typescript,typescriptreact,vim call SetNativeLSPShortcuts()
   augroup END
 endif
