@@ -144,7 +144,7 @@ function! PackInit() abort
 
   " neovim 0.5+ comes with a built-in LSP client; use it when it's available
   if has('nvim-0.5')
-    call minpac#add('neovim/nvim-lsp')
+    call minpac#add('neovim/nvim-lspconfig')
   else
     function! s:InstallLanguageClientDeps(hooktype, name)
       if a:hooktype == 'post-update'

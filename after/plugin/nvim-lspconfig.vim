@@ -8,8 +8,6 @@ function SetNativeLSPShortcuts()
   nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 endfunction
 
-" TODO(ndhoule): Install and set up
-" lua require'nvim_lsp'.gopls.setup{}
 function ConfigureNativeLSP()
 lua << EOF
 local nvim_lsp = require('nvim_lsp')
