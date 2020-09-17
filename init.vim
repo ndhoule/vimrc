@@ -89,7 +89,7 @@ set textwidth=100  " Automatically wrap long lines
 set hlsearch              " Highlight all search matches
 set ignorecase            " Ignore case when searching
 set smartcase             " Don't ignore case in search when term contains an uppercase char
-if has("nvim")
+if has('nvim')
   set inccommand=nosplit  " Show substitutions incrementally, as you type them
 endif
 
