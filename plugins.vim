@@ -157,6 +157,10 @@ function! PackInit() abort
   " Install syntax files (and language plugins) for most languages
   call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
 
+  if has('nvim-0.5')
+    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '73a82638a5afbd3d5894f91c33ba0f71caa04c39'})
+  endif
+
   "## Completion
 
   if has('nvim-0.5')
