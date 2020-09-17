@@ -1,6 +1,10 @@
 " vim:fdm=expr:fdl=0
 " vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
+if !has('nvim-0.5')
+  echomsg 'WARNING! You are not running neovim nightly (0.5+), which is required for this configuration to work properly. Please install neovim nightly and re-run vim.'
+endif
+
 "# Config variables
 
 " Absolute path to .vim directory.

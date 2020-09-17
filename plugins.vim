@@ -141,25 +141,8 @@ function! PackInit() abort
   " - http://langserver.org/
   " - https://microsoft.github.io/language-server-protocol/
   " - :help lsp
-
-  " neovim 0.5+ comes with a built-in LSP client; use it when it's available
   if has('nvim-0.5')
     call minpac#add('neovim/nvim-lspconfig')
-  else
-    function! s:InstallLanguageClientDeps(hooktype, name)
-      if a:hooktype == 'post-update'
-        " Install compiled LanguageClient-neovim binary
-        !./install.sh
-        " Update remote plugin manifest
-        UpdateRemotePlugins
-      endif
-    endfunction
-
-    call minpac#add('autozimu/LanguageClient-neovim', {
-          \   'rev': '0.1.158',
-          \   'branch': 'next',
-          \   'do': function('s:InstallLanguageClientDeps'),
-          \ })
   endif
 
   "## Syntax highlighting
@@ -175,7 +158,9 @@ function! PackInit() abort
 
   "## Completion
 
-  call minpac#add('nvim-lua/completion-nvim')
+  if has('nvim-0.5')
+    call minpac#add('nvim-lua/completion-nvim')
+  endif
 
   "## Theming
 

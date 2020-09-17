@@ -1,7 +1,13 @@
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
+""
+" https://github.com/nvim-lua/completion-nvim
+""
 
-" Avoid showing message extra message when using completion
-set shortmess+=c
+if has('nvim-0.5')
+  " Set completeopt to have a better completion experience
+  set completeopt=menuone,noinsert,noselect
 
-autocmd BufEnter * lua require'completion'.on_attach()
+  " Avoid showing message extra message when using completion
+  set shortmess+=c
+
+  autocmd BufEnter * lua require'completion'.on_attach()
+endif
