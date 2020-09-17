@@ -175,17 +175,7 @@ function! PackInit() abort
 
   "## Completion
 
-  " Autocompletion engine
-  call minpac#add('roxma/nvim-yarp') | call minpac#add('ncm2/ncm2', {'rev': '7d49f7b473db732878091f2f8c68bc47b015559b'})
-
-  " ncm2 plugin for completing words present in current buffer
-  call minpac#add('ncm2/ncm2-bufword', {'rev': '1d42750114e47a31286268880affcd66c6ae48d5'})
-
-  " ncm2 plugin for completing file paths
-  call minpac#add('ncm2/ncm2-path', {'rev': '84b1e6b5f28ced2245ff08e6694101f029fdfca8'})
-
-  " ncm2 plugin for completing words present in tmux buffers
-  call minpac#add('ncm2/ncm2-tmux', {'rev': '17fa16ac1211af3d8e671f1591939d6f37bdd3bd'})
+  call minpac#add('nvim-lua/completion-nvim')
 
   "## Theming
 
