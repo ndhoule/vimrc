@@ -59,10 +59,10 @@ function! PackInit() abort
 
   " Fuzzy file finder and file contents searcher
   call minpac#add('junegunn/fzf', {
-        \   'rev': 'f2d44ab5a793906457f3d3384f09af085096138d',
+        \   'rev': 'e2ae1b249cf2d5258b552cfd682c7c0911981e9b',
         \   'do': {-> system('./install --bin')},
         \ })
-  call minpac#add('junegunn/fzf.vim', {'rev': '4145f53f3d343c389ff974b1f1a68eeb39fba18b'})
+  call minpac#add('junegunn/fzf.vim', {'rev': '3348aef05d02828cd8b071ab29476af2029ea3d3'})
 
   " Menu for navigating ctags, LSP symbols, etc.
   call minpac#add('liuchengxu/vista.vim', {'rev': '7f97d30914daea5b542a90eed747d5bd00afbb19'})
