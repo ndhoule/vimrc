@@ -115,10 +115,11 @@ function! PackInit() abort
 
   "## Environment
 
-  if executable('direnv')
-    " Source direnv files, keeping vim environment/subshells in sync with host shell env
-    call minpac#add('direnv/direnv.vim', {'rev': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1'})
-  endif
+  " FIXME(ndhoule): direnv + autochdir throws errors when changing directory via fzf on neovim 0.5+.
+  " if executable('direnv')
+  "   " Source direnv files, keeping vim environment/subshells in sync with host shell env
+  "   call minpac#add('direnv/direnv.vim', {'rev': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1'})
+  " endif
 
   "## Project settings
 
