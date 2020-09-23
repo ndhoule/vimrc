@@ -1,10 +1,14 @@
-""
-" https://github.com/nvim-treesitter/nvim-treesitter
-""
+" vim:fdm=expr:fdl=0
+" vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
+" Built-in tree-sitter APIs are only available on NeoVim 0.5+.
 if !has('nvim-0.5')
   finish
 endif
+
+"# Configuration
+
+"## Treesitter
 
 " Only replace vim-polyglot with neovim-treesitter for a subset of filetypes. nvim-treesitter is
 " still experimental (the neovim treesitter API is subject to change until 0.5 becomes stable) and
@@ -15,7 +19,9 @@ endif
 let g:polyglot_disabled = ['javascript', 'json']
 
 lua <<EOF
-  require'nvim-treesitter.configs'.setup {
+  local tree_sitter = require 'nvim-treesitter.configs'
+
+  tree_sitter.setup {
     ensure_installed = { "javascript", "json", "regex" },
     highlight = {
       enable = true,

@@ -27,9 +27,6 @@ function! PackInit() abort
   " Add a killring
   call minpac#add('bfredl/nvim-miniyank', {'rev': '2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b'})
 
-  " Reopen files in the same location
-  call minpac#add('dietsche/vim-lastplace', {'rev': '48ba343c8c1ca3039224727096aae214f51327d1'})
-
   " Highlight trailing whitespace, with support for blacklisting filetypes
   call minpac#add('ntpeters/vim-better-whitespace', {'rev': '8cf4b2175dd61416c2fe7d3234324a6c59d678de'})
 

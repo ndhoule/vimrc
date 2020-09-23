@@ -1,3 +1,8 @@
+" vim:fdm=expr:fdl=0
+" vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
+
+"# Configuration
+
 let g:lightline = {
       \   'active': {
       \     'left':  [['mode', 'paste'],
