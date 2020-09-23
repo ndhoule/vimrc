@@ -141,7 +141,7 @@ function! PackInit() abort
   " - :help lsp
   if has('nvim-0.5')
     " TODO(ndhoule): Pin to version when plugin stabilizes
-    call minpac#add('neovim/nvim-lspconfig')
+    call minpac#add('neovim/nvim-lspconfig', {'rev': '60133c47e0fd82556d7ca092546ebfa8d047466e'})
   endif
 
   "## Syntax highlighting
@@ -156,7 +156,7 @@ function! PackInit() abort
   call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
 
   if has('nvim-0.5')
-    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '73a82638a5afbd3d5894f91c33ba0f71caa04c39'})
+    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '58ec0bd7ef7b65aba404e9616581107c3866f792'})
   endif
 
   "## Completion
@@ -164,12 +164,12 @@ function! PackInit() abort
   if has('nvim-0.5')
     " TODO(ndhoule): Pin to version when plugin stabilizes
     " TODO(ndhoule): Investigate the nvim-treesitter/completion-treesitter completion source
-    call minpac#add('nvim-lua/completion-nvim')
+    call minpac#add('nvim-lua/completion-nvim', {'rev': 'f6f63add3a6004183ae6f2fff12b5b9f5067f493'})
   endif
 
   "## Theming
 
-  call minpac#add('noahfrederick/vim-noctu')
+  call minpac#add('noahfrederick/vim-noctu', {'rev': 'de2ff9855bccd72cd9ff3082bc89e4a4f36ea4fe'})
 
   "## Cross-platform support
 
