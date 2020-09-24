@@ -169,7 +169,7 @@ function! PackInit() abort
 
   "## Theming
 
-  call minpac#add('noahfrederick/vim-noctu', {'rev': 'de2ff9855bccd72cd9ff3082bc89e4a4f36ea4fe'})
+  call minpac#add('sainnhe/sonokai', {'rev': '4de4b058e6b2df8e39dea2400b17de1af9ea4d4e'})
 
   "## Cross-platform support
 
