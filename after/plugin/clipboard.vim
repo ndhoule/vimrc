@@ -3,7 +3,7 @@
 
 "# Configuration
 
-let g:miniyank_filename = g:DOTVIM_PATH . "/.miniyank.mpack"
+let g:miniyank_filename = stdpath('cache') . '/miniyank.mpack'
 let g:miniyank_maxitems = 30
 
 "# Keybindings

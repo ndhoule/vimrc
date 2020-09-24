@@ -41,18 +41,27 @@ set backup
 " Write changes to original file. Fixes watch mode for some file watchers (e.g. Webpack's).
 " https://webpack.js.org/guides/development/#adjusting-your-text-editor
 set backupcopy=yes
-let &backupdir = g:DOTVIM_PATH . '/.backup//'
-call mkdir(&backupdir, 'p')
+let &backupdir = stdpath('cache') . '/backup//'
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, 'p')
+endif
 
 " Enable swapfiles
 set swapfile
-let &directory = g:DOTVIM_PATH . '/.swp//'
-call mkdir(&directory, 'p')
+let &directory = stdpath('cache') . '/nvim/swap//'
+if !isdirectory(&directory)
+  call mkdir(&directory, 'p')
+endif
 
 " Enable persistent undofiles
 set undofile
-let &undodir = g:DOTVIM_PATH . '/.undo//'
-call mkdir(&undodir, 'p')
+let &undodir = stdpath('cache') . '/nvim/undo//'
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p')
+endif
+
+" Store netrw files in cache directory
+let g:netrw_home = stdpath('cache') . '/nvim'
 
 " Automatically rebalance splits when window is resized
 autocmd VimResized * :wincmd =
