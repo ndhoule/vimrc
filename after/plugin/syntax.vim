@@ -10,19 +10,37 @@ endif
 
 "## Treesitter
 
-" Only replace vim-polyglot with neovim-treesitter for a subset of filetypes. nvim-treesitter is
-" still experimental (the neovim treesitter API is subject to change until 0.5 becomes stable) and
-" while it's surprisingly stable for alpha software, there are still some circumstances it doesn't
-" handle well. (E.g.: It segfaults when editing an empty file. Oops.)
-" TODO(ndhoule): as of 73a826, nvim-treesitter supports TypeScript but not TSX. vim-polyglot won't
-" let you disable TSX files only (it's TS+TSX or nothing).
-let g:polyglot_disabled = ['javascript', 'json']
-
+" Only replace vim-polyglot with neovim-treesitter for a subset of filetypes. Once treesitter has
+" support for more languages (e.g. TSX), this list should be replaced with ensure_installed = "all".
 lua <<EOF
   local tree_sitter = require 'nvim-treesitter.configs'
 
   tree_sitter.setup {
-    ensure_installed = { "javascript", "json", "regex" },
+    ensure_installed = {
+      "bash",
+      "c",
+      "c_sharp",
+      "cpp",
+      "css",
+      "dart",
+      "fennel",
+      "go",
+      "html",
+      "java",
+      "javascript",
+      "jsdoc",
+      "json",
+      "lua",
+      "ocaml",
+      "ocaml_interface",
+      "php",
+      "python",
+      "regex",
+      "rst",
+      "ruby",
+      "rust",
+      "toml",
+    },
     highlight = {
       enable = true,
     },

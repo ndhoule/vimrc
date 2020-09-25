@@ -152,11 +152,13 @@ function! PackInit() abort
   " Change background color to highlight indentation levels
   call minpac#add('nathanaelkane/vim-indent-guides', {'rev': '54d889a63716ee2f1818aa2ec5082db47147147b'})
 
-  " Install syntax files (and language plugins) for most languages
-  call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
-
   if has('nvim-0.5')
-    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '58ec0bd7ef7b65aba404e9616581107c3866f792'})
+    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '98c12ec23a6df2f2f505304b61c4b2eefc0a568f'})
+    " Install syntax for languages not yet supported by treesitter
+    call minpac#add('HerringtonDarkholme/yats.vim', {'rev': '4d76c5391b7975bd6dd09c0562c0fd4d78e14fa0'})
+    call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
+  else
+    call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
   endif
 
   "## Completion
