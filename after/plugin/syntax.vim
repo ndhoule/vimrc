@@ -40,6 +40,8 @@ lua <<EOF
       "ruby",
       "rust",
       "toml",
+      "tsx",
+      "typescript",
     },
     highlight = {
       enable = true,

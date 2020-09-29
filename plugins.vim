@@ -155,7 +155,6 @@ function! PackInit() abort
   if has('nvim-0.5')
     call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': 'b66b533ecdf40524176020cff514c0597c99df0b'})
     " Install syntax for languages not yet supported by treesitter
-    call minpac#add('HerringtonDarkholme/yats.vim', {'rev': '4d76c5391b7975bd6dd09c0562c0fd4d78e14fa0'})
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
     call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
