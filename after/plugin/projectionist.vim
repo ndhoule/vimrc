@@ -5,17 +5,14 @@
 
 "## ALE
 
-" Set project-specific linters and fixers in your `.projections.json`:
+" Set project-specific linters and formatters in your `.projections.json`:
 "
 " ```json
 "
 " {
 "   "*": {
-"     "fixers": ["eslint"],
-"     "linters": ["eslint", "tsserver"],
-"     "linter_options": {
-"       "eslint": "--resolve-plugins-relative-to='node_modules/@ndhoule/eslint-config'"
-"     }
+"     "formatters": ["eslint"],
+"     "linters": ["eslint", "tsserver"]
 "   }
 " }
 " ```
@@ -27,27 +24,19 @@ function! s:set_linters() abort
     let l:linters = l:q_linters[0][1]
     let b:ale_linters = {&filetype: l:linters}
   endif
-
-  let l:q_linter_options = projectionist#query('linter_options')
-  if len(l:q_linter_options) > 0 && &filetype != ''
-    let l:linter_options = l:q_linter_options[0][1]
-    for [linter, options] in items(l:linter_options)
-      let b:ale_javascript_{linter}_options = options
-    endfor
-  endif
 endfunction
 
-function! s:set_fixers() abort
-  let l:q_fixers = projectionist#query('fixers')
-  if len(l:q_fixers) > 0 && &filetype != ''
-    let l:fixers = l:q_fixers[0][1]
-    let b:ale_fixers = {&filetype: l:fixers}
+function! s:set_formatters() abort
+  let l:q_formatters = projectionist#query('formatters')
+  if len(l:q_formatters) > 0 && &filetype != ''
+    let l:formatters = l:q_formatters[0][1]
+    let b:ale_fixers = {&filetype: l:formatters}
   endif
 endfunction
 
 augroup AleProjectionistIntegration
   autocmd!
-  autocmd User ProjectionistActivate call s:set_fixers()
+  autocmd User ProjectionistActivate call s:set_formatters()
   autocmd User ProjectionistActivate call s:set_linters()
 augroup END
 
