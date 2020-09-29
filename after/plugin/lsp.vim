@@ -14,8 +14,11 @@ lua << EOF
   nvim_lsp.cssls.setup{}
   nvim_lsp.dockerls.setup{}
   nvim_lsp.html.setup{}
+  nvim_lsp.sqlls.setup{}
+  nvim_lsp.terraformls.setup{}
   nvim_lsp.tsserver.setup{}
   nvim_lsp.vimls.setup{}
+  nvim_lsp.yamlls.setup{}
 EOF
 
 "# Keybindings
@@ -41,7 +44,10 @@ augroup Lsp
         \ json,
         \ less,
         \ sass,
+        \ sql,
+        \ terraform,
         \ typescript,
         \ typescriptreact,
+        \ yaml,
         \ vim call SetLspKeybindings()
 augroup END
