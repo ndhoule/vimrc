@@ -35,19 +35,5 @@ endfunction
 
 augroup Lsp
   autocmd!
-  autocmd FileType
-        \ css,
-        \ dockerfile,
-        \ html,
-        \ javascript,
-        \ javascriptreact,
-        \ json,
-        \ less,
-        \ sass,
-        \ sql,
-        \ terraform,
-        \ typescript,
-        \ typescriptreact,
-        \ yaml,
-        \ vim call SetLspKeybindings()
+  autocmd FileType css,dockerfile,html,javascript,javascriptreact,json,less,sass,sql,terraform,typescript,typescriptreact,yaml,vim call SetLspKeybindings()
 augroup END
