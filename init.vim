@@ -48,14 +48,14 @@ endif
 
 " Enable swapfiles
 set swapfile
-let &directory = stdpath('cache') . '/nvim/swap//'
+let &directory = stdpath('cache') . '/swap//'
 if !isdirectory(&directory)
   call mkdir(&directory, 'p')
 endif
 
 " Enable persistent undofiles
 set undofile
-let &undodir = stdpath('cache') . '/nvim/undo//'
+let &undodir = stdpath('cache') . '/undo//'
 if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
 endif
