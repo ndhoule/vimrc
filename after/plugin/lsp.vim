@@ -11,6 +11,7 @@ endif
 lua << EOF
   local nvim_lsp = require 'nvim_lsp'
 
+  nvim_lsp.bashls.setup{}
   nvim_lsp.cssls.setup{}
   nvim_lsp.dockerls.setup{}
   nvim_lsp.html.setup{}
@@ -40,6 +41,7 @@ augroup Lsp
   autocmd FileType html call SetLspKeybindings()
   autocmd FileType javascript,javascriptreact call SetLspKeybindings()
   autocmd FileType json call SetLspKeybindings()
+  autocmd FileType sh call SetLspKeybindings()
   autocmd FileType sql call SetLspKeybindings()
   autocmd FileType terraform call SetLspKeybindings()
   autocmd FileType typescript,typescriptreact call SetLspKeybindings()
