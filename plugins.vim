@@ -163,9 +163,8 @@ function! PackInit() abort
   "## Completion
 
   if has('nvim-0.5')
-    " TODO(ndhoule): Pin to version when plugin stabilizes
     " TODO(ndhoule): Investigate the nvim-treesitter/completion-treesitter completion source
-    call minpac#add('nvim-lua/completion-nvim', {'rev': 'f6f63add3a6004183ae6f2fff12b5b9f5067f493'})
+    call minpac#add('nvim-lua/completion-nvim', {'rev': '52ccd7c344dca90b62de4ea997c4aa328ce7f020'})
   endif
 
   "## Theming
