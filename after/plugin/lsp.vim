@@ -16,6 +16,7 @@ lua << EOF
   nvim_lsp.dockerls.setup{}
   nvim_lsp.html.setup{}
   nvim_lsp.sqlls.setup{}
+  nvim_lsp.sumneko_lua.setup{cmd = {"lua-language-server"}}
   nvim_lsp.terraformls.setup{}
   nvim_lsp.tsserver.setup{}
   nvim_lsp.vimls.setup{}
@@ -41,6 +42,7 @@ augroup Lsp
   autocmd FileType html call SetLspKeybindings()
   autocmd FileType javascript,javascriptreact call SetLspKeybindings()
   autocmd FileType json call SetLspKeybindings()
+  autocmd FileType lua call SetLspKeybindings()
   autocmd FileType sh call SetLspKeybindings()
   autocmd FileType sql call SetLspKeybindings()
   autocmd FileType terraform call SetLspKeybindings()
