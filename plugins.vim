@@ -97,7 +97,7 @@ function! PackInit() abort
   call minpac#add('tpope/vim-dispatch', {'rev': 'fe6a34322829e466a7e8ce710a6ac5eabddff9fd'})
 
   " Integrate with linters, fixers, formatters, etc.
-  call minpac#add('dense-analysis/ale', {'rev': '3e2abe3f25493af63af91a6013447e378e09f6ec'})
+  call minpac#add('dense-analysis/ale', {'rev': 'b91c6c2edd20794ad5637b561ed4c678647a76e5'})
 
   "## Git integration
 
