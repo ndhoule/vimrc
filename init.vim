@@ -30,6 +30,7 @@ endif
 " XXX(ndhoule): Fix and remove
 let g:scratch_no_mappings = 1
 let g:rainbow_active = 1
+let g:ale_disable_lsp = 1
 
 "# General config
 

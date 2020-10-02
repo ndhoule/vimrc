@@ -19,9 +19,9 @@
 
 function! s:set_linters() abort
   let l:q_linters = projectionist#query('linters')
-  " TODO(ndhoule): Support unsetting linters via empty list `[]` or `null`
   if len(l:q_linters) > 0 && &filetype != ''
-    let l:linters = l:q_linters[0][1]
+    " Always enable the built-in LSP source provided by diagnostic-nvim
+    let l:linters = ["LSP"] + l:q_linters[0][1]
     let b:ale_linters = {&filetype: l:linters}
   endif
 endfunction

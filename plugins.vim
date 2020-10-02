@@ -98,6 +98,9 @@ function! PackInit() abort
 
   " Integrate with linters, fixers, formatters, etc.
   call minpac#add('dense-analysis/ale', {'rev': 'b91c6c2edd20794ad5637b561ed4c678647a76e5'})
+  if has('nvim-0.5')
+    call minpac#add('ndhoule/diagnostic-nvim', {'rev': 'feat/ale-lint-source-support'})
+  endif
 
   "## Git integration
 

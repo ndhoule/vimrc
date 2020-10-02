@@ -9,19 +9,23 @@ endif
 "# Configuration
 
 lua << EOF
-  local nvim_lsp = require 'nvim_lsp'
+  local nvim_lsp = require('nvim_lsp')
+  local diagnostic_nvim = require('diagnostic')
 
-  nvim_lsp.bashls.setup{}
-  nvim_lsp.cssls.setup{}
-  nvim_lsp.dockerls.setup{}
-  nvim_lsp.html.setup{}
-  nvim_lsp.sqlls.setup{}
-  nvim_lsp.sumneko_lua.setup{cmd = {"lua-language-server"}}
-  nvim_lsp.terraformls.setup{}
-  nvim_lsp.tsserver.setup{}
-  nvim_lsp.vimls.setup{}
-  nvim_lsp.yamlls.setup{}
+  nvim_lsp.bashls.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.cssls.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.dockerls.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.html.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.sqlls.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.sumneko_lua.setup{cmd = {"lua-language-server"}; on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.terraformls.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.tsserver.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.vimls.setup{on_attach=diagnostic_nvim.on_attach}
+  nvim_lsp.yamlls.setup{on_attach=diagnostic_nvim.on_attach}
 EOF
+
+" Report LSP diagnostic messages (provided by `diagnostic-nvim`) to ALE
+let g:diagnostic_enable_ale = 1
 
 "# Keybindings
 
