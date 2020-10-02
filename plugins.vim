@@ -153,7 +153,7 @@ function! PackInit() abort
   call minpac#add('nathanaelkane/vim-indent-guides', {'rev': '54d889a63716ee2f1818aa2ec5082db47147147b'})
 
   if has('nvim-0.5')
-    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': 'b66b533ecdf40524176020cff514c0597c99df0b'})
+    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '5debe931333b20fe2b352dd92c03ded837e3df4b'})
     " Install syntax for languages not yet supported by treesitter
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
