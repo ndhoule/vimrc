@@ -102,10 +102,9 @@ function! PackInit() abort
     call minpac#add('ndhoule/diagnostic-nvim', {'rev': 'feat/ale-lint-source-support'})
   endif
 
-  "## Git integration
+  "## VCS
 
-  " Show Git diff in sign column
-  call minpac#add('airblade/vim-gitgutter', {'rev': '8005f71aabef13f5872b3ef4802f36503a16c451'})
+  call minpac#add('mhinz/vim-signify', {'rev': '98c693f7a1a91b73d9232d868765b4d20af892fe'})
 
   " Add vim commands for Git operations
   call minpac#add('tpope/vim-fugitive', {'rev': '9d62c677378f5ac5abaa8229eb49aaf133fba3fa'})
