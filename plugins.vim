@@ -165,8 +165,9 @@ function! PackInit() abort
   "## Completion
 
   if has('nvim-0.5')
-    " TODO(ndhoule): Investigate the nvim-treesitter/completion-treesitter completion source
     call minpac#add('nvim-lua/completion-nvim', {'rev': '52ccd7c344dca90b62de4ea997c4aa328ce7f020'})
+    call minpac#add('nvim-treesitter/completion-treesitter', {'rev': '45c9b2faff4785539a0d0c655440c2465fed985a'})
+    call minpac#add('steelsojka/completion-buffers', {'rev': '441a58b77c04409e8ccb35fd4970598ae551462f'})
   endif
 
   "## Theming
