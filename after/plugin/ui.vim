@@ -2,6 +2,8 @@
 
 "## Indentation Guides
 
+let g:indent_guides_exclude_filetypes = ['fzf', 'help', 'nerdtree']
+
 " Pick indent guide colors manually (the default is generally too noisy, so here we choose more
 " muted colors)
 let g:indent_guides_auto_colors = 0
