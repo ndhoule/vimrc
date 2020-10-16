@@ -3,7 +3,18 @@
 
 "# Configuration
 
-" TODO(ndhoule): Consider disabling all linters by default and enabling them explicitly
+" Explicitly configure all linters. To override linters on a per-project basis, create a
+" `.projections.json` file (see `./projectionist.vim` for more details).
+let g:ale_linters_explicit = 1
+
+let g:ale_linters = {
+      \   'go': ['golint', 'govet'],
+      \   'html': ['tidy'],
+      \   'javascript': ['eslint'],
+      \   'markdown': [],
+      \   'sh': ['shellcheck'],
+      \   'typescript': ['eslint'],
+      \ }
 
 " Decrease delay before running linter after text change
 let g:ale_lint_delay = 100
