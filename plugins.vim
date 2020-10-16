@@ -154,6 +154,9 @@ function! PackInit() abort
   " Change background color to highlight indentation levels
   call minpac#add('nathanaelkane/vim-indent-guides', {'rev': '54d889a63716ee2f1818aa2ec5082db47147147b'})
 
+  " Highlight color names and codes in the same color that they represent
+  call minpac#add('chrisbra/Colorizer', {'rev': '879e6c69c0c02c4ef0f08b3955c60de16efd8fb8'})
+
   if has('nvim-0.5')
     call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '3b7b4daadb2ca5d12366b0eff73cf738c246af32'})
     " Install syntax for languages not yet supported by treesitter

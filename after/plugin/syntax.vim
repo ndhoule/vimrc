@@ -1,6 +1,16 @@
 " vim:fdm=expr:fdl=0
 " vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
+" Colorize's built-in auto-colorization doesn't work consistently
+" https://github.com/chrisbra/Colorizer/issues/77
+augroup AutoColorize
+  autocmd!
+  autocmd
+        \ BufNewFile,BufRead,BufEnter,BufLeave,WinEnter,WinLeave,WinNew
+        \ *.css,*.html,*.js,*.jsx,*.sass,*.scss,*.ts,*.tsx,*.tpl
+        \ ColorHighlight
+augroup END
+
 " Built-in tree-sitter APIs are only available on NeoVim 0.5+.
 if !has('nvim-0.5')
   finish
