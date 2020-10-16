@@ -158,7 +158,7 @@ function! PackInit() abort
   call minpac#add('chrisbra/Colorizer', {'rev': '879e6c69c0c02c4ef0f08b3955c60de16efd8fb8'})
 
   if has('nvim-0.5')
-    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '3b7b4daadb2ca5d12366b0eff73cf738c246af32'})
+    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '7f3276450be20ec3cd8241bdb9196659289c3d31'})
     " Install syntax for languages not yet supported by treesitter
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
