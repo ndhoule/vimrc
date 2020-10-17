@@ -142,7 +142,6 @@ function! PackInit() abort
   " - https://microsoft.github.io/language-server-protocol/
   " - :help lsp
   if has('nvim-0.5')
-    " TODO(ndhoule): Pin to version when plugin stabilizes
     call minpac#add('neovim/nvim-lspconfig', {'rev': '60133c47e0fd82556d7ca092546ebfa8d047466e'})
   endif
 
