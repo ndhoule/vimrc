@@ -159,6 +159,7 @@ function! PackInit() abort
   if g:ENABLE_TREESITTER
     call minpac#add('nvim-treesitter/nvim-treesitter')
     " Install syntax for languages not yet supported by treesitter
+    call minpac#add('hashivim/vim-terraform', {'rev': '6fd491d6a2ae40fef3aa6c414e096ce07664f030'})
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
     call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
