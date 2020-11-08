@@ -102,6 +102,9 @@ function! PackInit() abort
     call minpac#add('ndhoule/diagnostic-nvim', {'rev': 'feat/ale-lint-source-support'})
   endif
 
+  " Debugging
+  call minpac#add('puremourning/vimspector', {'rev': '78bec87f4ed058dfad6f8c33f487719db10f1bd3', 'do': 'VimspectorUpdate'})
+
   "## VCS
 
   call minpac#add('mhinz/vim-signify', {'rev': '98c693f7a1a91b73d9232d868765b4d20af892fe'})
