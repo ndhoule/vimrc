@@ -1,8 +1,7 @@
 " vim:fdm=expr:fdl=0
 " vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
-" Built-in LSP is only available on NeoVim 0.5+.
-if !has('nvim-0.5')
+if !g:ENABLE_LSP
   finish
 endif
 

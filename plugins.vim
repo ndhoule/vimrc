@@ -98,7 +98,7 @@ function! PackInit() abort
 
   " Integrate with linters, fixers, formatters, etc.
   call minpac#add('dense-analysis/ale', {'rev': 'b91c6c2edd20794ad5637b561ed4c678647a76e5'})
-  if has('nvim-0.5')
+  if g:ENABLE_LSP
     call minpac#add('ndhoule/diagnostic-nvim', {'rev': 'feat/ale-lint-source-support'})
   endif
 
@@ -141,7 +141,7 @@ function! PackInit() abort
   " - http://langserver.org/
   " - https://microsoft.github.io/language-server-protocol/
   " - :help lsp
-  if has('nvim-0.5')
+  if g:ENABLE_LSP
     call minpac#add('neovim/nvim-lspconfig', {'rev': '60133c47e0fd82556d7ca092546ebfa8d047466e'})
   endif
 
@@ -156,8 +156,8 @@ function! PackInit() abort
   " Highlight color names and codes in the same color that they represent
   call minpac#add('chrisbra/Colorizer', {'rev': '879e6c69c0c02c4ef0f08b3955c60de16efd8fb8'})
 
-  if has('nvim-0.5')
-    call minpac#add('nvim-treesitter/nvim-treesitter', {'rev': '7f3276450be20ec3cd8241bdb9196659289c3d31'})
+  if g:ENABLE_TREESITTER
+    call minpac#add('nvim-treesitter/nvim-treesitter')
     " Install syntax for languages not yet supported by treesitter
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
@@ -166,10 +166,12 @@ function! PackInit() abort
 
   "## Completion
 
-  if has('nvim-0.5')
+  if g:ENABLE_COMPLETION_NVIM
     call minpac#add('nvim-lua/completion-nvim', {'rev': '52ccd7c344dca90b62de4ea997c4aa328ce7f020'})
-    call minpac#add('nvim-treesitter/completion-treesitter', {'rev': '45c9b2faff4785539a0d0c655440c2465fed985a'})
     call minpac#add('steelsojka/completion-buffers', {'rev': '441a58b77c04409e8ccb35fd4970598ae551462f'})
+    if g:ENABLE_TREESITTER
+      call minpac#add('nvim-treesitter/completion-treesitter')
+    endif
   endif
 
   "## Theming

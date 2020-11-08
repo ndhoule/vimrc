@@ -21,6 +21,12 @@ else
   let g:host_os = 'Unknown'
 endif
 
+"# Feature flags
+
+let g:ENABLE_COMPLETION_NVIM = $ENABLE_COMPLETION ? $ENABLE_COMPLETION == "1" : has('nvim-0.5')
+let g:ENABLE_LSP = $ENABLE_NATIVE_LSP ? $ENABLE_NATIVE_LSP == "1" : has('nvim-0.5')
+let g:ENABLE_TREESITTER = $ENABLE_TREESITTER ? $ENABLE_TREESITTER == "1" : 0
+
 "# Plugin setup
 
 if filereadable(g:DOTVIM_PATH . '/plugins.vim')
