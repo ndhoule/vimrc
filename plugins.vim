@@ -56,21 +56,21 @@ function! PackInit() abort
 
   " Fuzzy file finder and file contents searcher
   call minpac#add('junegunn/fzf', {
-        \   'rev': 'e2ae1b249cf2d5258b552cfd682c7c0911981e9b',
+        \   'rev': '7acdaf0b4335a6c089bce5b73ff23aeb3b9d9c92',
         \   'do': {-> system('./install --bin')},
         \ })
-  call minpac#add('junegunn/fzf.vim', {'rev': '3348aef05d02828cd8b071ab29476af2029ea3d3'})
+  call minpac#add('junegunn/fzf.vim', {'rev': '53b3aea0da5e3581e224c958dbc13558cbe5daee'})
 
   " Menu for navigating ctags, LSP symbols, etc.
-  call minpac#add('liuchengxu/vista.vim', {'rev': '7f97d30914daea5b542a90eed747d5bd00afbb19'})
+  call minpac#add('liuchengxu/vista.vim', {'rev': 'd77828b043d980b99e386840d57629f6499e9995'})
 
   " File navigation menu
-  call minpac#add('preservim/nerdtree', {'rev': '577ddc73f0a1d2fd6166ed3268ab8536111037e0'})
+  call minpac#add('preservim/nerdtree', {'rev': '14af89743ac1c31ff9bb43682025eda50333a7d5'})
 
   "## Statusline
 
   " Customize statusline
-  call minpac#add('itchyny/lightline.vim', {'rev': '1b412cf3af3dad79ee5807e6b151b8ac6aa4e2fc'})
+  call minpac#add('itchyny/lightline.vim', {'rev': '709b2d8dc88fa622d6c076f34b05b58fcccf393f'})
 
   "## Motions
 
@@ -81,7 +81,7 @@ function! PackInit() abort
   call minpac#add('gcmt/wildfire.vim', {'rev': 'e2baded7162260e05d2527f5bca9fca81f0bc8f2'})
 
   " Add motions for commenting out blocks of code
-  call minpac#add('tomtom/tcomment_vim', {'rev': '25bdb50a6c5934d4ac9313cef0d7d2168d84803b'})
+  call minpac#add('tomtom/tcomment_vim', {'rev': '2037d05870e10e03b2e157a09ae007c179efd253'})
 
   " Add mappings for working on text within pairs of characters (e.g. quotes)
   call minpac#add('tpope/vim-surround', {'rev': 'f51a26d3710629d031806305b6c8727189cd1935'})
@@ -89,7 +89,7 @@ function! PackInit() abort
   "## Text editing
 
   " Extras for Markdown editing, including TOC generation
-  call minpac#add('SidOfc/mkdx', {'rev': 'fdc00bbe21e7de0208e2ee1ea6254525aa324bb4'})
+  call minpac#add('SidOfc/mkdx', {'rev': '43f602ee353e46171e846a3010f0125b12eab6b4'})
 
   "## Job execution
 
@@ -97,20 +97,21 @@ function! PackInit() abort
   call minpac#add('tpope/vim-dispatch', {'rev': 'fe6a34322829e466a7e8ce710a6ac5eabddff9fd'})
 
   " Integrate with linters, fixers, formatters, etc.
-  call minpac#add('dense-analysis/ale', {'rev': 'b91c6c2edd20794ad5637b561ed4c678647a76e5'})
+  call minpac#add('dense-analysis/ale', {'rev': '681a6e371d02cce9c2414c19f5deeae61aa321fa'})
   if g:ENABLE_LSP
+    " TODO(ndhoule): Migrate to built-in diagnostics: https://github.com/nvim-lua/diagnostic-nvim/issues/73
     call minpac#add('ndhoule/diagnostic-nvim', {'rev': 'feat/ale-lint-source-support'})
   endif
 
   " Debugging
-  call minpac#add('puremourning/vimspector', {'rev': '78bec87f4ed058dfad6f8c33f487719db10f1bd3', 'do': 'VimspectorUpdate'})
+  call minpac#add('puremourning/vimspector', {'rev': 'ff4acb17d1f5362af8d9c85b01e0a3f3db53a882', 'do': 'VimspectorUpdate'})
 
   "## VCS
 
   call minpac#add('mhinz/vim-signify', {'rev': '98c693f7a1a91b73d9232d868765b4d20af892fe'})
 
   " Add vim commands for Git operations
-  call minpac#add('tpope/vim-fugitive', {'rev': '9d62c677378f5ac5abaa8229eb49aaf133fba3fa'})
+  call minpac#add('tpope/vim-fugitive', {'rev': '660d2ba2b60026a9069ee005562ddad6a67f9fb0'})
 
   " Add vim-fugitive GitHub integration
   call minpac#add('tpope/vim-rhubarb', {'rev': 'c509c7eedeea641f5b0bdae708581ff610fbff5b'})
@@ -120,16 +121,16 @@ function! PackInit() abort
   " FIXME(ndhoule): direnv + autochdir throws errors when changing directory via fzf on neovim 0.5+.
   " if executable('direnv')
   "   " Source direnv files, keeping vim environment/subshells in sync with host shell env
-  "   call minpac#add('direnv/direnv.vim', {'rev': '5e75084465ad37dd0a4d4b1198b5ffa8978ae4e1'})
+  "   call minpac#add('direnv/direnv.vim', {'rev': 'ff37d76da391e1ef299d2f5eb84006cb27a67799'})
   " endif
 
   "## Project settings
 
   " Add integration for .editorconfig files
-  call minpac#add('editorconfig/editorconfig-vim', {'rev': '0a3c1d8082e38a5ebadcba7bb3a608d88a9ff044'})
+  call minpac#add('editorconfig/editorconfig-vim', {'rev': '047c4b455b9d56adee63a52d6d7cdf5bb6521d53'})
 
   " Add support for project configuration files ('projections')
-  call minpac#add('tpope/vim-projectionist', {'rev': '1d95458273a8ecdb678e65db918c045f9bb7e220'})
+  call minpac#add('tpope/vim-projectionist', {'rev': '0c6967d3a8c3bd3d3b42013531c3f12c843aff80'})
 
   " Load project-specific vimrc (.lvimrc) files
   call minpac#add('embear/vim-localvimrc', {'rev': 'ac6444afb5fd11e3f7750f696a0c6b8b0b6ec116'})
@@ -145,7 +146,7 @@ function! PackInit() abort
   " - https://microsoft.github.io/language-server-protocol/
   " - :help lsp
   if g:ENABLE_LSP
-    call minpac#add('neovim/nvim-lspconfig', {'rev': '60133c47e0fd82556d7ca092546ebfa8d047466e'})
+    call minpac#add('neovim/nvim-lspconfig', {'rev': '4f19567fb76438d39ed196ae5b4e06b749e75e16'})
   endif
 
   "## Syntax highlighting
@@ -162,16 +163,16 @@ function! PackInit() abort
   if g:ENABLE_TREESITTER
     call minpac#add('nvim-treesitter/nvim-treesitter')
     " Install syntax for languages not yet supported by treesitter
-    call minpac#add('hashivim/vim-terraform', {'rev': '6fd491d6a2ae40fef3aa6c414e096ce07664f030'})
+    call minpac#add('hashivim/vim-terraform', {'rev': 'a6be9fea8757f6672397cadfb2784230914130c6'})
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
-    call minpac#add('sheerun/vim-polyglot', {'rev': '8f5134aef8c4162235892d87407275f447e54e40'})
+    call minpac#add('sheerun/vim-polyglot', {'rev': 'ab0ff253f6ab3cd9d42b6be38d4d912bad5415f9'})
   endif
 
   "## Completion
 
   if g:ENABLE_COMPLETION_NVIM
-    call minpac#add('nvim-lua/completion-nvim', {'rev': '52ccd7c344dca90b62de4ea997c4aa328ce7f020'})
+    call minpac#add('nvim-lua/completion-nvim', {'rev': '936bbd17577101a4ffb07ea7f860f77dd8007d43'})
     call minpac#add('steelsojka/completion-buffers', {'rev': '441a58b77c04409e8ccb35fd4970598ae551462f'})
     if g:ENABLE_TREESITTER
       call minpac#add('nvim-treesitter/completion-treesitter')
@@ -180,7 +181,7 @@ function! PackInit() abort
 
   "## Theming
 
-  call minpac#add('sainnhe/sonokai', {'rev': '4de4b058e6b2df8e39dea2400b17de1af9ea4d4e'})
+  call minpac#add('sainnhe/sonokai', {'rev': '51e7ee8b13f9c2e4eae33f8d745eaa1f320b0ae6'})
 
   "## Cross-platform support
 
