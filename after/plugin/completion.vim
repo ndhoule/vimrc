@@ -1,7 +1,7 @@
 " vim:fdm=expr:fdl=0
 " vim:fde=getline(v\:lnum)=~'^"#'?'>'.(matchend(getline(v\:lnum),'"#*')-1)\:'='
 
-if !has('nvim-0.5')
+if !g:ENABLE_COMPLETION_NVIM
   finish
 endif
 
