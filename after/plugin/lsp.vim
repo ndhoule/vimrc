@@ -8,19 +8,19 @@ endif
 "# Configuration
 
 lua << EOF
-  local nvim_lsp = require('nvim_lsp')
+  local lspconfig = require('lspconfig')
   local diagnostic_nvim = require('diagnostic')
 
-  nvim_lsp.bashls.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.cssls.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.dockerls.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.html.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.sqlls.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.sumneko_lua.setup{cmd = {"lua-language-server"}; on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.terraformls.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.tsserver.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.vimls.setup{on_attach=diagnostic_nvim.on_attach}
-  nvim_lsp.yamlls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.bashls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.cssls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.dockerls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.html.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.sqlls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.sumneko_lua.setup{cmd = {"lua-language-server"}; on_attach=diagnostic_nvim.on_attach}
+  lspconfig.terraformls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.tsserver.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.vimls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.yamlls.setup{on_attach=diagnostic_nvim.on_attach}
 EOF
 
 " Report LSP diagnostic messages (provided by `diagnostic-nvim`) to ALE
