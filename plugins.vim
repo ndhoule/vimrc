@@ -168,7 +168,7 @@ function! PackInit() abort
   "## Completion
 
   if g:ENABLE_COMPLETION_NVIM
-    call minpac#add('nvim-lua/completion-nvim', {'rev': '52ccd7c344dca90b62de4ea997c4aa328ce7f020'})
+    call minpac#add('nvim-lua/completion-nvim', {'rev': '936bbd17577101a4ffb07ea7f860f77dd8007d43'})
     call minpac#add('steelsojka/completion-buffers', {'rev': '441a58b77c04409e8ccb35fd4970598ae551462f'})
     if g:ENABLE_TREESITTER
       call minpac#add('nvim-treesitter/completion-treesitter')
