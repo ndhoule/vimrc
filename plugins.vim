@@ -104,7 +104,7 @@ function! PackInit() abort
   endif
 
   " Debugging
-  call minpac#add('puremourning/vimspector', {'rev': 'ff4acb17d1f5362af8d9c85b01e0a3f3db53a882', 'do': 'VimspectorUpdate'})
+  call minpac#add('puremourning/vimspector', {'rev': '78bec87f4ed058dfad6f8c33f487719db10f1bd3', 'do': 'VimspectorUpdate'})
 
   "## VCS
 
@@ -166,13 +166,13 @@ function! PackInit() abort
     call minpac#add('hashivim/vim-terraform', {'rev': 'a6be9fea8757f6672397cadfb2784230914130c6'})
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
   else
-    call minpac#add('sheerun/vim-polyglot', {'rev': 'ab0ff253f6ab3cd9d42b6be38d4d912bad5415f9'})
+    call minpac#add('sheerun/vim-polyglot', {'rev': 'v4.16.0'})
   endif
 
   "## Completion
 
   if g:ENABLE_COMPLETION_NVIM
-    call minpac#add('nvim-lua/completion-nvim', {'rev': '936bbd17577101a4ffb07ea7f860f77dd8007d43'})
+    call minpac#add('nvim-lua/completion-nvim', {'rev': '52ccd7c344dca90b62de4ea997c4aa328ce7f020'})
     call minpac#add('steelsojka/completion-buffers', {'rev': '441a58b77c04409e8ccb35fd4970598ae551462f'})
     if g:ENABLE_TREESITTER
       call minpac#add('nvim-treesitter/completion-treesitter')
