@@ -9,22 +9,57 @@ endif
 
 lua << EOF
   local lspconfig = require('lspconfig')
-  local diagnostic_nvim = require('diagnostic')
 
-  lspconfig.bashls.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.cssls.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.dockerls.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.html.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.sqlls.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.sumneko_lua.setup{cmd = {"lua-language-server"}; on_attach=diagnostic_nvim.on_attach}
-  lspconfig.terraformls.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.tsserver.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.vimls.setup{on_attach=diagnostic_nvim.on_attach}
-  lspconfig.yamlls.setup{on_attach=diagnostic_nvim.on_attach}
+  lspconfig.bashls.setup{}
+  lspconfig.cssls.setup{}
+  lspconfig.dockerls.setup{}
+  lspconfig.html.setup{}
+  lspconfig.sqlls.setup{}
+  lspconfig.sumneko_lua.setup{cmd = {"lua-language-server"}}
+  lspconfig.terraformls.setup{}
+  lspconfig.tsserver.setup{}
+  lspconfig.vimls.setup{}
+  lspconfig.yamlls.setup{}
+
+  --- Override the default LSP diagnostics handler with a handler that sends diagnostics to ALE.
+  --- This lets us configure cycling through lint errors, LSP errors, etc. in a single place.
+
+  local ale_diagnostic_severity_map = {
+    [vim.lsp.protocol.DiagnosticSeverity.Error] = "E";
+    [vim.lsp.protocol.DiagnosticSeverity.Warning] = "W";
+    [vim.lsp.protocol.DiagnosticSeverity.Information] = "I";
+    [vim.lsp.protocol.DiagnosticSeverity.Hint] = "H";
+  }
+
+  local function handler(_, _, params, _, _, _)
+    local uri = params.uri
+    local bufnr = vim.uri_to_bufnr(uri)
+    local diagnostics = params.diagnostics
+
+    if diagnostics == nil then
+      return
+    end
+
+    local items = {}
+    for _, item in ipairs(diagnostics) do
+      table.insert(items, {
+          code = item.code,
+          col = item.range.start.character + 1,
+          end_col = item.range['end'].character,
+          end_lnum = item.range['end'].line,
+          lnum = item.range.start.line + 1,
+          nr = item.code,
+          text = item.message,
+          type = ale_diagnostic_severity_map[item.severity],
+          bufnr = bufnr,
+        })
+    end
+
+    vim.fn['ale#other_source#ShowResults'](bufnr, 'LSP', items)
+  end
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = handler
 EOF
-
-" Report LSP diagnostic messages (provided by `diagnostic-nvim`) to ALE
-let g:diagnostic_enable_ale = 1
 
 "# Keybindings
 

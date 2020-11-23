@@ -98,10 +98,6 @@ function! PackInit() abort
 
   " Integrate with linters, fixers, formatters, etc.
   call minpac#add('dense-analysis/ale', {'rev': '681a6e371d02cce9c2414c19f5deeae61aa321fa'})
-  if g:ENABLE_LSP
-    " TODO(ndhoule): Migrate to built-in diagnostics: https://github.com/nvim-lua/diagnostic-nvim/issues/73
-    call minpac#add('ndhoule/diagnostic-nvim', {'rev': 'feat/ale-lint-source-support'})
-  endif
 
   " Debugging
   call minpac#add('puremourning/vimspector', {'rev': '78bec87f4ed058dfad6f8c33f487719db10f1bd3', 'do': 'VimspectorUpdate'})
