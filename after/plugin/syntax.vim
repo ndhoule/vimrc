@@ -22,36 +22,20 @@ if g:ENABLE_TREESITTER
     local tree_sitter = require 'nvim-treesitter.configs'
 
     tree_sitter.setup {
-      ensure_installed = {
-        "bash",
-        "c",
-        "c_sharp",
-        "cpp",
-        "css",
-        "dart",
-        "fennel",
-        "go",
-        "html",
-        "java",
-        "javascript",
-        "jsdoc",
-        "json",
-        "lua",
-        "ocaml",
-        "ocaml_interface",
-        "php",
-        "python",
-        "regex",
-        "rst",
-        "ruby",
-        "rust",
-        "toml",
-        "tsx",
-        "typescript",
-      },
+      ensure_installed = "maintained",
       highlight = {
         enable = true,
       },
+      indent = {
+        enable = true,
+      },
     }
+
+    -- Highlighting in treesitter overrides the highlighting performed by the
+    -- `rainbow` plugin; disable bracket/delimiter highlighting, letting rainbow
+    -- handle it instead
+    vim.treesitter.highlighter.hl_map.error = nil
+    vim.treesitter.highlighter.hl_map["punctuation.delimiter"] = "Delimiter"
+    vim.treesitter.highlighter.hl_map["punctuation.bracket"] = nil
 EOF
 endif

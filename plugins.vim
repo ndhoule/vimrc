@@ -157,13 +157,12 @@ function! PackInit() abort
   call minpac#add('chrisbra/Colorizer', {'rev': '879e6c69c0c02c4ef0f08b3955c60de16efd8fb8'})
 
   if g:ENABLE_TREESITTER
-    call minpac#add('nvim-treesitter/nvim-treesitter')
+    call minpac#add('nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'})
     " Install syntax for languages not yet supported by treesitter
     call minpac#add('hashivim/vim-terraform', {'rev': 'a6be9fea8757f6672397cadfb2784230914130c6'})
     call minpac#add('plasticboy/vim-markdown', {'rev': '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4'})
-  else
-    call minpac#add('sheerun/vim-polyglot', {'rev': 'v4.16.0'})
   endif
+  call minpac#add('sheerun/vim-polyglot', {'rev': 'v4.16.0'})
 
   "## Completion
 
