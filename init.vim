@@ -29,9 +29,7 @@ let g:ENABLE_TREESITTER = $ENABLE_TREESITTER == "1"
 
 "# Plugin setup
 
-if filereadable(g:DOTVIM_PATH . '/plugins.vim')
-  execute('source ' . g:DOTVIM_PATH . '/plugins.vim')
-endif
+lua require('setup')
 
 " XXX(ndhoule): Fix and remove
 let g:scratch_no_mappings = 1
