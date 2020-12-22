@@ -37,18 +37,18 @@ return require('packer').startup(function()
   -- ## Search
 
   -- Make * and # work on visual selections
-  use {'bronson/vim-visual-star-search', commit = 'e48c3fe596230e38f5a0e5313455e835c14aeb6a'}
+  use {'bronson/vim-visual-star-search', commit = 'e48c3fe596229e38f5a0e5313455e835c14aeb6a'}
 
   -- ## Project navigation
 
   -- Fuzzy file finder and file contents searcher
   use {
     'junegunn/fzf.vim',
-    commit = '53b3aea0da5e3581e224c958dbc13558cbe5daee',
+    commit = 'e9d62b4c873f5f207202b4ba5bbd63de7003a0d3',
     requires = {
       {
         'junegunn/fzf',
-        commit = '7acdaf0b4335a6c089bce5b73ff23aeb3b9d9c92',
+        commit = 'ab3937ee5a62d63bac9307bfe72601eeb4fc9cd2',
         run = './install --bin'
       }
     }
@@ -90,7 +90,7 @@ return require('packer').startup(function()
   use {'tpope/vim-dispatch', commit = 'fe6a34322829e466a7e8ce710a6ac5eabddff9fd'}
 
   -- Integrate with linters, fixers, formatters, etc.
-  use {'dense-analysis/ale', commit = '681a6e371d02cce9c2414c19f5deeae61aa321fa'}
+  use {'dense-analysis/ale', commit = 'f996ede5999c99b1b3e3cecc02dbd06cb286d3ff'}
 
   -- Debugging
   use {
@@ -131,7 +131,7 @@ return require('packer').startup(function()
   -- ## Text editing
 
   -- Insert matching pairs of characters in insert mode (e.g. (), [], '')
-  use {'Raimondi/delimitMate', commit = '16687aec24d803bc76cae2d7bfe2b73b1cdda4ef'}
+  use {'Raimondi/delimitMate', commit = '537a1da0fa5eeb88640425c37e545af933c56e1b'}
 
   -- ## Language Server Protocol
 
@@ -140,7 +140,7 @@ return require('packer').startup(function()
   -- - :help lsp
   use {
     'neovim/nvim-lspconfig',
-    commit = '4f19567fb76438d39ed196ae5b4e06b749e75e16',
+    commit = 'dbc4bf514198f9e328e200a9aa63b462d6e1e9f1',
     disable = not vim.g.ENABLE_LSP
   }
 
@@ -160,17 +160,6 @@ return require('packer').startup(function()
     disable = not vim.g.ENABLE_TREESITTER,
     run = ':TSUpdate'
   }
-  -- Install syntax for languages not yet supported by treesitter
-  -- use {
-  --   'hashivim/vim-terraform',
-  --   commit = 'a6be9fea8757f6672397cadfb2784230914130c6'
-  --   disable = not vim.g.ENABLE_TREESITTER
-  -- }
-  -- use {
-  --   'plasticboy/vim-markdown',
-  --   commit = '8e5d86f7b85234d3d1b4207dceebc43a768ed5d4',
-  --   disable = not vim.g.ENABLE_TREESITTER
-  -- }
   use {'sheerun/vim-polyglot', tag = 'v4.16.0'}
 
   -- ## Completion
@@ -186,19 +175,11 @@ return require('packer').startup(function()
   }
   use {
     'nvim-treesitter/completion-treesitter',
+    commit = '45c9b2faff4785539a0d0c655440c2465fed985a',
     disable = not vim.g.ENABLE_TREESITTER and not vim.g.ENABLE_COMPLETION_NVIM
   }
 
   -- ## Theming
 
   use {'sainnhe/sonokai', commit = '51e7ee8b13f9c2e4eae33f8d745eaa1f320b0ae6'}
-
-  -- ## Cross-platform support
-
-  -- Improve vim + iTerm2 + tmux interop
-  -- use {
-  --   'sjl/vitality.vim',
-  --   commit = '0f693bff572689ad52b781c012dad4926cd924f6',
-  --   disable = vim.g.host_os != 'Darwin'
-  -- }
 end)
