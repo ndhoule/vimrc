@@ -29,12 +29,9 @@ if vim.g.ENABLE_TREESITTER then
     indent = {
       enable = true,
     },
+    rainbow = {
+      enable = true,
+      -- extended_mode = true,
+    }
   }
-
-  -- Highlighting in treesitter overrides the highlighting performed by the
-  -- `rainbow` plugin; disable bracket/delimiter highlighting, letting rainbow
-  -- handle it instead
-  vim.treesitter.highlighter.hl_map.error = nil
-  vim.treesitter.highlighter.hl_map['punctuation.delimiter'] = 'Delimiter'
-  vim.treesitter.highlighter.hl_map['punctuation.bracket'] = nil
 end

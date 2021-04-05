@@ -148,7 +148,7 @@ return require("packer").startup({
     -- ## Syntax highlighting
 
     -- Hightlight pairs of characters with different colors
-    use {'luochen1990/rainbow', commit = '4d15633cdaf61602e1d9fd216a77fc02e0881b2d'}
+    use {'p00f/nvim-ts-rainbow', commit = 'd463320156e7e3d85a98aca1f5292422fd3b5b12'}
 
     -- Change background color to highlight indentation levels
     use {'nathanaelkane/vim-indent-guides', commit = '54d889a63716ee2f1818aa2ec5082db47147147b'}

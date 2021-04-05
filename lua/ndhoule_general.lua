@@ -12,7 +12,6 @@ vim.g.ENABLE_TREESITTER = vim.env.ENABLE_TREESITTER == "1"
 
 -- TODO(ndhoule): Move me elsewhere
 vim.g.scratch_no_mappings = 1
-vim.g.rainbow_active = 1
 vim.g.ale_disable_lsp = 1
 
 --
