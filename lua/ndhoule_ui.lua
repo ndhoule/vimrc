@@ -1,16 +1,4 @@
 --
--- Indentation Guides
---
-
-vim.g.indent_guides_exclude_filetypes = {'fzf', 'help', 'nerdtree', 'packer'}
-
--- Pick indent guide colors manually (the default is generally too noisy, so here we choose more
--- muted colors)
-vim.g.indent_guides_auto_colors = false
-vim.cmd('autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven guibg=#212121 ctermbg=236')
-vim.cmd('autocmd FileType * IndentGuidesEnable')
-
---
 -- Whitespace
 --
 

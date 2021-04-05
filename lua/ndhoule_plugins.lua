@@ -150,9 +150,6 @@ return require("packer").startup({
     -- Hightlight pairs of characters with different colors
     use {'p00f/nvim-ts-rainbow', commit = 'd463320156e7e3d85a98aca1f5292422fd3b5b12'}
 
-    -- Change background color to highlight indentation levels
-    use {'nathanaelkane/vim-indent-guides', commit = '54d889a63716ee2f1818aa2ec5082db47147147b'}
-
     -- Highlight color names and codes in the same color that they represent
     use {'chrisbra/Colorizer', commit = '826d5691ac7d36589591314621047b1b9d89ed34'}
 
