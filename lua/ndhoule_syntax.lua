@@ -28,6 +28,9 @@ tree_sitter.setup {
   indent = {
     enable = true,
   },
+  matchup = {
+    enable = true,
+  },
   rainbow = {
     enable = true,
     -- extended_mode = true,
