@@ -18,21 +18,21 @@ vim.o.backup = true
 -- https://webpack.js.org/guides/development/#adjusting-your-text-editor
 vim.o.backupcopy = 'yes'
 vim.o.backupdir = vim.fn.stdpath('cache') .. '/backup//'
-if not vim.fn.isdirectory(vim.o.backupdir) then
+if vim.fn.isdirectory(vim.o.backupdir) == 0 then
   vim.fn.mkdir(vim.o.backupdir, 'p')
 end
 
 -- Enable swapfiles
 vim.o.swapfile = true
 vim.o.directory = vim.fn.stdpath('cache') .. '/swap//'
-if not vim.fn.isdirectory(vim.o.directory) then
+if vim.fn.isdirectory(vim.o.directory) == 0 then
   vim.fn.mkdir(vim.o.directory, 'p')
 end
 
 -- Enable persistent undofiles
 vim.o.undofile = true
 vim.o.undodir = vim.fn.stdpath('cache') .. '/undo//'
-if not vim.fn.isdirectory(vim.o.undodir) then
+if vim.fn.isdirectory(vim.o.undodir) == 0 then
   vim.fn.mkdir(vim.o.undodir, 'p')
 end
 
