@@ -5,6 +5,8 @@
 -- Explicitly configure all linters. To override linters on a per-project basis, create a
 -- `.projections.json` file (see `./projectionist.vim` for more details).
 vim.g.ale_linters_explicit = true
+vim.g.ale_sign_column_always = 1
+vim.cmd('set signcolumn=yes:1')
 
 vim.g.ale_linters = {
   go         = {'golint', 'govet'},
