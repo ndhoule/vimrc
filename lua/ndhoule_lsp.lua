@@ -1,7 +1,3 @@
-if not vim.g.ENABLE_LSP then
-  return
-end
-
 --
 -- Configuration
 --

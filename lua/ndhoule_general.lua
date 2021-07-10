@@ -1,12 +1,4 @@
 --
--- Feature Flags
---
-
-vim.g.ENABLE_COMPLETION_NVIM = vim.env.ENABLE_COMPLETION ~= "0"
-vim.g.ENABLE_LSP = vim.env.ENABLE_NATIVE_LSP ~= "0"
-vim.g.ENABLE_TREESITTER = vim.env.ENABLE_TREESITTER == "1"
-
---
 -- Plugin Setup
 --
 

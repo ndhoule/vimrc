@@ -1,7 +1,3 @@
-if not vim.g.ENABLE_COMPLETION_NVIM then
-  return
-end
-
 --
 -- Configuration
 --

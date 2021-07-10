@@ -9,9 +9,6 @@ return require("packer").startup({
 
     -- ## Core behavior
 
-    -- Use a common set of vim defaults
-    use 'tpope/vim-sensible'
-
     -- Add a killring
     use {'bfredl/nvim-miniyank', commit = '2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b'}
 
@@ -19,7 +16,7 @@ return require("packer").startup({
     use {'ntpeters/vim-better-whitespace', commit = '8cf4b2175dd61416c2fe7d3234324a6c59d678de'}
 
     -- Automatically close word control structures (if/fi, do/end, etc.)
-    use {'tpope/vim-endwise', commit = '97180a73ad26e1dcc1eebe8de201f7189eb08344'}
+    -- use {'tpope/vim-endwise', commit = '4289889a2622f9bc7c594a6dd79763781f63dfb5'}
 
     -- Add support for `.` (repeat) for plugins
     use {'tpope/vim-repeat', commit = '24afe922e6a05891756ecf331f39a1f6743d3d5a'}
@@ -30,7 +27,7 @@ return require("packer").startup({
     use {'EinfachToll/DidYouMean', commit = 'a98fb17ba16aa2eb69b3f9cc7a70e8a736890e4e'}
 
     -- Open a scratch buffer (clone of emacs functionality)
-    use {'mtth/scratch.vim', commit = 'b3f643bfdefb83b47f0ecc03d815f4a564c5e687'}
+    use {'mtth/scratch.vim', commit = 'adf826b1ac067cdb4168cb6066431cff3a2d37a3'}
 
     -- Rename the current buffer on the filesystem
     use {'vim-scripts/Rename', tag = '0.3'}
@@ -56,29 +53,30 @@ return require("packer").startup({
     }
 
     -- Menu for navigating ctags, LSP symbols, etc.
-    use {'liuchengxu/vista.vim', commit = '4387164845165634a06941b17c2b4f398cffd193'}
+    use {'liuchengxu/vista.vim', commit = 'd709462958f2167008c9653a9cbc9de1067bfa2d'}
 
     -- File navigation menu
-    use {'preservim/nerdtree', commit = '1b19089917cc3e0a81d3294fead2424c419d545c'}
+    use {'preservim/nerdtree', commit = '81f3eaba295b3fceb2d032db57e5eae99ae480f8'}
 
     -- ## Statusline
 
     -- Customize statusline
-    use {'itchyny/lightline.vim', commit = '8e013f32f524157bf14ccaa87d97be3d3a7201e2'}
+    use {'itchyny/lightline.vim', commit = 'b06d921023cf6536bcbee5754071d122296e8942'}
 
     -- ## Motions
 
     -- Add motions for sorting within a line or range of lines
-    use {'christoomey/vim-sort-motion', commit = '49dfcabeee2bf3a85a6cc0774b35f687b6c9d0e5'}
+    use {'christoomey/vim-sort-motion', commit = 'c8782be8f7da414c6442b3ba4b6abb0345d392d9'}
 
     -- Add motions for expanding a visual cursor within a group
-    use {'gcmt/wildfire.vim', commit = 'e2baded7162260e05d2527f5bca9fca81f0bc8f2'}
+    use {'gcmt/wildfire.vim', commit = 'fa91b732fd1c5acd23b7b32d5fbbc884eedafc8d'}
 
     -- Add motions for commenting out blocks of code
-    use {'b3nj5m1n/kommentary', commit = '5adfea5864b11f8d43b07162b0d80c6d64d0d056'}
+    use {'b3nj5m1n/kommentary', commit = 'f0b6d75df0a263fc849b0860dc8a27f4bed743db'}
 
     -- Add mappings for working on text within pairs of characters (e.g. quotes)
     use {'machakann/vim-sandwich', commit = '9e6340affe9f53c11a6975a5f50b9bf48adb692c'}
+    use {'andymass/vim-matchup', commit = '39e39b1338eba27945af3bd9c663865ec1099c2e'}
 
     -- ## Text editing
 
@@ -91,7 +89,7 @@ return require("packer").startup({
     use {'tpope/vim-dispatch', commit = 'fe6a34322829e466a7e8ce710a6ac5eabddff9fd'}
 
     -- Integrate with linters, fixers, formatters, etc.
-    use {'dense-analysis/ale', commit = '388cf3374312b05122151bc68691bf09a69ff840'}
+    use {'dense-analysis/ale', commit = '1b08791228f5aca4545a3fba6699b29a003028fe'}
 
     -- Debugging
     use {
@@ -102,13 +100,13 @@ return require("packer").startup({
 
     -- ## VCS
 
-    use {'mhinz/vim-signify', commit = 'b2a0450e23c63b75bbeabf4f0c28f9b4b2480689'}
+    use {'mhinz/vim-signify', commit = '22f05607d4d7406781af56cafc1121152988c6d2'}
 
     -- Add vim commands for Git operations
-    use {'tpope/vim-fugitive', commit = '8cf0cf5bfb2b858faecf4e0f6c1b8d0948805e5e'}
+    use {'tpope/vim-fugitive', commit = 'be9ff95f27d12b7bd46ab5d36f7149cb0864c329'}
 
     -- Add vim-fugitive GitHub integration
-    use {'tpope/vim-rhubarb', commit = 'd865e427d067af57d85cf2b7d2bc1912eb84d0bf'}
+    use {'tpope/vim-rhubarb', commit = '2590324d7fdaf0c6311fad4ee2a2878acaaec42d'}
 
     -- ## Environment
 
@@ -121,13 +119,13 @@ return require("packer").startup({
     -- ## Project settings
 
     -- Add integration for .editorconfig files
-    use {'editorconfig/editorconfig-vim', commit = '047c4b455b9d56adee63a52d6d7cdf5bb6521d53'}
+    use {'editorconfig/editorconfig-vim', commit = 'f305bc77faef4b418aee65682d7d147f64cfd5a9'}
 
     -- Add support for project configuration files ('projections')
-    use {'tpope/vim-projectionist', commit = '348e070867d02bd471df486bfbe25e2e2ce13061'}
+    use {'tpope/vim-projectionist', commit = '8dda7acb7e24b44ef691ba19b35f585e97e91b30'}
 
     -- Load project-specific vimrc (.lvimrc) files
-    use {'embear/vim-localvimrc', commit = 'ac6444afb5fd11e3f7750f696a0c6b8b0b6ec116'}
+    use {'embear/vim-localvimrc', commit = '0206f5f5a8721cc8c5c84ebb8ab2886e9afcd0ac'}
 
     -- ## Text editing
 
@@ -141,45 +139,43 @@ return require("packer").startup({
     -- - :help lsp
     use {
       'neovim/nvim-lspconfig',
-      commit = '041dfd7fb648d24c80cb8829dda2469f66f88490',
-      disable = not vim.g.ENABLE_LSP
+      commit = 'f81570d1288fd974098e0f311f728469ca919155',
     }
 
     -- ## Syntax highlighting
 
     -- Hightlight pairs of characters with different colors
-    use {'p00f/nvim-ts-rainbow', commit = 'd463320156e7e3d85a98aca1f5292422fd3b5b12'}
+    use {'p00f/nvim-ts-rainbow', commit = 'faecf6c5b848fc2b3ee51d29b4db609abe90f239'}
 
     -- Highlight color names and codes in the same color that they represent
     use {'chrisbra/Colorizer', commit = '826d5691ac7d36589591314621047b1b9d89ed34'}
 
     use {
       'nvim-treesitter/nvim-treesitter',
-      disable = not vim.g.ENABLE_TREESITTER,
       run = ':TSUpdate'
     }
-    use {'sheerun/vim-polyglot', tag = 'v4.17.0'}
+
+    -- use {'sheerun/vim-polyglot', tag = 'v4.17.0'}
+    use {'hashivim/vim-terraform', commit = '37590260914178e04b46d1248e444e718da519c6'}
 
     -- ## Completion
 
     use {
       'nvim-lua/completion-nvim',
-      commit = 'fc9b2fd2d47bea6a8954de1b1b19f2330545b354'
+      commit = 'd62fff879b29fa1ce915887a75305af0fff57d32'
     }
     use {
       'steelsojka/completion-buffers',
       commit = 'c36871b2a44b59761387f4972c617b44dcec5e75',
-      disable = not vim.g.ENABLE_COMPLETION_NVIM
     }
     use {
       'nvim-treesitter/completion-treesitter',
       commit = '45c9b2faff4785539a0d0c655440c2465fed985a',
-      disable = not vim.g.ENABLE_TREESITTER and not vim.g.ENABLE_COMPLETION_NVIM
     }
 
     -- ## Theming
 
-    use {'sainnhe/sonokai', commit = '80523e137cd6df42c2875db3db92576f00c91377'}
+    use {'sainnhe/sonokai', commit = '5c1fc0452387cae323692e3345238a780a942056'}
   end,
   config = {
     max_jobs = 10,

@@ -18,20 +18,18 @@ utils.nvim_create_augroups({
 
 -- Treesitter
 
-if vim.g.ENABLE_TREESITTER then
-  local tree_sitter = require 'nvim-treesitter.configs'
+local tree_sitter = require 'nvim-treesitter.configs'
 
-  tree_sitter.setup {
-    ensure_installed = 'maintained',
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
-    rainbow = {
-      enable = true,
-      -- extended_mode = true,
-    }
-  }
-end
+tree_sitter.setup {
+  ensure_installed = 'maintained',
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
+  rainbow = {
+    enable = true,
+    -- extended_mode = true,
+  },
+}
