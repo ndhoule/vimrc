@@ -155,8 +155,8 @@ return require("packer").startup({
       run = ':TSUpdate'
     }
 
-    -- use {'sheerun/vim-polyglot', tag = 'v4.17.0'}
     use {'hashivim/vim-terraform', commit = '37590260914178e04b46d1248e444e718da519c6'}
+    use {'kchmck/vim-coffee-script', commit = '28421258a8dde5a50deafbfc19cd9873cacfaa79'}
 
     -- ## Completion
 
