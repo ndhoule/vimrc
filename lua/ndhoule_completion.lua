@@ -2,10 +2,13 @@
 -- Configuration
 --
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noinsert,noselect'
+vim.o.completeopt = "menuone,noselect"
 
--- Avoid showing message extra message when using completion
-vim.o.shortmess = vim.o.shortmess .. 'c'
-
-vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
+require('compe').setup {
+  enabled = true;
+  autocomplete = true;
+  source = {
+    path = true;
+    buffer = true;
+  };
+}

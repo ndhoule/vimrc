@@ -191,21 +191,7 @@ return require("packer").startup({
 
     -- ## Completion
 
-    -- https://github.com/nvim-lua/completion-nvim
-    use {
-      'nvim-lua/completion-nvim',
-      commit = '139fb6cfbd9f7384a5489d3e4afdacb8ed977ab0'
-    }
-    -- https://github.com/steelsojka/completion-buffers
-    use {
-      'steelsojka/completion-buffers',
-      commit = 'c36871b2a44b59761387f4972c617b44dcec5e75',
-    }
-    -- https://github.com/nvim-treesitter/completion-treesitter
-    use {
-      'nvim-treesitter/completion-treesitter',
-      commit = '45c9b2faff4785539a0d0c655440c2465fed985a',
-    }
+    use {'hrsh7th/nvim-compe', commit = '8ed6999e005015251b6b05cb5c0bfe857785b1d4'}
 
     -- ## Theming
 
