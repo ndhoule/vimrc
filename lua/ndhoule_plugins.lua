@@ -48,17 +48,13 @@ return require("packer").startup({
     -- ## Project navigation
 
     -- Fuzzy file finder and file contents searcher
-    -- https://github.com/junegunn/fzf.vim
+    -- https://github.com/nvim-telescope/telescope.nvim
     use {
-      'junegunn/fzf.vim',
-      commit = 'e34f6c129d39b90db44df1107c8b7dfacfd18946',
+      'nvim-telescope/telescope.nvim',
+      commit = '2c573b9d12f421cec74a215f79b25591fe083352',
       requires = {
-        -- https://github.com/junegunn/fzf
-        {
-          'junegunn/fzf',
-          commit = '7191ebb615f5d6ebbf51d598d8ec853a65e2274d',
-          run = './install --bin'
-        }
+          {'nvim-lua/plenary.nvim'},
+          {'nvim-lua/popup.nvim'},
       }
     }
 
