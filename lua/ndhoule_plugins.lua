@@ -63,8 +63,12 @@ return require("packer").startup({
     use {'liuchengxu/vista.vim', commit = 'cb908f21c23d9c9ebce678c8dbc7a0f876384b8c'}
 
     -- File navigation menu
-    -- https://github.com/preservim/nerdtree
-    use {'preservim/nerdtree', commit = '2c14ed0e153cdcd0a1c7d1eabec6820bb6b3f8a2'}
+    -- https://github.com/kyazdani42/nvim-tree.lua
+    use {
+      'kyazdani42/nvim-tree.lua',
+      commit = '6175d63eaecdc7d80105825f89a6c9864c4dd432',
+      requires = 'kyazdani42/nvim-web-devicons',
+    }
 
     -- ## Statusline
 
