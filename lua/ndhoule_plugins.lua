@@ -1,8 +1,14 @@
-vim.cmd [[packadd packer.nvim]]
+-- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+local use = require('packer').use
 return require("packer").startup({
   function()
-    use {'wbthomason/packer.nvim', opt = true}
+    use 'wbthomason/packer.nvim'
 
     -- Add functions for finding the current project's root directory path
     -- https://github.com/dbakker/vim-projectroot
