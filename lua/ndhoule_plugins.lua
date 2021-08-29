@@ -201,7 +201,13 @@ return require("packer").startup({
 
     -- ## Completion
 
-    use {'hrsh7th/nvim-compe', commit = '8ed6999e005015251b6b05cb5c0bfe857785b1d4'}
+    use {
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+      },
+    }
 
     -- ## Theming
 
