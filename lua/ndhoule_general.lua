@@ -117,48 +117,48 @@ vim.o.inccommand = 'nosplit'  -- Show substitutions incrementally, as you type t
 vim.g.mapleader = ','
 
 -- Activate : using ;
-vim.cmd('nnoremap ; :')
+vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
 
 -- Disable ex mode
-vim.cmd('nnoremap Q <ESC>')
+vim.api.nvim_set_keymap('n', 'Q', '<ESC>', { noremap = true })
 
 -- Prevent F1 from toggling Vim's help menu
-vim.cmd('nnoremap <F1> <ESC>')
-vim.cmd('inoremap <F1> <ESC>')
-vim.cmd('vnoremap <F1> <ESC>')
+vim.api.nvim_set_keymap('n', '<F1>', '<ESC>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<F1>', '<ESC>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<F1>', '<ESC>', { noremap = true })
 
 -- Close windows
-vim.cmd('noremap <leader>w :close<CR>')
-vim.cmd('noremap <leader>W :only<CR>')
+vim.api.nvim_set_keymap('n', '<leader>w', ':close<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>W', ':only<cr>', { noremap = true })
 
 -- Split panes
-vim.cmd('nnoremap <Leader>vs :vsplit<CR>')
-vim.cmd('nnoremap <Leader>hs :split<CR>')
+vim.api.nvim_set_keymap('n', '<leader>vs', ':vsplit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>hs', ':split<CR>', { noremap = true })
 
 -- Move down by displayed lines, not actual lines
-vim.cmd('nnoremap j gj')
-vim.cmd('nnoremap k gk')
+vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
+vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
 
 -- Remap Q to reformat paragraph text
-vim.cmd('vmap Q gq')
-vim.cmd('nmap Q gqap')
+vim.api.nvim_set_keymap('v', 'Q', 'gq', {})
+vim.api.nvim_set_keymap('n', 'Q', 'gqap', {})
 
 -- Move lines
-vim.cmd('inoremap <A-j> <Esc>:m .+1<CR>==gi')
-vim.cmd('nnoremap <A-j> :m .+1<CR>==')
-vim.cmd('vnoremap <A-j> :m \'>+1<CR>gv=gv')
-vim.cmd('nnoremap <A-k> :m .-2<CR>==')
-vim.cmd('inoremap <A-k> <Esc>:m .-2<CR>==gi')
-vim.cmd('vnoremap <A-k> :m \'<-2<CR>gv=gv')
+vim.api.nvim_set_keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', { noremap = true })
+vim.api.nvim_set_keymap('v', '<A-j>', ':m \'>+1<CR>gv=gv', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ':m .-2<CR>==', { noremap = true })
+vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv=gv', { noremap = true })
 
 -- Clear any text highlighted by hlsearch
-vim.cmd('nnoremap <silent> <C-L> :nohlsearch<C-R>=has("diff")?"<Bar>diffupdate":""<CR><CR><C-L>')
+vim.api.nvim_set_keymap('n', '<C-L>', ':nohlsearch<C-R>=has("diff")?"<Bar>diffupdate":""<CR><CR><C-L>', { noremap = true, silent = true })
 
 -- Yank the current filename to the clipboard
-vim.cmd('noremap <silent> <Leader>f :let @+=expand("%:p")<CR>')
+vim.api.nvim_set_keymap('n', '<Leader>f', ':let @+=expand("%:p")<CR>', { noremap = true, silent = true })
 
 -- Toggle between regular numbering, relative numbering, no numbering
-vim.cmd('nmap <silent> <F3> :exec &nu==&rnu ? "se nu!" : "se rnu!"<CR>')
+vim.api.nvim_set_keymap('n', '<F3>', ':exec &nu==&rnu ? "se nu!" : "se rnu!"<CR>', { silent = true })
 
 -- Toggle spell check
-vim.cmd('nnoremap <F4> :set spell!<CR>')
+vim.api.nvim_set_keymap('n', '<F4>', ':set spell!<CR>', { noremap = true })

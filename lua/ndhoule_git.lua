@@ -2,12 +2,12 @@
 -- Keybindings
 --
 
-vim.cmd('map <Leader>gws :Gstatus<CR>')
-vim.cmd('map <Leader>gc :Gcommit<CR>')
-vim.cmd('map <Leader>gl :Glog<CR>')
-vim.cmd('map <Leader>gia :Gwrite<CR>')
-vim.cmd('map <Leader>gwd :Gsdiff<CR>')
-vim.cmd('map <Leader>gb :Gblame<CR>')
+vim.api.nvim_set_keymap('n', '<Leader>gws', ':Gstatus<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gc', ':Gcommit<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gl', ':Glog<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gia', ':Gwrite<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gwd', ':Gsdiff<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gb', ':Gblame<CR>', {})
 
 --
 -- Configuration

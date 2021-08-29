@@ -9,6 +9,6 @@ vim.g.miniyank_maxitems = 30
 -- Keybindings
 --
 
-vim.cmd('map p <Plug>(miniyank-autoput)')
-vim.cmd('map P <Plug>(miniyank-autoPut)')
-vim.cmd('map <C-P> <Plug>(miniyank-cycle)')
+vim.api.nvim_set_keymap('n', 'p', '<Plug>(miniyank-autoput)', {})
+vim.api.nvim_set_keymap('n', 'P', '<Plug>(miniyank-autoPut)', {})
+vim.api.nvim_set_keymap('n', '<C-P>', '<Plug>(miniyank-cycle)', {})

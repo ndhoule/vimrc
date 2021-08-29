@@ -56,5 +56,5 @@ vim.cmd('highlight link ALEErrorSign todo')
 -- Keybindings
 --
 
-vim.cmd('nmap <silent> <Leader>en <Plug>(ale_next_wrap)')
-vim.cmd('nmap <silent> <Leader>ep <Plug>(ale_previous_wrap)')
+vim.api.nvim_set_keymap('n', '<Leader>en', '<Plug>(ale_next_wrap)', { silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>ep', '<Plug>(ale_previous_wrap)', { silent = true })

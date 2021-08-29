@@ -11,7 +11,7 @@ vim.g.nvim_tree_update_cwd = 1
 -----------------
 
 -- Open the current file in the tree relative to the project root (requires dbakker/vim-projectroot).
-vim.cmd('nnoremap <leader>n :ProjectRootExe NvimTreeFindFile<CR>')
+vim.api.nvim_set_keymap('n', '<leader>n', ':ProjectRootExe NvimTreeFindFile<CR>', { noremap = true })
 
-vim.cmd('nnoremap <leader>/ <cmd>Telescope live_grep<cr>')
-vim.cmd('nnoremap <leader>t <cmd>Telescope git_files<cr>')
+vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>Telescope live_grep<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Telescope git_files<CR>', { noremap = true })

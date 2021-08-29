@@ -58,14 +58,12 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = handler
 -- Keybindings
 --
 
-vim.cmd([[
-  nnoremap <silent> <C-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> <space>D  <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> <space>q  <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-  nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> gD        <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> gd        <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> gi        <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> gr        <cmd>lua vim.lsp.buf.references()<CR>
-]])
+vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })

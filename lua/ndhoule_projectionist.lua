@@ -45,6 +45,6 @@ utils.nvim_create_augroups({
 -- Keybindings
 --
 
-vim.cmd('nnoremap <Leader>aa :A<CR>')
-vim.cmd('nnoremap <Leader>as :AS<CR>')
-vim.cmd('nnoremap <Leader>av :AV<CR>')
+vim.api.nvim_set_keymap('n', '<Leader>aa', ':A<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>as', ':AS<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>av', ':AV<CR>', { noremap = true })

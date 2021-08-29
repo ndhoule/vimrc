@@ -16,4 +16,4 @@ vim.g.vista_executive_for = {
 -- Keybindings
 --
 
-vim.cmd('nmap <silent> <leader><Tab> :Vista<CR>')
+vim.api.nvim_set_keymap('n', '<leader><Tab>', ':Vista<CR>', { silent = true })
