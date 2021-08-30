@@ -344,7 +344,7 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use {
       'neovim/nvim-lspconfig',
-      commit = '7d6e2211571029ace6ddeefed7df18e4dc51274f',
+      commit = '0eccc1a0ebf909aecfa1ac238d940061162ae84f',
     }
 
     -- ## Syntax highlighting
