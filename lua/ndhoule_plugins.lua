@@ -52,6 +52,23 @@ return require("packer").startup({
     -- https://github.com/bronson/vim-visual-star-search
     use {'bronson/vim-visual-star-search', commit = '7c32edb9e3c85d473d9be4dec721a4c9d5d4d69c'}
 
+    -- https://github.com/ironhouzi/starlite-nvim
+    use {
+      'ironhouzi/starlite-nvim',
+      commit = 'bc204069859e4e85a057b92ac61700f3f46c3e41',
+      config = function()
+        -- Change the default behavior for search commands (*, #). By default, these commands
+        -- immediately jump to the next match; remap them so they highlight the current word first
+        -- and only jump to the next match on subsequent command.
+        --
+        -- FIXME(ndhoule): Doesn't work with vim-visual-star-search
+        vim.api.nvim_set_keymap('n', '*', ':lua require("starlite").star()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', 'g*', ':lua require("starlite").g_star()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '#', ':lua require("starlite").hash()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', 'g#', ':lua require("starlite").g_hash()<CR>', { noremap = true, silent = true })
+      end
+    }
+
     -- ## Project navigation
 
     -- Fuzzy file finder and file contents searcher
