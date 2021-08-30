@@ -214,7 +214,7 @@ return require("packer").startup({
     -- ## Theming
 
     -- https://github.com/sainnhe/sonokai
-    use {'sainnhe/sonokai', commit = '0e1af11d2297ae65ba504419cd8d6bbd6ed3534d'}
+    use {'sainnhe/sonokai', commit = 'cb10268587c0f0616242ecb5503e22240a915136'}
   end,
   config = {
     max_jobs = 10,
