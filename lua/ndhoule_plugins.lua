@@ -5,9 +5,10 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
-local use = require('packer').use
 return require("packer").startup({
   function()
+    local use = require('packer').use
+
     use 'wbthomason/packer.nvim'
 
     -- Add functions for finding the current project's root directory path
@@ -59,8 +60,8 @@ return require("packer").startup({
       'nvim-telescope/telescope.nvim',
       commit = '2c573b9d12f421cec74a215f79b25591fe083352',
       requires = {
-          {'nvim-lua/plenary.nvim'},
-          {'nvim-lua/popup.nvim'},
+        'nvim-lua/plenary.nvim',
+        'nvim-lua/popup.nvim',
       }
     }
 
