@@ -190,6 +190,7 @@ return require("packer").startup({
     -- https://github.com/chrisbra/Colorizer
     use {'chrisbra/Colorizer', commit = '826d5691ac7d36589591314621047b1b9d89ed34'}
 
+    -- https://github.com/nvim-treesitter/nvim-treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate'
