@@ -132,9 +132,159 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-dispatch
     use {'tpope/vim-dispatch', commit = '250ea269e206445d10700b299afd3eb993e939ad'}
 
+    use {
+      'romainl/vim-qf',
+      commit = '65f115c350934517382ae45198a74232a9069c2a',
+      setup = function()
+        vim.api.nvim_set_keymap('n', '<Leader>ep', '<Plug>(qf_loc_previous)', { silent = true })
+        vim.api.nvim_set_keymap('n', '<Leader>en', '<Plug>(qf_loc_next)', { silent = true })
+        vim.api.nvim_set_keymap('n', '<Leader>Ep', '<Plug>(qf_qf_previous)', { silent = true })
+        vim.api.nvim_set_keymap('n', '<Leader>En', '<Plug>(qf_qf_next)', { silent = true })
+      end,
+    }
+
     -- Integrate with linters, fixers, formatters, etc.
     -- https://github.com/dense-analysis/ale
-    use {'dense-analysis/ale', commit = 'a099fe24b2e898c93c0aa4391e5a5631932684a6'}
+    use {
+      'dense-analysis/ale',
+      commit = 'd53a085096306c890897385692693ee653aaddce',
+      config = function()
+        -- Override the default LSP diagnostics handler with a handler that sends diagnostics to
+        -- ALE. This lets us configure cycling through lint errors, LSP errors, etc. in a single
+        -- place.
+
+        local lsp_diagnostic_clear = vim.lsp.diagnostic.clear
+        vim.lsp.diagnostic.clear = function(bufnr, client_id, diagnostic_ns, sign_ns)
+          lsp_diagnostic_clear(bufnr, client_id, diagnostic_ns, sign_ns)
+          vim.api.nvim_call_function('ale#other_source#ShowResults', {bufnr, 'LSP', {}})
+        end
+
+        local ale_diagnostic_severity_map = {
+          [vim.lsp.protocol.DiagnosticSeverity.Error] = 'E';
+          [vim.lsp.protocol.DiagnosticSeverity.Warning] = 'W';
+          [vim.lsp.protocol.DiagnosticSeverity.Information] = 'I';
+          [vim.lsp.protocol.DiagnosticSeverity.Hint] = 'H';
+        }
+
+        local function on_publish_diagnostics(_, _, params, _, _, _)
+          local uri = params.uri
+          local bufnr = vim.uri_to_bufnr(uri)
+          local diagnostics = params.diagnostics
+
+          if diagnostics == nil then
+            return
+          end
+
+          local items = {}
+          for _, item in ipairs(diagnostics) do
+            table.insert(items, {
+              code = item.code,
+              col = item.range.start.character + 1,
+              end_col = item.range['end'].character,
+              end_lnum = item.range['end'].line,
+              lnum = item.range.start.line + 1,
+              nr = item.code,
+              text = item.message,
+              type = ale_diagnostic_severity_map[item.severity],
+              bufnr = bufnr,
+            })
+          end
+
+          vim.api.nvim_call_function('ale#other_source#ShowResults', {bufnr, 'LSP', items})
+        end
+
+        vim.lsp.handlers['textDocument/publishDiagnostics'] = on_publish_diagnostics
+
+        ---------------------------
+        -- General Configuration --
+        ---------------------------
+
+        -- Decrease delay before running linter after text change
+        vim.g.ale_lint_delay = 100
+
+        ----------------------
+        -- UI Configuration --
+        ----------------------
+
+        -- Show sign column even when there are no errors to prevent text from moving while typing
+        vim.cmd('set signcolumn=yes:1')
+        vim.g.ale_sign_column_always = true
+
+        vim.g.ale_sign_info = '➤'
+        vim.g.ale_sign_warning = '⚠'
+        vim.g.ale_sign_error = '✖'
+
+        vim.g.ale_echo_msg_info_str = 'I'
+        vim.g.ale_echo_msg_warning_str = 'W'
+        vim.g.ale_echo_msg_error_str = 'E'
+        vim.g.ale_echo_msg_format = '[%linter%] %s %(code) %[%severity%]'
+
+        --------------------------
+        -- Linter Configuration --
+        --------------------------
+
+        -- Explicitly configure linters. To override linters on a per-project basis, create a
+        -- `.projections.json` file (see projectionist configuration for more details).
+        vim.g.ale_linters_explicit = true
+
+        vim.g.ale_linters = {
+          go         = {'golint', 'govet'},
+          html       = {'tidy'},
+          javascript = {'eslint'},
+          markdown   = {},
+          sh         = {'shellcheck'},
+          typescript = {'eslint'},
+        }
+
+        -- When available, use eslint_d for faster linting and fixing.
+        -- eslint_d delegates to project-local eslint installations.
+        if vim.fn.executable('eslint_d') then
+          vim.g.ale_javascript_eslint_use_global = true
+          vim.g.ale_javascript_eslint_executable = 'eslint_d'
+        end
+
+        -----------------------------
+        -- Formatter Configuration --
+        -----------------------------
+
+        vim.g.ale_fixers = {
+          go         = {'gofmt'},
+          html       = {'prettier'},
+          javascript = {'eslint'},
+          markdown   = {'remove_trailing_lines'},
+          sh         = {'shfmt'},
+          typescript = {'eslint'},
+        }
+
+        -- Reset shfmt configuration to defaults. By default, ALE will use your editor's
+        -- shiftwidth/tabstob settings as the `-i` flag to shfmt; this means shfmt will format files
+        -- depending on a user's personal configuration rather than the project configuration,
+        -- diminishing the utility of a standardized formatter.
+        --
+        -- ALE guards against this being an empty value, so this must be a space.
+        vim.g.ale_sh_shfmt_options = ' '
+      end,
+    }
+
+    -- https://github.com/folke/trouble.nvim
+    use {
+      'folke/trouble.nvim',
+      commit = '51dd9175eb506b026189c70f81823dfa77defe86',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function()
+        require('trouble').setup({
+          auto_open = true,
+          signs = {
+            error = '✖',
+            warning = '⚠',
+            hint = '➤',
+            information = '➤',
+            other = '➤'
+          },
+          use_lsp_diagnostic_signs = false,
+        })
+      end
+    }
 
     -- Debugging
     -- https://github.com/puremourning/vimspector
