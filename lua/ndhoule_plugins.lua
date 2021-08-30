@@ -370,6 +370,7 @@ return require("packer").startup({
 
     -- ## Completion
 
+    -- https://github.com/hrsh7th/nvim-cmp
     use {
       'hrsh7th/nvim-cmp',
       requires = {
