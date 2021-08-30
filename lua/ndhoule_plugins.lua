@@ -414,7 +414,15 @@ return require("packer").startup({
     -- ## Theming
 
     -- https://github.com/sainnhe/sonokai
-    use {'sainnhe/sonokai', commit = 'cb10268587c0f0616242ecb5503e22240a915136'}
+    use {
+      'sainnhe/sonokai',
+      commit = 'cb10268587c0f0616242ecb5503e22240a915136',
+      config = function()
+        vim.g.sonokai_diagnostic_text_highlight = 1
+
+        vim.cmd('colorscheme sonokai')
+      end,
+    }
   end,
   config = {
     max_jobs = 10,

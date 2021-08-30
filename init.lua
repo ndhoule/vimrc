@@ -13,5 +13,3 @@ require("ndhoule_status_line")
 require("ndhoule_syntax")
 require("ndhoule_tags")
 require("ndhoule_ui")
-
-require("ndhoule_theme")
