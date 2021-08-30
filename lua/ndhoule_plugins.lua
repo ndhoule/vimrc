@@ -19,7 +19,26 @@ return require("packer").startup({
 
     -- Add a killring
     -- https://github.com/bfredl/nvim-miniyank
-    use {'bfredl/nvim-miniyank', commit = '2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b'}
+    use {
+      'bfredl/nvim-miniyank',
+      commit = '2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b',
+      config = function()
+        ---------------------------
+        -- General Configuration --
+        ---------------------------
+
+        vim.g.miniyank_filename = vim.fn.stdpath('cache') .. '/miniyank.mpack'
+        vim.g.miniyank_maxitems = 30
+
+        -----------------
+        -- Keybindings --
+        -----------------
+
+        vim.api.nvim_set_keymap('n', 'p', '<Plug>(miniyank-autoput)', {})
+        vim.api.nvim_set_keymap('n', 'P', '<Plug>(miniyank-autoPut)', {})
+        vim.api.nvim_set_keymap('n', '<C-P>', '<Plug>(miniyank-cycle)', {})
+      end,
+    }
 
     -- Highlight trailing whitespace, with support for blacklisting filetypes
     -- https://github.com/ntpeters/vim-better-whitespace

@@ -2,7 +2,6 @@ require("ndhoule_general")
 
 require("ndhoule_plugins")
 
-require("ndhoule_clipboard")
 require("ndhoule_completion")
 require("ndhoule_debugging")
 require("ndhoule_git")
