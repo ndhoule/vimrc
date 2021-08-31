@@ -292,6 +292,7 @@ return require("packer").startup({
         ---------------------------
         -- General Configuration --
         ---------------------------
+        vim.g.vista_disable_statusline = 0
 
         vim.g.vista_executive_for = {
           bash            = 'nvim_lsp',
