@@ -626,6 +626,10 @@ return require("packer").startup({
     use {
       'tpope/vim-fugitive',
       commit = '8e4a677c7f1554cb1dd34d05a2b068657b42ef0f',
+      requires = {
+        -- https://github.com/tpope/vim-rhubarb
+        {'tpope/vim-rhubarb', commit = 'b4aad6dc43660db554bba2942026fb9965f1a45e'}
+      },
       config = function()
         ---------------------------
         -- General Configuration --
@@ -647,10 +651,6 @@ return require("packer").startup({
         vim.api.nvim_set_keymap('n', '<Leader>gb', ':Gblame<CR>', {})
       end,
     }
-
-    -- Add vim-fugitive GitHub integration
-    -- https://github.com/tpope/vim-rhubarb
-    use {'tpope/vim-rhubarb', commit = 'b4aad6dc43660db554bba2942026fb9965f1a45e'}
 
     -- ## Environment
 
