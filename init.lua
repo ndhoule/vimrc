@@ -285,7 +285,9 @@ return require("packer").startup({
 
     -- Menu for navigating ctags, LSP symbols, etc.
     -- https://github.com/liuchengxu/vista.vim
-    use {'liuchengxu/vista.vim', commit = 'cb908f21c23d9c9ebce678c8dbc7a0f876384b8c',
+    use {
+      'liuchengxu/vista.vim',
+      commit = 'cb908f21c23d9c9ebce678c8dbc7a0f876384b8c',
       config = function()
         ---------------------------
         -- General Configuration --
