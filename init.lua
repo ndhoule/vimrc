@@ -76,6 +76,7 @@ vim.o.termguicolors = true           -- Use 24-bit color
 vim.o.title = true                   -- Set terminal title
 vim.o.wildmode = 'list:longest'      -- Show wildmenu in tall list
 vim.wo.colorcolumn = '100'           -- Show warning column at 100 characters
+vim.wo.cursorline = true             -- Highlight the (horizontal) line the cursor is currently on
 vim.wo.list = true
 vim.wo.listchars = 'tab:→ ,trail:·'  -- Show glyphs in place of special whitespace characters
 vim.wo.number = true                 -- Show line number in gutter
