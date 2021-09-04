@@ -281,7 +281,11 @@ return require("packer").startup({
       requires = {
         'nvim-lua/plenary.nvim',
         'nvim-lua/popup.nvim',
-      }
+      },
+      config = function()
+        vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>Telescope live_grep<CR>', { noremap = true })
+        vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Telescope git_files<CR>', { noremap = true })
+      end,
     }
 
     -- Menu for navigating ctags, LSP symbols, etc.
@@ -326,32 +330,30 @@ return require("packer").startup({
 
     -- File navigation menu
     -- https://github.com/kyazdani42/nvim-tree.lua
-    use {
-      'kyazdani42/nvim-tree.lua',
-      commit = '6175d63eaecdc7d80105825f89a6c9864c4dd432',
-      requires = {
-        'dbakker/vim-projectroot',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = function()
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
+    -- use {
+    --   'kyazdani42/nvim-tree.lua',
+    --   commit = 'b1c447946b1d0afa8f0bbd92f5a6bad0b54a3f3c',
+    --   requires = {
+    --     'dbakker/vim-projectroot',
+    --     'kyazdani42/nvim-web-devicons',
+    --   },
+    --   config = function()
+    --     ---------------------------
+    --     -- General Configuration --
+    --     ---------------------------
 
-        vim.g.nvim_tree_auto_close = 1
-        vim.g.nvim_tree_auto_open = 1
-        vim.g.nvim_tree_update_cwd = 1
+    --     vim.g.nvim_tree_auto_close = 1
+    --     vim.g.nvim_tree_auto_open = 1
+    --     vim.g.nvim_tree_update_cwd = 1
 
-        -----------------
-        -- Keybindings --
-        -----------------
+    --     -----------------
+    --     -- Keybindings --
+    --     -----------------
 
-        -- Open the current file in the tree relative to the project root.
-        vim.api.nvim_set_keymap('n', '<leader>n', ':ProjectRootExe NvimTreeFindFile<CR>', { noremap = true })
-        vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>Telescope live_grep<CR>', { noremap = true })
-        vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Telescope git_files<CR>', { noremap = true })
-      end,
-    }
+    --     -- Open the current file in the tree relative to the project root.
+    --     vim.api.nvim_set_keymap('n', '<leader>n', ':ProjectRootExe NvimTreeFindFile<CR>', { noremap = true })
+    --   end,
+    -- }
 
     -- ## Statusline
 
