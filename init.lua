@@ -362,6 +362,7 @@ return require("packer").startup({
     use {
       'itchyny/lightline.vim',
       commit = 'b06d921023cf6536bcbee5754071d122296e8942',
+      requires = 'dbakker/vim-projectroot',
       config = function()
         ---------------------------
         -- General Configuration --
