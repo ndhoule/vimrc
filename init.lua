@@ -876,6 +876,7 @@ return require("packer").startup({
       requires = {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/vim-vsnip',
       },
       config = function()
         local cmp = require('cmp')
@@ -889,6 +890,11 @@ return require("packer").startup({
         vim.o.completeopt = 'menuone,noselect'
 
         cmp.setup({
+          snippet = {
+            expand = function(args)
+              vim.fn["vsnip#anonymous"](args.body)
+            end,
+          },
           sources = {
             { name = 'buffer' },
             { name = 'nvim_lsp' },
