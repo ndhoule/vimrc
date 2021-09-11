@@ -538,6 +538,19 @@ return require("packer").startup({
       end,
     }
 
+    use {
+      'pwntester/octo.nvim',
+      commit = '4ea1c65ba6f6059662f39d4a1d9ecd87d502729d',
+      requires={
+        'kyazdani42/nvim-web-devicons',
+        'nvim-telescope/telescope.nvim',
+      },
+      disable = vim.fn.executable('gh') == 0,
+      config = function()
+        require("octo").setup()
+      end,
+    }
+
     -- ## Environment
 
     -- FIXME(ndhoule): direnv + autochdir throws errors when changing directory via fzf on neovim 0.5+.
