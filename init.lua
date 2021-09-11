@@ -588,8 +588,6 @@ return require("packer").startup({
     use {
       'neovim/nvim-lspconfig',
       commit = 'ea72eaae8809c0e475a8248aa665034d7d4520db',
-      requires = 'jose-elias-alvarez/null-ls.nvim',
-      after = 'null-ls.nvim',
       config = function()
         ---------------------------
         -- General Configuration --
@@ -669,13 +667,15 @@ return require("packer").startup({
         lspconfig.vimls.setup({ on_attach = on_attach })
 
         lspconfig.yamlls.setup({ on_attach = on_attach })
+      end
+    }
 
-        ----------------------------
-        -- Linting and Formatting --
-        ----------------------------
-
-        lspconfig["null-ls"].setup({ on_attach = on_attach })
-
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      commit = 'fe9f092332e35cb4fe297a86cf9dada99a8d3358',
+      after = 'nvim-lspconfig',
+      config = function()
+        local lspconfig = require('lspconfig')
         local null_ls = require('null-ls')
 
         null_ls.config({
@@ -689,16 +689,9 @@ return require("packer").startup({
             null_ls.builtins.diagnostics.write_good,
           }
         })
-      end
-    }
 
-    use {
-      'jose-elias-alvarez/null-ls.nvim',
-      commit = 'fe9f092332e35cb4fe297a86cf9dada99a8d3358',
-      requires = {
-        'neovim/nvim-lspconfig',
-        'nvim-lua/plenary.nvim',
-      },
+        lspconfig["null-ls"].setup({ on_attach = on_attach })
+      end
     }
 
     -- ## Syntax highlighting
