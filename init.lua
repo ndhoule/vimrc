@@ -443,144 +443,6 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-dispatch
     use {'tpope/vim-dispatch', commit = '250ea269e206445d10700b299afd3eb993e939ad'}
 
-    use {
-      'romainl/vim-qf',
-      commit = '65f115c350934517382ae45198a74232a9069c2a',
-      setup = function()
-        vim.api.nvim_set_keymap('n', '<Leader>ep', '<Plug>(qf_loc_previous)', { silent = true })
-        vim.api.nvim_set_keymap('n', '<Leader>en', '<Plug>(qf_loc_next)', { silent = true })
-        vim.api.nvim_set_keymap('n', '<Leader>Ep', '<Plug>(qf_qf_previous)', { silent = true })
-        vim.api.nvim_set_keymap('n', '<Leader>En', '<Plug>(qf_qf_next)', { silent = true })
-      end,
-    }
-
-    -- Integrate with linters, fixers, formatters, etc.
-    -- https://github.com/dense-analysis/ale
-    use {
-      'dense-analysis/ale',
-      commit = 'd53a085096306c890897385692693ee653aaddce',
-      config = function()
-        -- Override the default LSP diagnostics handler with a handler that sends diagnostics to
-        -- ALE. This lets us configure cycling through lint errors, LSP errors, etc. in a single
-        -- place.
-
-        local lsp_diagnostic_clear = vim.lsp.diagnostic.clear
-        vim.lsp.diagnostic.clear = function(bufnr, client_id, diagnostic_ns, sign_ns)
-          lsp_diagnostic_clear(bufnr, client_id, diagnostic_ns, sign_ns)
-          vim.api.nvim_call_function('ale#other_source#ShowResults', {bufnr, 'LSP', {}})
-        end
-
-        local ale_diagnostic_severity_map = {
-          [vim.lsp.protocol.DiagnosticSeverity.Error] = 'E';
-          [vim.lsp.protocol.DiagnosticSeverity.Warning] = 'W';
-          [vim.lsp.protocol.DiagnosticSeverity.Information] = 'I';
-          [vim.lsp.protocol.DiagnosticSeverity.Hint] = 'H';
-        }
-
-        local function on_publish_diagnostics(_, _, params, _, _, _)
-          local uri = params.uri
-          local bufnr = vim.uri_to_bufnr(uri)
-          local diagnostics = params.diagnostics
-
-          if diagnostics == nil then
-            return
-          end
-
-          local items = {}
-          for _, item in ipairs(diagnostics) do
-            table.insert(items, {
-              code = item.code,
-              col = item.range.start.character + 1,
-              end_col = item.range['end'].character,
-              end_lnum = item.range['end'].line,
-              lnum = item.range.start.line + 1,
-              nr = item.code,
-              text = item.message,
-              type = ale_diagnostic_severity_map[item.severity],
-              bufnr = bufnr,
-            })
-          end
-
-          vim.api.nvim_call_function('ale#other_source#ShowResults', {bufnr, 'LSP', items})
-        end
-
-        vim.lsp.handlers['textDocument/publishDiagnostics'] = on_publish_diagnostics
-
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
-
-        -- Decrease delay before running linter after text change
-        vim.g.ale_lint_delay = 100
-
-        -- Disable ale's LSP in favor of built-in neovim LSP
-        vim.g.ale_disable_lsp = 1
-
-        ----------------------
-        -- UI Configuration --
-        ----------------------
-
-        -- Show sign column even when there are no errors to prevent text from moving while typing
-        vim.cmd('set signcolumn=yes:1')
-        vim.g.ale_sign_column_always = true
-
-        vim.g.ale_sign_info = '➤'
-        vim.g.ale_sign_warning = '⚠'
-        vim.g.ale_sign_error = '✖'
-
-        vim.g.ale_echo_msg_info_str = 'I'
-        vim.g.ale_echo_msg_warning_str = 'W'
-        vim.g.ale_echo_msg_error_str = 'E'
-        vim.g.ale_echo_msg_format = '[%linter%] %s %(code) %[%severity%]'
-
-        --------------------------
-        -- Linter Configuration --
-        --------------------------
-
-        -- Explicitly configure linters. To override linters on a per-project basis, create a
-        -- `.projections.json` file (see projectionist configuration for more details).
-        vim.g.ale_linters_explicit = true
-
-        vim.g.ale_linters = {
-          go         = {'golint', 'govet'},
-          html       = {'tidy'},
-          javascript = {'eslint'},
-          markdown   = {},
-          sh         = {'shellcheck'},
-          typescript = {'eslint'},
-        }
-
-        -- When available, use eslint_d for faster linting and fixing.
-        -- eslint_d delegates to project-local eslint installations.
-        if vim.fn.executable('eslint_d') then
-          vim.g.ale_javascript_eslint_use_global = true
-          vim.g.ale_javascript_eslint_executable = 'eslint_d'
-        end
-
-        -----------------------------
-        -- Formatter Configuration --
-        -----------------------------
-        vim.g.ale_fix_on_save = 1
-
-        vim.g.ale_fixers = {
-          go         = {'gofmt'},
-          html       = {'prettier'},
-          javascript = {'eslint'},
-          markdown   = {'remove_trailing_lines'},
-          sh         = {'shfmt'},
-          typescript = {'eslint'},
-        }
-
-        -- Reset shfmt configuration to defaults. By default, ALE will use your editor's
-        -- shiftwidth/tabstob settings as the `-i` flag to shfmt; this means shfmt will format files
-        -- depending on a user's personal configuration rather than the project configuration,
-        -- diminishing the utility of a standardized formatter.
-        --
-        -- ALE guards against this being an empty value, so this must be a space.
-        vim.g.ale_sh_shfmt_options = ' '
-      end,
-    }
-
     -- https://github.com/folke/trouble.nvim
     use {
       'folke/trouble.nvim',
@@ -598,6 +460,13 @@ return require("packer").startup({
           },
           use_lsp_diagnostic_signs = false,
         })
+
+        -----------------
+        -- Keybindings --
+        -----------------
+
+        vim.api.nvim_set_keymap('n', '<Leader>ep', '<cmd>lua require("trouble").previous({ skip_groups = true, jump = true })<CR>', { silent = true })
+        vim.api.nvim_set_keymap('n', '<Leader>en', '<cmd>lua require("trouble").next({ skip_groups = true, jump = true })<CR>', { silent = true })
       end,
     }
 
@@ -690,53 +559,6 @@ return require("packer").startup({
       'tpope/vim-projectionist',
       commit = '8dda7acb7e24b44ef691ba19b35f585e97e91b30',
       config = function()
-        local utils = require("ndhoule_utils")
-
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
-
-        --
-        -- Integrations
-        --
-
-        -- ALE
-
-        -- Set project-specific linters and formatters in your `.projections.json`:
-        --
-        -- ```json
-        --
-        -- {
-        --   "*": {
-        --     "formatters": ["eslint"],
-        --     "linters": ["eslint", "tsserver"]
-        --   }
-        -- }
-        -- ```
-
-        function _G.projectionist_ale_set_linters()
-          local q_linters = vim.fn['projectionist#query']('linters')
-          if (#q_linters > 0 and vim.bo.filetype ~= nil) then
-            local linters = q_linters[1][2]
-            vim.b.ale_linters = {[vim.bo.filetype] = linters}
-          end
-        end
-
-        function _G.projectionist_ale_set_formatters()
-          local q_formatters = vim.fn['projectionist#query']('formatters')
-          if (#q_formatters > 0 and vim.bo.filetype ~= nil) then
-            local formatters = q_formatters[1][2]
-            vim.b.ale_fixers = {[vim.bo.filetype] = formatters}
-          end
-        end
-
-        utils.nvim_create_augroups({
-          AleProjectionistIntegration = {
-              {"User", "ProjectionistActivate", "call v:lua.projectionist_ale_set_linters()"},
-              {"User", "ProjectionistActivate", "call v:lua.projectionist_ale_set_formatters()"},
-          }
-        })
-
         -----------------
         -- Keybindings --
         -----------------
@@ -765,39 +587,118 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use {
       'neovim/nvim-lspconfig',
-      commit = '0eccc1a0ebf909aecfa1ac238d940061162ae84f',
+      commit = 'ea72eaae8809c0e475a8248aa665034d7d4520db',
+      requires = 'jose-elias-alvarez/null-ls.nvim',
+      after = 'null-ls.nvim',
       config = function()
         ---------------------------
         -- General Configuration --
         ---------------------------
-
         local lspconfig = require('lspconfig')
 
-        lspconfig.bashls.setup{}
-        lspconfig.cssls.setup{}
-        lspconfig.dockerls.setup{}
-        lspconfig.html.setup{}
-        lspconfig.sqlls.setup{}
-        lspconfig.sumneko_lua.setup{cmd = {'lua-language-server'}}
-        lspconfig.terraformls.setup{}
-        lspconfig.tsserver.setup{}
-        lspconfig.vimls.setup{}
-        lspconfig.yamlls.setup{}
+        local on_attach = function(client, bufnr)
+          if client.resolved_capabilities.document_formatting then
+            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
+          end
 
-        -----------------
-        -- Keybindings --
-        -----------------
+          -----------------
+          -- Keybindings --
+          -----------------
 
-        vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+          if client.resolved_capabilities.document_formatting then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true, silent = true })
+          end
+
+          -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
+          -- this functionality
+          if client.resolved_capabilities.find_references then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+          end
+
+          -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
+          -- this functionality
+          if client.resolved_capabilities.goto_definition then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+          end
+
+          if client.resolved_capabilities.hover then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+          end
+
+          -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
+          -- this functionality
+          if client.resolved_capabilities.rename then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+          end
+
+          -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
+          -- this functionality
+          if client.resolved_capabilities.signature_help then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+          end
+
+          -- TODO(ndhoule): Conditionally assign these keybindings
+          vim.api.nvim_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+          vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', { noremap = true, silent = true })
+          vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
+          vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
+        end
+
+        lspconfig.bashls.setup({ on_attach = on_attach })
+
+        lspconfig.cssls.setup({ on_attach = on_attach })
+
+        lspconfig.dockerls.setup({ on_attach = on_attach })
+
+        lspconfig.html.setup({on_attach = on_attach})
+
+        lspconfig.sqlls.setup({ on_attach = on_attach })
+
+        lspconfig.sumneko_lua.setup({ cmd = {'lua-language-server'}, on_attach = on_attach })
+
+        lspconfig.terraformls.setup({ on_attach = on_attach })
+
+        lspconfig.tsserver.setup({
+          on_attach = function(client, bufnr)
+            client.resolved_capabilities.document_formatting = false
+            client.resolved_capabilities.document_range_formatting = false
+            on_attach(client, bufnr)
+          end,
+        })
+
+        lspconfig.vimls.setup({ on_attach = on_attach })
+
+        lspconfig.yamlls.setup({ on_attach = on_attach })
+
+        ----------------------------
+        -- Linting and Formatting --
+        ----------------------------
+
+        lspconfig["null-ls"].setup({ on_attach = on_attach })
+
+        local null_ls = require('null-ls')
+
+        null_ls.config({
+          sources = {
+            null_ls.builtins.diagnostics.eslint_d,
+            null_ls.builtins.formatting.eslint_d,
+            null_ls.builtins.formatting.gofmt,
+            null_ls.builtins.formatting.json_tool,
+            null_ls.builtins.diagnostics.shellcheck,
+            null_ls.builtins.formatting.stylua,
+            null_ls.builtins.diagnostics.write_good,
+          }
+        })
       end
+    }
+
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      commit = 'fe9f092332e35cb4fe297a86cf9dada99a8d3358',
+      requires = {
+        'neovim/nvim-lspconfig',
+        'nvim-lua/plenary.nvim',
+      },
     }
 
     -- ## Syntax highlighting
@@ -877,11 +778,12 @@ return require("packer").startup({
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/vim-vsnip',
+        'neovim/nvim-lspconfig',
       },
       config = function()
         local cmp = require('cmp')
         local cmp_lsp = require('cmp_nvim_lsp')
-        local nvim_lsp = require('lspconfig')
+        local lspconfig = require('lspconfig')
 
         ---------------------------
         -- General Configuration --
@@ -903,10 +805,10 @@ return require("packer").startup({
 
         -- nvim-cmp supports LSP completions; advertise to LSP that we want them
         local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        local lsp_servers = { 'tsserver' }
+        local lsp_servers = {'tsserver'}
 
         for _, lsp in ipairs(lsp_servers) do
-          nvim_lsp[lsp].setup { capabilities = capabilities }
+          lspconfig[lsp].setup({ capabilities = capabilities })
         end
       end,
     }
