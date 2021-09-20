@@ -211,9 +211,6 @@ return require("packer").startup({
       end,
     }
 
-    -- Automatically close word control structures (if/fi, do/end, etc.)
-    -- use {'tpope/vim-endwise', commit = '4289889a2622f9bc7c594a6dd79763781f63dfb5'}
-
     -- Add support for `.` (repeat) for plugins
     -- https://github.com/tpope/vim-repeat
     use {'tpope/vim-repeat', commit = '24afe922e6a05891756ecf331f39a1f6743d3d5a'}
@@ -589,8 +586,26 @@ return require("packer").startup({
     -- ## Text editing
 
     -- Insert matching pairs of characters in insert mode (e.g. (), [], '')
-    -- https://github.com/Raimondi/delimitMate
-    use {'Raimondi/delimitMate', commit = '537a1da0fa5eeb88640425c37e545af933c56e1b'}
+    -- https://github.com/windwp/nvim-autopairs
+    use {
+      'windwp/nvim-autopairs',
+      commit = '4fbb53b8b1d2abbf6b61a6437a0af302b5e58ded',
+      after = 'nvim-treesitter',
+      config = function()
+        local npairs = require('nvim-autopairs')
+
+        npairs.setup({
+          check_ts = true,
+          ts_config = {
+            javascript = {'string', 'template_string'},
+            javascriptreact = {'string', 'template_string'},
+            lua = {'string'},
+            typescript = {'string', 'template_string'},
+            typescriptreact = {'string', 'template_string'},
+          }
+        })
+      end
+    }
 
     -- ## Language Server Protocol
 
@@ -755,6 +770,10 @@ return require("packer").startup({
 
         tree_sitter.setup({
           ensure_installed = 'maintained',
+
+          autopairs = {
+            enable = true
+          },
           highlight = {
             enable = true,
           },
