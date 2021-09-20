@@ -601,11 +601,16 @@ return require("packer").startup({
     use {
       'neovim/nvim-lspconfig',
       commit = 'ea72eaae8809c0e475a8248aa665034d7d4520db',
+      requires = {'jose-elias-alvarez/null-ls.nvim', 'hrsh7th/cmp-nvim-lsp'},
       config = function()
         ---------------------------
         -- General Configuration --
         ---------------------------
         local lspconfig = require('lspconfig')
+        local cmp_lsp = require('cmp_nvim_lsp')
+
+        -- nvim-cmp supports LSP completions; advertise to LSP that we want them
+        local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
         local on_attach = function(client, bufnr)
           if client.resolved_capabilities.document_formatting then
@@ -670,6 +675,7 @@ return require("packer").startup({
         lspconfig.terraformls.setup({ on_attach = on_attach })
 
         lspconfig.tsserver.setup({
+          capabilities,
           on_attach = function(client, bufnr)
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
@@ -680,15 +686,7 @@ return require("packer").startup({
         lspconfig.vimls.setup({ on_attach = on_attach })
 
         lspconfig.yamlls.setup({ on_attach = on_attach })
-      end
-    }
 
-    use {
-      'jose-elias-alvarez/null-ls.nvim',
-      commit = 'fe9f092332e35cb4fe297a86cf9dada99a8d3358',
-      after = 'nvim-lspconfig',
-      config = function()
-        local lspconfig = require('lspconfig')
         local null_ls = require('null-ls')
 
         null_ls.config({
@@ -705,6 +703,11 @@ return require("packer").startup({
 
         lspconfig["null-ls"].setup({ on_attach = on_attach })
       end
+    }
+
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      commit = 'fe9f092332e35cb4fe297a86cf9dada99a8d3358',
     }
 
     -- ## Syntax highlighting
@@ -782,14 +785,10 @@ return require("packer").startup({
       -- commit = '',
       requires = {
         'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/vim-vsnip',
-        'neovim/nvim-lspconfig',
       },
       config = function()
         local cmp = require('cmp')
-        local cmp_lsp = require('cmp_nvim_lsp')
-        local lspconfig = require('lspconfig')
 
         ---------------------------
         -- General Configuration --
@@ -808,14 +807,6 @@ return require("packer").startup({
             { name = 'nvim_lsp' },
           }
         })
-
-        -- nvim-cmp supports LSP completions; advertise to LSP that we want them
-        local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        local lsp_servers = {'tsserver'}
-
-        for _, lsp in ipairs(lsp_servers) do
-          lspconfig[lsp].setup({ capabilities = capabilities })
-        end
       end,
     }
 
