@@ -798,32 +798,19 @@ return require("packer").startup({
 
     -- ## Syntax highlighting
 
-    -- Hightlight pairs of characters with different colors
+    -- Highlight pairs of characters with different colors
     -- https://github.com/p00f/nvim-ts-rainbow
     use({ "p00f/nvim-ts-rainbow", commit = "94138b1ba193d81f130dbe9fc1f255f97b7697d5" })
 
     -- Highlight color names and codes in the same color that they represent
-    -- https://github.com/chrisbra/Colorizer
+    -- https://github.com/norcalli/nvim-colorizer.lua
     use({
-      "chrisbra/Colorizer",
-      commit = "826d5691ac7d36589591314621047b1b9d89ed34",
+      "norcalli/nvim-colorizer.lua",
+      commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
       config = function()
-        local utils = require("ndhoule_utils")
-
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
-
-        -- Colorize's built-in auto-colorization doesn't work consistently
-        -- https://github.com/chrisbra/Colorizer/issues/77
-        utils.nvim_create_augroups({
-          AutoColorize = {
-            {
-              "BufNewFile,BufRead,BufEnter,BufLeave,WinEnter,WinLeave,WinNew",
-              "*.css,*.html,*.js,*.jsx,*.sass,*.scss,*.ts,*.tsx,*.tpl",
-              "ColorHighlight",
-            },
-          },
+        require("colorizer").setup({ "*" }, {
+          mode = "background",
+          css = true,
         })
       end,
     })
