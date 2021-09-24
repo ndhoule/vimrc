@@ -834,7 +834,7 @@ return require("packer").startup({
     -- https://github.com/sainnhe/sonokai
     use {
       'sainnhe/sonokai',
-      commit = 'cb10268587c0f0616242ecb5503e22240a915136',
+      commit = 'cfb74ea7e15f1445d48540a97dd9f2da2962d8ef',
       config = function()
         vim.g.sonokai_diagnostic_text_highlight = 1
 
