@@ -204,7 +204,7 @@ return require("packer").startup({
     -- https://github.com/ntpeters/vim-better-whitespace
     use({
       "ntpeters/vim-better-whitespace",
-      commit = "8cf4b2175dd61416c2fe7d3234324a6c59d678de",
+      commit = "c5afbe91d29c5e3be81d5125ddcdc276fd1f1322",
       config = function()
         -- By default, vim-better-whitespace strips extra whitespace on save. This is better handled
         -- by the configured formatter, so disable this behavior.
@@ -279,7 +279,7 @@ return require("packer").startup({
     -- https://github.com/nvim-telescope/telescope.nvim
     use({
       "nvim-telescope/telescope.nvim",
-      commit = "2c573b9d12f421cec74a215f79b25591fe083352",
+      commit = "f6480b0ecb5ec99d2f966939d565921ae484fbab",
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -294,7 +294,7 @@ return require("packer").startup({
     -- https://github.com/liuchengxu/vista.vim
     use({
       "liuchengxu/vista.vim",
-      commit = "cb908f21c23d9c9ebce678c8dbc7a0f876384b8c",
+      commit = "f49ca3dbf334ac33d2629c510524285335031706",
       config = function()
         ---------------------------
         -- General Configuration --
@@ -334,7 +334,7 @@ return require("packer").startup({
     -- https://github.com/kyazdani42/nvim-tree.lua
     -- use {
     --   'kyazdani42/nvim-tree.lua',
-    --   commit = 'b1c447946b1d0afa8f0bbd92f5a6bad0b54a3f3c',
+    --   commit = 'd7f73b5ae9c8fa85535c32e2861c2cb97df5d56b',
     --   requires = {
     --     'dbakker/vim-projectroot',
     --     'kyazdani42/nvim-web-devicons',
@@ -413,7 +413,7 @@ return require("packer").startup({
 
     -- Add motions for commenting out blocks of code
     -- https://github.com/b3nj5m1n/kommentary
-    use({ "b3nj5m1n/kommentary", commit = "fe01018a490813a8d89c09947a7ca23fc0e9e728" })
+    use({ "b3nj5m1n/kommentary", commit = "09d332c66b7155b14eb22c9129aee44d9d2ff496" })
 
     -- Add mappings for working on text within pairs of characters (e.g. quotes)
     -- https://github.com/machakann/vim-sandwich
@@ -431,7 +431,7 @@ return require("packer").startup({
     })
 
     -- https://github.com/andymass/vim-matchup
-    use({ "andymass/vim-matchup", commit = "816751e279f1186d10520bad752206d5f91ce173" })
+    use({ "andymass/vim-matchup", commit = "daaa7dbde55d829dd456f458d90ae2ba98717ed2" })
 
     -- ## Text editing
 
@@ -443,7 +443,7 @@ return require("packer").startup({
 
     -- Run jobs asynchronously in the background
     -- https://github.com/tpope/vim-dispatch
-    use({ "tpope/vim-dispatch", commit = "250ea269e206445d10700b299afd3eb993e939ad" })
+    use({ "tpope/vim-dispatch", commit = "c88f1b1e4fd428d826fa38c272ed80b6518d37eb" })
 
     -- https://github.com/folke/trouble.nvim
     use({
@@ -453,6 +453,7 @@ return require("packer").startup({
       config = function()
         require("trouble").setup({
           auto_open = true,
+          mode = "lsp_document_diagnostics",
           signs = {
             error = "✖",
             warning = "⚠",
@@ -460,7 +461,6 @@ return require("packer").startup({
             information = "➤",
             other = "➤",
           },
-          use_lsp_diagnostic_signs = false,
         })
 
         -----------------
@@ -486,7 +486,7 @@ return require("packer").startup({
     -- https://github.com/puremourning/vimspector
     use({
       "puremourning/vimspector",
-      commit = "57ce0992803fcf22c0557550fff45e3fe869f707",
+      commit = "eb782756ac46a1f09dfaa1664fae3b9722876b8a",
       run = ":VimspectorUpdate",
       config = function()
         ---------------------------
@@ -523,10 +523,10 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-fugitive
     use({
       "tpope/vim-fugitive",
-      commit = "8e4a677c7f1554cb1dd34d05a2b068657b42ef0f",
+      commit = "142a0dc0c472016988d3fc76d055f4b00bf783f1",
       requires = {
         -- https://github.com/tpope/vim-rhubarb
-        { "tpope/vim-rhubarb", commit = "b4aad6dc43660db554bba2942026fb9965f1a45e" },
+        { "tpope/vim-rhubarb", commit = "82e71b150d28b60fa96a0e4fe3c84df691a9206a" },
       },
       config = function()
         ---------------------------
@@ -596,7 +596,7 @@ return require("packer").startup({
 
     -- Load project-specific vimrc (.lvimrc) files
     -- https://github.com/embear/vim-localvimrc
-    use({ "embear/vim-localvimrc", commit = "0206f5f5a8721cc8c5c84ebb8ab2886e9afcd0ac" })
+    use({ "embear/vim-localvimrc", commit = "e7acc32cdc1b70db0d42856ecde9ccf362720bd5" })
 
     -- ## Text editing
 
@@ -604,7 +604,7 @@ return require("packer").startup({
     -- https://github.com/windwp/nvim-autopairs
     use({
       "windwp/nvim-autopairs",
-      commit = "4fbb53b8b1d2abbf6b61a6437a0af302b5e58ded",
+      commit = "9196a8fa36d0a259f6b3fac5685c6427f02a35f9",
       after = "nvim-treesitter",
       config = function()
         local npairs = require("nvim-autopairs")
@@ -630,7 +630,7 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      commit = "ea72eaae8809c0e475a8248aa665034d7d4520db",
+      commit = "9ca394ec3a9305a6c30018ee6f731c9b23a4b25e",
       requires = { "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
       config = function()
         ---------------------------
@@ -793,14 +793,14 @@ return require("packer").startup({
 
     use({
       "jose-elias-alvarez/null-ls.nvim",
-      commit = "fe9f092332e35cb4fe297a86cf9dada99a8d3358",
+      commit = "a65a7f68c1a56d5ced34088b1a3d17ab71bf40a8",
     })
 
     -- ## Syntax highlighting
 
     -- Highlight pairs of characters with different colors
     -- https://github.com/p00f/nvim-ts-rainbow
-    use({ "p00f/nvim-ts-rainbow", commit = "94138b1ba193d81f130dbe9fc1f255f97b7697d5" })
+    use({ "p00f/nvim-ts-rainbow", commit = "2f39c594a8d110bd4fcb75288a7d03cb93c81ea2" })
 
     -- Highlight color names and codes in the same color that they represent
     -- https://github.com/norcalli/nvim-colorizer.lua
