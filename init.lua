@@ -777,8 +777,8 @@ return require("packer").startup({
 
         null_ls.config({
           sources = {
-            null_ls.builtins.diagnostics.eslint_d,
-            null_ls.builtins.formatting.eslint_d,
+            null_ls.builtins.diagnostics.eslint_d.with({ extra_args = { "--cache" } }),
+            null_ls.builtins.formatting.eslint_d.with({ extra_args = { "--cache" } }),
             null_ls.builtins.formatting.gofmt,
             null_ls.builtins.formatting.json_tool,
             null_ls.builtins.diagnostics.shellcheck,
