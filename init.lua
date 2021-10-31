@@ -631,7 +631,7 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      commit = "e4bed57f127310764f08e8b45f1ed3a31c6094e0",
+      commit = "cb037a0c075171d1084c55f3e59e923e71b2abca",
       requires = { "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/nvim-lsp-ts-utils" },
       config = function()
         ---------------------------
@@ -753,6 +753,14 @@ return require("packer").startup({
 
         lspconfig.dockerls.setup({ on_attach = on_attach })
 
+        lspconfig.eslint.setup({
+          on_attach = function(client, bufnr)
+            client.resolved_capabilities.document_formatting = true
+            client.resolved_capabilities.document_range_formatting = false
+            on_attach(client, bufnr)
+          end,
+        })
+
         lspconfig.html.setup({ on_attach = on_attach })
 
         lspconfig.sqlls.setup({ on_attach = on_attach })
@@ -778,10 +786,8 @@ return require("packer").startup({
 
         null_ls.config({
           sources = {
-            null_ls.builtins.diagnostics.eslint_d.with({ extra_args = { "--cache" } }),
             null_ls.builtins.diagnostics.shellcheck,
             null_ls.builtins.diagnostics.write_good,
-            null_ls.builtins.formatting.eslint_d.with({ extra_args = { "--cache" } }),
             null_ls.builtins.formatting.gofmt,
             null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
             null_ls.builtins.formatting.stylua,
