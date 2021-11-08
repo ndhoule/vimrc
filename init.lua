@@ -363,45 +363,15 @@ return require("packer").startup({
 
     -- ## Statusline
 
-    -- Customize statusline
-    -- https://github.com/itchyny/lightline.vim
+    -- https://github.com/nvim-lualine/lualine.nvim
     use({
-      "itchyny/lightline.vim",
-      commit = "b06d921023cf6536bcbee5754071d122296e8942",
-      requires = "dbakker/vim-projectroot",
+      "nvim-lualine/lualine.nvim",
+      commit = "9143f8a8d0e88d8e6ccbfef1d1e219df59c29a53",
+      requires = "kyazdani42/nvim-web-devicons",
       config = function()
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
-
-        -- Retrieve the current file's path. If the file is within a project (e.g. a git
-        -- repository), return a filename relative to that root; otherwise, return the full file
-        -- path.
-        vim.cmd([[
-        function! LightlineFilename()
-          let l:filename = expand('%:p')
-          if l:filename ==# ''
-            return '[No Name]'
-          endif
-
-          let l:project_root = projectroot#get()
-          if l:project_root !=# ''
-            let l:filename = substitute(l:filename, l:project_root . '/', '', '')
-          endif
-
-          return l:filename . (&modified ? ' +' : '')
-        endfunction
-        ]])
-
-        vim.g.lightline = {
-          active = {
-            left = { { "mode", "paste" }, { "readonly", "filename" } },
-            right = { { "lineinfo" }, { "percent" }, { "fileformat", "fileencoding", "filetype" } },
-          },
-          component_function = {
-            filename = "LightlineFilename",
-          },
-        }
+        require("lualine").setup({
+          theme = "jellybeans",
+        })
       end,
     })
 
