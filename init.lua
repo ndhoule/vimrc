@@ -361,6 +361,14 @@ return require("packer").startup({
       end,
     })
 
+    use({
+      "folke/zen-mode.nvim",
+      commit = "935a58307b64ce071689ba8ee915af5b9cdfe70c",
+      config = function()
+        vim.api.nvim_set_keymap("n", "<Leader>gz", '<cmd>lua require("zen-mode").toggle()<CR>', { silent = true })
+      end,
+    })
+
     -- ## Statusline
 
     -- https://github.com/nvim-lualine/lualine.nvim
