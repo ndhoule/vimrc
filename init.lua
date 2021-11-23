@@ -587,7 +587,7 @@ return require("packer").startup({
     -- https://github.com/windwp/nvim-autopairs
     use({
       "windwp/nvim-autopairs",
-      commit = "01f3a9f72fe36d4ca036d0e9c5cd6c506f4394ce",
+      commit = "f4f1c9f27d8514885cd851b3ae0a648e1eb15a17",
       after = "nvim-treesitter",
       config = function()
         local npairs = require("nvim-autopairs")
@@ -808,7 +808,7 @@ return require("packer").startup({
     -- https://github.com/nvim-treesitter/nvim-treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      commit = "0e25e0e98990803e95c7851236e43b3ee934d443",
+      commit = "abe03e2a8e34ba9e904284406960a4a4cd09e252",
       run = ":TSUpdate",
       config = function()
         local tree_sitter = require("nvim-treesitter.configs")
@@ -884,7 +884,7 @@ return require("packer").startup({
     -- https://github.com/sainnhe/sonokai
     use({
       "sainnhe/sonokai",
-      commit = "c60000ce708e8cbcf833a4e82306169969174c7a",
+      commit = "30dd4ae6f844ab0f53ba93eea61068f87886eb03",
       config = function()
         vim.g.sonokai_diagnostic_text_highlight = 1
 
