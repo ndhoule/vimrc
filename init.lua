@@ -280,7 +280,7 @@ return require("packer").startup({
     -- https://github.com/nvim-telescope/telescope.nvim
     use({
       "nvim-telescope/telescope.nvim",
-      commit = "f262e7d56d37625613c5de0df5a933cccacf13c5",
+      commit = "01fc5a9274b553937bae3910e520732eb0a49bc6",
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -295,7 +295,7 @@ return require("packer").startup({
     -- https://github.com/liuchengxu/vista.vim
     use({
       "liuchengxu/vista.vim",
-      commit = "a0469c645dcbe4033b857da27d35491f39e2f776",
+      commit = "f9c8c8ad4135346a945e1ebfb00b723976d92dfc",
       config = function()
         ---------------------------
         -- General Configuration --
@@ -335,7 +335,7 @@ return require("packer").startup({
     -- https://github.com/kyazdani42/nvim-tree.lua
     use({
       "kyazdani42/nvim-tree.lua",
-      commit = "99d65afd6ef05cc57f835451126e5c44db03cef1",
+      commit = "9d26594b6caf3caee46dc12ceae62b5dcbbc28d6",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = function()
         local nvim_tree = require("nvim-tree")
@@ -345,8 +345,10 @@ return require("packer").startup({
         ---------------------------
 
         nvim_tree.setup({
-          auto_close = true,
-          auto_open = true,
+          -- TODO(ndhoule): Replace me
+          -- auto_close = true,
+          -- TODO(ndhoule): Replace me
+          -- auto_open = true,
           update_cwd = true,
         })
 
@@ -373,7 +375,7 @@ return require("packer").startup({
     -- https://github.com/nvim-lualine/lualine.nvim
     use({
       "nvim-lualine/lualine.nvim",
-      commit = "aed7f2546177b5ffc8300f1ecd1c9e0e06779695",
+      commit = "a4e4517ac32441dd92ba869944741f0b5f468531",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("lualine").setup({
@@ -390,7 +392,7 @@ return require("packer").startup({
 
     -- Add motions for expanding a visual cursor within a group
     -- https://github.com/gcmt/wildfire.vim
-    use({ "gcmt/wildfire.vim", commit = "fa91b732fd1c5acd23b7b32d5fbbc884eedafc8d" })
+    use({ "gcmt/wildfire.vim", commit = "b371e2b1d938ae0e164146136051de164ecb9aa5" })
 
     -- Add motions for commenting out blocks of code
     -- https://github.com/b3nj5m1n/kommentary
@@ -400,7 +402,7 @@ return require("packer").startup({
     -- https://github.com/machakann/vim-sandwich
     use({
       "machakann/vim-sandwich",
-      commit = "48acdaded60c6b75fce06a0d61183ee99950c0ec",
+      commit = "17266bab12c4f2ca9ce871f706176d971613487e",
       config = function()
         -- Set up surround.vim-compatible keybindings for vim-sandwich
         vim.cmd("runtime macros/sandwich/keymap/surround.vim")
@@ -412,13 +414,13 @@ return require("packer").startup({
     })
 
     -- https://github.com/andymass/vim-matchup
-    use({ "andymass/vim-matchup", commit = "07196cfb15070cb8f7f71f8ef4dfbebfc5e83304" })
+    use({ "andymass/vim-matchup", commit = "485e71120fea7be22f0ba051a05a00675276ced0" })
 
     -- ## Text editing
 
     -- Extras for Markdown editing, including TOC generation
     -- https://github.com/SidOfc/mkdx
-    use({ "SidOfc/mkdx", commit = "a6fc41f7630e675ca5f0aeb829ad1b88c73a7c63" })
+    use({ "SidOfc/mkdx", commit = "d8e29b48f959aef96df2cb2ff5875ee02970f2a7" })
 
     -- ## Job execution
 
@@ -429,7 +431,7 @@ return require("packer").startup({
     -- https://github.com/folke/trouble.nvim
     use({
       "folke/trouble.nvim",
-      commit = "20469be985143d024c460d95326ebeff9971d714",
+      commit = "da61737d860ddc12f78e638152834487eabf0ee5",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("trouble").setup({
@@ -467,7 +469,7 @@ return require("packer").startup({
     -- https://github.com/puremourning/vimspector
     use({
       "puremourning/vimspector",
-      commit = "670fb84fcf623c3978fa3d91a7cce8ac8a21674d",
+      commit = "960f0444d21ebb20303e1796e4b478df042c3bd3",
       run = ":VimspectorUpdate",
       config = function()
         ---------------------------
@@ -509,10 +511,10 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-fugitive
     use({
       "tpope/vim-fugitive",
-      commit = "6c19f1ddfb74b3b21f3d1e830bee1d1ed6a72ece",
+      commit = "5b62c75238bf04b3156ffe62f821930827de8578",
       requires = {
         -- https://github.com/tpope/vim-rhubarb
-        { "tpope/vim-rhubarb", commit = "977b3ccbad1f7e5370354ae409fb2ea4a7ce2058" },
+        { "tpope/vim-rhubarb", commit = "ab0d42bb31b3317aa66dd1c0b506837cc6ca2835" },
       },
       config = function()
         ---------------------------
@@ -539,7 +541,7 @@ return require("packer").startup({
     -- https://github.com/pwntester/octo.nvim
     use({
       "pwntester/octo.nvim",
-      commit = "33224362e20e1b3e87eb7ef2d669de6c60e727db",
+      commit = "f5bd0c0336d6585a18b3ea95b4a40be068c74bbb",
       requires = {
         "kyazdani42/nvim-web-devicons",
         "nvim-telescope/telescope.nvim",
@@ -556,7 +558,7 @@ return require("packer").startup({
     -- if executable('direnv')
     --   -- Source direnv files, keeping vim environment/subshells in sync with host shell env
     --   -- https://github.com/direnv/direnv.vim
-    --   use {'direnv/direnv.vim', commit = 'ff37d76da391e1ef299d2f5eb84006cb27a67799'}
+    --   use { "direnv/direnv.vim", commit = "4c858b8cd8cbfac998534096e6ffb710d7a07358" }
     -- endif
 
     -- ## Project settings
@@ -569,7 +571,7 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-projectionist
     use({
       "tpope/vim-projectionist",
-      commit = "a1ff5b95b4e3965c285a1983b930a4bcfd7dd87e",
+      commit = "d4aee3035699b82b3789cee0e88dad0e38c423ab",
       config = function()
         -----------------
         -- Keybindings --
@@ -583,7 +585,7 @@ return require("packer").startup({
 
     -- Load project-specific vimrc (.lvimrc) files
     -- https://github.com/embear/vim-localvimrc
-    use({ "embear/vim-localvimrc", commit = "f09bf7c61e4aa03293622792eaeadb315b91e77f" })
+    use({ "embear/vim-localvimrc", commit = "244a92ceae63b8c23a74022eaf205b431745fcb6" })
 
     -- ## Text editing
 
@@ -591,7 +593,7 @@ return require("packer").startup({
     -- https://github.com/windwp/nvim-autopairs
     use({
       "windwp/nvim-autopairs",
-      commit = "97e454ce9b1371373105716d196c1017394bc947",
+      commit = "aea913109d30c87df329ec9b8fea9aed6ef9f52a",
       after = "nvim-treesitter",
       config = function()
         local npairs = require("nvim-autopairs")
@@ -617,7 +619,7 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      commit = "531751ef03d77bf094f1fc07844b6c03ec4862bb",
+      commit = "0f06f7ba286efd4ae187abd3391f1574580ff929",
       requires = { "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
       config = function()
         ---------------------------
@@ -630,8 +632,9 @@ return require("packer").startup({
         local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
         local on_attach = function(client, bufnr)
-          if client.resolved_capabilities.document_formatting then
-            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 3500)")
+          print(vim.inspect(client.server_capabilities))
+          if client.server_capabilities.documentFormattingProvider then
+            vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
           end
 
           -----------------
@@ -733,44 +736,74 @@ return require("packer").startup({
           )
         end
 
-        lspconfig.bashls.setup({ on_attach = on_attach })
+        lspconfig.bashls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
-        lspconfig.cssls.setup({ on_attach = on_attach })
+        lspconfig.cssls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
-        lspconfig.dockerls.setup({ on_attach = on_attach })
+        lspconfig.dockerls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
         lspconfig.eslint.setup({
+          capabilities,
           on_attach = function(client, bufnr)
-            client.resolved_capabilities.document_formatting = true
-            client.resolved_capabilities.document_range_formatting = false
+            client.server_capabilities.documentFormattingProvider = true
+            client.server_capabilities.documentRangeFormattingProvider = false
             on_attach(client, bufnr)
           end,
         })
 
-        lspconfig.html.setup({ on_attach = on_attach })
+        lspconfig.html.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
-        lspconfig.sqlls.setup({ on_attach = on_attach })
+        lspconfig.sqlls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
-        lspconfig.sumneko_lua.setup({ cmd = { "lua-language-server" }, on_attach = on_attach })
+        lspconfig.sumneko_lua.setup({
+          capabilities,
+          cmd = { "lua-language-server" },
+          on_attach = on_attach,
+        })
 
-        lspconfig.terraformls.setup({ on_attach = on_attach })
+        lspconfig.terraformls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
         lspconfig.tsserver.setup({
           capabilities,
           on_attach = function(client, bufnr)
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
             on_attach(client, bufnr)
           end,
         })
 
-        lspconfig.vimls.setup({ on_attach = on_attach })
+        lspconfig.vimls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
-        lspconfig.yamlls.setup({ on_attach = on_attach })
+        lspconfig.yamlls.setup({
+          capabilities,
+          on_attach = on_attach,
+        })
 
         local null_ls = require("null-ls")
 
         null_ls.setup({
+          capabilities,
           on_attach = on_attach,
           sources = {
             null_ls.builtins.diagnostics.shellcheck,
@@ -786,14 +819,14 @@ return require("packer").startup({
     -- https://github.com/jose-elias-alvarez/null-ls.nvim
     use({
       "jose-elias-alvarez/null-ls.nvim",
-      commit = "2ae4a5e2e2b35716c44c104ef1afa35ecb40c444",
+      commit = "47e9164d497d5bc303d7c2b15258b81a8b470a48",
     })
 
     -- ## Syntax highlighting
 
     -- Highlight pairs of characters with different colors
     -- https://github.com/p00f/nvim-ts-rainbow
-    use({ "p00f/nvim-ts-rainbow", commit = "3d070a0ae5559a6116c5d46004cc047591770a63" })
+    use({ "p00f/nvim-ts-rainbow", commit = "190f8c83abb29504877b91c84ed3ceb6009ad3bd" })
 
     -- Highlight color names and codes in the same color that they represent
     -- https://github.com/norcalli/nvim-colorizer.lua
@@ -811,7 +844,7 @@ return require("packer").startup({
     -- https://github.com/nvim-treesitter/nvim-treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      commit = "b1ef4033222fa86cbe5c6a0abf70098f157546d4",
+      commit = "c9ebd16c2884c3ab7463c6cafa0385971db7456b",
       run = ":TSUpdate",
       config = function()
         local tree_sitter = require("nvim-treesitter.configs")
@@ -821,7 +854,7 @@ return require("packer").startup({
         ---------------------------
 
         tree_sitter.setup({
-          ensure_installed = "maintained",
+          ensure_installed = "all",
 
           autopairs = {
             enable = true,
@@ -852,17 +885,17 @@ return require("packer").startup({
     -- https://github.com/hrsh7th/nvim-cmp
     use({
       "hrsh7th/nvim-cmp",
-      commit = "de69c657ebbb2fa1ed918b97f27733b801ee639c",
+      commit = "cd694b8944eb1ae98f1d0e01cf837e66b15c2857",
       requires = {
         -- https://github.com/hrsh7th/cmp-buffer
-        { "hrsh7th/cmp-buffer", commit = "f83773e2f433a923997c5faad7ea689ec24d1785" },
+        { "hrsh7th/cmp-buffer", commit = "12463cfcd9b14052f9effccbf1d84caa7a2d57f0" },
         -- https://github.com/hrsh7th/cmp-vsnip
         {
           "hrsh7th/cmp-vsnip",
           commit = "0abfa1860f5e095a07c477da940cfcb0d273b700",
           requires = {
             -- https://github.com/hrsh7th/vim-vsnip
-            { "hrsh7th/vim-vsnip", commit = "7fde9c0b6878a62bcc6d2d29f9a85a6616032f02" },
+            { "hrsh7th/vim-vsnip", commit = "8f199ef690ed26dcbb8973d9a6760d1332449ac9" },
           },
         },
       },
@@ -895,7 +928,7 @@ return require("packer").startup({
     -- https://github.com/sainnhe/sonokai
     use({
       "sainnhe/sonokai",
-      commit = "8cd458541338cb7c71707cf9189ed9a27cfcdc15",
+      commit = "06b51526ad1db6359ec65ef5326a020bcae46ab9",
       config = function()
         vim.g.sonokai_diagnostic_text_highlight = 1
 
