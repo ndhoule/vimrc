@@ -632,7 +632,6 @@ return require("packer").startup({
         local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
         local on_attach = function(client, bufnr)
-          print(vim.inspect(client.server_capabilities))
           if client.server_capabilities.documentFormattingProvider then
             vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
           end
@@ -641,7 +640,7 @@ return require("packer").startup({
           -- Keybindings --
           -----------------
 
-          if client.resolved_capabilities.document_formatting then
+          if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_buf_set_keymap(
               bufnr,
               "n",
@@ -653,7 +652,7 @@ return require("packer").startup({
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
-          if client.resolved_capabilities.find_references then
+          if client.server_capabilities.referencesProvider then
             vim.api.nvim_buf_set_keymap(
               bufnr,
               "n",
@@ -665,7 +664,7 @@ return require("packer").startup({
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
-          if client.resolved_capabilities.goto_definition then
+          if client.server_capabilities.definitionProvider then
             vim.api.nvim_buf_set_keymap(
               bufnr,
               "n",
@@ -675,7 +674,7 @@ return require("packer").startup({
             )
           end
 
-          if client.resolved_capabilities.hover then
+          if client.server_capabilities.hoverProvider then
             vim.api.nvim_buf_set_keymap(
               bufnr,
               "n",
@@ -687,7 +686,7 @@ return require("packer").startup({
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
-          if client.resolved_capabilities.rename then
+          if client.server_capabilities.renameProvider then
             vim.api.nvim_buf_set_keymap(
               bufnr,
               "n",
@@ -699,7 +698,7 @@ return require("packer").startup({
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
-          if client.resolved_capabilities.signature_help then
+          if client.server_capabilities.signatureHelpProvider then
             vim.api.nvim_buf_set_keymap(
               bufnr,
               "n",
