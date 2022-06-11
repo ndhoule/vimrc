@@ -918,6 +918,9 @@ return require("packer").startup({
             { name = "nvim_lsp" },
             { name = "vsnip" },
           },
+          view = {
+            entries = "native",
+          },
         })
       end,
     })
