@@ -280,7 +280,7 @@ return require("packer").startup({
     -- https://github.com/nvim-telescope/telescope.nvim
     use({
       "nvim-telescope/telescope.nvim",
-      commit = "01fc5a9274b553937bae3910e520732eb0a49bc6",
+      commit = "e6b69b1488c598ff7b461c4d9cecad57ef708f9b",
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -335,7 +335,7 @@ return require("packer").startup({
     -- https://github.com/kyazdani42/nvim-tree.lua
     use({
       "kyazdani42/nvim-tree.lua",
-      commit = "9d26594b6caf3caee46dc12ceae62b5dcbbc28d6",
+      commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = function()
         local nvim_tree = require("nvim-tree")
@@ -375,7 +375,7 @@ return require("packer").startup({
     -- https://github.com/nvim-lualine/lualine.nvim
     use({
       "nvim-lualine/lualine.nvim",
-      commit = "a4e4517ac32441dd92ba869944741f0b5f468531",
+      commit = "3362b28f917acc37538b1047f187ff1b5645ecdd",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("lualine").setup({
@@ -396,7 +396,7 @@ return require("packer").startup({
 
     -- Add motions for commenting out blocks of code
     -- https://github.com/b3nj5m1n/kommentary
-    use({ "b3nj5m1n/kommentary", commit = "a190d052fca4ce74ffddb1c87c87ccf15f9111d5" })
+    use({ "b3nj5m1n/kommentary", commit = "533d768a140b248443da8346b88e88db704212ab" })
 
     -- Add mappings for working on text within pairs of characters (e.g. quotes)
     -- https://github.com/machakann/vim-sandwich
@@ -414,7 +414,7 @@ return require("packer").startup({
     })
 
     -- https://github.com/andymass/vim-matchup
-    use({ "andymass/vim-matchup", commit = "485e71120fea7be22f0ba051a05a00675276ced0" })
+    use({ "andymass/vim-matchup", commit = "976ebfe61b407d0a75d87b4a507bf9ae4ffffbaa" })
 
     -- ## Text editing
 
@@ -469,18 +469,9 @@ return require("packer").startup({
     -- https://github.com/puremourning/vimspector
     use({
       "puremourning/vimspector",
-      commit = "960f0444d21ebb20303e1796e4b478df042c3bd3",
+      commit = "b33b1be7679efb756c88ad398f6e7d77505c02c6",
       run = ":VimspectorUpdate",
       config = function()
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
-
-        vim.g.vimspector_install_gadgets = {
-          "debugger-for-chrome",
-          "vscode-node-debug2",
-        }
-
         -----------------
         -- Keybindings --
         -----------------
@@ -511,7 +502,7 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-fugitive
     use({
       "tpope/vim-fugitive",
-      commit = "5b62c75238bf04b3156ffe62f821930827de8578",
+      commit = "535389b9a64be18349394c192bcf0348c0dee64e",
       requires = {
         -- https://github.com/tpope/vim-rhubarb
         { "tpope/vim-rhubarb", commit = "ab0d42bb31b3317aa66dd1c0b506837cc6ca2835" },
@@ -541,7 +532,7 @@ return require("packer").startup({
     -- https://github.com/pwntester/octo.nvim
     use({
       "pwntester/octo.nvim",
-      commit = "f5bd0c0336d6585a18b3ea95b4a40be068c74bbb",
+      commit = "71d4dcfe56d4c45b7f1a1520d65ef5a86d2bc9bd",
       requires = {
         "kyazdani42/nvim-web-devicons",
         "nvim-telescope/telescope.nvim",
@@ -593,7 +584,7 @@ return require("packer").startup({
     -- https://github.com/windwp/nvim-autopairs
     use({
       "windwp/nvim-autopairs",
-      commit = "aea913109d30c87df329ec9b8fea9aed6ef9f52a",
+      commit = "84cde3547e9a8b16db0bfe523e98e19b7be5148b",
       after = "nvim-treesitter",
       config = function()
         local npairs = require("nvim-autopairs")
@@ -619,7 +610,7 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      commit = "0f06f7ba286efd4ae187abd3391f1574580ff929",
+      commit = "4eac16e87f24ad26738e632446e29766e87141ae",
       requires = { "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
       config = function()
         ---------------------------
@@ -818,14 +809,14 @@ return require("packer").startup({
     -- https://github.com/jose-elias-alvarez/null-ls.nvim
     use({
       "jose-elias-alvarez/null-ls.nvim",
-      commit = "47e9164d497d5bc303d7c2b15258b81a8b470a48",
+      commit = "dfdd5fab3c53c30f83c78ea351b9a8f65715a5b7",
     })
 
     -- ## Syntax highlighting
 
     -- Highlight pairs of characters with different colors
     -- https://github.com/p00f/nvim-ts-rainbow
-    use({ "p00f/nvim-ts-rainbow", commit = "190f8c83abb29504877b91c84ed3ceb6009ad3bd" })
+    use({ "p00f/nvim-ts-rainbow", commit = "18cb3a45e0ff843d48e8637a36b9cc6cd89d71b0" })
 
     -- Highlight color names and codes in the same color that they represent
     -- https://github.com/norcalli/nvim-colorizer.lua
@@ -843,7 +834,7 @@ return require("packer").startup({
     -- https://github.com/nvim-treesitter/nvim-treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      commit = "c9ebd16c2884c3ab7463c6cafa0385971db7456b",
+      commit = "9e8df1b3ca576eeaca4e8d48e3d67119b32adb99",
       run = ":TSUpdate",
       config = function()
         local tree_sitter = require("nvim-treesitter.configs")
@@ -884,7 +875,7 @@ return require("packer").startup({
     -- https://github.com/hrsh7th/nvim-cmp
     use({
       "hrsh7th/nvim-cmp",
-      commit = "cd694b8944eb1ae98f1d0e01cf837e66b15c2857",
+      commit = "15c7bf7c0dfb7c75eb526c53f9574633c13dc22d",
       requires = {
         -- https://github.com/hrsh7th/cmp-buffer
         { "hrsh7th/cmp-buffer", commit = "12463cfcd9b14052f9effccbf1d84caa7a2d57f0" },
@@ -930,7 +921,7 @@ return require("packer").startup({
     -- https://github.com/sainnhe/sonokai
     use({
       "sainnhe/sonokai",
-      commit = "06b51526ad1db6359ec65ef5326a020bcae46ab9",
+      commit = "c2f8a7259e4b67fb4d0242afababbb1dda3285a3",
       config = function()
         vim.g.sonokai_diagnostic_text_highlight = 1
 
