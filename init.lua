@@ -182,7 +182,6 @@ return require("packer").startup({
     -- https://github.com/bfredl/nvim-miniyank
     use({
       "bfredl/nvim-miniyank",
-      commit = "2a3a0f3ae535e1b93a8c17dfdac718b9a12c772b",
       config = function()
         ---------------------------
         -- General Configuration --
@@ -205,7 +204,6 @@ return require("packer").startup({
     -- https://github.com/ntpeters/vim-better-whitespace
     use({
       "ntpeters/vim-better-whitespace",
-      commit = "c5afbe91d29c5e3be81d5125ddcdc276fd1f1322",
       config = function()
         -- By default, vim-better-whitespace strips extra whitespace on save. This is better handled
         -- by the configured formatter, so disable this behavior.
@@ -219,19 +217,18 @@ return require("packer").startup({
 
     -- Add support for `.` (repeat) for plugins
     -- https://github.com/tpope/vim-repeat
-    use({ "tpope/vim-repeat", commit = "24afe922e6a05891756ecf331f39a1f6743d3d5a" })
+    use({ "tpope/vim-repeat" })
 
     -- ## New core commands
 
     -- Suggest alternatives when opening a misspelled file (e.g. 'index.j' -> 'index.js')
     -- https://github.com/EinfachToll/DidYouMean
-    use({ "EinfachToll/DidYouMean", commit = "a98fb17ba16aa2eb69b3f9cc7a70e8a736890e4e" })
+    use({ "EinfachToll/DidYouMean" })
 
     -- Open a scratch buffer (clone of emacs functionality)
     -- https://github.com/mtth/scratch.vim
     use({
       "mtth/scratch.vim",
-      commit = "adf826b1ac067cdb4168cb6066431cff3a2d37a3",
       config = function()
         ---------------------------
         -- General Configuration --
@@ -249,18 +246,17 @@ return require("packer").startup({
 
     -- Rename the current buffer on the filesystem
     -- https://github.com/vim-scripts/Rename
-    use({ "vim-scripts/Rename", tag = "0.3" })
+    use({ "vim-scripts/Rename" })
 
     -- ## Search
 
     -- Make * and # work on visual selections
     -- https://github.com/bronson/vim-visual-star-search
-    use({ "bronson/vim-visual-star-search", commit = "7c32edb9e3c85d473d9be4dec721a4c9d5d4d69c" })
+    use({ "bronson/vim-visual-star-search" })
 
     -- https://github.com/ironhouzi/starlite-nvim
     use({
       "ironhouzi/starlite-nvim",
-      commit = "bc204069859e4e85a057b92ac61700f3f46c3e41",
       config = function()
         -- Change the default behavior for search commands (*, #). By default, these commands
         -- immediately jump to the next match; remap them so they highlight the current word first
@@ -280,7 +276,6 @@ return require("packer").startup({
     -- https://github.com/nvim-telescope/telescope.nvim
     use({
       "nvim-telescope/telescope.nvim",
-      commit = "e6b69b1488c598ff7b461c4d9cecad57ef708f9b",
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -295,7 +290,6 @@ return require("packer").startup({
     -- https://github.com/liuchengxu/vista.vim
     use({
       "liuchengxu/vista.vim",
-      commit = "f9c8c8ad4135346a945e1ebfb00b723976d92dfc",
       config = function()
         ---------------------------
         -- General Configuration --
@@ -335,7 +329,6 @@ return require("packer").startup({
     -- https://github.com/kyazdani42/nvim-tree.lua
     use({
       "kyazdani42/nvim-tree.lua",
-      commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = function()
         local nvim_tree = require("nvim-tree")
@@ -364,7 +357,6 @@ return require("packer").startup({
     -- https://github.com/folke/zen-mode.nvim
     use({
       "folke/zen-mode.nvim",
-      commit = "f1cc53d32b49cf962fb89a2eb0a31b85bb270f7c",
       config = function()
         vim.api.nvim_set_keymap("n", "<Leader>gz", '<cmd>lua require("zen-mode").toggle()<CR>', { silent = true })
       end,
@@ -375,7 +367,6 @@ return require("packer").startup({
     -- https://github.com/nvim-lualine/lualine.nvim
     use({
       "nvim-lualine/lualine.nvim",
-      commit = "3362b28f917acc37538b1047f187ff1b5645ecdd",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("lualine").setup({
@@ -388,21 +379,20 @@ return require("packer").startup({
 
     -- Add motions for sorting within a line or range of lines
     -- https://github.com/christoomey/vim-sort-motion
-    use({ "christoomey/vim-sort-motion", commit = "c8782be8f7da414c6442b3ba4b6abb0345d392d9" })
+    use({ "christoomey/vim-sort-motion" })
 
     -- Add motions for expanding a visual cursor within a group
     -- https://github.com/gcmt/wildfire.vim
-    use({ "gcmt/wildfire.vim", commit = "b371e2b1d938ae0e164146136051de164ecb9aa5" })
+    use({ "gcmt/wildfire.vim" })
 
     -- Add motions for commenting out blocks of code
     -- https://github.com/b3nj5m1n/kommentary
-    use({ "b3nj5m1n/kommentary", commit = "533d768a140b248443da8346b88e88db704212ab" })
+    use({ "b3nj5m1n/kommentary" })
 
     -- Add mappings for working on text within pairs of characters (e.g. quotes)
     -- https://github.com/machakann/vim-sandwich
     use({
       "machakann/vim-sandwich",
-      commit = "17266bab12c4f2ca9ce871f706176d971613487e",
       config = function()
         -- Set up surround.vim-compatible keybindings for vim-sandwich
         vim.cmd("runtime macros/sandwich/keymap/surround.vim")
@@ -414,24 +404,23 @@ return require("packer").startup({
     })
 
     -- https://github.com/andymass/vim-matchup
-    use({ "andymass/vim-matchup", commit = "976ebfe61b407d0a75d87b4a507bf9ae4ffffbaa" })
+    use({ "andymass/vim-matchup" })
 
     -- ## Text editing
 
     -- Extras for Markdown editing, including TOC generation
     -- https://github.com/SidOfc/mkdx
-    use({ "SidOfc/mkdx", commit = "d8e29b48f959aef96df2cb2ff5875ee02970f2a7" })
+    use({ "SidOfc/mkdx" })
 
     -- ## Job execution
 
     -- Run jobs asynchronously in the background
     -- https://github.com/tpope/vim-dispatch
-    use({ "tpope/vim-dispatch", commit = "00e77d90452e3c710014b26dc61ea919bc895e92" })
+    use({ "tpope/vim-dispatch" })
 
     -- https://github.com/folke/trouble.nvim
     use({
       "folke/trouble.nvim",
-      commit = "da61737d860ddc12f78e638152834487eabf0ee5",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("trouble").setup({
@@ -469,7 +458,6 @@ return require("packer").startup({
     -- https://github.com/puremourning/vimspector
     use({
       "puremourning/vimspector",
-      commit = "b33b1be7679efb756c88ad398f6e7d77505c02c6",
       run = ":VimspectorUpdate",
       config = function()
         -----------------
@@ -491,10 +479,9 @@ return require("packer").startup({
     -- ## VCS
 
     -- https://github.com/mhinz/vim-signify
-    use({ "mhinz/vim-signify", commit = "69498f6d49f3eeac06870012416dd9bf867b84f3" })
+    use({ "mhinz/vim-signify" })
     use({
       "tanvirtin/vgit.nvim",
-      commit = "9ffd228466782d5bdcaedd8927f6327c4a14f665",
       requires = { "nvim-lua/plenary.nvim" },
     })
 
@@ -502,10 +489,9 @@ return require("packer").startup({
     -- https://github.com/tpope/vim-fugitive
     use({
       "tpope/vim-fugitive",
-      commit = "535389b9a64be18349394c192bcf0348c0dee64e",
       requires = {
         -- https://github.com/tpope/vim-rhubarb
-        { "tpope/vim-rhubarb", commit = "ab0d42bb31b3317aa66dd1c0b506837cc6ca2835" },
+        { "tpope/vim-rhubarb" },
       },
       config = function()
         ---------------------------
@@ -532,7 +518,6 @@ return require("packer").startup({
     -- https://github.com/pwntester/octo.nvim
     use({
       "pwntester/octo.nvim",
-      commit = "71d4dcfe56d4c45b7f1a1520d65ef5a86d2bc9bd",
       requires = {
         "kyazdani42/nvim-web-devicons",
         "nvim-telescope/telescope.nvim",
@@ -549,20 +534,19 @@ return require("packer").startup({
     -- if executable('direnv')
     --   -- Source direnv files, keeping vim environment/subshells in sync with host shell env
     --   -- https://github.com/direnv/direnv.vim
-    --   use { "direnv/direnv.vim", commit = "4c858b8cd8cbfac998534096e6ffb710d7a07358" }
+    --   use({ "direnv/direnv.vim" })
     -- endif
 
     -- ## Project settings
 
     -- Add integration for .editorconfig files
     -- https://github.com/editorconfig/editorconfig-vim
-    use({ "editorconfig/editorconfig-vim", commit = "a8e3e66deefb6122f476c27cee505aaae93f7109" })
+    use({ "editorconfig/editorconfig-vim" })
 
     -- Add support for project configuration files ('projections')
     -- https://github.com/tpope/vim-projectionist
     use({
       "tpope/vim-projectionist",
-      commit = "d4aee3035699b82b3789cee0e88dad0e38c423ab",
       config = function()
         -----------------
         -- Keybindings --
@@ -576,7 +560,7 @@ return require("packer").startup({
 
     -- Load project-specific vimrc (.lvimrc) files
     -- https://github.com/embear/vim-localvimrc
-    use({ "embear/vim-localvimrc", commit = "244a92ceae63b8c23a74022eaf205b431745fcb6" })
+    use({ "embear/vim-localvimrc" })
 
     -- ## Text editing
 
@@ -584,7 +568,6 @@ return require("packer").startup({
     -- https://github.com/windwp/nvim-autopairs
     use({
       "windwp/nvim-autopairs",
-      commit = "84cde3547e9a8b16db0bfe523e98e19b7be5148b",
       after = "nvim-treesitter",
       config = function()
         local npairs = require("nvim-autopairs")
@@ -610,7 +593,6 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      commit = "4eac16e87f24ad26738e632446e29766e87141ae",
       requires = { "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
       config = function()
         ---------------------------
@@ -807,22 +789,18 @@ return require("packer").startup({
     })
 
     -- https://github.com/jose-elias-alvarez/null-ls.nvim
-    use({
-      "jose-elias-alvarez/null-ls.nvim",
-      commit = "dfdd5fab3c53c30f83c78ea351b9a8f65715a5b7",
-    })
+    use({ "jose-elias-alvarez/null-ls.nvim" })
 
     -- ## Syntax highlighting
 
     -- Highlight pairs of characters with different colors
     -- https://github.com/p00f/nvim-ts-rainbow
-    use({ "p00f/nvim-ts-rainbow", commit = "18cb3a45e0ff843d48e8637a36b9cc6cd89d71b0" })
+    use({ "p00f/nvim-ts-rainbow" })
 
     -- Highlight color names and codes in the same color that they represent
     -- https://github.com/norcalli/nvim-colorizer.lua
     use({
       "norcalli/nvim-colorizer.lua",
-      commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
       config = function()
         require("colorizer").setup({ "*" }, {
           mode = "background",
@@ -834,7 +812,6 @@ return require("packer").startup({
     -- https://github.com/nvim-treesitter/nvim-treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      commit = "9e8df1b3ca576eeaca4e8d48e3d67119b32adb99",
       run = ":TSUpdate",
       config = function()
         local tree_sitter = require("nvim-treesitter.configs")
@@ -866,26 +843,24 @@ return require("packer").startup({
     })
 
     -- https://github.com/hashivim/vim-terraform
-    use({ "hashivim/vim-terraform", commit = "f0b17ac9f1bbdf3a29dba8b17ab429b1eed5d443" })
+    use({ "hashivim/vim-terraform" })
     -- https://github.com/kchmck/vim-coffee-script
-    use({ "kchmck/vim-coffee-script", commit = "28421258a8dde5a50deafbfc19cd9873cacfaa79" })
+    use({ "kchmck/vim-coffee-script" })
 
     -- ## Completion
 
     -- https://github.com/hrsh7th/nvim-cmp
     use({
       "hrsh7th/nvim-cmp",
-      commit = "15c7bf7c0dfb7c75eb526c53f9574633c13dc22d",
       requires = {
         -- https://github.com/hrsh7th/cmp-buffer
-        { "hrsh7th/cmp-buffer", commit = "12463cfcd9b14052f9effccbf1d84caa7a2d57f0" },
+        { "hrsh7th/cmp-buffer" },
         -- https://github.com/hrsh7th/cmp-vsnip
         {
           "hrsh7th/cmp-vsnip",
-          commit = "0abfa1860f5e095a07c477da940cfcb0d273b700",
           requires = {
             -- https://github.com/hrsh7th/vim-vsnip
-            { "hrsh7th/vim-vsnip", commit = "8f199ef690ed26dcbb8973d9a6760d1332449ac9" },
+            { "hrsh7th/vim-vsnip" },
           },
         },
       },
@@ -921,7 +896,6 @@ return require("packer").startup({
     -- https://github.com/sainnhe/sonokai
     use({
       "sainnhe/sonokai",
-      commit = "c2f8a7259e4b67fb4d0242afababbb1dda3285a3",
       config = function()
         vim.g.sonokai_diagnostic_text_highlight = 1
 
@@ -931,5 +905,7 @@ return require("packer").startup({
   end,
   config = {
     max_jobs = 10,
+    snapshot = "versions.json",
+    snapshot_path = vim.fn.stdpath("config"),
   },
 })
