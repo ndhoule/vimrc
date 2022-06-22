@@ -480,6 +480,7 @@ return require("packer").startup({
 
     -- https://github.com/mhinz/vim-signify
     use({ "mhinz/vim-signify" })
+
     use({
       "tanvirtin/vgit.nvim",
       requires = { "nvim-lua/plenary.nvim" },
