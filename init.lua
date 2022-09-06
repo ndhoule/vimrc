@@ -425,6 +425,7 @@ return require("packer").startup({
       config = function()
         require("trouble").setup({
           auto_open = true,
+          auto_preview = false,
           mode = "document_diagnostics",
           signs = {
             error = "✖",
@@ -607,7 +608,12 @@ return require("packer").startup({
 
         local on_attach = function(client, bufnr)
           if client.server_capabilities.documentFormattingProvider then
-            vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+            vim.cmd([[
+              augroup format
+                autocmd!
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting({ async = false, timeout_ms = 10000 })
+              augroup END
+            ]])
           end
 
           -----------------
@@ -619,7 +625,7 @@ return require("packer").startup({
               bufnr,
               "n",
               "<space>f",
-              "<cmd>lua vim.lsp.buf.formatting()<CR>",
+              "<cmd>lua vim.lsp.buf.formatting({ async = false, timeout_ms = 10000 })<CR>",
               { noremap = true, silent = true }
             )
           end
