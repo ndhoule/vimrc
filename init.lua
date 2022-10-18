@@ -551,10 +551,6 @@ return require("packer").startup({
       end,
     })
 
-    -- Load project-specific vimrc (.lvimrc) files
-    -- https://github.com/embear/vim-localvimrc
-    use({ "embear/vim-localvimrc" })
-
     -- ## Text editing
 
     -- Insert matching pairs of characters in insert mode (e.g. (), [], '')

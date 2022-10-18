@@ -101,9 +101,6 @@
   "vim-fugitive": {
     "commit": "dd8107c"
   },
-  "vim-localvimrc": {
-    "commit": "244a92c"
-  },
   "vim-matchup": {
     "commit": "3fa1b22"
   },
