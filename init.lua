@@ -326,31 +326,19 @@ return require("packer").startup({
     })
 
     -- File navigation menu
-    -- https://github.com/kyazdani42/nvim-tree.lua
+    -- https://github.com/nvim-neo-tree/neo-tree.nvim
     use({
-      "kyazdani42/nvim-tree.lua",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "kyazdani42/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+      },
       config = function()
-        local nvim_tree = require("nvim-tree")
+        vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
-        ---------------------------
-        -- General Configuration --
-        ---------------------------
-
-        nvim_tree.setup({
-          -- TODO(ndhoule): Replace me
-          -- auto_close = true,
-          -- TODO(ndhoule): Replace me
-          -- auto_open = true,
-          update_cwd = true,
-        })
-
-        -----------------
-        -- Keybindings --
-        -----------------
-
-        -- Open the current file in the tree relative to the project root.
-        vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<CR>", { noremap = true })
+        vim.api.nvim_set_keymap("n", "<leader>n", ":Neotree filesystem reveal left<CR>", { noremap = true })
       end,
     })
 
@@ -607,14 +595,14 @@ return require("packer").startup({
         local cmp_lsp = require("cmp_nvim_lsp")
 
         -- nvim-cmp supports LSP completions; advertise to LSP that we want them
-        local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+        local capabilities = cmp_lsp.default_capabilities()
 
         local on_attach = function(client, bufnr)
           if client.server_capabilities.documentFormattingProvider then
             vim.cmd([[
               augroup format
                 autocmd!
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting({ async = false, timeout_ms = 10000 })
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true, timeout_ms = 10000 })
               augroup END
             ]])
           end
@@ -628,7 +616,7 @@ return require("packer").startup({
               bufnr,
               "n",
               "<space>f",
-              "<cmd>lua vim.lsp.buf.formatting({ async = false, timeout_ms = 10000 })<CR>",
+              "<cmd>lua vim.lsp.buf.format({ async = true, timeout_ms = 10000 })<CR>",
               { noremap = true, silent = true }
             )
           end
