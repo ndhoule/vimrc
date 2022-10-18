@@ -282,7 +282,7 @@ return require("packer").startup({
       },
       config = function()
         vim.api.nvim_set_keymap("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope git_files<CR>", { noremap = true })
+        vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope find_files<CR>", { noremap = true })
       end,
     })
 
