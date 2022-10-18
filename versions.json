@@ -80,8 +80,11 @@
   "starlite-nvim": {
     "commit": "bc20406"
   },
+  "telescope-fzf-native.nvim": {
+    "commit": "65c0ee3"
+  },
   "telescope.nvim": {
-    "commit": "f174a03"
+    "commit": "0b1c41a"
   },
   "trouble.nvim": {
     "commit": "ed65f84"

@@ -276,6 +276,7 @@ return require("packer").startup({
     -- https://github.com/nvim-telescope/telescope.nvim
     use({
       "nvim-telescope/telescope.nvim",
+      branch = "0.1.x",
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -284,6 +285,11 @@ return require("packer").startup({
         vim.api.nvim_set_keymap("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true })
         vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope find_files<CR>", { noremap = true })
       end,
+    })
+
+    use({
+      "nvim-telescope/telescope-fzf-native.nvim",
+      run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     })
 
     -- Menu for navigating ctags, LSP symbols, etc.
