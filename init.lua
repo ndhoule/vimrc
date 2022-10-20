@@ -332,19 +332,15 @@ return require("packer").startup({
     })
 
     -- File navigation menu
-    -- https://github.com/nvim-neo-tree/neo-tree.nvim
+    -- https://github.com/SidOfc/carbon.nvim
     use({
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v2.x",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "kyazdani42/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-      },
+      "SidOfc/carbon.nvim",
       config = function()
-        vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+        require("carbon").setup({
+          auto_open = true,
+        })
 
-        vim.api.nvim_set_keymap("n", "<leader>n", ":Neotree filesystem reveal left<CR>", { noremap = true })
+        vim.api.nvim_set_keymap("n", "<leader>n", ":Lexplore<CR>", { noremap = true })
       end,
     })
 
