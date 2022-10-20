@@ -730,6 +730,13 @@ return require("packer").startup({
           capabilities,
           cmd = { "lua-language-server" },
           on_attach = on_attach,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+            },
+          },
         })
 
         lspconfig.terraformls.setup({
