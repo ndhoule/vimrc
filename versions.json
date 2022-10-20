@@ -32,6 +32,9 @@
   "mkdx": {
     "commit": "6d7208e"
   },
+  "neodev.nvim": {
+    "commit": "218d9b0"
+  },
   "null-ls.nvim": {
     "commit": "643c67a"
   },

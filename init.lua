@@ -588,13 +588,16 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      requires = { "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
+      requires = { "folke/neodev.nvim", "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
       config = function()
         ---------------------------
         -- General Configuration --
         ---------------------------
         local lspconfig = require("lspconfig")
         local cmp_lsp = require("cmp_nvim_lsp")
+        local neodev = require("neodev")
+
+        neodev.setup()
 
         -- nvim-cmp supports LSP completions; advertise to LSP that we want them
         local capabilities = cmp_lsp.default_capabilities()
@@ -730,13 +733,6 @@ return require("packer").startup({
           capabilities,
           cmd = { "lua-language-server" },
           on_attach = on_attach,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-            },
-          },
         })
 
         lspconfig.terraformls.setup({
