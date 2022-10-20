@@ -47,6 +47,9 @@
   "nvim-colorizer.lua": {
     "commit": "36c610a"
   },
+  "nvim-lightbulb": {
+    "commit": "56b9ce3"
+  },
   "nvim-lspconfig": {
     "commit": "2dd9e06"
   },

@@ -616,6 +616,13 @@ return require("packer").startup({
           -- Keybindings --
           -----------------
 
+          vim.keymap.set(
+            "n",
+            "<leader>ca",
+            "<cmd>lua vim.lsp.buf.code_action()<CR>",
+            { buffer = true, noremap = true, silent = true }
+          )
+
           if client.server_capabilities.documentFormattingProvider then
             vim.keymap.set(
               "n",
@@ -770,6 +777,25 @@ return require("packer").startup({
             null_ls.builtins.formatting.gofmt,
             null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
             null_ls.builtins.formatting.stylua,
+          },
+        })
+      end,
+    })
+
+    -- https://github.com/kosayoda/nvim-lightbulb
+    use({
+      "kosayoda/nvim-lightbulb",
+      requires = "antoinemadec/FixCursorHold.nvim",
+      config = function()
+        local lightbulb = require("nvim-lightbulb")
+
+        lightbulb.setup({
+          autocmd = {
+            enabled = true,
+          },
+          sign = {
+            enabled = true,
+            priority = 90,
           },
         })
       end,
