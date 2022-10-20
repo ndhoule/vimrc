@@ -801,6 +801,8 @@ return require("packer").startup({
       end,
     })
 
+    use({ "stevearc/dressing.nvim" })
+
     -- https://github.com/jose-elias-alvarez/null-ls.nvim
     use({ "jose-elias-alvarez/null-ls.nvim" })
 
