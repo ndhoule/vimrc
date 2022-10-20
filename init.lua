@@ -109,42 +109,42 @@ vim.o.inccommand = "nosplit" -- Show substitutions incrementally, as you type th
 vim.g.mapleader = ","
 
 -- Activate : using ;
-vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
+vim.keymap.set("n", ";", ":", { noremap = true })
 
 -- Disable ex mode
-vim.api.nvim_set_keymap("n", "Q", "<ESC>", { noremap = true })
+vim.keymap.set("n", "Q", "<ESC>", { noremap = true })
 
 -- Prevent F1 from toggling Vim's help menu
-vim.api.nvim_set_keymap("n", "<F1>", "<ESC>", { noremap = true })
-vim.api.nvim_set_keymap("i", "<F1>", "<ESC>", { noremap = true })
-vim.api.nvim_set_keymap("v", "<F1>", "<ESC>", { noremap = true })
+vim.keymap.set("n", "<F1>", "<ESC>", { noremap = true })
+vim.keymap.set("i", "<F1>", "<ESC>", { noremap = true })
+vim.keymap.set("v", "<F1>", "<ESC>", { noremap = true })
 
 -- Close windows
-vim.api.nvim_set_keymap("n", "<leader>w", ":close<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>W", ":only<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>w", ":close<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>W", ":only<cr>", { noremap = true })
 
 -- Split panes
-vim.api.nvim_set_keymap("n", "<leader>vs", ":vsplit<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>hs", ":split<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>vs", ":vsplit<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>hs", ":split<CR>", { noremap = true })
 
 -- Move down by displayed lines, not actual lines
-vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
-vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
+vim.keymap.set("n", "j", "gj", { noremap = true })
+vim.keymap.set("n", "k", "gk", { noremap = true })
 
 -- Remap Q to reformat paragraph text
-vim.api.nvim_set_keymap("v", "Q", "gq", {})
-vim.api.nvim_set_keymap("n", "Q", "gqap", {})
+vim.keymap.set("v", "Q", "gq", {})
+vim.keymap.set("n", "Q", "gqap", {})
 
 -- Move lines
-vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<CR>==", { noremap = true })
-vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true })
-vim.api.nvim_set_keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<CR>==", { noremap = true })
-vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { noremap = true })
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true })
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { noremap = true })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { noremap = true })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- Clear any text highlighted by hlsearch
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   "n",
   "<C-L>",
   ':nohlsearch<C-R>=has("diff")?"<Bar>diffupdate":""<CR><CR><C-L>',
@@ -152,13 +152,13 @@ vim.api.nvim_set_keymap(
 )
 
 -- Yank the current filename to the clipboard
-vim.api.nvim_set_keymap("n", "<Leader>f", ':let @+=expand("%:p")<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>f", ':let @+=expand("%:p")<CR>', { noremap = true, silent = true })
 
 -- Toggle between regular numbering, relative numbering, no numbering
-vim.api.nvim_set_keymap("n", "<F3>", ':exec &nu==&rnu ? "se nu!" : "se rnu!"<CR>', { silent = true })
+vim.keymap.set("n", "<F3>", ':exec &nu==&rnu ? "se nu!" : "se rnu!"<CR>', { silent = true })
 
 -- Toggle spell check
-vim.api.nvim_set_keymap("n", "<F4>", ":set spell!<CR>", { noremap = true })
+vim.keymap.set("n", "<F4>", ":set spell!<CR>", { noremap = true })
 
 -------------
 -- Plugins --
@@ -194,9 +194,9 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap("n", "p", "<Plug>(miniyank-autoput)", {})
-        vim.api.nvim_set_keymap("n", "P", "<Plug>(miniyank-autoPut)", {})
-        vim.api.nvim_set_keymap("n", "<C-P>", "<Plug>(miniyank-cycle)", {})
+        vim.keymap.set("n", "p", "<Plug>(miniyank-autoput)", {})
+        vim.keymap.set("n", "P", "<Plug>(miniyank-autoPut)", {})
+        vim.keymap.set("n", "<C-P>", "<Plug>(miniyank-cycle)", {})
       end,
     })
 
@@ -240,7 +240,7 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap("n", "<Leader>S", ":Scratch<CR>", { noremap = true, silent = true })
+        vim.keymap.set("n", "<Leader>S", ":Scratch<CR>", { noremap = true, silent = true })
       end,
     })
 
@@ -263,10 +263,10 @@ return require("packer").startup({
         -- and only jump to the next match on subsequent command.
         --
         -- FIXME(ndhoule): Doesn't work with vim-visual-star-search
-        vim.api.nvim_set_keymap("n", "*", ':lua require("starlite").star()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap("n", "g*", ':lua require("starlite").g_star()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap("n", "#", ':lua require("starlite").hash()<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap("n", "g#", ':lua require("starlite").g_hash()<CR>', { noremap = true, silent = true })
+        vim.keymap.set("n", "*", ':lua require("starlite").star()<CR>', { noremap = true, silent = true })
+        vim.keymap.set("n", "g*", ':lua require("starlite").g_star()<CR>', { noremap = true, silent = true })
+        vim.keymap.set("n", "#", ':lua require("starlite").hash()<CR>', { noremap = true, silent = true })
+        vim.keymap.set("n", "g#", ':lua require("starlite").g_hash()<CR>', { noremap = true, silent = true })
       end,
     })
 
@@ -282,8 +282,8 @@ return require("packer").startup({
         "nvim-lua/popup.nvim",
       },
       config = function()
-        vim.api.nvim_set_keymap("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope git_files<CR>", { noremap = true })
+        vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true })
+        vim.keymap.set("n", "<leader>t", "<cmd>Telescope git_files<CR>", { noremap = true })
       end,
     })
 
@@ -327,7 +327,7 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap("n", "<leader><Tab>", ":Vista<CR>", { silent = true })
+        vim.keymap.set("n", "<leader><Tab>", ":Vista<CR>", { silent = true })
       end,
     })
 
@@ -340,7 +340,7 @@ return require("packer").startup({
           auto_open = true,
         })
 
-        vim.api.nvim_set_keymap("n", "<leader>n", ":Lexplore<CR>", { noremap = true })
+        vim.keymap.set("n", "<leader>n", ":Lexplore<CR>", { noremap = true })
       end,
     })
 
@@ -348,7 +348,7 @@ return require("packer").startup({
     use({
       "folke/zen-mode.nvim",
       config = function()
-        vim.api.nvim_set_keymap("n", "<Leader>gz", '<cmd>lua require("zen-mode").toggle()<CR>', { silent = true })
+        vim.keymap.set("n", "<Leader>gz", '<cmd>lua require("zen-mode").toggle()<CR>', { silent = true })
       end,
     })
 
@@ -430,13 +430,13 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
           "n",
           "<Leader>ep",
           '<cmd>lua require("trouble").previous({ skip_groups = true, jump = true })<CR>',
           { silent = true }
         )
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
           "n",
           "<Leader>en",
           '<cmd>lua require("trouble").next({ skip_groups = true, jump = true })<CR>',
@@ -458,15 +458,15 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap("n", "<F5>", "<Plug>VimspectorContinue", {})
-        vim.api.nvim_set_keymap("n", "<S-F5>", "<Plug>VimspectorStop", {})
-        vim.api.nvim_set_keymap("n", "<C-S-F5>", "<Plug>VimspectorRestart", {})
-        vim.api.nvim_set_keymap("n", "<F6>", "<Plug>VimspectorPause", {})
-        vim.api.nvim_set_keymap("n", "<F9>", "<Plug>VimspectorToggleBreakpoint", {})
-        vim.api.nvim_set_keymap("n", "<S-F9>", "<Plug>VimspectorAddFunctionBreakpoint", {})
-        vim.api.nvim_set_keymap("n", "<F10>", "<Plug>VimspectorStepOver", {})
-        vim.api.nvim_set_keymap("n", "<F11>", "<Plug>VimspectorStepInto", {})
-        vim.api.nvim_set_keymap("n", "<S-F11>", "<Plug>VimspectorStepOut", {})
+        vim.keymap.set("n", "<F5>", "<Plug>VimspectorContinue", {})
+        vim.keymap.set("n", "<S-F5>", "<Plug>VimspectorStop", {})
+        vim.keymap.set("n", "<C-S-F5>", "<Plug>VimspectorRestart", {})
+        vim.keymap.set("n", "<F6>", "<Plug>VimspectorPause", {})
+        vim.keymap.set("n", "<F9>", "<Plug>VimspectorToggleBreakpoint", {})
+        vim.keymap.set("n", "<S-F9>", "<Plug>VimspectorAddFunctionBreakpoint", {})
+        vim.keymap.set("n", "<F10>", "<Plug>VimspectorStepOver", {})
+        vim.keymap.set("n", "<F11>", "<Plug>VimspectorStepInto", {})
+        vim.keymap.set("n", "<S-F11>", "<Plug>VimspectorStepOut", {})
       end,
     })
 
@@ -501,12 +501,12 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap("n", "<Leader>gws", ":Git status<CR>", {})
-        vim.api.nvim_set_keymap("n", "<Leader>gc", ":Git commit<CR>", {})
-        vim.api.nvim_set_keymap("n", "<Leader>gl", ":Git log<CR>", {})
-        vim.api.nvim_set_keymap("n", "<Leader>gia", ":Gwrite<CR>", {})
-        vim.api.nvim_set_keymap("n", "<Leader>gwd", ":Git diff<CR>", {})
-        vim.api.nvim_set_keymap("n", "<Leader>gb", ":Git blame<CR>", {})
+        vim.keymap.set("n", "<Leader>gws", ":Git status<CR>", {})
+        vim.keymap.set("n", "<Leader>gc", ":Git commit<CR>", {})
+        vim.keymap.set("n", "<Leader>gl", ":Git log<CR>", {})
+        vim.keymap.set("n", "<Leader>gia", ":Gwrite<CR>", {})
+        vim.keymap.set("n", "<Leader>gwd", ":Git diff<CR>", {})
+        vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", {})
       end,
     })
 
@@ -547,9 +547,9 @@ return require("packer").startup({
         -- Keybindings --
         -----------------
 
-        vim.api.nvim_set_keymap("n", "<Leader>aa", ":A<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<Leader>as", ":AS<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<Leader>av", ":AV<CR>", { noremap = true })
+        vim.keymap.set("n", "<Leader>aa", ":A<CR>", { noremap = true })
+        vim.keymap.set("n", "<Leader>as", ":AS<CR>", { noremap = true })
+        vim.keymap.set("n", "<Leader>av", ":AV<CR>", { noremap = true })
       end,
     })
 
@@ -595,7 +595,7 @@ return require("packer").startup({
         -- nvim-cmp supports LSP completions; advertise to LSP that we want them
         local capabilities = cmp_lsp.default_capabilities()
 
-        local on_attach = function(client, bufnr)
+        local on_attach = function(client)
           if client.server_capabilities.documentFormattingProvider then
             vim.cmd([[
               augroup format
@@ -610,98 +610,82 @@ return require("packer").startup({
           -----------------
 
           if client.server_capabilities.documentFormattingProvider then
-            vim.api.nvim_buf_set_keymap(
-              bufnr,
+            vim.keymap.set(
               "n",
               "<space>f",
               "<cmd>lua vim.lsp.buf.format({ async = true, timeout_ms = 10000 })<CR>",
-              { noremap = true, silent = true }
+              { buffer = true, noremap = true, silent = true }
             )
           end
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
           if client.server_capabilities.referencesProvider then
-            vim.api.nvim_buf_set_keymap(
-              bufnr,
+            vim.keymap.set(
               "n",
               "gr",
               "<cmd>lua vim.lsp.buf.references()<CR>",
-              { noremap = true, silent = true }
+              { buffer = true, noremap = true, silent = true }
             )
           end
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
           if client.server_capabilities.definitionProvider then
-            vim.api.nvim_buf_set_keymap(
-              bufnr,
+            vim.keymap.set(
               "n",
               "gd",
               "<cmd>lua vim.lsp.buf.definition()<CR>",
-              { noremap = true, silent = true }
+              { buffer = true, noremap = true, silent = true }
             )
           end
 
           if client.server_capabilities.hoverProvider then
-            vim.api.nvim_buf_set_keymap(
-              bufnr,
+            vim.keymap.set(
               "n",
               "K",
               "<cmd>lua vim.lsp.buf.hover()<CR>",
-              { noremap = true, silent = true }
+              { buffer = true, noremap = true, silent = true }
             )
           end
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
           if client.server_capabilities.renameProvider then
-            vim.api.nvim_buf_set_keymap(
-              bufnr,
+            vim.keymap.set(
               "n",
               "<space>rn",
               "<cmd>lua vim.lsp.buf.rename()<CR>",
-              { noremap = true, silent = true }
+              { buffer = true, noremap = true, silent = true }
             )
           end
 
           -- TODO(ndhoule): Define default mapping for this that warns when the LSP does not support
           -- this functionality
           if client.server_capabilities.signatureHelpProvider then
-            vim.api.nvim_buf_set_keymap(
-              bufnr,
+            vim.keymap.set(
               "n",
               "<C-k>",
               "<cmd>lua vim.lsp.buf.signature_help()<CR>",
-              { noremap = true, silent = true }
+              { buffer = true, noremap = true, silent = true }
             )
           end
 
           -- TODO(ndhoule): Conditionally assign these keybindings
-          vim.api.nvim_set_keymap(
+          vim.keymap.set(
             "n",
             "<space>D",
             "<cmd>lua vim.lsp.buf.type_definition()<CR>",
             { noremap = true, silent = true }
           )
-          vim.api.nvim_set_keymap(
+          vim.keymap.set(
             "n",
             "<space>q",
             "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>",
             { noremap = true, silent = true }
           )
-          vim.api.nvim_set_keymap(
-            "n",
-            "gD",
-            "<cmd>lua vim.lsp.buf.declaration()<CR>",
-            { noremap = true, silent = true }
-          )
-          vim.api.nvim_set_keymap(
-            "n",
-            "gi",
-            "<cmd>lua vim.lsp.buf.implementation()<CR>",
-            { noremap = true, silent = true }
-          )
+          vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+          vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
         end
 
         lspconfig.bashls.setup({
@@ -721,10 +705,10 @@ return require("packer").startup({
 
         lspconfig.eslint.setup({
           capabilities,
-          on_attach = function(client, bufnr)
+          on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = true
             client.server_capabilities.documentRangeFormattingProvider = false
-            on_attach(client, bufnr)
+            on_attach(client)
           end,
         })
 
@@ -751,10 +735,10 @@ return require("packer").startup({
 
         lspconfig.tsserver.setup({
           capabilities,
-          on_attach = function(client, bufnr)
+          on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
-            on_attach(client, bufnr)
+            on_attach(client)
           end,
         })
 
