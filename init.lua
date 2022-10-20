@@ -178,6 +178,10 @@ return require("packer").startup({
 
     -- ## Core behavior
 
+    -- Fix issues with CursorHold, CursorHoldI events
+    -- https://github.com/antoinemadec/FixCursorHold.nvim
+    use({ "antoinemadec/FixCursorHold.nvim" })
+
     -- Add a killring
     -- https://github.com/bfredl/nvim-miniyank
     use({

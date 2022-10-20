@@ -2,8 +2,14 @@
   "DidYouMean": {
     "commit": "a98fb17"
   },
+  "FixCursorHold.nvim": {
+    "commit": "70a9516"
+  },
   "Rename": {
     "commit": "b240f28"
+  },
+  "carbon.nvim": {
+    "commit": "9aa703e"
   },
   "cmp-buffer": {
     "commit": "3022dbc"
@@ -25,12 +31,6 @@
   },
   "mkdx": {
     "commit": "6d7208e"
-  },
-  "neo-tree.nvim": {
-    "commit": "e968cda"
-  },
-  "nui.nvim": {
-    "commit": "c59bdcf"
   },
   "null-ls.nvim": {
     "commit": "643c67a"
