@@ -542,21 +542,6 @@ return require("packer").startup({
     -- https://github.com/editorconfig/editorconfig-vim
     use({ "editorconfig/editorconfig-vim" })
 
-    -- Add support for project configuration files ('projections')
-    -- https://github.com/tpope/vim-projectionist
-    use({
-      "tpope/vim-projectionist",
-      config = function()
-        -----------------
-        -- Keybindings --
-        -----------------
-
-        vim.keymap.set("n", "<Leader>aa", ":A<CR>", { noremap = true })
-        vim.keymap.set("n", "<Leader>as", ":AS<CR>", { noremap = true })
-        vim.keymap.set("n", "<Leader>av", ":AV<CR>", { noremap = true })
-      end,
-    })
-
     -- ## Text editing
 
     -- Insert matching pairs of characters in insert mode (e.g. (), [], '')

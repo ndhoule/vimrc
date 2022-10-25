@@ -116,9 +116,6 @@
   "vim-matchup": {
     "commit": "3fa1b22"
   },
-  "vim-projectionist": {
-    "commit": "558013b"
-  },
   "vim-repeat": {
     "commit": "24afe92"
   },
