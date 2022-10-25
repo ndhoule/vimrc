@@ -20,6 +20,9 @@
   "cmp-vsnip": {
     "commit": "1ae05c6"
   },
+  "dressing.nvim": {
+    "commit": "12b808a"
+  },
   "editorconfig-vim": {
     "commit": "d354117"
   },
