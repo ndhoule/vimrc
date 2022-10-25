@@ -456,7 +456,7 @@ return require("packer").startup({
       run = ":VimspectorUpdate",
       config = function()
         -- TODO(ndhoule): Vimspector warned about this once; do I need to set this?
-        -- let g:vimspector_base_dir='/home/ndhoule/.local/share/nvim/site/pack/packer/start/vimspector'
+        vim.g.vimspector_base_dir = vim.fn.stdpath("data") .. "/site/pack/packer/start/vimspector"
 
         -----------------
         -- Keybindings --
