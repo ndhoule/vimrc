@@ -29,6 +29,9 @@
   "editorconfig-vim": {
     "commit": "d354117"
   },
+  "fidget.nvim": {
+    "commit": "2cf9997"
+  },
   "kommentary": {
     "commit": "533d768"
   },

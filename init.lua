@@ -649,14 +649,22 @@ return require("packer").startup({
     -- https://github.com/neovim/nvim-lspconfig
     use({
       "neovim/nvim-lspconfig",
-      requires = { "folke/neodev.nvim", "jose-elias-alvarez/null-ls.nvim", "hrsh7th/cmp-nvim-lsp" },
+      requires = {
+        "folke/neodev.nvim",
+        "hrsh7th/cmp-nvim-lsp",
+        "j-hui/fidget.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+      },
       config = function()
         ---------------------------
         -- General Configuration --
         ---------------------------
-        local lspconfig = require("lspconfig")
         local cmp_lsp = require("cmp_nvim_lsp")
+        local fidget = require("fidget")
+        local lspconfig = require("lspconfig")
         local neodev = require("neodev")
+
+        fidget.setup()
 
         neodev.setup()
 
