@@ -41,6 +41,12 @@
   "neodev.nvim": {
     "commit": "b475883"
   },
+  "neotest": {
+    "commit": "7e73ba5"
+  },
+  "neotest-jest": {
+    "commit": "2051686"
+  },
   "null-ls.nvim": {
     "commit": "8291005"
   },
@@ -91,6 +97,9 @@
   },
   "starlite-nvim": {
     "commit": "bc20406"
+  },
+  "telescope-command-palette.nvim": {
+    "commit": "1944d63"
   },
   "telescope-fzf-native.nvim": {
     "commit": "65c0ee3"

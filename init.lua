@@ -282,12 +282,56 @@ return require("packer").startup({
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x",
       requires = {
+        "LinArcX/telescope-command-palette.nvim",
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
       },
       config = function()
+        local telescope = require("telescope")
+
+        telescope.setup({
+          extensions = {
+            command_palette = {
+              {
+                "Test",
+                {
+                  "run current file",
+                  ":lua require('neotest').run.run({ vim.fn.expand('%') })",
+                },
+                {
+                  "attach to current file",
+                  ":lua require('neotest').run.attach({ vim.fn.expand('%') })",
+                },
+                {
+                  "stop current file",
+                  ":lua require('neotest').run.stop({ vim.fn.expand('%') })",
+                },
+                {
+                  "re-run last test",
+                  ":lua require('neotest').run.run_last()",
+                },
+                {
+                  "open summary window",
+                  ":lua require('neotest').summary.open()",
+                },
+                {
+                  "open output window",
+                  ":lua require('neotest').summary.open()",
+                },
+              },
+            },
+          },
+        })
+
+        telescope.load_extension("command_palette")
+
+        -----------------
+        -- Keybindings --
+        -----------------
+
         vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true })
         vim.keymap.set("n", "<leader>t", "<cmd>Telescope git_files<CR>", { noremap = true })
+        vim.keymap.set("n", "<C-t>", "<cmd>Telescope command_palette<CR>", { noremap = true })
       end,
     })
 
@@ -471,6 +515,38 @@ return require("packer").startup({
         vim.keymap.set("n", "<F10>", "<Plug>VimspectorStepOver", {})
         vim.keymap.set("n", "<F11>", "<Plug>VimspectorStepInto", {})
         vim.keymap.set("n", "<S-F11>", "<Plug>VimspectorStepOut", {})
+      end,
+    })
+
+    use({
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim",
+
+        -- Adapters
+        "haydenmeade/neotest-jest",
+      },
+      config = function()
+        local neotest = require("neotest")
+        local neotestJest = require("neotest-jest")
+
+        neotest.setup({
+          adapters = {
+            neotestJest({
+              jestCommand = "npm run test --",
+              env = { CI = true },
+              cwd = function()
+                return vim.fn.getcwd()
+              end,
+            }),
+          },
+        })
+
+        -----------------
+        -- Keybindings --
+        -----------------
       end,
     })
 
