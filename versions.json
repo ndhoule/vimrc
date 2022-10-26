@@ -163,8 +163,5 @@
   },
   "wildfire.vim": {
     "commit": "b371e2b"
-  },
-  "zen-mode.nvim": {
-    "commit": "6f5702d"
   }
 }

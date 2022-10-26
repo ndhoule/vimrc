@@ -392,14 +392,6 @@ return require("packer").startup({
       end,
     })
 
-    -- https://github.com/folke/zen-mode.nvim
-    use({
-      "folke/zen-mode.nvim",
-      config = function()
-        vim.keymap.set("n", "<Leader>gz", '<cmd>lua require("zen-mode").toggle()<CR>', { silent = true })
-      end,
-    })
-
     -- ## Statusline
 
     -- https://github.com/nvim-lualine/lualine.nvim
