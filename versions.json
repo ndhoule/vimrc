@@ -20,6 +20,9 @@
   "cmp-vsnip": {
     "commit": "1ae05c6"
   },
+  "direnv.vim": {
+    "commit": "4c858b8"
+  },
   "dressing.nvim": {
     "commit": "12b808a"
   },

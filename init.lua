@@ -529,12 +529,12 @@ return require("packer").startup({
 
     -- ## Environment
 
-    -- FIXME(ndhoule): direnv + autochdir throws errors when changing directory via fzf on neovim 0.5+.
-    -- if executable('direnv')
-    --   -- Source direnv files, keeping vim environment/subshells in sync with host shell env
-    --   -- https://github.com/direnv/direnv.vim
-    --   use({ "direnv/direnv.vim" })
-    -- endif
+    -- Source direnv files, keeping vim environment/subshells in sync with host shell env
+    -- https://github.com/direnv/direnv.vim
+    use({
+      "direnv/direnv.vim",
+      disable = vim.fn.executable("direnv") ~= 1,
+    })
 
     -- ## Project settings
 
