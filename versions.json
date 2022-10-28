@@ -140,9 +140,6 @@
   "vim-sandwich": {
     "commit": "c5a2cc4"
   },
-  "vim-signify": {
-    "commit": "a05e63b"
-  },
   "vim-sort-motion": {
     "commit": "c8782be"
   },

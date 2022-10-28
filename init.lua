@@ -81,6 +81,7 @@ vim.wo.cursorline = true -- Highlight the (horizontal) line the cursor is curren
 vim.wo.list = true
 vim.wo.listchars = "tab:→ ,trail:·" -- Show glyphs in place of special whitespace characters
 vim.wo.number = true -- Show line number in gutter
+vim.wo.signcolumn = "yes"
 
 -----------------------------
 -- Text display/formatting --
@@ -544,12 +545,20 @@ return require("packer").startup({
 
     -- ## VCS
 
-    -- https://github.com/mhinz/vim-signify
-    use({ "mhinz/vim-signify" })
-
+    -- https://github.com/tanvirtin/vgit.nvim
     use({
       "tanvirtin/vgit.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
+      requires = { "kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim" },
+      config = function()
+        local vgit = require("vgit")
+
+        -- TODO(ndhoule): Look into whether or not vgit can replace fugitive
+        vgit.setup({
+          settings = {
+            live_blame = { enabled = false },
+          },
+        })
+      end,
     })
 
     -- Add vim commands for Git operations
