@@ -122,9 +122,6 @@
   "vim-caddyfile": {
     "commit": "24fe072"
   },
-  "vim-coffee-script": {
-    "commit": "2842125"
-  },
   "vim-dispatch": {
     "commit": "00e77d9"
   },
@@ -148,9 +145,6 @@
   },
   "vim-sort-motion": {
     "commit": "c8782be"
-  },
-  "vim-terraform": {
-    "commit": "d00503d"
   },
   "vim-visual-star-search": {
     "commit": "7c32edb"
