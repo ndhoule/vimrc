@@ -4,7 +4,6 @@ setlocal spell
 
 let g:markdown_fenced_languages = [
       \ 'bash=sh',
-      \ 'coffee',
       \ 'css',
       \ 'go',
       \ 'html',
@@ -16,6 +15,7 @@ let g:markdown_fenced_languages = [
       \ 'sass',
       \ 'scss',
       \ 'sh',
+      \ 'typescript',
       \ 'xml',
       \ 'zsh'
       \ ]
