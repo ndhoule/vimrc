@@ -922,6 +922,8 @@ return require("packer").startup({
     use({ "hashivim/vim-terraform" })
     -- https://github.com/kchmck/vim-coffee-script
     use({ "kchmck/vim-coffee-script" })
+    -- https://github.com/isobit/vim-caddyfile
+    use({ "isobit/vim-caddyfile" })
 
     -- ## Completion
 
