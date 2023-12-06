@@ -16,15 +16,8 @@ vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_2html_plugin = 1
 
--- vim.g.loaded_matchit = 1
--- vim.g.loaded_matchparen = 1
 vim.g.loaded_logiPat = 1
 vim.g.loaded_rrhelper = 1
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrwSettings = 1
-vim.g.loaded_netrwFileHandlers = 1
 
 vim.o.modelineexpr = true -- Allow expressions in modelines
 
@@ -331,7 +324,12 @@ return require("packer").startup({
         -----------------
 
         vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true })
-        vim.keymap.set("n", "<leader>t", "<cmd>Telescope git_files<CR>", { noremap = true })
+        vim.keymap.set(
+          "n",
+          "<leader>t",
+          "<cmd>:lua require('telescope.builtin').git_files({ use_git_root = true, show_untracked = true })<CR>",
+          { noremap = true }
+        )
         vim.keymap.set("n", "<C-t>", "<cmd>Telescope command_palette<CR>", { noremap = true })
       end,
     })
@@ -377,19 +375,6 @@ return require("packer").startup({
         -----------------
 
         vim.keymap.set("n", "<leader><Tab>", ":Vista<CR>", { silent = true })
-      end,
-    })
-
-    -- File navigation menu
-    -- https://github.com/SidOfc/carbon.nvim
-    use({
-      "SidOfc/carbon.nvim",
-      config = function()
-        require("carbon").setup({
-          auto_open = true,
-        })
-
-        vim.keymap.set("n", "<leader>n", ":Lexplore<CR>", { noremap = true })
       end,
     })
 
@@ -576,7 +561,7 @@ return require("packer").startup({
 
         -- Decrease the time before vim writes the swapfile, which also governs the delay before git gutter
         -- marks are shown
-        vim.o.updatetime = 100
+        vim.o.updatetime = 1000
 
         -----------------
         -- Keybindings --
@@ -653,7 +638,7 @@ return require("packer").startup({
       requires = {
         "folke/neodev.nvim",
         "hrsh7th/cmp-nvim-lsp",
-        "j-hui/fidget.nvim",
+        { "j-hui/fidget.nvim", branch = "legacy" },
         "jose-elias-alvarez/null-ls.nvim",
       },
       config = function()
@@ -806,9 +791,8 @@ return require("packer").startup({
           on_attach = on_attach,
         })
 
-        lspconfig.sumneko_lua.setup({
+        lspconfig.lua_ls.setup({
           capabilities,
-          cmd = { "lua-language-server" },
           on_attach = on_attach,
         })
 
@@ -878,10 +862,6 @@ return require("packer").startup({
 
     -- ## Syntax highlighting
 
-    -- Highlight pairs of characters with different colors
-    -- https://github.com/p00f/nvim-ts-rainbow
-    use({ "p00f/nvim-ts-rainbow" })
-
     -- Highlight color names and codes in the same color that they represent
     -- https://github.com/norcalli/nvim-colorizer.lua
     use({
@@ -920,9 +900,6 @@ return require("packer").startup({
           matchup = {
             enable = true,
           },
-          rainbow = {
-            enable = true,
-          },
         })
       end,
     })
@@ -953,7 +930,7 @@ return require("packer").startup({
         -- General Configuration --
         ---------------------------
 
-        vim.o.completeopt = "menuone,noselect"
+        vim.o.completeopt = "menu,menuone,noselect"
 
         cmp.setup({
           snippet = {
@@ -961,6 +938,7 @@ return require("packer").startup({
               vim.fn["vsnip#anonymous"](args.body)
             end,
           },
+          preselect = cmp.PreselectMode.None,
           sources = {
             { name = "buffer" },
             { name = "nvim_lsp" },
