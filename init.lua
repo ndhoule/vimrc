@@ -51,16 +51,16 @@ vim.g.netrw_home = vim.fn.stdpath("cache") .. "/nvim"
 -- Automatically rebalance splits when window is resized
 vim.cmd("autocmd VimResized * :wincmd =")
 
-vim.o.autochdir = true -- Set cwd to the current buffer's containing directory
-vim.o.autowrite = true -- Save before executing shell commands to prevent working on a stale file
-vim.o.clipboard = "unnamedplus" -- Use system clipboard
-vim.o.foldlevelstart = 100 -- Don't fold on fileopen
-vim.o.foldlevelstart = 100 -- Don't fold on fileopen
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.mouse = "a" -- Enable mouse in all modes
-vim.o.scrolljump = 5 -- Scroll five lines at a time (perf)
-vim.o.synmaxcol = 300 -- Limit syntax highlighting to 300 columns wide (perf)
+vim.o.autochdir = true                        -- Set cwd to the current buffer's containing directory
+vim.o.autowrite = true                        -- Save before executing shell commands to prevent working on a stale file
+vim.o.clipboard = "unnamedplus"               -- Use system clipboard
+vim.o.mouse = "a"                             -- Enable mouse in all modes
+vim.o.scrolljump = 5                          -- Scroll five lines at a time (perf)
+vim.o.synmaxcol = 300                         -- Limit syntax highlighting to 300 columns wide (perf)
+vim.o.foldlevelstart = 100                    -- Don't fold on fileopen
+vim.o.foldlevelstart = 100                    -- Don't fold on fileopen
+vim.o.foldmethod = "expr"                     -- Use Treesitter for folding
+vim.o.foldexpr = "nvim_treesitter#foldexpr()" -- Use Treesitter for folding
 
 --------
 -- UI --
@@ -80,20 +80,20 @@ vim.wo.signcolumn = "yes"
 -- Text display/formatting --
 -----------------------------
 
-vim.o.expandtab = true -- <Tab> inserts spaces
+vim.o.expandtab = true  -- <Tab> inserts spaces
 vim.o.shiftround = true -- Round indentation to nearest multiple of `shiftwidth`
-vim.o.shiftwidth = 2 -- Spaces to use for autoindent
-vim.o.softtabstop = 2 -- <Tab> inserts n spaces
-vim.o.tabstop = 2 -- <Tab> inserts n spaces
-vim.o.textwidth = 100 -- Automatically wrap long lines
+vim.o.shiftwidth = 2    -- Spaces to use for autoindent
+vim.o.softtabstop = 2   -- <Tab> inserts n spaces
+vim.o.tabstop = 2       -- <Tab> inserts n spaces
+vim.o.textwidth = 100   -- Automatically wrap long lines
 
 ------------
 -- Search --
 ------------
 
-vim.o.hlsearch = true -- Highlight all search matches
-vim.o.ignorecase = true -- Ignore case when searching
-vim.o.smartcase = true -- Don't ignore case in search when term contains an uppercase char
+vim.o.hlsearch = true        -- Highlight all search matches
+vim.o.ignorecase = true      -- Ignore case when searching
+vim.o.smartcase = true       -- Don't ignore case in search when term contains an uppercase char
 vim.o.inccommand = "nosplit" -- Show substitutions incrementally, as you type them
 
 -----------------
@@ -830,7 +830,6 @@ return require("packer").startup({
             null_ls.builtins.diagnostics.write_good,
             null_ls.builtins.formatting.gofmt,
             null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
-            null_ls.builtins.formatting.stylua,
           },
         })
       end,
