@@ -11,6 +11,7 @@ return {
       -- Adapters
       "https://github.com/haydenmeade/neotest-jest",
     },
+    version = "4.x",
     lazy = true,
     cmd = "Neotest",
     config = function()

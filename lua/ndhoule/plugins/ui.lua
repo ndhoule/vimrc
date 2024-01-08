@@ -1,7 +1,13 @@
 return {
+  -- Add a startup dashboard
   {
-    "https://github.com/nvim-tree/nvim-web-devicons",
-    lazy = true,
+    "https://github.com/goolord/alpha-nvim",
+    config = function()
+      local alpha = require("alpha")
+      local theme = require("alpha.themes.dashboard")
+
+      alpha.setup(theme.config)
+    end,
   },
 
   {
@@ -39,17 +45,18 @@ return {
     opts = {},
   },
 
-  -- TODO(ndhoule): Configure me
   {
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     main = "ibl",
+    version = "v3.x",
     lazy = true,
     event = "VeryLazy",
     opts = {},
     setup = function()
+      -- TODO(ndhoule): Configure rainbow-delimiters.nvim integration
+      -- https://github.com/lukas-reineke/indent-blankline.nvim#rainbow-delimitersnvim-integration
       local hooks = require("ibl.hooks")
 
-      -- Disable
       hooks.register(
         hooks.type.ACTIVE,
         function(bufnr)
@@ -58,18 +65,6 @@ return {
         end
       )
     end
-  },
-
-  -- Add a startup dashboard
-  -- TODO(ndhoule): Configure me
-  {
-    "https://github.com/goolord/alpha-nvim",
-    config = function()
-      local alpha = require("alpha")
-      local theme = require("alpha.themes.dashboard")
-
-      alpha.setup(theme.config)
-    end,
   },
 
   -- {

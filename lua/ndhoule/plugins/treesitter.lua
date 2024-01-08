@@ -23,7 +23,9 @@ return {
       "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
       "https://github.com/windwp/nvim-ts-autotag",
     },
-    build = ":TSUpdate",
+    build = function()
+      require("nvim-treesitter.install").update({ with_sync = true })()
+    end,
     lazy = true,
     cmd = {
       "TSBufDisable",
@@ -46,15 +48,16 @@ return {
     },
     opts = function()
       return {
-        autopairs = { enable = true },
+        ensure_installed = "all",
+        sync_install = false,
 
+        autopairs = {
+          enable = true,
+        },
         context_commentstring = {
           enable = true,
           enable_autocmd = false,
         },
-
-        ensure_installed = "all",
-
         highlight = {
           enable = true,
           disable = function(_, bufnr)
@@ -62,10 +65,12 @@ return {
             return vim.b[bufnr].is_buf_large
           end,
         },
-
-        indent = { enable = true },
-
-        matchup = { enable = true },
+        indent = {
+          enable = true,
+        },
+        matchup = {
+          enable = true,
+        },
       }
     end,
     init = function(plugin)

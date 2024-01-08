@@ -26,7 +26,6 @@ return {
     lazy = true
   },
 
-  -- TODO(ndhoule): Revisit configuration, it works but is not yet ideal
   {
     "https://github.com/hrsh7th/nvim-cmp",
     dependencies = {
@@ -34,7 +33,8 @@ return {
       "https://github.com/hrsh7th/cmp-nvim-lsp",
       "https://github.com/hrsh7th/cmp-path",
       "https://github.com/onsails/lspkind.nvim",
-      "https://github.com/saadparwaiz1/cmp_luasnip"
+      "https://github.com/saadparwaiz1/cmp_luasnip",
+      "https://github.com/windwp/nvim-autopairs",
     },
     lazy = true,
     event = "InsertEnter",
@@ -43,6 +43,7 @@ return {
     end,
     config = function()
       local cmp = require("cmp")
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       local lspkind = require("lspkind")
 
       local window_opts = {
@@ -76,6 +77,11 @@ return {
           documentation = cmp.config.window.bordered(window_opts),
         },
       })
+
+      cmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done()
+      )
     end,
   },
 }

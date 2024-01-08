@@ -28,38 +28,5 @@ lazy.setup(
       enabled = true,
       notify = false,
     },
-    performance = {
-      rtp = {
-        disabled_plugins = {
-          "2html_plugin",
-          "bugreport",
-          "compiler",
-          "ftplugin",
-          "getscript",
-          "getscriptPlugin",
-          "gzip",
-          "logipat",
-          "matchit",    -- Required for vim-matchup
-          "matchparen", -- Required for vim-matchup
-          "netrw",
-          "netrwFileHandlers",
-          "netrwPlugin",
-          "netrwSettings",
-          "optwin",
-          "rplugin",
-          "rrhelper",
-          "spellfile_plugin",
-          "synmenu",
-          "tar",
-          "tarPlugin",
-          "tutor",
-          "vimball",
-          "vimballPlugin",
-          "zip",
-          "zipPlugin",
-
-        },
-      },
-    },
   }
 )

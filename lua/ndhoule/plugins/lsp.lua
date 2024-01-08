@@ -22,6 +22,7 @@ return {
       ---------------------------
       local cmp_lsp = require("cmp_nvim_lsp")
       local lspconfig = require("lspconfig")
+      local null_ls = require("null-ls")
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(event)
@@ -50,8 +51,13 @@ return {
           -- Format the buffer on save when supported by the attached server(s)
           if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_create_autocmd("BufWritePre", {
-              callback = function(evt)
-                vim.lsp.buf.format({ async = false, bufnr = evt.buf, timeout_ms = 2500 })
+              callback = function(event)
+                vim.lsp.buf.format({
+                  async = false,
+                  bufnr = event.buf,
+                  filter = function(client) return client.name ~= "tsserver" end,
+                  timeout_ms = 2500,
+                })
               end,
               group = vim.api.nvim_create_augroup("UserLspFormat", {}),
             })
@@ -73,78 +79,42 @@ return {
       -- nvim-cmp supports LSP completions; advertise to LSP that we want them
       local capabilities = cmp_lsp.default_capabilities()
 
-      local on_attach = function(client)
-        -- TODO(ndhoule): Remove this if no other plugin needs to hook into on_attach
-      end
+      lspconfig.bashls.setup({ capabilities })
 
-      lspconfig.bashls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.cssls.setup({ capabilities })
 
-      lspconfig.cssls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
-
-      lspconfig.dockerls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.dockerls.setup({ capabilities })
 
       lspconfig.eslint.setup({
         capabilities,
         on_attach = function(client)
           client.server_capabilities.documentFormattingProvider = true
           client.server_capabilities.documentRangeFormattingProvider = false
-          on_attach(client)
         end,
       })
 
-      lspconfig.html.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.html.setup({ capabilities })
 
-      lspconfig.sqlls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.sqlls.setup({ capabilities })
 
-      lspconfig.lua_ls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.lua_ls.setup({ capabilities })
 
-      lspconfig.terraformls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.terraformls.setup({ capabilities })
 
       lspconfig.tsserver.setup({
         capabilities,
-        on_attach = function(client)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-          on_attach(client)
-        end,
+        -- on_attach = function(client)
+        --   client.server_capabilities.documentFormattingProvider = false
+        --   client.server_capabilities.documentRangeFormattingProvider = false
+        -- end,
       })
 
-      lspconfig.vimls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
+      lspconfig.vimls.setup({ capabilities })
 
-      lspconfig.yamlls.setup({
-        capabilities,
-        on_attach = on_attach,
-      })
-
-      local null_ls = require("null-ls")
+      lspconfig.yamlls.setup({ capabilities })
 
       null_ls.setup({
         capabilities,
-        on_attach = on_attach,
         sources = {
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.shellcheck,
@@ -160,7 +130,7 @@ return {
   {
     "https://github.com/kosayoda/nvim-lightbulb",
     lazy = true,
-    event = "VeryLazy",
+    event = "LspAttach",
     opts = {
       autocmd = {
         enabled = true,

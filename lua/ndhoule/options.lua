@@ -1,3 +1,39 @@
+local disabled_plugins = {
+  "2html_plugin",
+  "bugreport",
+  "compiler",
+  "ftplugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "matchit",    -- Required for vim-matchup
+  "matchparen", -- Required for vim-matchup
+  "netrw",
+  "netrwFileHandlers",
+  "netrwPlugin",
+  "netrwSettings",
+  "optwin",
+  "rplugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "synmenu",
+  "tar",
+  "tarPlugin",
+  "tutor",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+}
+
+for _, plugin in ipairs(disabled_plugins) do
+  vim.g["loaded_" .. plugin] = 1
+end
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Limits for large files used to disable functionality
 vim.g.filesize_limits = {
   lines = 20000,
@@ -28,7 +64,6 @@ vim.opt.undofile = true
 
 -- Store netrw files in cache directory
 vim.g.netrw_home = vim.fn.stdpath("state") .. "/nvim"
-
 
 vim.opt.autochdir = true                        -- Set cwd to the current buffer's containing directory
 vim.opt.autowrite = true                        -- Save before executing shell commands to prevent working on a stale file

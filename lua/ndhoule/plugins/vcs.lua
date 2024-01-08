@@ -20,6 +20,11 @@ return {
     end,
   },
 
+  {
+    "https://github.com/tpope/vim-rhubarb",
+    lazy = true,
+  },
+
   -- Add vim commands for Git operations
   -- TODO(ndhoule): Make this match zsh git shortcuts
   {
@@ -28,12 +33,12 @@ return {
     lazy = true,
     cmd = { "Git", "Gwrite" },
     keys = {
-      { "<leader>gws", ":Git status<cr>" },
-      { "<leader>gc",  ":Git commit<cr>" },
-      { "<leader>gl",  ":Git log<cr>" },
-      { "<leader>gia", ":Gwrite<cr>" },
-      { "<leader>gwd", ":Git diff<cr>" },
-      { "<leader>gb",  ":Git blame<cr>" },
+      { "<Leader>gb",  ":Git blame<CR>" },
+      { "<Leader>gc",  ":Git commit<CR>" },
+      { "<Leader>gia", ":Gwrite<CR>" },
+      { "<Leader>gl",  ":Git log<CR>" },
+      { "<Leader>gwd", ":Git diff<CR>" },
+      { "<Leader>gws", ":Git status<CR>" },
     },
   },
 
