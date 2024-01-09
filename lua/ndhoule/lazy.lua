@@ -10,7 +10,7 @@ if not vim.loop.fs_stat(lazy_install_path) then
     "git",
     "clone",
     "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim",
+    "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazy_install_path,
   })
@@ -26,5 +26,19 @@ lazy.setup(plugins, {
     enabled = true,
     -- FIXME(ndhoule): This doesn't seem to be working
     notify = false,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
 })

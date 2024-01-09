@@ -1,6 +1,6 @@
 return {
   {
-    "https://github.com/folke/lazy.nvim",
+    "https://github.com/folke/lazy.nvim.git",
     version = "10.x",
     lazy = false,
     opts = {

@@ -10,8 +10,6 @@ return {
     },
   },
 
-  -- TODO(ndhoule): This configuration has gotten a little crazy, is it possible to simplify it?
-  --                I'm sure it's possible to crib from the lsp readme or from a setup like e.g. AstroNvim
   {
     "https://github.com/neovim/nvim-lspconfig",
     dependencies = {

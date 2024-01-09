@@ -1,23 +1,9 @@
 return {
-  -- Show Git changes in gutter, line blame, etc.
   {
-    "https://github.com/tanvirtin/vgit.nvim",
-    dependencies = {
-      "https://github.com/nvim-tree/nvim-web-devicons",
-      "https://github.com/nvim-lua/plenary.nvim",
-    },
+    "https://github.com/lewis6991/gitsigns.nvim",
     lazy = true,
     event = "VeryLazy",
-    config = function()
-      local vgit = require("vgit")
-
-      -- TODO(ndhoule): Look into whether or not vgit can replace fugitive
-      vgit.setup({
-        settings = {
-          live_blame = { enabled = false },
-        },
-      })
-    end,
+    opts = {},
   },
 
   {
@@ -33,10 +19,10 @@ return {
     lazy = true,
     cmd = { "Git", "Gwrite" },
     keys = {
-      { "<Leader>gb",  ":Git blame<CR>" },
-      { "<Leader>gc",  ":Git commit<CR>" },
+      { "<Leader>gb", ":Git blame<CR>" },
+      { "<Leader>gc", ":Git commit<CR>" },
       { "<Leader>gia", ":Gwrite<CR>" },
-      { "<Leader>gl",  ":Git log<CR>" },
+      { "<Leader>gl", ":Git log<CR>" },
       { "<Leader>gwd", ":Git diff<CR>" },
       { "<Leader>gws", ":Git status<CR>" },
     },
