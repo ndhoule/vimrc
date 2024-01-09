@@ -1,3 +1,4 @@
+-- Disable unused built-in plugins
 local disabled_plugins = {
   "2html_plugin",
   "bugreport",
@@ -7,7 +8,7 @@ local disabled_plugins = {
   "getscriptPlugin",
   "gzip",
   "logipat",
-  "matchit",    -- Required for vim-matchup
+  "matchit", -- Required for vim-matchup
   "matchparen", -- Required for vim-matchup
   "netrw",
   "netrwFileHandlers",
@@ -30,9 +31,6 @@ local disabled_plugins = {
 for _, plugin in ipairs(disabled_plugins) do
   vim.g["loaded_" .. plugin] = 1
 end
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 -- Limits for large files used to disable functionality
 vim.g.filesize_limits = {
@@ -65,15 +63,15 @@ vim.opt.undofile = true
 -- Store netrw files in cache directory
 vim.g.netrw_home = vim.fn.stdpath("state") .. "/nvim"
 
-vim.opt.autochdir = true                        -- Set cwd to the current buffer's containing directory
-vim.opt.autowrite = true                        -- Save before executing shell commands to prevent working on a stale file
-vim.opt.clipboard = "unnamedplus"               -- Use system clipboard
-vim.opt.mouse = "a"                             -- Enable mouse in all modes
-vim.opt.scrolljump = 5                          -- Scroll five lines at a time (perf)
-vim.opt.synmaxcol = 300                         -- Limit syntax highlighting to 300 columns wide (perf)
-vim.opt.foldlevelstart = 100                    -- Don't fold on fileopen
-vim.opt.foldlevelstart = 100                    -- Don't fold on fileopen
-vim.opt.foldmethod = "expr"                     -- Use Treesitter for folding
+vim.opt.autochdir = true -- Set cwd to the current buffer's containing directory
+vim.opt.autowrite = true -- Save before executing shell commands to prevent working on a stale file
+vim.opt.clipboard = "unnamedplus" -- Use system clipboard
+vim.opt.mouse = "a" -- Enable mouse in all modes
+vim.opt.scrolljump = 5 -- Scroll five lines at a time (perf)
+vim.opt.synmaxcol = 300 -- Limit syntax highlighting to 300 columns wide (perf)
+vim.opt.foldlevelstart = 100 -- Don't fold on fileopen
+vim.opt.foldlevelstart = 100 -- Don't fold on fileopen
+vim.opt.foldmethod = "expr" -- Use Treesitter for folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use Treesitter for folding
 
 --------
@@ -98,19 +96,19 @@ vim.opt.updatetime = 100
 -- Text display/formatting --
 -----------------------------
 
-vim.opt.expandtab = true  -- <Tab> inserts spaces
+vim.opt.expandtab = true -- <Tab> inserts spaces
 vim.opt.shiftround = true -- Round indentation to nearest multiple of `shiftwidth`
-vim.opt.shiftwidth = 2    -- Spaces to use for autoindent
-vim.opt.softtabstop = 2   -- <Tab> inserts n spaces
-vim.opt.tabstop = 2       -- <Tab> inserts n spaces
-vim.opt.textwidth = 100   -- Automatically wrap long lines
+vim.opt.shiftwidth = 2 -- Spaces to use for autoindent
+vim.opt.softtabstop = 2 -- <Tab> inserts n spaces
+vim.opt.tabstop = 2 -- <Tab> inserts n spaces
+vim.opt.textwidth = 100 -- Automatically wrap long lines
 
 ------------
 -- Search --
 ------------
 
-vim.opt.incsearch = true       -- Highlight matches while typing
-vim.opt.hlsearch = true        -- Highlight all search matches
-vim.opt.ignorecase = true      -- Ignore case when searching
-vim.opt.smartcase = true       -- Don't ignore case in search when term contains an uppercase char
+vim.opt.incsearch = true -- Highlight matches while typing
+vim.opt.hlsearch = true -- Highlight all search matches
+vim.opt.ignorecase = true -- Ignore case when searching
+vim.opt.smartcase = true -- Don't ignore case in search when term contains an uppercase char
 vim.opt.inccommand = "nosplit" -- Show substitutions incrementally, as you type them

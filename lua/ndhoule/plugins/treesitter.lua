@@ -4,7 +4,7 @@ return {
     lazy = true,
     init = function()
       vim.g.skip_ts_context_commentstring_module = true
-    end
+    end,
   },
 
   {
@@ -12,7 +12,7 @@ return {
     lazy = true,
     opts = {
       enable_close_on_slash = false,
-    }
+    },
   },
 
   -- TODO(ndhoule): Can this be loaded lazily?
@@ -77,6 +77,18 @@ return {
       -- https://github.com/LazyVim/LazyVim/commit/1e1b68d633d4bd4faa912ba5f49ab6b8601dc0c9
       require("lazy.core.loader").add_to_rtp(plugin)
       require("nvim-treesitter.query_predicates")
+    end,
+    config = function()
+      local utils = require("ndhoule.utils")
+
+      -- Re-parse the buffer after write; when the buffer is written by
+      local treesitter_parse = utils.throttle(utils.treesitter_parse, 100)
+      vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "TextChangedP" }, {
+        callback = function()
+          treesitter_parse()
+        end,
+        group = vim.api.nvim_create_augroup("UserTSReparseOnChange", {}),
+      })
     end,
   },
 }

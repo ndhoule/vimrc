@@ -10,7 +10,7 @@ if not vim.loop.fs_stat(lazy_install_path) then
     "git",
     "clone",
     "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
+    "https://github.com/folke/lazy.nvim",
     "--branch=stable",
     lazy_install_path,
   })
@@ -21,12 +21,10 @@ vim.opt.rtp:prepend(lazy_install_path)
 local plugins = require("ndhoule.plugins")
 local lazy = require("lazy")
 
-lazy.setup(
-  plugins,
-  {
-    change_detection = {
-      enabled = true,
-      notify = false,
-    },
-  }
-)
+lazy.setup(plugins, {
+  change_detection = {
+    enabled = true,
+    -- FIXME(ndhoule): This doesn't seem to be working
+    notify = false,
+  },
+})

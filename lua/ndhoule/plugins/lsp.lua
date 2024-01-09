@@ -4,7 +4,10 @@
 return {
   {
     "https://github.com/folke/neodev.nvim",
-    opts = {},
+    opts = {
+      plugins = true,
+      types = true,
+    },
   },
 
   -- TODO(ndhoule): This configuration has gotten a little crazy, is it possible to simplify it?
@@ -15,6 +18,9 @@ return {
       "https://github.com/folke/neodev.nvim",
       "https://github.com/hrsh7th/cmp-nvim-lsp",
       "https://github.com/nvimtools/none-ls.nvim",
+
+      -- Not a hard dependency per se, but must be loaded before lspconfig loads
+      "https://github.com/williamboman/mason-lspconfig.nvim",
     },
     config = function()
       ---------------------------
@@ -27,37 +33,38 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(event)
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+          local format_opts = {
+            filter = function(client)
+              return client.name ~= "tsserver"
+            end,
+            timeout_ms = 5000,
+          }
 
           -- Set up buffer-local key mappings when LSP is available
-          local opts = { buffer = event.buf }
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-          vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-          vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+          local keymap_opts = { buffer = event.buf }
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymap_opts)
+          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, keymap_opts)
+          vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, keymap_opts)
+          vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, keymap_opts)
           vim.keymap.set("n", "<space>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          end, opts)
-          vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-          vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          end, keymap_opts)
+          vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, keymap_opts)
+          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, keymap_opts)
+          vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, keymap_opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, keymap_opts)
           vim.keymap.set("n", "<space>f", function()
-            vim.lsp.buf.format({ async = true })
-          end, opts)
+            vim.lsp.buf.format(vim.tbl_extend("force", { async = true }, format_opts))
+          end, keymap_opts)
 
           -- Format the buffer on save when supported by the attached server(s)
           if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_create_autocmd("BufWritePre", {
-              callback = function(event)
-                vim.lsp.buf.format({
-                  async = false,
-                  bufnr = event.buf,
-                  filter = function(client) return client.name ~= "tsserver" end,
-                  timeout_ms = 2500,
-                })
+              callback = function()
+                vim.lsp.buf.format(vim.tbl_extend("force", { async = false }, format_opts))
               end,
               group = vim.api.nvim_create_augroup("UserLspFormat", {}),
             })
@@ -80,11 +87,8 @@ return {
       local capabilities = cmp_lsp.default_capabilities()
 
       lspconfig.bashls.setup({ capabilities })
-
       lspconfig.cssls.setup({ capabilities })
-
       lspconfig.dockerls.setup({ capabilities })
-
       lspconfig.eslint.setup({
         capabilities,
         on_attach = function(client)
@@ -92,36 +96,22 @@ return {
           client.server_capabilities.documentRangeFormattingProvider = false
         end,
       })
-
       lspconfig.html.setup({ capabilities })
-
       lspconfig.sqlls.setup({ capabilities })
-
       lspconfig.lua_ls.setup({ capabilities })
-
       lspconfig.terraformls.setup({ capabilities })
-
-      lspconfig.tsserver.setup({
-        capabilities,
-        -- on_attach = function(client)
-        --   client.server_capabilities.documentFormattingProvider = false
-        --   client.server_capabilities.documentRangeFormattingProvider = false
-        -- end,
-      })
-
+      lspconfig.tsserver.setup({ capabilities })
       lspconfig.vimls.setup({ capabilities })
-
       lspconfig.yamlls.setup({ capabilities })
-
       null_ls.setup({
         capabilities,
         sources = {
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.shellcheck,
-          null_ls.builtins.diagnostics.write_good,
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
+          null_ls.builtins.formatting.stylua,
         },
       })
     end,

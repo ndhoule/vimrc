@@ -1,9 +1,10 @@
 # vimrc
 
-[ndhoule](https://github.com/ndhoule)'s vim config.
+[ndhoule](https://github.com/ndhoule)'s neovim config.
 
 ## Requirements
 
-- NeoVim 0.5+
-- Python 3 and `pynvim`
-- LSP server implementations
+You'll need the following
+
+- Neovim 0.9.1+
+- `python3` and [`pynvim`](https://github.com/neovim/pynvim)

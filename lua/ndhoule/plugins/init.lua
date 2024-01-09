@@ -4,7 +4,7 @@ return {
     { import = "ndhoule.plugins.completion" },
     { import = "ndhoule.plugins.core" },
     { import = "ndhoule.plugins.debugging" },
-    { import = "ndhoule.plugins.external" },
+    { import = "ndhoule.plugins.externals" },
     { import = "ndhoule.plugins.lib" },
     { import = "ndhoule.plugins.lsp" },
     { import = "ndhoule.plugins.statusline" },

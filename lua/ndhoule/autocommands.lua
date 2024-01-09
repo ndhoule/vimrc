@@ -2,7 +2,7 @@
 vim.api.nvim_create_autocmd("VimResized", {
   desc = "Automatically rebalance splits when window is resized",
   pattern = "*",
-  command = "wincmd ="
+  command = "wincmd =",
 })
 
 vim.api.nvim_create_autocmd("BufReadPre", {
@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 })
 
 -- Highlight trailing whitespace
--- TODO(ndhoule): Translate to Lua and make filetype configurable
+-- TODO(ndhoule): Translate to Lua and add ability to omit file and/or buffer types
 vim.cmd([[
 let g:toggleHighlightWhitespace = 1
 function! ToggleHighlightWhitespace()

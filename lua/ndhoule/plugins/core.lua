@@ -10,8 +10,8 @@ return {
     dependencies = { "https://github.com/kkharji/sqlite.lua" },
     lazy = true,
     keys = {
-      { "p",     "<Plug>(YankyPutAfter)",     mode = { "n", "x" } },
-      { "P",     "<Plug>(YankyPutBefore)",    mode = { "n", "x" } },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" } },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" } },
       { "<C-P>", "<Plug>(YankyPreviousEntry)" },
       { "<C-N>", "<Plug>(YankyNextEntry)" },
     },
@@ -61,7 +61,9 @@ return {
   -- Re-open files at their last editing position
   {
     "https://github.com/vladdoster/remember.nvim",
-    config = function() require("remember") end,
+    config = function()
+      require("remember")
+    end,
   },
 
   -- Make * and # work more sanely on visual selections by escaping all special characters
@@ -74,10 +76,30 @@ return {
     "https://github.com/ironhouzi/starlite-nvim",
     lazy = true,
     keys = {
-      { "*",  function() require("starlite").star() end },
-      { "g*", function() require("starlite").g_star() end },
-      { "#",  function() require("starlite").hash() end },
-      { "g#", function() require("starlite").g_hash() end },
+      {
+        "*",
+        function()
+          require("starlite").star()
+        end,
+      },
+      {
+        "g*",
+        function()
+          require("starlite").g_star()
+        end,
+      },
+      {
+        "#",
+        function()
+          require("starlite").hash()
+        end,
+      },
+      {
+        "g#",
+        function()
+          require("starlite").g_hash()
+        end,
+      },
     },
   },
 
@@ -123,10 +145,30 @@ return {
     },
     lazy = true,
     keys = {
-      { "<leader>/", "<cmd>Telescope live_grep<CR>",                                                                        silent = true },
-      { "<leader>t", function() require("telescope.builtin").git_files({ show_untracked = true, use_git_root = true }) end, silent = true },
-      { "<C-t>",     "<cmd>Telescope command_palette<CR>",                                                                  silent = true },
-      { "<leader>n", function() require("telescope").extensions.file_browser.file_browser() end,                            silent = true },
+      {
+        "<leader>/",
+        "<cmd>Telescope live_grep<CR>",
+        silent = true,
+      },
+      {
+        "<leader>t",
+        function()
+          require("telescope.builtin").git_files({ show_untracked = true, use_git_root = true })
+        end,
+        silent = true,
+      },
+      {
+        "<C-t>",
+        "<cmd>Telescope command_palette<CR>",
+        silent = true,
+      },
+      {
+        "<leader>n",
+        function()
+          require("telescope").extensions.file_browser.file_browser()
+        end,
+        silent = true,
+      },
       {
         "<leader>N",
         function()
@@ -136,7 +178,7 @@ return {
             cwd = vim.api.nvim_call_function("projectroot#guess", {}),
           })
         end,
-        silent = true
+        silent = true,
       },
     },
     config = function()
@@ -150,6 +192,10 @@ return {
               {
                 "run current file",
                 ":lua require('neotest').run.run({ vim.fn.expand('%') })",
+              },
+              {
+                "run current file (debug)",
+                ":lua require('neotest').run.run({ vim.fn.expand('%'), strategy = dap })",
               },
               {
                 "attach to current file",
@@ -197,19 +243,71 @@ return {
   -- Add key maps for working on text within pairs of characters (e.g. quotes, parens, brackets)
   {
     "https://github.com/kylechui/nvim-surround",
+    version = "*",
     lazy = true,
     -- TODO(ndhoule): Look into whether this can be loaded more lazily
     event = "VeryLazy",
     opts = {},
   },
 
-  -- Add motions for expanding a visual cursor within a group
+  -- Add motions for expanding a visual selection
   {
-    "https://github.com/gcmt/wildfire.vim",
+    "https://github.com/sustech-data/wildfire.nvim",
+    dependencies = { "https://github.com/nvim-treesitter/nvim-treesitter" },
     lazy = true,
-    keys = {
-      { "<Enter>", "<Plug>(wildfire-fuel)",  mode = "" },
-      { "<BS>",    "<Plug>(wildfire-water)", mode = "v" },
+    keys = function(self)
+      local wildfire = require("wildfire")
+
+      local filetype_excludes = self.opts and self.opts.filetype_exclude or {}
+
+      local callback = function()
+        for _, filetype in filetype_excludes do
+          if vim.opt_local.filetype:get() ~= filetype then
+            return
+          end
+        end
+      end
+
+      return {
+        {
+          "<Enter>",
+          wildfire.init_selection,
+          desc = "Start visually selecting nodes with treesitter",
+          mode = "n",
+          callback = callback,
+          silent = true,
+          noremap = true,
+        },
+        {
+          "<Enter>",
+          wildfire.node_incremental,
+          desc = "Increment selection to next named node",
+          mode = "x",
+          callback = callback,
+          silent = true,
+          noremap = true,
+        },
+        {
+          "<BS>",
+          wildfire.node_decremental,
+          desc = "Shrink selection to previous named node",
+          mode = "x",
+          callback = callback,
+          silent = true,
+          noremap = true,
+        },
+      }
+    end,
+    opts = {
+      filetype_exclude = {
+        "lazy",
+        "mason",
+        "qf",
+      },
+      keymaps = {
+        -- Don't assign any key bindings here; instead, see the spec's `keys` table. (This empty
+        -- table is required in order to prevent the plugin from assigning default key bindings.)
+      },
     },
   },
 
@@ -233,9 +331,9 @@ return {
     "https://github.com/christoomey/vim-sort-motion",
     lazy = true,
     keys = {
-      { "gs",  "<Plug>SortMotion",       mode = "n", remap = true, silent = true },
-      { "gs",  "<Plug>SortMotionVisual", mode = "x", remap = true, silent = true },
-      { "gss", "<Plug>SortLines",        mode = "n", remap = true, silent = true },
+      { "gs", "<Plug>SortMotion", mode = "n", remap = true, silent = true },
+      { "gs", "<Plug>SortMotionVisual", mode = "x", remap = true, silent = true },
+      { "gss", "<Plug>SortLines", mode = "n", remap = true, silent = true },
     },
   },
 

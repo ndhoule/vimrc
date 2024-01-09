@@ -2,18 +2,18 @@ return {
   -- TODO(ndhoule): Configure snippets
   {
     "https://github.com/L3MON4D3/LuaSnip",
-    lazy = true
+    lazy = true,
   },
 
   {
     "https://github.com/saadparwaiz1/cmp_luasnip",
     dependencies = { "https://github.com/L3MON4D3/LuaSnip" },
-    lazy = true
+    lazy = true,
   },
 
   {
     "https://github.com/hrsh7th/cmp-buffer",
-    lazy = true
+    lazy = true,
   },
 
   {
@@ -23,7 +23,13 @@ return {
 
   {
     "https://github.com/hrsh7th/cmp-path",
-    lazy = true
+    lazy = true,
+  },
+
+  {
+    "https://github.com/rcarriga/cmp-dap",
+    dependencies = { "https://github.com/hrsh7th/nvim-cmp" },
+    lazy = true,
   },
 
   {
@@ -43,7 +49,7 @@ return {
     end,
     config = function()
       local cmp = require("cmp")
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local lspkind = require("lspkind")
 
       local window_opts = {
@@ -55,7 +61,7 @@ return {
           format = lspkind.cmp_format({
             ellipsis_char = "…",
             maxwidth = 100,
-          })
+          }),
         },
         mapping = cmp.mapping.preset.insert({
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -68,9 +74,9 @@ return {
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 40 },
-          { name = "luasnip",  priority = 30 },
-          { name = "buffer",   priority = 20 },
-          { name = "path",     priority = 10 },
+          { name = "luasnip", priority = 30 },
+          { name = "buffer", priority = 20 },
+          { name = "path", priority = 10 },
         }),
         window = {
           completion = cmp.config.window.bordered(window_opts),
@@ -78,10 +84,13 @@ return {
         },
       })
 
-      cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-      )
+      cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+        sources = {
+          { name = "dap" },
+        },
+      })
+
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
 }
