@@ -67,13 +67,17 @@ return {
   },
 
   -- Make * and # work more sanely on visual selections by escaping all special characters
-  "https://github.com/bronson/vim-visual-star-search",
+  {
+    "https://github.com/bronson/vim-visual-star-search",
+    lazy = true,
+  },
 
   -- Change the default behavior for search commands (*, #). By default, these commands
   -- immediately jump to the next match; remap them so they highlight the current word first and
   -- only jump to the next match when the command is repeated.
   {
     "https://github.com/ironhouzi/starlite-nvim",
+    dependencies = { "https://github.com/bronson/vim-visual-star-search" },
     lazy = true,
     keys = {
       {
@@ -132,6 +136,7 @@ return {
 
   -- Fuzzy file finder and file contents searcher
   -- TODO(ndhoule): Revisit the config here; I set this up quickly and am not using it to its full potential
+  -- TODO(ndhoule): The popup window's colors don't match my theme colors (e.g. doesn't match :Lazy or :Mason)
   {
     "https://github.com/nvim-telescope/telescope.nvim",
     version = "0.1.x",
@@ -153,7 +158,18 @@ return {
       {
         "<leader>t",
         function()
-          require("telescope.builtin").git_files({ show_untracked = true, use_git_root = true })
+          require("telescope.builtin").git_files({
+            -- Exclude vendored files from results
+            git_command = { "git", "ls-files", "--exclude-standard", "--cached", ":(attr:!linguist-vendored)" },
+            show_untracked = true,
+          })
+        end,
+        silent = true,
+      },
+      {
+        "<leader>T",
+        function()
+          require("telescope.builtin").git_files({ show_untracked = true })
         end,
         silent = true,
       },
@@ -340,6 +356,8 @@ return {
   -- Enhanced matchit/matchparen (% motion) replacement
   {
     "https://github.com/andymass/vim-matchup",
+    lazy = true,
+    event = "VeryLazy",
     init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,

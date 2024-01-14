@@ -1,5 +1,4 @@
 -- return {
---   -- TODO(ndhoule): Replace this with nvim-dap
 --   {
 --     "https://github.com/puremourning/vimspector",
 --     run = ":VimspectorUpdate",
@@ -25,17 +24,19 @@
 --   },
 -- }
 
+-- TODO(ndhoule): Test that this works for node and Firefox and document how to use it. Also add
+-- some keybindings
 return {
   {
     "https://github.com/mfussenegger/nvim-dap",
     lazy = true,
-    event = "VeryLazy",
     enabled = vim.fn.has("win32") == 0,
   },
 
   {
     "https://github.com/rcarriga/nvim-dap-ui",
     dependencies = { "https://github.com/rcarriga/nvim-dap-ui" },
+    lazy = true,
     opts = {
       floating = {
         border = "rounded",
@@ -45,15 +46,18 @@ return {
       local dap = require("dap")
       local dapui = require("dapui")
 
-      dap.listeners.after.event_initialized["dapui_config"] = function()
+      dap.listeners.after.event_initialized.dapui_config = function()
         dapui.open()
       end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
+
+      dap.listeners.before.event_terminated.dapui_config = function()
         dapui.close()
       end
-      dap.listeners.before.event_exited["dapui_config"] = function()
+
+      dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+
       dapui.setup(opts)
     end,
   },

@@ -4,10 +4,16 @@
 return {
   {
     "https://github.com/folke/neodev.nvim",
+    lazy = true,
     opts = {
       plugins = true,
       types = true,
     },
+  },
+
+  {
+    "https://github.com/b0o/SchemaStore.nvim",
+    lazy = true,
   },
 
   {
@@ -17,9 +23,11 @@ return {
       "https://github.com/hrsh7th/cmp-nvim-lsp",
       "https://github.com/nvimtools/none-ls.nvim",
 
-      -- Not a hard dependency per se, but must be loaded before lspconfig loads
+      -- Not a hard dependency, but must be loaded before lspconfig loads
       "https://github.com/williamboman/mason-lspconfig.nvim",
     },
+    lazy = true,
+    event = "User LazyFile",
     config = function()
       ---------------------------
       -- General Configuration --
@@ -27,6 +35,7 @@ return {
       local cmp_lsp = require("cmp_nvim_lsp")
       local lspconfig = require("lspconfig")
       local null_ls = require("null-ls")
+      local util = require("lspconfig.util")
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(event)
@@ -45,16 +54,16 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymap_opts)
           vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, keymap_opts)
-          vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, keymap_opts)
-          vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, keymap_opts)
-          vim.keymap.set("n", "<space>wl", function()
+          vim.keymap.set("n", "<Space>wa", vim.lsp.buf.add_workspace_folder, keymap_opts)
+          vim.keymap.set("n", "<Space>wr", vim.lsp.buf.remove_workspace_folder, keymap_opts)
+          vim.keymap.set("n", "<Space>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, keymap_opts)
-          vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, keymap_opts)
+          vim.keymap.set("n", "<Space>D", vim.lsp.buf.type_definition, keymap_opts)
           vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, keymap_opts)
-          vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, keymap_opts)
+          vim.keymap.set({ "n", "v" }, "<Space>ca", vim.lsp.buf.code_action, keymap_opts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, keymap_opts)
-          vim.keymap.set("n", "<space>f", function()
+          vim.keymap.set("n", "<Space>f", function()
             vim.lsp.buf.format(vim.tbl_extend("force", { async = true }, format_opts))
           end, keymap_opts)
 
@@ -86,6 +95,16 @@ return {
 
       lspconfig.bashls.setup({ capabilities })
       lspconfig.cssls.setup({ capabilities })
+      lspconfig.denols.setup({
+        capabilities,
+        -- By default, the presence of a `.git` directory activates denols on JavaScript and
+        -- TypeScript buffers. That means if you're working on a TS/JS file in a non-Deno project,
+        -- denols will inappropriately activate.
+        --
+        -- TODO(ndhoule): Investigate folke/neoconf.nvim as an alternative to setting this globally
+        root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+        single_file_support = false,
+      })
       lspconfig.dockerls.setup({ capabilities })
       lspconfig.eslint.setup({
         capabilities,
@@ -95,12 +114,65 @@ return {
         end,
       })
       lspconfig.html.setup({ capabilities })
-      lspconfig.sqlls.setup({ capabilities })
+      lspconfig.jsonls.setup({
+        capabilities,
+        on_new_config = function(config)
+          -- Lazy load schemastore.nvim
+          local schemastore = require("schemastore")
+
+          config.settings.json.schemas = config.settings.json.schemas or {}
+          vim.list_extend(config.settings.json.schemas, schemastore.json.schemas())
+        end,
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = {
+              enable = true,
+            },
+          },
+        },
+      })
       lspconfig.lua_ls.setup({ capabilities })
+      lspconfig.sqlls.setup({ capabilities })
       lspconfig.terraformls.setup({ capabilities })
-      lspconfig.tsserver.setup({ capabilities })
+      lspconfig.tsserver.setup({
+        capabilities,
+        flags = {
+          -- Prevent an issue seemingly specific to tsserver where the client and server become
+          -- desynced. This leads to stale diagnostics sticking around after they're fixed, usually
+          -- after you've fixed the last issue in a buffer.
+          debounce_text_changes = nil,
+        },
+        -- By default, the presence of a `.git` directory activates denols on JavaScript and
+        -- TypeScript buffers. That means if you're working on a TS/JS file in e.g. a Deno project,
+        -- tsserver will inappropriately activate.
+        --
+        -- TODO(ndhoule): Investigate folke/neoconf.nvim as an alternative to setting this globally
+        root_dir = util.root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
+        single_file_support = false,
+      })
       lspconfig.vimls.setup({ capabilities })
-      lspconfig.yamlls.setup({ capabilities })
+      lspconfig.yamlls.setup({
+        capabilities,
+        on_new_config = function(config)
+          -- Lazy load schemastore.nvim
+          local schemastore = require("schemastore")
+
+          config.settings.yaml.schemas = config.settings.yaml.schemas or {}
+          vim.list_extend(config.settings.yaml.schemas, schemastore.yaml.schemas())
+        end,
+        settings = {
+          yaml = {
+            schemaStore = {
+              enable = false,
+              url = "",
+            },
+          },
+        },
+      })
+
       null_ls.setup({
         capabilities,
         sources = {

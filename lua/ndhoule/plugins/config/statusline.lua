@@ -3,7 +3,7 @@ return {
     "https://github.com/nvim-lualine/lualine.nvim",
     dependencies = { "https://github.com/nvim-tree/nvim-web-devicons" },
     lazy = true,
-    event = "BufEnter",
+    event = "VimEnter",
     opts = {
       options = {
         theme = "sonokai",

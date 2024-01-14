@@ -8,6 +8,7 @@ return {
   {
     "https://github.com/saadparwaiz1/cmp_luasnip",
     dependencies = { "https://github.com/L3MON4D3/LuaSnip" },
+    build = jit.os:find("Windows") and nil or "make install_jsregexp",
     lazy = true,
   },
 

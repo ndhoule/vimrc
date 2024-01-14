@@ -4,6 +4,11 @@ vim.g.filesize_limits = {
   size = 1024 * 127,
 }
 
+vim.g.markdown_fenced_languages = {
+  "ts=typescript",
+  "tsx=typescriptreact",
+}
+
 ---------------------------
 -- General Configuration --
 ---------------------------

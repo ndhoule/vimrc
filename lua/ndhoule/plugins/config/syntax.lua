@@ -2,13 +2,13 @@ return {
   {
     "https://github.com/isobit/vim-caddyfile",
     lazy = true,
-    ft = "caddyfile"
+    ft = "caddyfile",
   },
 
   {
     "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
     lazy = true,
-    event = "VeryLazy",
+    event = "User LazyFile",
     main = "rainbow-delimiters.setup",
     opts = {},
   },

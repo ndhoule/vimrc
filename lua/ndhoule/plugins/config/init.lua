@@ -1,0 +1,15 @@
+return {
+  { import = "ndhoule.plugins.config.colorscheme" },
+  { import = "ndhoule.plugins.config.completion" },
+  { import = "ndhoule.plugins.config.core" },
+  { import = "ndhoule.plugins.config.debugging" },
+  { import = "ndhoule.plugins.config.externals" },
+  { import = "ndhoule.plugins.config.lib" },
+  { import = "ndhoule.plugins.config.lsp" },
+  { import = "ndhoule.plugins.config.statusline" },
+  { import = "ndhoule.plugins.config.syntax" },
+  { import = "ndhoule.plugins.config.testing" },
+  { import = "ndhoule.plugins.config.treesitter" },
+  { import = "ndhoule.plugins.config.ui" },
+  { import = "ndhoule.plugins.config.vcs" },
+}

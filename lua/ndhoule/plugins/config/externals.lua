@@ -14,7 +14,8 @@ return {
     "https://github.com/williamboman/mason.nvim",
     dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     build = ":MasonUpdate",
-    lazy = false,
+    lazy = true,
+    event = "VeryLazy",
     opts = {
       -- TODO(ndhoule): Finish configuring me
       ui = {

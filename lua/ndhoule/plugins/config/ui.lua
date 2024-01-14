@@ -2,6 +2,8 @@ return {
   -- Add a startup dashboard
   {
     "https://github.com/goolord/alpha-nvim",
+    lazy = true,
+    event = "VimEnter",
     config = function()
       local alpha = require("alpha")
       local theme = require("alpha.themes.dashboard")
@@ -13,7 +15,18 @@ return {
   {
     "https://github.com/stevearc/dressing.nvim",
     lazy = true,
-    event = "VeryLazy",
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
   },
 
   {
@@ -25,7 +38,7 @@ return {
   {
     "https://github.com/NvChad/nvim-colorizer.lua",
     lazy = true,
-    event = "VeryLazy",
+    event = "User LazyFile",
     opts = {
       filetypes = {
         css = { css = true },
@@ -35,7 +48,7 @@ return {
         "typescript",
         "typescriptreact",
       },
-    }
+    },
   },
 
   {
@@ -50,25 +63,17 @@ return {
     main = "ibl",
     version = "v3.x",
     lazy = true,
-    event = "VeryLazy",
+    event = "User LazyFile",
     opts = {},
     setup = function()
       -- TODO(ndhoule): Configure rainbow-delimiters.nvim integration
       -- https://github.com/lukas-reineke/indent-blankline.nvim#rainbow-delimitersnvim-integration
       local hooks = require("ibl.hooks")
 
-      hooks.register(
-        hooks.type.ACTIVE,
-        function(bufnr)
-          -- Disable indent guides in very large buffers
-          return not vim.b[bufnr].is_buf_large
-        end
-      )
-    end
+      hooks.register(hooks.type.ACTIVE, function(bufnr)
+        -- Disable indent guides in very large buffers
+        return not vim.b[bufnr].is_buf_large
+      end)
+    end,
   },
-
-  -- {
-  --   "https://github.com/kevinhwang91/nvim-bqf",
-  --   ft = "qf"
-  -- },
 }

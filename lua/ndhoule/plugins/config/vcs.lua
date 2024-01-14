@@ -2,7 +2,7 @@ return {
   {
     "https://github.com/lewis6991/gitsigns.nvim",
     lazy = true,
-    event = "VeryLazy",
+    event = "User LazyFile",
     opts = {},
   },
 
