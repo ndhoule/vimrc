@@ -17,8 +17,21 @@ return {
   },
 
   {
+    "https://github.com/folke/neoconf.nvim",
+    lazy = true,
+    opts = {
+      import = {
+        vscode = true,
+        coc = false,
+        nlsp = false,
+      },
+    },
+  },
+
+  {
     "https://github.com/neovim/nvim-lspconfig",
     dependencies = {
+      "https://github.com/folke/neoconf.nvim",
       "https://github.com/folke/neodev.nvim",
       "https://github.com/hrsh7th/cmp-nvim-lsp",
       "https://github.com/nvimtools/none-ls.nvim",
@@ -60,7 +73,7 @@ return {
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, keymap_opts)
           vim.keymap.set("n", "<Space>D", vim.lsp.buf.type_definition, keymap_opts)
-          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, keymap_opts)
+          vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, keymap_opts)
           vim.keymap.set({ "n", "v" }, "<Space>ca", vim.lsp.buf.code_action, keymap_opts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, keymap_opts)
           vim.keymap.set("n", "<Space>f", function()
@@ -137,22 +150,27 @@ return {
       lspconfig.lua_ls.setup({ capabilities })
       lspconfig.sqlls.setup({ capabilities })
       lspconfig.terraformls.setup({ capabilities })
-      lspconfig.tsserver.setup({
+      lspconfig.vtsls.setup({
         capabilities,
-        flags = {
-          -- Prevent an issue seemingly specific to tsserver where the client and server become
-          -- desynced. This leads to stale diagnostics sticking around after they're fixed, usually
-          -- after you've fixed the last issue in a buffer.
-          debounce_text_changes = nil,
-        },
-        -- By default, the presence of a `.git` directory activates denols on JavaScript and
-        -- TypeScript buffers. That means if you're working on a TS/JS file in e.g. a Deno project,
-        -- tsserver will inappropriately activate.
-        --
-        -- TODO(ndhoule): Investigate folke/neoconf.nvim as an alternative to setting this globally
         root_dir = util.root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
         single_file_support = false,
       })
+      -- lspconfig.tsserver.setup({
+      --   capabilities,
+      --   flags = {
+      --     -- Prevent an issue seemingly specific to tsserver where the client and server become
+      --     -- desynced. This leads to stale diagnostics sticking around after they're fixed, usually
+      --     -- after you've fixed the last issue in a buffer.
+      --     debounce_text_changes = nil,
+      --   },
+      --   -- By default, the presence of a `.git` directory activates denols on JavaScript and
+      --   -- TypeScript buffers. That means if you're working on a TS/JS file in e.g. a Deno project,
+      --   -- tsserver will inappropriately activate.
+      --   --
+      --   -- TODO(ndhoule): Investigate folke/neoconf.nvim as an alternative to setting this globally
+      --   root_dir = util.root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
+      --   single_file_support = false,
+      -- })
       lspconfig.vimls.setup({ capabilities })
       lspconfig.yamlls.setup({
         capabilities,

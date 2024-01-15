@@ -1,3 +1,4 @@
+-- TODO(ndhoule): Move at least some of these plugins to different files
 return {
   -- Add support for `.` (repeat) for plugins that use vim-repeat. Most modern plugins don't plug
   -- into vim-repeat anymore, but a few (e.g. mkdx, vimspector, luasnip) still do, and it's ~175
@@ -19,6 +20,35 @@ return {
       storage = "sqlite",
       storage_path = vim.fn.stdpath("state") .. "/yanky.db",
     },
+  },
+
+  -- Add a terminal manager
+  {
+    "https://github.com/akinsho/toggleterm.nvim",
+    lazy = true,
+    cmd = {
+      "TermExec",
+      "TermSelect",
+      "ToggleTerm",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection",
+      "ToggleTermSetName",
+      "ToggleTermToggleAll",
+    },
+    keys = {
+      { "<Space>s", ":ToggleTermSendVisualSelection<CR>", mode = "v", silent = true },
+    },
+    opts = {},
+  },
+
+  -- Highlight trailing whitespace
+  {
+    "echasnovski/mini.trailspace",
+    version = "*",
+    lazy = true,
+    event = "User LazyFile",
+    opts = {},
   },
 
   -- Add an Emacs-like scratch buffer
@@ -261,8 +291,7 @@ return {
     "https://github.com/kylechui/nvim-surround",
     version = "*",
     lazy = true,
-    -- TODO(ndhoule): Look into whether this can be loaded more lazily
-    event = "VeryLazy",
+    event = "User LazyFile",
     opts = {},
   },
 

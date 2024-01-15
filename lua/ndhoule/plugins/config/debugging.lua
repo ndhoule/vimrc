@@ -35,7 +35,7 @@ return {
 
   {
     "https://github.com/rcarriga/nvim-dap-ui",
-    dependencies = { "https://github.com/rcarriga/nvim-dap-ui" },
+    dependencies = { "https://github.com/mfussenegger/nvim-dap" },
     lazy = true,
     opts = {
       floating = {

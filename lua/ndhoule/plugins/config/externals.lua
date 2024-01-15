@@ -70,6 +70,7 @@ return {
         "typescript-language-server",
         "vetur-vls",
         "vim-language-server",
+        "vtsls",
         "yaml-language-server",
 
         -- DAP adapters

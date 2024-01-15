@@ -1,5 +1,5 @@
 return {
-  -- Add a startup dashboard
+  -- Startup dashboard
   {
     "https://github.com/goolord/alpha-nvim",
     lazy = true,
@@ -12,6 +12,7 @@ return {
     end,
   },
 
+  -- Visual improvements for `vim.input` and `vim.select` UI elements
   {
     "https://github.com/stevearc/dressing.nvim",
     lazy = true,
@@ -29,6 +30,7 @@ return {
     end,
   },
 
+  -- VSCode-like iconography for LSP completion items
   {
     "https://github.com/onsails/lspkind.nvim",
     lazy = true,
@@ -51,6 +53,7 @@ return {
     },
   },
 
+  -- LSP progress widget
   {
     "https://github.com/j-hui/fidget.nvim",
     version = "v1.x",
@@ -58,6 +61,7 @@ return {
     opts = {},
   },
 
+  -- Show indent guides
   {
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     main = "ibl",
@@ -75,5 +79,14 @@ return {
         return not vim.b[bufnr].is_buf_large
       end)
     end,
+  },
+
+  -- Highlight trailing whitespace
+  {
+    "https://github.com/echasnovski/mini.trailspace",
+    version = "*",
+    lazy = true,
+    event = "User LazyFile",
+    opts = {},
   },
 }
