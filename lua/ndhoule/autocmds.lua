@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 
     if ok and stats and stats.size then
       vim.b[args.buf].is_buf_large = stats.size > vim.g.filesize_limits.size
+        or vim.api.nvim_buf_line_count(args.buf) > vim.g.filesize_limits.lines
     else
       vim.b[args.buf].is_buf_large = vim.api.nvim_buf_line_count(args.buf) > vim.g.filesize_limits.lines
     end
