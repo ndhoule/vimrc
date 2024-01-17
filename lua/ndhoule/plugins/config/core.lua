@@ -11,8 +11,8 @@ return {
     dependencies = { "https://github.com/kkharji/sqlite.lua" },
     lazy = true,
     keys = {
-      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" } },
-      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" } },
+      { "p",     "<Plug>(YankyPutAfter)",     mode = { "n", "x" } },
+      { "P",     "<Plug>(YankyPutBefore)",    mode = { "n", "x" } },
       { "<C-P>", "<Plug>(YankyPreviousEntry)" },
       { "<C-N>", "<Plug>(YankyNextEntry)" },
     },
@@ -365,6 +365,11 @@ return {
       { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
     },
     opts = function()
+      local ft = require("Comment.ft")
+
+      -- Add multiline HCL comment support
+      ft.hcl = { "# %s", "/* %s */" }
+
       return {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       }
@@ -376,9 +381,9 @@ return {
     "https://github.com/christoomey/vim-sort-motion",
     lazy = true,
     keys = {
-      { "gs", "<Plug>SortMotion", mode = "n", remap = true, silent = true },
-      { "gs", "<Plug>SortMotionVisual", mode = "x", remap = true, silent = true },
-      { "gss", "<Plug>SortLines", mode = "n", remap = true, silent = true },
+      { "gs",  "<Plug>SortMotion",       mode = "n", remap = true, silent = true },
+      { "gs",  "<Plug>SortMotionVisual", mode = "x", remap = true, silent = true },
+      { "gss", "<Plug>SortLines",        mode = "n", remap = true, silent = true },
     },
   },
 
