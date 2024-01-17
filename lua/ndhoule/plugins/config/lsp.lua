@@ -55,7 +55,7 @@ return {
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           local format_opts = {
             filter = function(client)
-              return client.name ~= "tsserver"
+              return client.name ~= "tsserver" and client.name ~= "vtsls"
             end,
             timeout_ms = 5000,
           }
