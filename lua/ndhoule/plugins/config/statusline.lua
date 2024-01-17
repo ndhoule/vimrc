@@ -7,6 +7,8 @@ return {
     opts = {
       options = {
         theme = "sonokai",
+        component_separators = "",
+        section_separators = { left = "", right = "" },
       },
       sections = {
         lualine_a = { "mode" },
