@@ -58,7 +58,8 @@ return {
       require("lazy.core.loader").add_to_rtp(plugin)
       require("nvim-treesitter.query_predicates")
     end,
-    config = function()
+    config = function(_, opts)
+      local treesitter = require("nvim-treesitter.configs")
       local utils = require("ndhoule.utils")
 
       -- Force Treesitter to re-parse the buffer when it changes. This fixes two issues, both
@@ -80,6 +81,8 @@ return {
         end,
         group = vim.api.nvim_create_augroup("UserTSReparseOnChange", {}),
       })
+
+      treesitter.setup(opts)
     end,
   },
 }
