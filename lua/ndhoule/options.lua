@@ -1,7 +1,7 @@
 -- Limits for large files used to disable functionality
 vim.g.filesize_limits = {
   lines = 10000,
-  size = 1024 * 8,
+  size = 1024 * 128,
 }
 
 vim.g.markdown_fenced_languages = {
