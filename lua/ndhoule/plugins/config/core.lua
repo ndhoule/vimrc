@@ -11,8 +11,8 @@ return {
     dependencies = { "https://github.com/kkharji/sqlite.lua" },
     lazy = true,
     keys = {
-      { "p",     "<Plug>(YankyPutAfter)",     mode = { "n", "x" } },
-      { "P",     "<Plug>(YankyPutBefore)",    mode = { "n", "x" } },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" } },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" } },
       { "<C-P>", "<Plug>(YankyPreviousEntry)" },
       { "<C-N>", "<Plug>(YankyNextEntry)" },
     },
@@ -381,9 +381,9 @@ return {
     "https://github.com/christoomey/vim-sort-motion",
     lazy = true,
     keys = {
-      { "gs",  "<Plug>SortMotion",       mode = "n", remap = true, silent = true },
-      { "gs",  "<Plug>SortMotionVisual", mode = "x", remap = true, silent = true },
-      { "gss", "<Plug>SortLines",        mode = "n", remap = true, silent = true },
+      { "gs", "<Plug>SortMotion", mode = "n", remap = true, silent = true },
+      { "gs", "<Plug>SortMotionVisual", mode = "x", remap = true, silent = true },
+      { "gss", "<Plug>SortLines", mode = "n", remap = true, silent = true },
     },
   },
 
