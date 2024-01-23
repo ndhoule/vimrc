@@ -62,6 +62,8 @@ return {
       local treesitter = require("nvim-treesitter.configs")
       local utils = require("ndhoule.utils")
 
+      treesitter.setup(opts)
+
       -- Force Treesitter to re-parse the buffer when it changes. This fixes two issues, both
       -- triggered by calling vim.lsp.buf.format:
       --
@@ -81,8 +83,6 @@ return {
         end,
         group = vim.api.nvim_create_augroup("UserTSReparseOnChange", {}),
       })
-
-      treesitter.setup(opts)
     end,
   },
 }
