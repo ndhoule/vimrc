@@ -149,6 +149,7 @@ return {
       })
       lspconfig.lua_ls.setup({ capabilities })
       lspconfig.sqlls.setup({ capabilities })
+      lspconfig.taplo.setup({ capabilities })
       lspconfig.terraformls.setup({ capabilities })
       lspconfig.vtsls.setup({
         capabilities,
