@@ -34,12 +34,26 @@ return {
   },
 
   {
+    "https://github.com/davidsierradz/cmp-conventionalcommits",
+    lazy = true,
+  },
+
+  {
+    "https://github.com/petertriho/cmp-git",
+    dependencies = { "https://github.com/nvim-lua/plenary.nvim" },
+    lazy = true,
+    opts = {},
+  },
+
+  {
     "https://github.com/hrsh7th/nvim-cmp",
     dependencies = {
+      "https://github.com/davidsierradz/cmp-conventionalcommits",
       "https://github.com/hrsh7th/cmp-buffer",
       "https://github.com/hrsh7th/cmp-nvim-lsp",
       "https://github.com/hrsh7th/cmp-path",
       "https://github.com/onsails/lspkind.nvim",
+      "https://github.com/petertriho/cmp-git",
       "https://github.com/saadparwaiz1/cmp_luasnip",
       "https://github.com/windwp/nvim-autopairs",
     },
@@ -86,9 +100,15 @@ return {
       })
 
       cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-        sources = {
-          { name = "dap" },
-        },
+        sources = cmp.config.sources({ { name = "dap" } }),
+      })
+
+      cmp.setup.filetype("gitcommit", {
+        sources = cmp.config.sources(
+          { { name = "git" } },
+          { { name = "conventionalcommits" } },
+          { { name = "buffer" } }
+        ),
       })
 
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
