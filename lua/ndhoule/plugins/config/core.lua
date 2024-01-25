@@ -37,6 +37,7 @@ return {
       "ToggleTermToggleAll",
     },
     keys = {
+      { "<Space>s", ":ToggleTerm<CR>", silent = true },
       { "<Space>s", ":ToggleTermSendVisualSelection<CR>", mode = "v", silent = true },
     },
     opts = {},
