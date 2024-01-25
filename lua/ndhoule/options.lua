@@ -1,3 +1,5 @@
+local utils = require("ndhoule.utils")
+
 -- Limits for large files used to disable functionality
 vim.g.filesize_limits = {
   lines = 10000,
@@ -62,6 +64,17 @@ vim.wo.signcolumn = "yes"
 -- Decrease the time before vim writes the swapfile, which also governs the delay before gutter
 -- marks (e.g. VCS, lightbulb) are shown
 vim.opt.updatetime = 100
+
+-- Style LSP windows to be consistent with Telescope, cmp, etc. windows
+local win_opts = utils.config.window.bordered()
+
+vim.diagnostic.config({ float = win_opts })
+
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(vim.lsp.handlers.hover, vim.tbl_extend("keep", { silent = true }, win_opts))
+
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(vim.lsp.handlers.signature_help, vim.tbl_extend("keep", { silent = true }, win_opts))
 
 -----------------------------
 -- Text display/formatting --
