@@ -12,10 +12,9 @@ return {
 
   {
     "https://github.com/williamboman/mason.nvim",
-    dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     build = ":MasonUpdate",
-    lazy = true,
-    event = "VeryLazy",
+    -- lazy = true,
+    -- event = "VeryLazy",
     opts = {
       -- TODO(ndhoule): Finish configuring me
       ui = {
@@ -23,28 +22,33 @@ return {
         border = "rounded",
       },
     },
+    config = function(_, opts)
+      local mason = require("mason")
+
+      mason.setup(opts)
+
+      require("mason-lspconfig")
+      require("mason-nvim-dap")
+      require("mason-tool-installer")
+    end,
   },
 
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    dependencies = {
-      "https://github.com/jay-babu/mason-nvim-dap.nvim",
-      "https://github.com/williamboman/mason-lspconfig.nvim",
-      "https://github.com/williamboman/mason.nvim",
-    },
+    "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "https://github.com/williamboman/mason.nvim" },
     lazy = true,
     opts = {
       -- https://mason-registry.dev/registry/list
       ensure_installed = {
         -- Linters and formatters
         -- TODO(ndhoule): Install more linters/formatters here
+        "gofumpt",
         "hadolint",
         "shellcheck",
         "sql-formatter",
         "stylua",
 
         -- Language servers
-        -- TODO(ndhoule): Try out "vtsls" in place of "tsserver"
         "ansible-language-server",
         "bash-language-server",
         "clangd",
@@ -67,10 +71,9 @@ return {
         "taplo",
         "terraform-ls",
         "tflint",
-        "typescript-language-server",
         "vetur-vls",
         "vim-language-server",
-        "vtsls",
+        "typescript-language-server",
         "yaml-language-server",
 
         -- DAP adapters

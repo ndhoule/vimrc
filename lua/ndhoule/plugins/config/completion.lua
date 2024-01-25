@@ -66,10 +66,7 @@ return {
       local cmp = require("cmp")
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local lspkind = require("lspkind")
-
-      local window_opts = {
-        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-      }
+      local utils = require("ndhoule.utils")
 
       cmp.setup({
         formatting = {
@@ -94,8 +91,8 @@ return {
           { name = "path", priority = 10 },
         }),
         window = {
-          completion = cmp.config.window.bordered(window_opts),
-          documentation = cmp.config.window.bordered(window_opts),
+          completion = utils.config.window.bordered(),
+          documentation = utils.config.window.bordered(),
         },
       })
 

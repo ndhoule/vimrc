@@ -15,7 +15,23 @@ return {
   -- Visual improvements for `vim.input` and `vim.select` UI elements
   {
     "https://github.com/stevearc/dressing.nvim",
+    dependencies = { "https://github.com/nvim-telescope/telescope.nvim" },
     lazy = true,
+    opts = function()
+      local utils = require("ndhoule.utils")
+
+      local win_options = utils.config.window.bordered()
+
+      return {
+        input = {
+          border = win_options.border,
+        },
+        select = {
+          backend = { "telescope", "builtin" },
+          border = win_options.border,
+        },
+      }
+    end,
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)

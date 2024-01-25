@@ -185,18 +185,23 @@ return {
     keys = {
       {
         "<leader>/",
-        "<cmd>Telescope live_grep<CR>",
+        function()
+          require("telescope.builtin").live_grep({
+            cwd = vim.api.nvim_call_function("projectroot#guess", {}),
+          })
+        end,
+        desc = "Search by file contents within the current workspace",
         silent = true,
       },
       {
         "<leader>t",
         function()
-          require("telescope.builtin").git_files({
-            -- Exclude vendored files from results
-            git_command = { "git", "ls-files", "--exclude-standard", "--cached", ":(attr:!linguist-vendored)" },
-            show_untracked = true,
+          require("telescope.builtin").find_files({
+            cwd = vim.api.nvim_call_function("projectroot#guess", {}),
+            hidden = true,
           })
         end,
+        desc = "Search by filename within the current workspace",
         silent = true,
       },
       {
@@ -209,6 +214,7 @@ return {
       {
         "<C-t>",
         "<cmd>Telescope command_palette<CR>",
+        desc = "Open the command palette",
         silent = true,
       },
       {
@@ -216,6 +222,7 @@ return {
         function()
           require("telescope").extensions.file_browser.file_browser()
         end,
+        desc = "Open file browser relative to the current buffer",
         silent = true,
       },
       {
@@ -227,6 +234,7 @@ return {
             cwd = vim.api.nvim_call_function("projectroot#guess", {}),
           })
         end,
+        desc = "Open file browser relative to the current workspace's root directory",
         silent = true,
       },
     },
@@ -236,6 +244,13 @@ return {
       telescope.setup({
         extensions = {
           command_palette = {
+            {
+              "Registers",
+              {
+                "open yank register history",
+                ":Telescope yank_history",
+              },
+            },
             {
               "Test",
               {
