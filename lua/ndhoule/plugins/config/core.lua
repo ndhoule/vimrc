@@ -3,7 +3,10 @@ return {
   -- Add support for `.` (repeat) for plugins that use vim-repeat. Most modern plugins don't plug
   -- into vim-repeat anymore, but a few (e.g. mkdx, vimspector, luasnip) still do, and it's ~175
   -- lines of vimscript, so there's not much harm in including it.
-  "https://github.com/tpope/vim-repeat",
+  {
+    "https://github.com/tpope/vim-repeat",
+    lazy = false,
+  },
 
   -- Add an Emacs-like killring (yank history)
   {
