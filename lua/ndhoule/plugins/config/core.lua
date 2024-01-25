@@ -95,9 +95,8 @@ return {
   -- Re-open files at their last editing position
   {
     "https://github.com/vladdoster/remember.nvim",
-    config = function()
-      require("remember")
-    end,
+    lazy = false,
+    opts = {},
   },
 
   -- Make * and # work more sanely on visual selections by escaping all special characters
