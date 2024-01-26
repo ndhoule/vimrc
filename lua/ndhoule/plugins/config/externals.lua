@@ -47,6 +47,7 @@ return {
         "shellcheck",
         "sql-formatter",
         "stylua",
+        "shfmt",
 
         -- Language servers
         "ansible-language-server",

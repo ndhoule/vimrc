@@ -311,6 +311,7 @@ return {
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
+          null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.stylua,
         },
       })
