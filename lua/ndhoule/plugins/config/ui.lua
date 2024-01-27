@@ -77,23 +77,29 @@ return {
     opts = {},
   },
 
-  -- Show indent guides
+  -- Indent/scope guides
   {
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     version = "v3.x",
+    dependencies = { "https://github.com/nvim-treesitter/nvim-treesitter" },
     lazy = true,
     event = "User LazyFile",
-    opts = {},
-    setup = function()
-      -- TODO(ndhoule): Configure rainbow-delimiters.nvim integration
-      -- https://github.com/lukas-reineke/indent-blankline.nvim#rainbow-delimitersnvim-integration
+    config = function()
+      local ibl = require("ibl")
       local hooks = require("ibl.hooks")
 
       hooks.register(hooks.type.ACTIVE, function(bufnr)
         -- Disable indent guides in very large buffers
         return not vim.b[bufnr].is_buf_large
       end)
+
+      ibl.setup({
+        indent = {
+          char = "▎",
+          tab_char = "▎",
+        },
+      })
     end,
   },
 
