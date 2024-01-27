@@ -102,6 +102,25 @@ return {
             },
           },
 
+          golangci_lint_ls = {
+            init_options = {
+              command = {
+                "golangci-lint",
+                "run",
+                "--disable-all",
+                "--enable=errcheck",
+                "--enable=gosimple",
+                "--enable=govet",
+                "--enable=ineffassign",
+                "--enable=staticcheck",
+                "--enable=unused",
+                "--enable=gofmt",
+                "--enable=goimports",
+                "--out-format=json",
+              },
+            },
+          },
+
           jsonls = {
             opts = {
               on_new_config = function(config)
@@ -309,7 +328,6 @@ return {
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.shellcheck,
           null_ls.builtins.diagnostics.yamllint,
-          null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
           null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.stylua,

@@ -41,13 +41,13 @@ return {
       -- https://mason-registry.dev/registry/list
       ensure_installed = {
         -- Linters and formatters
-        -- TODO(ndhoule): Install more linters/formatters here
         "gofumpt",
+        "golangci-lint", -- golangci-lint-langserver does not include golangci-lint binary
         "hadolint",
         "shellcheck",
+        "shfmt",
         "sql-formatter",
         "stylua",
-        "shfmt",
 
         -- Language servers
         "ansible-language-server",
