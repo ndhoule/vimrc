@@ -20,13 +20,16 @@ return {
   -- TODO(ndhoule): Revisit config, probably out of date at this point
   {
     "https://github.com/nvim-treesitter/nvim-treesitter",
+    version = "*",
+    build = function()
+      require("nvim-treesitter.install").update({ with_sync = true })()
+    end,
     dependencies = {
       "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
       "https://github.com/windwp/nvim-ts-autotag",
     },
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })()
-    end,
+    lazy = true,
+    event = { "VeryLazy", "User LazyFile" },
     opts = {
       ensure_installed = "all",
       sync_install = false,
