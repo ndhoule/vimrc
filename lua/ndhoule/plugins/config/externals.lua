@@ -46,8 +46,9 @@ return {
         "hadolint",
         "shellcheck",
         "shfmt",
-        "sql-formatter",
+        "sql-formatter", -- TODO(ndhoule): Consider removing this, sqls provides a built-in formatter
         "stylua",
+        "yamllint",
 
         -- Language servers
         "ansible-language-server",
@@ -67,14 +68,11 @@ return {
         "lua-language-server",
         "sqls",
         "stylelint-lsp",
-        "svelte-language-server",
-        "tailwindcss-language-server",
         "taplo",
         "terraform-ls",
         "tflint",
-        "vetur-vls",
-        "vim-language-server",
         "typescript-language-server",
+        "vim-language-server",
         "yaml-language-server",
 
         -- DAP adapters

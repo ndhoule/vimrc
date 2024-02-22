@@ -6,7 +6,12 @@ return {
     "https://github.com/folke/neodev.nvim",
     lazy = true,
     opts = {
-      plugins = true,
+      plugins = {
+        "neotest",
+        "nvim-treesitter",
+        "plenary.nvim",
+        "telescope.nvim",
+      },
       types = true,
     },
   },
@@ -96,29 +101,15 @@ return {
                   useany = true,
                 },
                 directoryFilters = { "-.git", "-.vscode", "-.vscode-test", "-node_modules" },
-                gofumpt = true,
                 semanticTokens = true,
               },
             },
           },
 
           golangci_lint_ls = {
-            init_options = {
-              command = {
-                "golangci-lint",
-                "run",
-                "--disable-all",
-                "--enable=errcheck",
-                "--enable=gosimple",
-                "--enable=govet",
-                "--enable=ineffassign",
-                "--enable=staticcheck",
-                "--enable=unused",
-                "--enable=gofmt",
-                "--enable=goimports",
-                "--out-format=json",
-              },
-            },
+            -- TODO(ndhoule): Unfortunately, golangci-lint-langserver doesn't support the
+            -- textDocument/formatting LSP method. It would be great to be able to format the
+            -- current buffer ad hoc using `vim.lsp.buf.format` like most other langservers
           },
 
           jsonls = {
@@ -267,35 +258,6 @@ return {
           vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, keymap_opts)
           vim.keymap.set({ "n", "v" }, "<Space>ca", vim.lsp.buf.code_action, keymap_opts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, keymap_opts)
-          vim.keymap.set({ "n", "x" }, "<Space>f", function()
-            vim.lsp.buf.format({ async = true })
-          end, keymap_opts)
-
-          -- Format the buffer on save when supported by the attached server(s)
-          -- if client.server_capabilities.documentFormattingProvider then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            callback = function(event)
-              local clients = vim.lsp.get_active_clients({ bufnr = event.buf })
-              local has_formatter = vim.tbl_count(vim.tbl_filter(function(client)
-                return client.server_capabilities.documentFormattingProvider
-              end, clients)) > 0
-
-              if has_formatter then
-                vim.lsp.buf.format({ async = false })
-              end
-            end,
-            group = vim.api.nvim_create_augroup("UserLspFormat", {}),
-          })
-
-          local on_list = function(options)
-            vim.fn.setloclist(0, {}, " ", options)
-          end
-          if client.server_capabilities.definitionProvider then
-            vim.lsp.buf.definition({ on_list = on_list })
-          end
-          if client.server_capabilities.referencesProvider then
-            vim.lsp.buf.references(nil, { on_list = on_list })
-          end
         end,
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       })
@@ -328,9 +290,6 @@ return {
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.shellcheck,
           null_ls.builtins.diagnostics.yamllint,
-          null_ls.builtins.formatting.prettier.with({ filetypes = { "html" } }),
-          null_ls.builtins.formatting.shfmt,
-          null_ls.builtins.formatting.stylua,
         },
       })
     end,
@@ -355,5 +314,78 @@ return {
     "https://github.com/nvimtools/none-ls.nvim",
     lazy = true,
     config = false,
+  },
+
+  {
+    "https://github.com/stevearc/conform.nvim",
+    version = "*",
+    lazy = true,
+    event = "BufWritePre",
+    cmd = "ConormInfo",
+    keys = {
+      {
+        "<Space>f",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "",
+        desc = "Format the current buffer",
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        go = { "goimports", "gofumpt" },
+        hcl = function(bufnr)
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          if bufname:match("nomad.hcl$") then
+            -- HACK(ndhoule) nomad_fmt adds a trailing newline to the end of the file on each
+            -- format, even if one is already present. Use trim_newlines to remove it
+            return { "nomad_fmt", "trim_newlines" }
+          elseif bufname:match("pkr.hcl$") then
+            return { "packer_fmt" }
+          elseif bufname:match(".tf$") or bufname:match(".tf.hcl$") then
+            return { "terraform_fmt" }
+          else
+            return {}
+          end
+        end,
+        lua = { "stylua" },
+        sh = { "shfmt" },
+        sql = { "sql_formatter" },
+        terraform = { "terraform_fmt" },
+        ["*"] = { "trim_newlines" },
+      },
+      format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+
+        local bufname = vim.api.nvim_buf_get_name(bufnr)
+        local file_pattern_blacklist = { "/node_modules/", "/.git/" }
+        for _, pattern in ipairs(file_pattern_blacklist) do
+          if bufname:match(pattern) then
+            return
+          end
+        end
+
+        return {
+          lsp_fallback = true,
+          timeout_ms = 5000,
+        }
+      end,
+      formatters = {
+        nomad_fmt = {
+          meta = {
+            url = "https://developer.hashicorp.com/nomad/docs/commands/fmt",
+            description = "The nomad fmt Nomad command is used to format HCL2 configuration files to a canonical format and style.",
+          },
+          command = "nomad",
+          args = { "fmt", "-" },
+        },
+      },
+    },
+    init = function()
+      vim.o.formatexpr = "v:lua.require('conform').formatexpr()"
+    end,
   },
 }

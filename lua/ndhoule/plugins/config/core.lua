@@ -238,57 +238,69 @@ return {
         silent = true,
       },
     },
-    config = function()
-      local telescope = require("telescope")
-
-      telescope.setup({
-        extensions = {
-          command_palette = {
+    opts = {
+      extensions = {
+        command_palette = {
+          {
+            "Registers",
             {
-              "Registers",
-              {
-                "open yank register history",
-                ":Telescope yank_history",
-              },
-            },
-            {
-              "Test",
-              {
-                "run current file",
-                ":lua require('neotest').run.run({ vim.fn.expand('%') })",
-              },
-              {
-                "run current file (debug)",
-                ":lua require('neotest').run.run({ vim.fn.expand('%'), strategy = dap })",
-              },
-              {
-                "attach to current file",
-                ":lua require('neotest').run.attach({ vim.fn.expand('%') })",
-              },
-              {
-                "stop current file",
-                ":lua require('neotest').run.stop({ vim.fn.expand('%') })",
-              },
-              {
-                "re-run last test",
-                ":lua require('neotest').run.run_last()",
-              },
-              {
-                "open summary window",
-                ":lua require('neotest').summary.open()",
-              },
-              {
-                "open output window",
-                ":lua require('neotest').summary.open()",
-              },
+              "open yank register history",
+              ":Telescope yank_history",
             },
           },
-          file_browser = {
-            hijack_netrw = true,
+          {
+            "Test",
+            {
+              "run current file",
+              ":lua require('neotest').run.run({ vim.fn.expand('%') })",
+            },
+            {
+              "run current file (debug)",
+              ":lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })",
+            },
+            {
+              "attach to current file",
+              ":lua require('neotest').run.attach({ vim.fn.expand('%') })",
+            },
+            {
+              "stop current file",
+              ":lua require('neotest').run.stop({ vim.fn.expand('%') })",
+            },
+            {
+              "re-run last test",
+              ":lua require('neotest').run.run_last()",
+            },
+            {
+              "open summary window",
+              ":lua require('neotest').summary.open()",
+            },
+            {
+              "open output window",
+              ":lua require('neotest').summary.open()",
+            },
+            {
+              "watch current file (debug)",
+              ":lua require('neotest').watch.watch({ vim.fn.expand('%'), strategy = 'dap' })",
+            },
+            {
+              "stop watching current file",
+              ":lua require('neotest').watch.stop({ vim.fn.expand('%') })",
+            },
+            {
+              "watch current file",
+              ":lua require('neotest').watch.watch({ vim.fn.expand('%') })",
+            },
           },
         },
-      })
+        file_browser = {
+          hijack_netrw = true,
+        },
+      },
+    },
+    config = function(_, opts)
+      local telescope = require("telescope")
 
+      telescope.setup(opts)
       telescope.load_extension("command_palette")
       telescope.load_extension("file_browser")
       telescope.load_extension("fzf")
@@ -413,6 +425,7 @@ return {
     init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
+    enabled = false,
   },
 
   -- Insert matching pairs of characters (e.g. (), [], '')
